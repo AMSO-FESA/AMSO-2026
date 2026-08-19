@@ -425,10 +425,11 @@
             color: var(--text-muted);
         }
 
+        /* ================= FOOTER ================= */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--card-border);
-            padding: 40px 0 20px;
+            padding: 35px 0 20px;
             margin-top: 40px;
         }
 
@@ -454,35 +455,42 @@
             font-size: 0.85rem;
         }
 
+        /* Tombol Ikon Kontak Saja (Tanpa Teks) */
         .footer-contacts {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
 
-        .contact-item {
-            display: flex;
+        .contact-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-main);
             text-decoration: none;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.03);
-            padding: 10px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 1.25rem;
             transition: all 0.3s ease;
         }
 
-        .contact-item:hover {
-            border-color: var(--neon-blue);
-            color: var(--neon-blue);
-            transform: translateY(-2px);
-        }
-
-        .contact-item.wa:hover {
+        .contact-btn.wa:hover {
             border-color: #25D366;
             color: #25D366;
+            background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C;
+            color: #E1306C;
+            background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
@@ -603,6 +611,7 @@
         </main>
     </div>
 
+    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -611,12 +620,13 @@
                     <p>Angkasa Mathematic and Science Olympiad</p>
                 </div>
 
+                <!-- IKON SAJA (DIRECT LINK WHATSAPP & INSTAGRAM) -->
                 <div class="footer-contacts">
-                    <a href="https://wa.me/6287878691995" target="_blank" class="contact-item wa">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    <a href="https://wa.me/6287878691995" target="_blank" class="contact-btn wa" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
                     </a>
-                    <a href="https://www.instagram.com/yasarinipusat/" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-instagram"></i>@yasarinipusat
+                    <a href="https://www.instagram.com/yasarinipusat/" target="_blank" class="contact-btn ig" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
             </div>
