@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMSO 2026 - Angkasa Mathematic and Science Olympiad</title>
-    <!-- Font Inter & Orbitron untuk Nuansa Space & Modern -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
@@ -52,37 +51,37 @@
             position: relative;
         }
 
-        /* Logo Area dengan Gambar */
+        /* Logo Area Transparan (Tanpa Box Putih) */
         .logo-group {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .logo-item {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px 16px;
-            border-radius: 16px;
+            background: transparent;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(8px);
-            transition: transform 0.3s ease;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .logo-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
         }
 
         .logo-item img {
-            height: 55px;
+            height: 75px;
             width: auto;
             object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
 
         /* Title Area */
@@ -167,7 +166,6 @@
             background: linear-gradient(90deg, var(--card-border), transparent);
         }
 
-        /* Spotlight Grid */
         .spotlight-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -200,7 +198,6 @@
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
         }
 
-        /* Card Layout Variations */
         .col-12 { grid-column: span 12; }
         .col-8  { grid-column: span 8; }
         .col-6  { grid-column: span 6; }
@@ -210,7 +207,6 @@
             .col-8, .col-6, .col-4 { grid-column: span 12; }
         }
 
-        /* Card Tags */
         .card-tag {
             display: inline-block;
             padding: 4px 10px;
@@ -253,7 +249,6 @@
             gap: 12px;
         }
 
-        /* Stat Counter Inside Card */
         .stat-grid {
             display: flex;
             justify-content: space-around;
@@ -351,20 +346,19 @@
             <!-- Logo Group: Yasarini (Kiri), FESA (Tengah), AMSO (Kanan) -->
             <div class="logo-group">
                 <div class="logo-item">
-                    <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
+                    <img src="yasarini logo 1.jpg" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
                 </div>
                 <div class="logo-item">
-                    <img src="fesa.jpg" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
+                    <img src="fesa.png" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
                 </div>
                 <div class="logo-item">
-                    <img src="amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
+                    <img src="logo AMSO New.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
                 </div>
             </div>
 
             <h1 class="main-title">AMSO 2026</h1>
             <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
 
-            <!-- Menu Navigation -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
                 <a href="#"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
@@ -375,7 +369,7 @@
             </nav>
         </header>
 
-        <!-- ================= BODY / SPOTLIGHTS ================= -->
+        <!-- ================= BODY ================= -->
         <main>
             <div class="section-header">
                 <h2><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> SPOTLIGHT AMSO 2026</h2>
@@ -383,8 +377,6 @@
             </div>
 
             <div class="spotlight-grid">
-                
-                <!-- Spotlight 1: Informasi Pelaksanaan -->
                 <div class="spotlight-card col-8">
                     <span class="card-tag tag-gold"><i class="fa-solid fa-bullhorn"></i> Pengumuman Utama</span>
                     <h3 class="card-title">Pelaksanaan AMSO 2026 Segera Dimulai</h3>
@@ -394,7 +386,6 @@
                     <a href="#" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Spotlight 2: Statistik Peserta -->
                 <div class="spotlight-card col-4">
                     <span class="card-tag tag-blue"><i class="fa-solid fa-chart-simple"></i> Target Jangkauan</span>
                     <h3 class="card-title">Skala Nasional</h3>
@@ -410,7 +401,6 @@
                     </div>
                 </div>
 
-                <!-- Spotlight 3: Panduan & Juknis -->
                 <div class="spotlight-card col-6">
                     <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
                     <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
@@ -420,7 +410,6 @@
                     <a href="#" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Spotlight 4: Informasi Portal CBT -->
                 <div class="spotlight-card col-6">
                     <span class="card-tag tag-blue"><i class="fa-solid fa-desktop"></i> Ujian Online</span>
                     <h3 class="card-title">Portal CBT & Uji Coba System</h3>
@@ -429,7 +418,6 @@
                     </p>
                     <a href="#" class="btn-action">Cek Jadwal Simulasi <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-
             </div>
         </main>
     </div>
@@ -443,7 +431,6 @@
                     <p>Angkasa Mathematic and Science Olympiad • Yasarini & FESA</p>
                 </div>
 
-                <!-- Media Sosial & Kontak WA -->
                 <div class="footer-contacts">
                     <a href="https://wa.me/6281234567890" target="_blank" class="contact-item wa">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp Panitia
