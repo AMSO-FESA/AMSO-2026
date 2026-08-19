@@ -27,6 +27,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -108,7 +113,7 @@
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
         .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
 
-        /* Simbol Matematika (el-math2 dipindah jauh ke bawah ke area 75%) */
+        /* Simbol Matematika */
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
         .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
@@ -524,11 +529,12 @@
                 </div>
             </div>
 
+            <!-- NAVBAR DENGAN LINK BUKU PANDUAN AKTIF -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
                 <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
                 <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                <a href="#"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
+                <a href="https://amso-fesa.github.io/BukuPanduan-AMSO-2026/"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
                 
                 <div class="dropdown">
                     <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
@@ -582,7 +588,7 @@
                     <p class="card-desc">
                         Unduh buku panduan pelaksanaan , kisi-kisi materi untuk semua jenjang perlombaan.
                     </p>
-                    <a href="#" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="https://amso-fesa.github.io/BukuPanduan-AMSO-2026/" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="spotlight-card col-6">
