@@ -106,10 +106,10 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
-        /* Navigation Menu */
+        /* Navigation Menu (Posisi di bawah judul) */
         nav {
             background: rgba(15, 21, 42, 0.8);
             border: 1px solid var(--card-border);
@@ -121,6 +121,7 @@
             flex-wrap: wrap;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 10px;
         }
 
         nav a {
@@ -147,14 +148,14 @@
         .dropdown {
             position: relative;
             display: inline-flex;
-            padding-bottom: 15px; /* Menambah area jembatan kursor */
+            padding-bottom: 15px; 
             margin-bottom: -15px;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 100%; /* Nempel pas tanpa celah */
+            top: 100%; 
             left: 50%;
             transform: translateX(-50%);
             background: rgba(15, 21, 42, 0.95);
@@ -187,7 +188,6 @@
             transform: none;
         }
 
-        /* Tampilkan dropdown saat kursor mengarah ke elemen .dropdown */
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -410,6 +410,7 @@
             <h1 class="main-title">AMSO 2026</h1>
             <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
 
+            <!-- NAVBAR POSISI DI BAWAH JUDUL UTAMA -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
                 
