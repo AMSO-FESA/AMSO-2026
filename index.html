@@ -89,7 +89,7 @@
             100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Elemen Melayang (Astronot, Roket, Alat Fisika, Simbol Matematika) */
+        /* Elemen Melayang */
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
@@ -98,7 +98,6 @@
             filter: drop-shadow(0 0 12px currentColor);
         }
 
-        /* Posisi & Animasi Unik Tiap Elemen */
         .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
         .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
         .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
@@ -109,9 +108,9 @@
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
         .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
 
-        /* Simbol Matematika */
+        /* Simbol Matematika (el-math2 digeser ke bawah agar aman dari tulisan header) */
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math2 { bottom: 35%; right: 30%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { top: 48%; right: 35%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
 
         @keyframes flyRocket {
@@ -140,7 +139,6 @@
             0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
             100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
         }
-        /* ====================================================================== */
 
         .container {
             max-width: 1200px;
@@ -157,7 +155,6 @@
             position: relative;
         }
 
-        /* Logo Group (Paling Atas) */
         .logo-group {
             display: flex;
             justify-content: center;
@@ -193,7 +190,6 @@
         .logo-item img[src="fesa.png"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
 
-        /* Navigation Menu (Di Bawah Logo, Di Atas Judul) */
         nav {
             background: rgba(15, 21, 42, 0.8);
             border: 1px solid var(--card-border);
@@ -228,7 +224,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
-        /* ================= DROPDOWN MENU FIX ================= */
         .dropdown {
             position: relative;
             display: inline-flex;
@@ -275,9 +270,7 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
-        /* ==================================================== */
 
-        /* Title Area (Paling Bawah di Header) */
         .main-title {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(3rem, 7vw, 5rem);
@@ -300,7 +293,6 @@
             margin-bottom: 35px;
         }
 
-        /* ================= BODY / SPOTLIGHTS ================= */
         main {
             padding: 40px 0 60px;
         }
@@ -428,7 +420,6 @@
             color: var(--text-muted);
         }
 
-        /* ================= FOOTER ================= */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--card-border);
@@ -499,34 +490,28 @@
 </head>
 <body>
 
-    <!-- LATAR BELAKANG KAYA ANIMASI SAINS & LUAR ANGKASA -->
     <div class="space-bg">
         <div class="stars"></div>
         <div class="galaxy-blob blob-1"></div>
         <div class="galaxy-blob blob-2"></div>
         <div class="galaxy-blob blob-3"></div>
 
-        <!-- Komponen Luar Angkasa -->
         <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
         <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
         <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
         <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
 
-        <!-- Alat Praktik Fisika -->
         <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
         <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
         <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
 
-        <!-- Simbol & Logo Matematika -->
         <div class="floating-icon el-math1">&pi;</div>
         <div class="floating-icon el-math2">&sum;</div>
         <div class="floating-icon el-math3">&radic;</div>
     </div>
 
     <div class="container">
-        <!-- ================= HEADER ================= -->
         <header>
-            <!-- 1. LOGO GROUP (Paling Atas) -->
             <div class="logo-group">
                 <div class="logo-item">
                     <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
@@ -539,25 +524,16 @@
                 </div>
             </div>
 
-            <!-- 2. NAVBAR (Di Bawah Logo, Di Atas Judul) -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
-                
-                <!-- LINK TIMELINE -->
                 <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
-                
-                <!-- LINK KATEGORI -->
                 <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                
                 <a href="#"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
                 
-                <!-- MENU DROPDOWN DATA -->
                 <div class="dropdown">
                     <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
                     <div class="dropdown-content">
-                        <!-- LINK REKAP PESERTA -->
                         <a href="https://amso-fesa.github.io/Data-Peserta-AMSO-2026/"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data Peserta</a>
-                        <!-- LINK PERSURATAN -->
                         <a href="https://amso-fesa.github.io/Persuratan-AMSO-2026/"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Administrasi</a>
                     </div>
                 </div>
@@ -565,12 +541,10 @@
                 <a href="#"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
             </nav>
 
-            <!-- 3. JUDUL UTAMA (Paling Bawah) -->
             <h1 class="main-title">AMSO 2026</h1>
             <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
         </header>
 
-        <!-- ================= BODY ================= -->
         <main>
             <div class="section-header">
                 <h2><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> SPOTLIGHT AMSO 2026</h2>
@@ -584,7 +558,6 @@
                     <p class="card-desc">
                         Ajang olimpiade antar Sekolah Angkasa se-Indonesia kembali hadir. Persiapkan seluruh murid terbaik untuk mengikuti AMSO 2026!
                     </p>
-                    
                     <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
@@ -624,7 +597,6 @@
         </main>
     </div>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -648,6 +620,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
