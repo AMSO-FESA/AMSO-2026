@@ -1,458 +1,649 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMSO 2026 - Angkasa Mathematic and Science Olympiad</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --bg-dark: #070913;
-            --card-bg: rgba(20, 26, 50, 0.65);
-            --card-border: rgba(0, 210, 255, 0.2);
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
-            --gold: #ffd700;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-        }
+<title>Timeline AMSO 2026</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!-- TAMBAHAN: FontAwesome untuk Icon Panah -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
-            background-attachment: fixed;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+:root {
+    /* Tema Gelap dengan Aksen Neon Biru-Ungu */
+    --blue: #8b5cf6;       /* Ungu Neon */
+    --blue2: #3b82f6;      /* Biru Neon */
+    --navy: #0f172a;       /* Base Dark */
+    --gold: #22d3ee;       /* Cyan/Neon accent (pengganti gold) */
+    --bg: #0b0f19;         /* Latar Belakang Gelap */
+    --text: #f8fafc;       /* Teks Terang */
+    --muted: #94a3b8;      /* Teks Redup */
+    --white: #ffffff;
+    --border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(15, 23, 42, 0.6); /* Efek Transparan (Glass) */
+}
 
-        /* ================= HEADER ================= */
-        header {
-            padding: 40px 0 25px;
-            text-align: center;
-            position: relative;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
 
-        .logo-item {
-            background: transparent;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            box-shadow: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
+/* =========================
+   HERO & TOMBOL KEMBALI
+========================= */
 
-        .logo-item:hover {
-            transform: scale(1.08);
-            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
-        }
+.hero {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15), transparent 30%),
+        linear-gradient(135deg, #050811, #0a0f1c);
+    color: white;
+    padding: 65px 20px 55px;
+    border-bottom: 1px solid var(--border);
+    position: relative; /* Ditambahin biar tombol kembali posisinya pas */
+}
 
-        .logo-item img {
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
-        }
+/* TAMBAHAN: CSS Tombol Kembali */
+.btn-back {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
 
-        .logo-item img[src="yasarini.png"] { height: 65px !important; }
-        .logo-item img[src="fesa.png"] { height: 100px !important; }
-        .logo-item img[src="amso.png"] { height: 100px !important; }
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--blue2);
+    color: var(--blue2);
+    transform: translateX(-4px); /* Efek geser ke kiri dikit pas dihover */
+}
 
-        /* Title Area */
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 7vw, 5rem);
-            font-weight: 900;
-            letter-spacing: 5px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
+.hero-inner {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Rata tengah semua isi hero */
+}
 
-        .sub-title {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 35px;
-        }
+.hero-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
 
-        /* Navigation Menu */
-        nav {
-            background: rgba(15, 21, 42, 0.8);
-            border: 1px solid var(--card-border);
-            border-radius: 50px;
-            padding: 8px;
-            backdrop-filter: blur(12px);
-            display: inline-flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+.logo-text {
+    text-align: center; /* Teks logo rata tengah */
+}
 
-        nav a:hover, nav a.active {
-            color: #fff;
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
-            border: 1px solid rgba(0, 210, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
+.logo-text small {
+    display: block;
+    font-size: 11px;
+    opacity: .65;
+    letter-spacing: 1.5px;
+}
 
-        /* ================= BODY / SPOTLIGHTS ================= */
-        main {
-            padding: 40px 0 60px;
-        }
+.logo-text strong {
+    font-size: 18px;
+    color: var(--text);
+}
 
-        .section-header {
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.hero h1 {
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: .95;
+    letter-spacing: -3px;
+    margin-top: 45px;
+    text-align: center; /* Judul rata tengah */
+}
 
-        .section-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: #fff;
-            letter-spacing: 1px;
-        }
+.text-neon {
+    background: linear-gradient(90deg, var(--gold), var(--blue2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
 
-        .section-header .line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--card-border), transparent);
-        }
+.hero-desc {
+    margin: 17px auto 0; /* Margin auto untuk ke tengah */
+    color: var(--muted);
+    max-width: 650px;
+    font-size: 15px;
+    text-align: center; /* Deskripsi rata tengah */
+}
 
-        .spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 20px;
-        }
+/* =========================
+   MAIN
+========================= */
 
-        .spotlight-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px 80px;
+}
 
-        .spotlight-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.5);
-        }
+/* =========================
+   PROGRESS
+========================= */
 
-        .spotlight-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-        }
+.progress-section {
+    margin-top: 15px;
+}
 
-        .col-12 { grid-column: span 12; }
-        .col-8  { grid-column: span 8; }
-        .col-6  { grid-column: span 6; }
-        .col-4  { grid-column: span 4; }
+.section-title {
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 15px;
+}
 
-        @media (max-width: 900px) {
-            .col-8, .col-6, .col-4 { grid-column: span 12; }
-        }
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
 
-        .card-tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue2), var(--gold));
+    border-radius: 20px;
+    transition: width 1s ease;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
 
-        .tag-blue { background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); }
-        .tag-purple { background: rgba(157, 78, 221, 0.15); color: var(--neon-purple); }
-        .tag-gold { background: rgba(255, 215, 0, 0.15); color: var(--gold); }
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
 
-        .card-title {
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
+/* =========================
+   PHASES
+========================= */
 
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
+.phase-section {
+    margin-top: 45px;
+}
 
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            transition: gap 0.2s;
-        }
+.phases {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
 
-        .btn-action:hover {
-            gap: 12px;
-        }
+.phase {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
 
-        .stat-grid {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
+    cursor: pointer;
+    transition: .25s;
+}
 
-        .stat-item h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--neon-blue);
-        }
+.phase:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
+}
 
-        .stat-item p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+.phase-number {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--blue2);
+}
 
-        /* ================= FOOTER ================= */
-        footer {
-            background: rgba(5, 7, 15, 0.95);
-            border-top: 1px solid var(--card-border);
-            padding: 40px 0 20px;
-            margin-top: 40px;
-        }
+.phase h3 {
+    margin-top: 7px;
+    font-size: 16px;
+    color: var(--text);
+}
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+.phase p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+}
 
-        .footer-brand h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
+/* =========================
+   FILTER
+========================= */
 
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+.timeline-header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
 
-        .footer-contacts {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.filters {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.03);
-            padding: 10px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
-        }
+.filter {
+    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    padding: 8px 13px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: 0.3s ease;
+}
 
-        .contact-item:hover {
-            border-color: var(--neon-blue);
-            color: var(--neon-blue);
-            transform: translateY(-2px);
-        }
+.filter:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
 
-        .contact-item.wa:hover {
-            border-color: #25D366;
-            color: #25D366;
-        }
+.filter.active {
+    background: linear-gradient(90deg, var(--blue), var(--blue2));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-    </style>
+/* =========================
+   AGENDA GRID
+========================= */
+
+.agenda {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 20px;
+
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--blue2);
+}
+
+.card.major::before {
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.card-number {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.card-date {
+    margin-top: 7px;
+    font-size: 12px;
+    color: var(--blue2);
+    font-weight: 800;
+}
+
+.card h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-top: 9px;
+    color: var(--text);
+}
+
+.card p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(34, 211, 238, 0.15);
+    color: var(--gold);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #050811;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+footer strong {
+    font-size: 18px;
+}
+
+footer p {
+    margin-top: 7px;
+    font-size: 11px;
+    opacity: .55;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 850px) {
+    .phases {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .agenda {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .hero {
+        padding-top: 75px; /* Ditambahin dikit biar gak numpuk sama tombol */
+    }
+    .hero h1 {
+        margin-top: 35px;
+    }
+    .phases,
+    .agenda {
+        grid-template-columns: 1fr;
+    }
+    .timeline-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    /* Posisi tombol kembali di layar HP biar tetep rapi */
+    .btn-back {
+        top: 15px;
+        left: 15px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <!-- ================= HEADER ================= -->
-        <header>
-            <div class="logo-group">
-                <div class="logo-item">
-                    <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <!-- TOMBOL KEMBALI KE BERANDA (Ganti isi href dengan link beranda lo) -->
+    <a href="LINK_BERANDA_LO_DI_SINI" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i> Kembali
+    </a>
+
+    <div class="hero-inner">
+        <div class="hero-top">
+            <div class="logo-area">
+                <div class="logo-text">
+                    <strong>ANGKASA MATHEMATIC AND SCIENCE OLYMPIAD</strong>
                 </div>
-                <div class="logo-item">
-                    <img src="fesa.png" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
-                </div>
-                <div class="logo-item">
-                    <img src="amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
-                </div>
-            </div>
-
-            <h1 class="main-title">AMSO 2026</h1>
-            <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
-
-            <nav>
-                <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
-                
-                <!-- LINK INI MENGARAH KE WEB TIMELINE LO (GITHUB PAGES) -->
-                <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
-                
-                <a href="#"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                <a href="#"><i class="fa-solid fa-clipboard-check"></i> Syarat & Juknis</a>
-                <a href="#"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> FAQ</a>
-            </nav>
-        </header>
-
-        <!-- ================= BODY ================= -->
-        <main>
-            <div class="section-header">
-                <h2><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> SPOTLIGHT AMSO 2026</h2>
-                <div class="line"></div>
-            </div>
-
-            <div class="spotlight-grid">
-                <div class="spotlight-card col-8">
-                    <span class="card-tag tag-gold"><i class="fa-solid fa-bullhorn"></i> Pengumuman Utama</span>
-                    <h3 class="card-title">Pelaksanaan AMSO 2026 Segera Dimulai</h3>
-                    <p class="card-desc">
-                        Ajang olimpiade Matematika dan IPA terbesar antar Sekolah Angkasa se-Indonesia kembali hadir. Persiapkan seluruh siswa-siswi terbaik untuk mengikuti babak Tryout dan Seleksi Sekolah!
-                    </p>
-                    
-                    <!-- LINK INI JUGA MENGARAH KE WEB TIMELINE LO -->
-                    <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
-                
-                </div>
-
-                <div class="spotlight-card col-4">
-                    <span class="card-tag tag-blue"><i class="fa-solid fa-chart-simple"></i> Target Jangkauan</span>
-                    <h3 class="card-title">Skala Nasional</h3>
-                    <div class="stat-grid">
-                        <div class="stat-item">
-                            <h4>35+</h4>
-                            <p>Cabang Yasarini</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>10K+</h4>
-                            <p>Siswa Angkasa</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="spotlight-card col-6">
-                    <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
-                    <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
-                    <p class="card-desc">
-                        Unduh petunjuk teknis pelaksanaan olimpiade, kisi-kisi materi uji matematika & IPA, serta mekanisme pelaksanaan sistem CBT online untuk semua jenjang.
-                    </p>
-                    <a href="#" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="spotlight-card col-6">
-                    <span class="card-tag tag-blue"><i class="fa-solid fa-desktop"></i> Ujian Online</span>
-                    <h3 class="card-title">Portal CBT & Uji Coba System</h3>
-                    <p class="card-desc">
-                        Uji coba server dan sistem ujian akan dilaksanakan sebelum babak penyisihan untuk memastikan kesiapan jaringan di tiap sekolah jajaran.
-                    </p>
-                    <a href="#" class="btn-action">Cek Jadwal Simulasi <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- ================= FOOTER ================= -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>AMSO 2026</h3>
-                    <p>Angkasa Mathematic and Science Olympiad</p>
-                </div>
-
-                <div class="footer-contacts">
-                    <a href="https://wa.me/6287878691995" target="_blank" class="contact-item wa">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.instagram.com/yasarinipusat/" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-instagram"></i>@yasarinipusat
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Angkasa Mathematic and Science Olympiad. All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
 
+        <h1><span class="text-neon">TIMELINE AMSO 2026</span></h1>
+
+        <p class="hero-desc">
+            Rangkaian lengkap pelaksanaan AMSO 2026,
+            dari tahap tryout hingga pengumuman pemenang
+        </p>
+    </div>
+</header>
+
+
+<main class="container">
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<section class="progress-section">
+    <h2 class="section-title">
+        Progress AMSO 2026
+    </h2>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+    <div class="progress-info">
+        <span id="progressText">0% perjalanan</span>
+        <span>12 Agustus – 15 Desember 2026</span>
+    </div>
+</section>
+
+
+<!-- =========================
+     PHASES
+========================= -->
+
+<section class="phase-section">
+    <h2 class="section-title">
+        Tahapan Utama
+    </h2>
+    <div class="phases">
+        <div class="phase">
+            <div class="phase-number">01</div>
+            <h3>Tryout</h3>
+            <p>18 – 28 Agustus</p>
+        </div>
+        <div class="phase">
+            <div class="phase-number">02</div>
+            <h3>Seleksi Sekolah</h3>
+            <p>8 – 11 September</p>
+        </div>
+        <div class="phase">
+            <div class="phase-number">03</div>
+            <h3>Penyisihan</h3>
+            <p>23 September</p>
+        </div>
+        <div class="phase">
+            <div class="phase-number">04</div>
+            <h3>Semifinal</h3>
+            <p>6 Oktober</p>
+        </div>
+        <div class="phase">
+            <div class="phase-number">05</div>
+            <h3>Final</h3>
+            <p>20 Oktober</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     AGENDA
+========================= -->
+
+<section>
+    <div class="timeline-header">
+        <h2 class="section-title">
+            Seluruh Agenda
+        </h2>
+        <div class="filters">
+            <button class="filter active" data-month="all">
+                Semua
+            </button>
+            <button class="filter" data-month="8">
+                Agustus
+            </button>
+            <button class="filter" data-month="9">
+                September
+            </button>
+            <button class="filter" data-month="10">
+                Oktober
+            </button>
+            <button class="filter" data-month="12">
+                Desember
+            </button>
+        </div>
+    </div>
+    <div class="agenda" id="agenda"></div>
+</section>
+
+</main>
+
+
+<footer>
+    <strong>AMSO 2026</strong>
+    <p>
+        Angkasa Mathematic & Science Olympiad
+    </p>
+</footer>
+
+
+<script>
+
+/* =========================
+   DATA AGENDA
+========================= */
+
+const events = [
+{ no: 1, date: "2026-08-12", display: "Rabu, 12 Agustus 2026", title: "Pengiriman Surat Pemberitahuan Tryout AMSO 2026", month: 8 },
+{ no: 2, date: "2026-08-18", display: "18 – 28 Agustus 2026", title: "Pelaksanaan Tryout di Sekolah Masing-masing & Batas Akhir Pengumpulan Hasil Tryout", month: 8 },
+{ no: 3, date: "2026-08-31", display: "Senin, 31 Agustus 2026", title: "Pengiriman Buku Panduan AMSO 2026 ke Yasarini Jajaran", month: 8 },
+{ no: 4, date: "2026-09-07", display: "Senin, 7 September 2026", title: "Bimbingan Teknis AMSO 2026", month: 9 },
+{ no: 5, date: "2026-09-08", display: "8 – 11 September 2026", title: "Pelaksanaan Babak Seleksi Sekolah", month: 9, major: true, badge: "SELEKSI" },
+{ no: 6, date: "2026-09-11", display: "Jum’at, 11 September 2026", title: "Batas Akhir Pengiriman Hasil Babak Seleksi Sekolah", month: 9 },
+{ no: 7, date: "2026-09-15", display: "Selasa, 15 September 2026", title: "Pengiriman Nomor Peserta yang Lolos ke Babak Penyisihan", month: 9 },
+{ no: 8, date: "2026-09-22", display: "Selasa, 22 September 2026", title: "Uji Coba Link Soal Babak Penyisihan", month: 9 },
+{ no: 9, date: "2026-09-23", display: "Rabu, 23 September 2026", title: "Pelaksanaan Babak Penyisihan", month: 9, major: true, badge: "PENYISIHAN" },
+{ no: 10, date: "2026-09-24", display: "Kamis, 24 September 2026", title: "Batas Akhir Pengiriman Berita Acara, Absensi, Pakta Integritas Kepala Sekolah dan Pengawas", month: 9 },
+{ no: 11, date: "2026-09-28", display: "Senin, 28 September 2026", title: "Pengumuman Peserta Lolos ke Babak Semifinal", month: 9 },
+{ no: 12, date: "2026-10-05", display: "Senin, 5 Oktober 2026", title: "Uji Coba Link Babak Semifinal", month: 10 },
+{ no: 13, date: "2026-10-06", display: "Selasa, 6 Oktober 2026", title: "Pelaksanaan Babak Semifinal", month: 10, major: true, badge: "SEMIFINAL" },
+{ no: 14, date: "2026-10-07", display: "Rabu, 7 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Semifinal", month: 10 },
+{ no: 15, date: "2026-10-12", display: "Senin, 12 Oktober 2026", title: "Pengumuman Peserta Lolos ke Babak Final dan Detail Babak Final", month: 10 },
+{ no: 16, date: "2026-10-14", display: "Rabu, 14 Oktober 2026", title: "Bimtek Babak Final", month: 10 },
+{ no: 17, date: "2026-10-16", display: "Jum’at, 16 Oktober 2026", title: "Batas Akhir Pengiriman Foto dan Nomor Rekening Peserta Babak Final", month: 10 },
+{ no: 18, date: "2026-10-19", display: "Senin, 19 Oktober 2026", title: "Gladi Jaringan dan Soal Babak Final AMSO", month: 10 },
+{ no: 19, date: "2026-10-20", display: "Selasa, 20 Oktober 2026", title: "Pelaksanaan Babak Final AMSO", month: 10, major: true, badge: "FINAL" },
+{ no: 20, date: "2026-10-21", display: "Rabu, 21 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Final", month: 10 },
+{ no: 21, date: "2026-12-15", display: "Selasa, 15 Desember 2026", title: "Pengumuman Pemenang AMSO 2026", month: 12, major: true, }
+];
+
+/* =========================
+   RENDER AGENDA
+========================= */
+
+const agenda = document.getElementById("agenda");
+
+function renderEvents(month = "all") {
+    agenda.innerHTML = "";
+    
+    const filtered = month === "all" ? events : events.filter(event => event.month == month);
+
+    filtered.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "card" + (event.major ? " major" : "");
+        card.innerHTML = `
+            <div class="card-number">AGENDA ${String(event.no).padStart(2,"0")}</div>
+            <div class="card-date">${event.display}</div>
+            <h3>${event.title}</h3>
+            ${event.badge ? `<div class="badge">${event.badge}</div>` : ""}
+        `;
+        agenda.appendChild(card);
+    });
+}
+renderEvents();
+
+/* =========================
+   FILTER
+========================= */
+
+document.querySelectorAll(".filter").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        renderEvents(button.dataset.month);
+    });
+});
+
+
+/* =========================
+   PROGRESS AMSO
+========================= */
+
+function updateProgress() {
+    const start = new Date("2026-08-12T00:00:00");
+    const end = new Date("2026-12-15T23:59:59");
+    const now = new Date();
+    
+    let percentage = ((now - start) / (end - start)) * 100;
+    percentage = Math.max(0, Math.min(100, percentage));
+
+    document.getElementById("progress").style.width = percentage + "%";
+    document.getElementById("progressText").textContent = Math.round(percentage) + "% perjalanan";
+}
+updateProgress();
+
+</script>
 </body>
 </html>
