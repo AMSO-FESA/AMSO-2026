@@ -46,11 +46,12 @@
 
         /* ================= HEADER ================= */
         header {
-            padding: 40px 0 25px;
+            padding: 30px 0 25px;
             text-align: center;
             position: relative;
         }
 
+        /* Logo Group (Paling Atas) */
         .logo-group {
             display: flex;
             justify-content: center;
@@ -86,30 +87,7 @@
         .logo-item img[src="fesa.png"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
 
-        /* Title Area */
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 7vw, 5rem);
-            font-weight: 900;
-            letter-spacing: 5px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-
-        .sub-title {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        /* Navigation Menu (Posisi di bawah judul) */
+        /* Navigation Menu (Di Bawah Logo, Di Atas Judul) */
         nav {
             background: rgba(15, 21, 42, 0.8);
             border: 1px solid var(--card-border);
@@ -121,7 +99,7 @@
             flex-wrap: wrap;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-top: 10px;
+            margin-bottom: 30px;
         }
 
         nav a {
@@ -192,6 +170,29 @@
             display: block;
         }
         /* ==================================================== */
+
+        /* Title Area (Paling Bawah di Header) */
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
 
         /* ================= BODY / SPOTLIGHTS ================= */
         main {
@@ -395,6 +396,7 @@
     <div class="container">
         <!-- ================= HEADER ================= -->
         <header>
+            <!-- 1. LOGO GROUP (Paling Atas) -->
             <div class="logo-group">
                 <div class="logo-item">
                     <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
@@ -407,10 +409,7 @@
                 </div>
             </div>
 
-            <h1 class="main-title">AMSO 2026</h1>
-            <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
-
-            <!-- NAVBAR POSISI DI BAWAH JUDUL UTAMA -->
+            <!-- 2. NAVBAR (Di Bawah Logo, Di Atas Judul) -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
                 
@@ -435,6 +434,10 @@
 
                 <a href="#"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
             </nav>
+
+            <!-- 3. JUDUL UTAMA (Paling Bawah) -->
+            <h1 class="main-title">AMSO 2026</h1>
+            <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
         </header>
 
         <!-- ================= BODY ================= -->
