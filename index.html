@@ -36,7 +36,7 @@
             min-height: 100vh;
         }
 
-        /* ================= ANIMASI LATAR BELAKANG LUAR ANGKASA ================= */
+        /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
         .space-bg {
             position: fixed;
             top: 0;
@@ -46,95 +46,99 @@
             pointer-events: none;
             z-index: -1;
             overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #05070d 100%);
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
         }
 
-        /* Efek Bintang Berkelap-kelip */
+        /* Bintang Berkelap-kelip */
         .stars {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
                 radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, var(--neon-blue), rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 160px 120px, var(--gold), rgba(0,0,0,0));
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
             background-repeat: repeat;
-            background-size: 200px 200px;
-            opacity: 0.4;
+            background-size: 250px 250px;
+            opacity: 0.45;
             animation: twinkle 4s infinite alternate;
         }
 
         @keyframes twinkle {
             0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
+            100% { opacity: 0.8; }
         }
 
-        /* Planet / Galaksi Melayang Halus */
+        /* Galaksi / Nebula Melayang */
         .galaxy-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
+            filter: blur(90px);
+            opacity: 0.18;
             animation: floatBlob 15s infinite alternate ease-in-out;
         }
 
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--neon-blue);
-            top: -10%;
-            left: -10%;
-        }
-
-        .blob-2 {
-            width: 500px;
-            height: 500px;
-            background: var(--neon-purple);
-            bottom: -15%;
-            right: -10%;
-            animation-delay: -5s;
-        }
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
 
         @keyframes floatBlob {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
+            100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Elemen Roket & Astronaut Animasi */
-        .floating-element {
+        /* Elemen Melayang (Astronot, Roket, Alat Fisika, Simbol Matematika) */
+        .floating-icon {
             position: absolute;
-            opacity: 0.7;
-            z-index: -1;
+            color: var(--neon-blue);
+            opacity: 0.55;
+            user-select: none;
+            filter: drop-shadow(0 0 12px currentColor);
         }
 
-        .rocket {
-            top: 15%;
-            right: 8%;
-            font-size: 2.5rem;
-            color: var(--neon-blue);
-            animation: flyRocket 12s infinite ease-in-out;
-            filter: drop-shadow(0 0 10px var(--neon-blue));
-        }
+        /* Posisi & Animasi Unik Tiap Elemen */
+        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
+        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
+        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
+        
+        /* Alat Fisika & Sains */
+        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
+        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
+        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+
+        /* Simbol Matematika */
+        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { bottom: 35%; right: 30%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
 
         @keyframes flyRocket {
             0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(-40px, 60px) rotate(40deg); }
+            50% { transform: translate(-50px, 70px) rotate(40deg); }
             100% { transform: translate(0, 0) rotate(45deg); }
         }
 
-        .astronaut {
-            bottom: 20%;
-            left: 5%;
-            font-size: 2.2rem;
-            color: var(--gold);
-            animation: floatAstronaut 10s infinite alternate ease-in-out;
-            filter: drop-shadow(0 0 10px var(--gold));
+        @keyframes floatItem1 {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-45px) rotate(15deg); }
         }
 
-        @keyframes floatAstronaut {
-            0% { transform: translateY(0) rotate(-10deg); }
-            100% { transform: translateY(-40px) rotate(15deg); }
+        @keyframes floatItem2 {
+            0% { transform: translateY(0) rotate(10deg); }
+            100% { transform: translateY(35px) rotate(-15deg); }
+        }
+
+        @keyframes rotateAtom {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes flySatellite {
+            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
         }
         /* ====================================================================== */
 
@@ -495,13 +499,28 @@
 </head>
 <body>
 
-    <!-- LATAR BELAKANG ANIMASI LUAR ANGKASA (ROKET, ASTRONAUT, GALAKSI) -->
+    <!-- LATAR BELAKANG KAYA ANIMASI SAINS & LUAR ANGKASA -->
     <div class="space-bg">
         <div class="stars"></div>
         <div class="galaxy-blob blob-1"></div>
         <div class="galaxy-blob blob-2"></div>
-        <div class="floating-element rocket"><i class="fa-solid fa-rocket"></i></div>
-        <div class="floating-element astronaut"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div class="galaxy-blob blob-3"></div>
+
+        <!-- Komponen Luar Angkasa -->
+        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+
+        <!-- Alat Praktik Fisika -->
+        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+
+        <!-- Simbol & Logo Matematika -->
+        <div class="floating-icon el-math1">&pi;</div>
+        <div class="floating-icon el-math2">&sum;</div>
+        <div class="floating-icon el-math3">&radic;</div>
     </div>
 
     <div class="container">
