@@ -143,6 +143,60 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
+        /* ================= DROPDOWN MENU CSS ================= */
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 115%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            padding: 8px;
+            text-align: left;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Tampilkan dropdown saat kursor mengarah ke elemen .dropdown */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* ==================================================== */
+
         /* ================= BODY / SPOTLIGHTS ================= */
         main {
             padding: 40px 0 60px;
@@ -371,7 +425,15 @@
                 
                 <a href="#"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
                 <a href="#"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                
+                <!-- MENU DROPDOWN DATA -->
+                <div class="dropdown">
+                    <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data awal peserta</a>
+                        <a href="#"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Persuratan</a>
+                    </div>
+                </div>
             </nav>
         </header>
 
