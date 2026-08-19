@@ -47,54 +47,56 @@
 
         /* ================= HEADER ================= */
         header {
-            padding: 30px 0 20px;
+            padding: 40px 0 25px;
             text-align: center;
             position: relative;
         }
 
-        /* Logo Area */
+        /* Logo Area dengan Gambar */
         .logo-group {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
-        .logo-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
+        .logo-item {
+            background: rgba(255, 255, 255, 0.95);
             padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--neon-blue);
-            backdrop-filter: blur(8px);
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease;
         }
 
-        .logo-badge.amso {
-            border-color: rgba(255, 215, 0, 0.4);
-            color: var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+        .logo-item:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-item img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
         }
 
         /* Title Area */
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-size: clamp(3rem, 7vw, 5rem);
             font-weight: 900;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
             line-height: 1.1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .sub-title {
@@ -103,7 +105,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         /* Navigation Menu */
@@ -208,60 +210,7 @@
             .col-8, .col-6, .col-4 { grid-column: span 12; }
         }
 
-        /* Countdown Card Special */
-        .countdown-card {
-            background: linear-gradient(135deg, rgba(20, 26, 50, 0.9), rgba(12, 15, 32, 0.95));
-            border-color: rgba(255, 215, 0, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .countdown-card::before {
-            background: linear-gradient(90deg, var(--gold), var(--neon-blue));
-        }
-
-        .countdown-info h3 {
-            font-size: 1.4rem;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .countdown-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .timer-boxes {
-            display: flex;
-            gap: 12px;
-        }
-
-        .timer-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            text-align: center;
-            min-width: 70px;
-        }
-
-        .timer-box strong {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            color: var(--gold);
-            display: block;
-        }
-
-        .timer-box span {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* Generic Spotlight Card Styling */
+        /* Card Tags */
         .card-tag {
             display: inline-block;
             padding: 4px 10px;
@@ -399,10 +348,17 @@
     <div class="container">
         <!-- ================= HEADER ================= -->
         <header>
+            <!-- Logo Group: Yasarini (Kiri), FESA (Tengah), AMSO (Kanan) -->
             <div class="logo-group">
-                <div class="logo-badge"><i class="fa-solid fa-building-columns"></i> YASARINI</div>
-                <div class="logo-badge"><i class="fa-solid fa-star"></i> FESA 2026</div>
-                <div class="logo-badge amso"><i class="fa-solid fa-rocket"></i> AMSO 2026</div>
+                <div class="logo-item">
+                    <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
+                </div>
+                <div class="logo-item">
+                    <img src="fesa.jpg" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
+                </div>
+                <div class="logo-item">
+                    <img src="amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
+                </div>
             </div>
 
             <h1 class="main-title">AMSO 2026</h1>
@@ -428,32 +384,17 @@
 
             <div class="spotlight-grid">
                 
-                <!-- Spotlight 1: Live Countdown -->
-                <div class="spotlight-card col-12 countdown-card">
-                    <div class="countdown-info">
-                        <span class="card-tag tag-gold"><i class="fa-solid fa-clock"></i> Next Event</span>
-                        <h3>Pelaksanaan Babak Seleksi Sekolah</h3>
-                        <p><i class="fa-regular fa-calendar"></i> 8 – 11 September 2026</p>
-                    </div>
-                    <div class="timer-boxes">
-                        <div class="timer-box"><strong id="days">00</strong><span>Hari</span></div>
-                        <div class="timer-box"><strong id="hours">00</strong><span>Jam</span></div>
-                        <div class="timer-box"><strong id="minutes">00</strong><span>Menit</span></div>
-                        <div class="timer-box"><strong id="seconds">00</strong><span>Detik</span></div>
-                    </div>
-                </div>
-
-                <!-- Spotlight 2: Panduan & Juknis -->
+                <!-- Spotlight 1: Informasi Pelaksanaan -->
                 <div class="spotlight-card col-8">
-                    <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
-                    <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
+                    <span class="card-tag tag-gold"><i class="fa-solid fa-bullhorn"></i> Pengumuman Utama</span>
+                    <h3 class="card-title">Pelaksanaan AMSO 2026 Segera Dimulai</h3>
                     <p class="card-desc">
-                        Unduh petunjuk teknis pelaksanaan olimpiade, kisi-kisi materi uji matematika & IPA, serta mekanisme pelaksanaan sistem CBT online untuk semua jenjang.
+                        Ajang olimpiade Matematika dan IPA terbesar antar Sekolah Angkasa se-Indonesia kembali hadir. Persiapkan seluruh siswa-siswi terbaik untuk mengikuti babak Tryout dan Seleksi Sekolah!
                     </p>
-                    <a href="#" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Spotlight 3: Statistik Peserta -->
+                <!-- Spotlight 2: Statistik Peserta -->
                 <div class="spotlight-card col-4">
                     <span class="card-tag tag-blue"><i class="fa-solid fa-chart-simple"></i> Target Jangkauan</span>
                     <h3 class="card-title">Skala Nasional</h3>
@@ -469,19 +410,19 @@
                     </div>
                 </div>
 
-                <!-- Spotlight 4: Alur Babak Utama -->
+                <!-- Spotlight 3: Panduan & Juknis -->
                 <div class="spotlight-card col-6">
-                    <span class="card-tag tag-blue"><i class="fa-solid fa-diagram-project"></i> Tahapan Seleksi</span>
-                    <h3 class="card-title">5 Babak Menuju Juara</h3>
+                    <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
+                    <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
                     <p class="card-desc">
-                        Perjalanan olimpiade dimulai dari <strong>Tryout Sekolah</strong>, <strong>Seleksi Sekolah</strong>, <strong>Penyisihan</strong>, <strong>Semifinal</strong>, hingga <strong>Grand Final AMSO 2026</strong>.
+                        Unduh petunjuk teknis pelaksanaan olimpiade, kisi-kisi materi uji matematika & IPA, serta mekanisme pelaksanaan sistem CBT online untuk semua jenjang.
                     </p>
-                    <a href="#" class="btn-action">Lihat Detail Agenda <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="btn-action">Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Spotlight 5: Informasi Portal CBT -->
+                <!-- Spotlight 4: Informasi Portal CBT -->
                 <div class="spotlight-card col-6">
-                    <span class="card-tag tag-gold"><i class="fa-solid fa-desktop"></i> Ujian Online</span>
+                    <span class="card-tag tag-blue"><i class="fa-solid fa-desktop"></i> Ujian Online</span>
                     <h3 class="card-title">Portal CBT & Uji Coba System</h3>
                     <p class="card-desc">
                         Uji coba server dan sistem ujian akan dilaksanakan sebelum babak penyisihan untuk memastikan kesiapan jaringan di tiap sekolah jajaran.
@@ -519,35 +460,5 @@
         </div>
     </footer>
 
-    <!-- Script Countdown Timer -->
-    <script>
-        const targetDate = new Date("2026-09-08T08:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                document.getElementById("days").textContent = "00";
-                document.getElementById("hours").textContent = "00";
-                document.getElementById("minutes").textContent = "00";
-                document.getElementById("seconds").textContent = "00";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("days").textContent = String(days).padStart(2, "0");
-            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
 </body>
 </html>
