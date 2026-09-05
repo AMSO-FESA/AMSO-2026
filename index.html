@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMSO 2026 - Angkasa Mathematic and Science Olympiad</title>
 
-    <!-- FAVICON (LOGO TAB BROWSER) -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -315,7 +314,7 @@
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #fff;
             letter-spacing: 1px;
         }
@@ -330,7 +329,6 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 20px;
-            margin-bottom: 50px;
         }
 
         .spotlight-card {
@@ -549,7 +547,7 @@
         .slider-btn.next { right: -15px; }
 
         @media (max-width: 768px) {
-            .slider-btn { display: none; } /* Di HP langsung swipe sentuhan jari */
+            .slider-btn { display: none; }
             .gallery-item { flex: 0 0 240px; }
         }
 
@@ -730,7 +728,6 @@
                 </div>
             </div>
 
-            <!-- NAVBAR DENGAN SUBDOMAIN RESMI -->
             <nav>
                 <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
                 <a href="https://timeline.amso.web.id/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
@@ -783,7 +780,6 @@
                     </div>
                 </div>
 
-                <!-- SPOTLIGHT BUKU PANDUAN (LINK TERUPDATE KE BUKUPANDUAN.AMSO.WEB.ID) -->
                 <div class="spotlight-card col-6">
                     <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
                     <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
@@ -793,7 +789,6 @@
                     <a href="https://bukupanduan.amso.web.id/" class="btn-action">Buka & Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- SPOTLIGHT BABAK SELEKSI (MURNI INFORMASI, TANPA BUTTON KLIK) -->
                 <div class="spotlight-card col-6">
                     <span class="card-tag tag-gold"><i class="fa-solid fa-trophy"></i> Babak Seleksi</span>
                     <h3 class="card-title">Babak Seleksi AMSO 2026</h3>
@@ -803,8 +798,7 @@
                 </div>
             </div>
 
-            <!-- ================= DOKUMENTASI TRYOUT (HORIZONTAL SLIDER SEBELUM FOOTER) ================= -->
-            <div class="section-header">
+            <div class="section-header" style="margin-top: 50px;">
                 <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
                 <div class="line"></div>
             </div>
@@ -813,7 +807,6 @@
                 <button class="slider-btn prev" onclick="slideGallery(-1)"><i class="fa-solid fa-chevron-left"></i></button>
                 
                 <div class="gallery-slider" id="gallerySlider">
-                    <!-- Skeleton Loading Saat Menunggu Data Drive -->
                     <div class="gallery-skeleton"></div>
                     <div class="gallery-skeleton"></div>
                     <div class="gallery-skeleton"></div>
@@ -825,7 +818,6 @@
         </main>
     </div>
 
-    <!-- MODAL PREVIEW GAMBAR LAYAR PENUH -->
     <div id="imgModal" class="img-modal" onclick="closeImgModal(event)">
         <div class="img-modal-content">
             <button class="img-modal-close" onclick="closeImgModalBtn()">&times;</button>
@@ -833,7 +825,6 @@
         </div>
     </div>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -842,7 +833,6 @@
                     <p>Angkasa Mathematic and Science Olympiad</p>
                 </div>
 
-                <!-- IKON SAJA (DIRECT LINK WHATSAPP & INSTAGRAM) -->
                 <div class="footer-contacts">
                     <a href="https://wa.me/6287878691995" target="_blank" class="contact-btn wa" title="WhatsApp">
                         <i class="fa-brands fa-whatsapp"></i>
@@ -859,9 +849,11 @@
         </div>
     </footer>
 
-    <!-- SCRIPT SLIDER & FETCH GOOGLE DRIVE -->
     <script>
         const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
+
+        let autoSlideTimer = null;
+        let isUserHovered = false;
 
         async function loadDriveGallery() {
             const gallerySlider = document.getElementById("gallerySlider");
@@ -895,6 +887,9 @@
                     gallerySlider.appendChild(item);
                 });
 
+                // Inisialisasi Auto-Slide setelah data gambar siap
+                setupAutoSlide();
+
             } catch (err) {
                 gallerySlider.innerHTML = `
                     <div style="width: 100%; text-align: center; color: #f87171; padding: 30px;">
@@ -902,6 +897,36 @@
                         Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan benar.
                     </div>`;
             }
+        }
+
+        // Auto-Slide Logic
+        function setupAutoSlide() {
+            const slider = document.getElementById("gallerySlider");
+            if (!slider) return;
+
+            // Pause saat kursor berada di atas slider
+            slider.addEventListener("mouseenter", () => { isUserHovered = true; });
+            slider.addEventListener("mouseleave", () => { isUserHovered = false; });
+            
+            // Pause saat sentuhan jari (mobile)
+            slider.addEventListener("touchstart", () => { isUserHovered = true; }, { passive: true });
+            slider.addEventListener("touchend", () => { 
+                setTimeout(() => { isUserHovered = false; }, 2000); 
+            }, { passive: true });
+
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+
+            autoSlideTimer = setInterval(() => {
+                if (!isUserHovered) {
+                    const maxScroll = slider.scrollWidth - slider.clientWidth;
+                    // Jika sudah mencapai ujung kanan, reset kembali ke awal
+                    if (slider.scrollLeft >= maxScroll - 15) {
+                        slider.scrollTo({ left: 0, behavior: "smooth" });
+                    } else {
+                        slider.scrollBy({ left: 300, behavior: "smooth" });
+                    }
+                }
+            }, 3000); // Bergerak otomatis setiap 3 detik
         }
 
         // Fungsi Tombol Geser Slider Kiri / Kanan
@@ -916,6 +941,7 @@
 
         // Modal Preview
         function openImgModal(imgUrl) {
+            isUserHovered = true; // Hentikan auto slide saat preview dibuka
             document.getElementById("modalImgTag").src = imgUrl;
             document.getElementById("imgModal").classList.add("active");
         }
@@ -923,11 +949,13 @@
         function closeImgModal(e) {
             if (e.target.id === "imgModal") {
                 document.getElementById("imgModal").classList.remove("active");
+                isUserHovered = false;
             }
         }
 
         function closeImgModalBtn() {
             document.getElementById("imgModal").classList.remove("active");
+            isUserHovered = false;
         }
 
         document.addEventListener("DOMContentLoaded", loadDriveGallery);
