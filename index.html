@@ -315,7 +315,7 @@
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #fff;
             letter-spacing: 1px;
         }
@@ -430,18 +430,37 @@
             color: var(--text-muted);
         }
 
-        /* ================= GALERI DOKUMENTASI DRIVE (DI PALING BAWAH) ================= */
-        .gallery-container {
+        /* ================= HORIZONTAL SLIDER GALERI DRIVE ================= */
+        .slider-wrapper {
+            position: relative;
             width: 100%;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+        .gallery-slider {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px 4px 18px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Custom Scrollbar Keren */
+        .gallery-slider::-webkit-scrollbar {
+            height: 6px;
+        }
+        .gallery-slider::-webkit-scrollbar-track {
+            background: rgba(15, 21, 42, 0.6);
+            border-radius: 10px;
+        }
+        .gallery-slider::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 10px;
         }
 
         .gallery-item {
+            flex: 0 0 280px;
             position: relative;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -449,14 +468,15 @@
             overflow: hidden;
             aspect-ratio: 4 / 3;
             cursor: pointer;
+            scroll-snap-align: start;
             backdrop-filter: blur(8px);
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .gallery-item:hover {
-            transform: translateY(-6px) scale(1.02);
+            transform: translateY(-5px);
             border-color: var(--neon-blue);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.35);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.35);
         }
 
         .gallery-item img {
@@ -498,12 +518,49 @@
             gap: 6px;
         }
 
+        /* Tombol Navigasi Panah Slider */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            background: rgba(15, 21, 42, 0.85);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: var(--neon-blue);
+            color: #070913;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev { left: -15px; }
+        .slider-btn.next { right: -15px; }
+
+        @media (max-width: 768px) {
+            .slider-btn { display: none; } /* Di HP langsung swipe sentuhan jari */
+            .gallery-item { flex: 0 0 240px; }
+        }
+
+        /* Skeleton Loading */
         .gallery-skeleton {
+            flex: 0 0 280px;
+            aspect-ratio: 4 / 3;
             background: linear-gradient(90deg, rgba(20, 26, 50, 0.6) 25%, rgba(0, 210, 255, 0.12) 50%, rgba(20, 26, 50, 0.6) 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
             border-radius: 16px;
-            aspect-ratio: 4 / 3;
         }
 
         @keyframes shimmer {
@@ -746,20 +803,24 @@
                 </div>
             </div>
 
-            <!-- ================= DOKUMENTASI TRYOUT (DI BAWAH KOTAK SPOTLIGHT, SEBELUM FOOTER) ================= -->
+            <!-- ================= DOKUMENTASI TRYOUT (HORIZONTAL SLIDER SEBELUM FOOTER) ================= -->
             <div class="section-header">
                 <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
                 <div class="line"></div>
             </div>
 
-            <div class="gallery-container">
-                <div class="gallery-grid" id="galleryGrid">
-                    <!-- Skeleton Loading Sambil Menunggu Data Drive -->
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <div class="gallery-slider" id="gallerySlider">
+                    <!-- Skeleton Loading Saat Menunggu Data Drive -->
                     <div class="gallery-skeleton"></div>
                     <div class="gallery-skeleton"></div>
                     <div class="gallery-skeleton"></div>
                     <div class="gallery-skeleton"></div>
                 </div>
+
+                <button class="slider-btn next" onclick="slideGallery(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </main>
     </div>
@@ -798,27 +859,27 @@
         </div>
     </footer>
 
-    <!-- SCRIPT FETCH DOKUMENTASI GOOGLE DRIVE -->
+    <!-- SCRIPT SLIDER & FETCH GOOGLE DRIVE -->
     <script>
         const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
 
         async function loadDriveGallery() {
-            const galleryGrid = document.getElementById("galleryGrid");
+            const gallerySlider = document.getElementById("gallerySlider");
 
             try {
                 const response = await fetch(SCRIPT_GALLERY_URL);
                 const photos = await response.json();
 
                 if (!photos || photos.length === 0) {
-                    galleryGrid.innerHTML = `
-                        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">
+                    gallerySlider.innerHTML = `
+                        <div style="width: 100%; text-align: center; color: var(--text-muted); padding: 30px;">
                             <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
                             Belum ada foto dokumentasi di folder Google Drive.
                         </div>`;
                     return;
                 }
 
-                galleryGrid.innerHTML = "";
+                gallerySlider.innerHTML = "";
 
                 photos.forEach(photo => {
                     const item = document.createElement("div");
@@ -831,18 +892,29 @@
                             <span><i class="fa-solid fa-expand"></i> ${photo.name}</span>
                         </div>
                     `;
-                    galleryGrid.appendChild(item);
+                    gallerySlider.appendChild(item);
                 });
 
             } catch (err) {
-                galleryGrid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; color: #f87171; padding: 40px;">
+                gallerySlider.innerHTML = `
+                    <div style="width: 100%; text-align: center; color: #f87171; padding: 30px;">
                         <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                        Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan akses Anyone.
+                        Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan benar.
                     </div>`;
             }
         }
 
+        // Fungsi Tombol Geser Slider Kiri / Kanan
+        function slideGallery(direction) {
+            const slider = document.getElementById("gallerySlider");
+            const scrollDistance = 300; // Jarak geser per klik (px)
+            slider.scrollBy({
+                left: direction * scrollDistance,
+                behavior: "smooth"
+            });
+        }
+
+        // Modal Preview
         function openImgModal(imgUrl) {
             document.getElementById("modalImgTag").src = imgUrl;
             document.getElementById("imgModal").classList.add("active");
