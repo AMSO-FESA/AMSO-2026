@@ -330,6 +330,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 20px;
+            margin-bottom: 50px;
         }
 
         .spotlight-card {
@@ -427,6 +428,138 @@
         .stat-item p {
             font-size: 0.8rem;
             color: var(--text-muted);
+        }
+
+        /* ================= GALERI DOKUMENTASI DRIVE (DI PALING BAWAH) ================= */
+        .gallery-container {
+            width: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.35);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(7, 9, 19, 0.9) 0%, rgba(7, 9, 19, 0.2) 50%, transparent 100%);
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.82rem;
+            color: #fff;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gallery-skeleton {
+            background: linear-gradient(90deg, rgba(20, 26, 50, 0.6) 25%, rgba(0, 210, 255, 0.12) 50%, rgba(20, 26, 50, 0.6) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 16px;
+            aspect-ratio: 4 / 3;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Modal Preview Gambar */
+        .img-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 10, 0.92);
+            backdrop-filter: blur(14px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            padding: 20px;
+        }
+
+        .img-modal.active {
+            display: flex;
+        }
+
+        .img-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .img-modal-content img {
+            max-width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 14px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.35);
+        }
+
+        .img-modal-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .img-modal-close:hover {
+            color: var(--neon-blue);
         }
 
         /* ================= FOOTER ================= */
@@ -612,7 +745,31 @@
                     </p>
                 </div>
             </div>
+
+            <!-- ================= DOKUMENTASI TRYOUT (DI BAWAH KOTAK SPOTLIGHT, SEBELUM FOOTER) ================= -->
+            <div class="section-header">
+                <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="gallery-container">
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Skeleton Loading Sambil Menunggu Data Drive -->
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+            </div>
         </main>
+    </div>
+
+    <!-- MODAL PREVIEW GAMBAR LAYAR PENUH -->
+    <div id="imgModal" class="img-modal" onclick="closeImgModal(event)">
+        <div class="img-modal-content">
+            <button class="img-modal-close" onclick="closeImgModalBtn()">&times;</button>
+            <img id="modalImgTag" src="" alt="Preview Dokumentasi">
+        </div>
     </div>
 
     <!-- ================= FOOTER ================= -->
@@ -640,5 +797,68 @@
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPT FETCH DOKUMENTASI GOOGLE DRIVE -->
+    <script>
+        const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
+
+        async function loadDriveGallery() {
+            const galleryGrid = document.getElementById("galleryGrid");
+
+            try {
+                const response = await fetch(SCRIPT_GALLERY_URL);
+                const photos = await response.json();
+
+                if (!photos || photos.length === 0) {
+                    galleryGrid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">
+                            <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                            Belum ada foto dokumentasi di folder Google Drive.
+                        </div>`;
+                    return;
+                }
+
+                galleryGrid.innerHTML = "";
+
+                photos.forEach(photo => {
+                    const item = document.createElement("div");
+                    item.className = "gallery-item";
+                    item.onclick = () => openImgModal(photo.url);
+
+                    item.innerHTML = `
+                        <img src="${photo.url}" alt="${photo.name}" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span><i class="fa-solid fa-expand"></i> ${photo.name}</span>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(item);
+                });
+
+            } catch (err) {
+                galleryGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; color: #f87171; padding: 40px;">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                        Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan akses Anyone.
+                    </div>`;
+            }
+        }
+
+        function openImgModal(imgUrl) {
+            document.getElementById("modalImgTag").src = imgUrl;
+            document.getElementById("imgModal").classList.add("active");
+        }
+
+        function closeImgModal(e) {
+            if (e.target.id === "imgModal") {
+                document.getElementById("imgModal").classList.remove("active");
+            }
+        }
+
+        function closeImgModalBtn() {
+            document.getElementById("imgModal").classList.remove("active");
+        }
+
+        document.addEventListener("DOMContentLoaded", loadDriveGallery);
+    </script>
 </body>
 </html>
