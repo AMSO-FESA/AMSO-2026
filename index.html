@@ -44,6 +44,46 @@
             min-height: 100vh;
         }
 
+        /* ─── TOMBOL AUDIO FLOATING DI POJOK KANAN ATAS ─── */
+        .audio-float-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            background: rgba(15, 21, 42, 0.85);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .audio-float-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 210, 255, 0.2);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+        }
+
+        .audio-float-btn.playing {
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            animation: pulseAudio 2s infinite alternate;
+        }
+
+        @keyframes pulseAudio {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+        }
+
         /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
         .space-bg {
             position: fixed;
@@ -694,6 +734,16 @@
 </head>
 <body>
 
+    <!-- TOMBOL MUSIK DI POJOK KANAN ATAS -->
+    <button id="audioToggleBtn" class="audio-float-btn" onclick="toggleAudio()" title="Putar/Matikan Musik">
+        <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+    </button>
+
+    <!-- ELEMEN AUDIO DENGAN DIRECT STREAM LINK GOOGLE DRIVE -->
+    <audio id="bgAudio" loop>
+        <source src="https://drive.google.com/uc?export=download&id=1KxJGhiiT6gHkfzspuwZBVQHv2jbE0rJT" type="audio/mpeg">
+    </audio>
+
     <div class="space-bg">
         <div class="stars"></div>
         <div class="galaxy-blob blob-1"></div>
@@ -887,7 +937,6 @@
                     gallerySlider.appendChild(item);
                 });
 
-                // Inisialisasi Auto-Slide setelah data gambar siap
                 setupAutoSlide();
 
             } catch (err) {
@@ -904,11 +953,9 @@
             const slider = document.getElementById("gallerySlider");
             if (!slider) return;
 
-            // Pause saat kursor berada di atas slider
             slider.addEventListener("mouseenter", () => { isUserHovered = true; });
             slider.addEventListener("mouseleave", () => { isUserHovered = false; });
             
-            // Pause saat sentuhan jari (mobile)
             slider.addEventListener("touchstart", () => { isUserHovered = true; }, { passive: true });
             slider.addEventListener("touchend", () => { 
                 setTimeout(() => { isUserHovered = false; }, 2000); 
@@ -919,29 +966,26 @@
             autoSlideTimer = setInterval(() => {
                 if (!isUserHovered) {
                     const maxScroll = slider.scrollWidth - slider.clientWidth;
-                    // Jika sudah mencapai ujung kanan, reset kembali ke awal
                     if (slider.scrollLeft >= maxScroll - 15) {
                         slider.scrollTo({ left: 0, behavior: "smooth" });
                     } else {
                         slider.scrollBy({ left: 300, behavior: "smooth" });
                     }
                 }
-            }, 3000); // Bergerak otomatis setiap 3 detik
+            }, 3000);
         }
 
-        // Fungsi Tombol Geser Slider Kiri / Kanan
         function slideGallery(direction) {
             const slider = document.getElementById("gallerySlider");
-            const scrollDistance = 300; // Jarak geser per klik (px)
+            const scrollDistance = 300;
             slider.scrollBy({
                 left: direction * scrollDistance,
                 behavior: "smooth"
             });
         }
 
-        // Modal Preview
         function openImgModal(imgUrl) {
-            isUserHovered = true; // Hentikan auto slide saat preview dibuka
+            isUserHovered = true;
             document.getElementById("modalImgTag").src = imgUrl;
             document.getElementById("imgModal").classList.add("active");
         }
@@ -957,6 +1001,44 @@
             document.getElementById("imgModal").classList.remove("active");
             isUserHovered = false;
         }
+
+        // ==========================================
+        // 🎵 KONTROL PEMUTAR MUSIK (AUTO-PLAY & BUTTON)
+        // ==========================================
+        function toggleAudio() {
+            const audio = document.getElementById("bgAudio");
+            const btn = document.getElementById("audioToggleBtn");
+            const icon = document.getElementById("audioIcon");
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    btn.classList.add("playing");
+                    icon.className = "fa-solid fa-volume-high";
+                }).catch(err => {
+                    console.log("Audio play prevented:", err);
+                });
+            } else {
+                audio.pause();
+                btn.classList.remove("playing");
+                icon.className = "fa-solid fa-volume-xmark";
+            }
+        }
+
+        // Tangkap klik pertama pengunjung di halaman untuk mencabut blokiran autoplay browser
+        document.addEventListener("click", function initAutoplayOnce() {
+            const audio = document.getElementById("bgAudio");
+            const btn = document.getElementById("audioToggleBtn");
+            const icon = document.getElementById("audioIcon");
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    btn.classList.add("playing");
+                    icon.className = "fa-solid fa-volume-high";
+                }).catch(() => {});
+            }
+            // Hapus event listener setelah interaksi pertama sukses
+            document.removeEventListener("click", initAutoplayOnce);
+        }, { once: true });
 
         document.addEventListener("DOMContentLoaded", loadDriveGallery);
     </script>
