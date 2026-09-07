@@ -44,44 +44,49 @@
             min-height: 100vh;
         }
 
-        /* ─── TOMBOL AUDIO FLOATING DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO MENEMPEL (KECIL & TRANSPARAN) DI POJOK KANAN ATAS ─── */
         .audio-float-btn {
-            position: fixed;
-            top: 20px;
+            position: absolute;
+            top: 25px;
             right: 20px;
-            z-index: 99999;
-            background: rgba(15, 21, 42, 0.85);
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            width: 45px;
-            height: 45px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--text-muted);
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(8px);
             transition: all 0.3s ease;
+            font-size: 0.8rem;
         }
 
         .audio-float-btn:hover {
-            transform: scale(1.1);
-            background: rgba(0, 210, 255, 0.2);
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
             color: #fff;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            transform: scale(1.08);
         }
 
         .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
             border-color: var(--gold);
             color: var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            animation: pulseAudio 2s infinite alternate;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
-        @keyframes pulseAudio {
-            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-            100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
         }
 
         /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
@@ -734,12 +739,6 @@
 </head>
 <body>
 
-    <!-- TOMBOL MUSIK DI POJOK KANAN ATAS -->
-    <button id="audioToggleBtn" class="audio-float-btn" onclick="toggleAudio()" title="Putar/Matikan Musik">
-        <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
-    </button>
-
-    <!-- ELEMEN AUDIO DENGAN SUMBER FILE MP4 DI REPO GITHUB -->
     <audio id="bgAudio" loop>
         <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
     </audio>
@@ -766,6 +765,10 @@
 
     <div class="container">
         <header>
+            <button id="audioToggleBtn" class="audio-float-btn" onclick="toggleAudio()" title="Putar/Matikan Musik">
+                <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+            </button>
+
             <div class="logo-group">
                 <div class="logo-item">
                     <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
