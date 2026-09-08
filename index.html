@@ -42,6 +42,8 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ─── TOMBOL AUDIO MENEMPEL (KECIL & TRANSPARAN) DI POJOK KANAN ATAS ─── */
@@ -102,7 +104,6 @@
             background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
         }
 
-        /* Bintang Berkelap-kelip */
         .stars {
             position: absolute;
             width: 100%;
@@ -124,7 +125,6 @@
             100% { opacity: 0.8; }
         }
 
-        /* Galaksi / Nebula Melayang */
         .galaxy-blob {
             position: absolute;
             border-radius: 50%;
@@ -142,7 +142,6 @@
             100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Elemen Melayang */
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
@@ -155,13 +154,11 @@
         .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
         .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
         
-        /* Alat Fisika & Sains */
         .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
         .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
         .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
 
-        /* Simbol Matematika */
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
         .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
@@ -201,7 +198,7 @@
             z-index: 1;
         }
 
-        /* ================= HEADER ================= */
+        /* HEADER */
         header {
             padding: 30px 0 25px;
             text-align: center;
@@ -489,7 +486,6 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Custom Scrollbar Keren */
         .gallery-slider::-webkit-scrollbar {
             height: 6px;
         }
@@ -561,7 +557,6 @@
             gap: 6px;
         }
 
-        /* Tombol Navigasi Panah Slider */
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -596,7 +591,6 @@
             .gallery-item { flex: 0 0 240px; }
         }
 
-        /* Skeleton Loading */
         .gallery-skeleton {
             flex: 0 0 280px;
             aspect-ratio: 4 / 3;
@@ -611,7 +605,6 @@
             100% { background-position: -200% 0; }
         }
 
-        /* Modal Preview Gambar */
         .img-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -624,9 +617,7 @@
             padding: 20px;
         }
 
-        .img-modal.active {
-            display: flex;
-        }
+        .img-modal.active { display: flex; }
 
         .img-modal-content {
             position: relative;
@@ -658,16 +649,14 @@
             transition: color 0.2s ease;
         }
 
-        .img-modal-close:hover {
-            color: var(--neon-blue);
-        }
+        .img-modal-close:hover { color: var(--neon-blue); }
 
         /* ================= FOOTER ================= */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--card-border);
             padding: 35px 0 20px;
-            margin-top: 40px;
+            margin-top: auto;
         }
 
         .footer-content {
@@ -714,19 +703,13 @@
         }
 
         .contact-btn.wa:hover {
-            border-color: #25D366;
-            color: #25D366;
-            background: rgba(37, 211, 102, 0.12);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-            transform: translateY(-3px);
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
         }
 
         .contact-btn.ig:hover {
-            border-color: #E1306C;
-            color: #E1306C;
-            background: rgba(225, 48, 108, 0.12);
-            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
-            transform: translateY(-3px);
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
         }
 
         .footer-bottom {
@@ -764,43 +747,8 @@
     </div>
 
     <div class="container">
-        <header>
-            <button id="audioToggleBtn" class="audio-float-btn" onclick="toggleAudio()" title="Putar/Matikan Musik">
-                <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
-            </button>
-
-            <div class="logo-group">
-                <div class="logo-item">
-                    <img src="yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
-                </div>
-                <div class="logo-item">
-                    <img src="fesa.png" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
-                </div>
-                <div class="logo-item">
-                    <img src="amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
-                </div>
-            </div>
-
-            <nav>
-                <a href="#" class="active"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="https://timeline.amso.web.id/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
-                <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                <a href="https://bukupanduan.amso.web.id/"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
-                
-                <div class="dropdown">
-                    <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="https://peserta.amso.web.id/"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data Peserta</a>
-                        <a href="https://administrasi.amso.web.id/"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Administrasi</a>
-                    </div>
-                </div>
-
-                <a href="https://amso-fesa.github.io/Pengumuman-AMSO-2026/"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
-            </nav>
-
-            <h1 class="main-title">AMSO 2026</h1>
-            <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
-        </header>
+        <!-- HEADER OTOMATIS -->
+        <header id="header-placeholder"></header>
 
         <main>
             <div class="section-header">
@@ -815,7 +763,7 @@
                     <p class="card-desc">
                         Ajang olimpiade antar Sekolah se-Indonesia kembali hadir. Persiapkan seluruh murid terbaik untuk mengikuti AMSO 2026
                     </p>
-                    <a href="https://timeline.amso.web.id/" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="timeline.html" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="spotlight-card col-4">
@@ -839,7 +787,7 @@
                     <p class="card-desc">
                         Unduh buku panduan pelaksanaan, kisi-kisi materi untuk semua jenjang perlombaan
                     </p>
-                    <a href="https://bukupanduan.amso.web.id/" class="btn-action">Buka & Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="bukupanduan.html" class="btn-action">Buka & Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="spotlight-card col-6">
@@ -878,30 +826,11 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>AMSO 2026</h3>
-                    <p>Angkasa Mathematic and Science Olympiad</p>
-                </div>
+    <!-- FOOTER OTOMATIS -->
+    <footer id="footer-placeholder"></footer>
 
-                <div class="footer-contacts">
-                    <a href="https://wa.me/6287878691995" target="_blank" class="contact-btn wa" title="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                    <a href="https://www.instagram.com/yasarinipusat/" target="_blank" class="contact-btn ig" title="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Angkasa Mathematic and Science Olympiad. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- PANGGIL SCRIPT GLOBAL -->
+    <script src="global-audio.js"></script>
     <script>
         const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
 
@@ -951,7 +880,6 @@
             }
         }
 
-        // Auto-Slide Logic
         function setupAutoSlide() {
             const slider = document.getElementById("gallerySlider");
             if (!slider) return;
@@ -1004,44 +932,6 @@
             document.getElementById("imgModal").classList.remove("active");
             isUserHovered = false;
         }
-
-        // ==========================================
-        // 🎵 KONTROL PEMUTAR MUSIK (AUTO-PLAY & BUTTON)
-        // ==========================================
-        function toggleAudio() {
-            const audio = document.getElementById("bgAudio");
-            const btn = document.getElementById("audioToggleBtn");
-            const icon = document.getElementById("audioIcon");
-
-            if (audio.paused) {
-                audio.play().then(() => {
-                    btn.classList.add("playing");
-                    icon.className = "fa-solid fa-volume-high";
-                }).catch(err => {
-                    console.log("Audio play prevented:", err);
-                });
-            } else {
-                audio.pause();
-                btn.classList.remove("playing");
-                icon.className = "fa-solid fa-volume-xmark";
-            }
-        }
-
-        // Tangkap klik pertama pengunjung di halaman untuk mencabut blokiran autoplay browser
-        document.addEventListener("click", function initAutoplayOnce() {
-            const audio = document.getElementById("bgAudio");
-            const btn = document.getElementById("audioToggleBtn");
-            const icon = document.getElementById("audioIcon");
-
-            if (audio.paused) {
-                audio.play().then(() => {
-                    btn.classList.add("playing");
-                    icon.className = "fa-solid fa-volume-high";
-                }).catch(() => {});
-            }
-            // Hapus event listener setelah interaksi pertama sukses
-            document.removeEventListener("click", initAutoplayOnce);
-        }, { once: true });
 
         document.addEventListener("DOMContentLoaded", loadDriveGallery);
     </script>
