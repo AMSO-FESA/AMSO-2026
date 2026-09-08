@@ -56,11 +56,11 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO MENGIKUTI MASTER BUKU PANDUAN ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
         .audio-float-btn {
-            position: absolute !important;
-            top: 25px !important;
-            right: 14px !important;
+            position: absolute;
+            top: 25px;
+            right: 20px;
             z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
@@ -93,15 +93,15 @@
 
         @media (max-width: 600px) {
             .audio-float-btn {
-                top: 15px !important;
-                right: 8px !important;
+                top: 15px;
+                right: 12px;
                 width: 30px;
                 height: 30px;
                 font-size: 0.72rem;
             }
         }
 
-        /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
+        /* ================= ANIMASI LATAR BELAKANG SAINS & SPACE ================= */
         .space-bg {
             position: fixed;
             top: 0;
@@ -206,6 +206,7 @@
             padding: 0 20px 80px;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
         /* HEADER */
@@ -262,6 +263,7 @@
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 30px;
+            max-width: 100%;
         }
 
         nav a {
@@ -351,6 +353,7 @@
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 25px;
+            white-space: normal;
         }
 
         /* ================= MAIN CONTENT ================= */
@@ -386,7 +389,6 @@
             border-top: 1px solid var(--border);
             padding: 35px 0 20px;
             margin-top: auto;
-            text-align: center;
         }
 
         .footer-content {
@@ -397,6 +399,8 @@
             gap: 25px;
             padding-bottom: 25px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
         }
 
         .footer-brand h3 {
@@ -409,6 +413,37 @@
         .footer-brand p {
             color: var(--muted);
             font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
         }
 
         .footer-bottom {
@@ -441,7 +476,7 @@
 
     <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
     <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
-    <div class="floating-icon el-magnet" title="Medan Magnet"><c class="fa-solid fa-magnet"></c></div>
+    <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
 
     <div class="floating-icon el-math1">&pi;</div>
     <div class="floating-icon el-math2">&sum;</div>
