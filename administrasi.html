@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekap Peserta AMSO 2026</title>
+    <title>Administrasi AMSO 2026</title>
 
-    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,23 +19,15 @@
             --card-border: rgba(0, 210, 255, 0.2);
             --neon-blue: #00d2ff;
             --neon-purple: #9d4edd;
-            --gold: #22d3ee;
+            --gold: #ffd700;
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.1);
             --muted: #94a3b8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-y: scroll;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-y: scroll; overflow-x: hidden; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -98,48 +89,29 @@
             }
         }
 
-        /* ================= ANIMASI LATAR BELAKANG SAINS & SPACE ================= */
+        /* SPACE & FLOATING ICONS */
         .space-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1; overflow: hidden;
             background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
         }
 
         .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            position: absolute; width: 100%; height: 100%;
             background-image: 
                 radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
                 radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 250px 250px;
-            opacity: 0.45;
-            animation: twinkle 4s infinite alternate;
+            background-repeat: repeat; background-size: 250px 250px;
+            opacity: 0.45; animation: twinkle 4s infinite alternate;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.8; }
-        }
+        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
 
-        .galaxy-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.18;
-            animation: floatBlob 15s infinite alternate ease-in-out;
-        }
-
+        .galaxy-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: floatBlob 15s infinite alternate ease-in-out; }
         .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
         .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
         .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
@@ -149,101 +121,32 @@
             100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        .floating-icon {
-            position: absolute;
-            color: var(--neon-blue);
-            opacity: 0.55;
-            user-select: none;
-            filter: drop-shadow(0 0 12px currentColor);
-        }
-
-        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
+        .floating-icon { position: absolute; color: var(--neon-blue); opacity: 0.55; user-select: none; filter: drop-shadow(0 0 12px currentColor); }
+        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; animation: flyRocket 14s infinite ease-in-out; }
         .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
         .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
-        
         .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
-        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
+        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; animation: floatItem1 8s infinite alternate ease-in-out; }
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
         .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
-
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
         .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
 
-        @keyframes flyRocket {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(-50px, 70px) rotate(40deg); }
-            100% { transform: translate(0, 0) rotate(45deg); }
-        }
+        @keyframes flyRocket { 0% { transform: translate(0, 0) rotate(45deg); } 50% { transform: translate(-50px, 70px) rotate(40deg); } 100% { transform: translate(0, 0) rotate(45deg); } }
+        @keyframes floatItem1 { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-45px) rotate(15deg); } }
+        @keyframes floatItem2 { 0% { transform: translateY(0) rotate(10deg); } 100% { transform: translateY(35px) rotate(-15deg); } }
+        @keyframes rotateAtom { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
+        @keyframes flySatellite { 0% { transform: translateX(-50vw) translateY(0) rotate(0deg); } 100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); } }
 
-        @keyframes floatItem1 {
-            0% { transform: translateY(0) rotate(-10deg); }
-            100% { transform: translateY(-45px) rotate(15deg); }
-        }
-
-        @keyframes floatItem2 {
-            0% { transform: translateY(0) rotate(10deg); }
-            100% { transform: translateY(35px) rotate(-15deg); }
-        }
-
-        @keyframes rotateAtom {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        @keyframes flySatellite {
-            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
-            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
-        }
-
-        .container {
-            max-width: 1150px; /* Dikembalikan ke ukuran standar master agar tombol audio pas di pojok */
-            margin: auto;
-            padding: 0 20px 80px;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
         /* HEADER */
-        header {
-            padding: 30px 0 25px;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .logo-item {
-            background: transparent;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            box-shadow: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .logo-item:hover {
-            transform: scale(1.08);
-            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
-        }
-
-        .logo-item img {
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
-        }
-
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
         .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
         .logo-item img[alt="Logo FESA"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
@@ -283,318 +186,483 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-flex;
-            padding-bottom: 15px; 
-            margin-bottom: -15px;
-        }
-
+        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
         .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%; 
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(15, 21, 42, 0.95);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            min-width: 190px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-            z-index: 100;
-            padding: 8px;
-            text-align: left;
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            z-index: 100; padding: 8px; text-align: left;
         }
 
         .dropdown-content a {
-            color: var(--text-muted);
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            transition: all 0.2s ease;
+            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
+            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
         }
 
-        .dropdown-content a:hover {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--neon-blue);
-            border: none;
-            box-shadow: none;
-            transform: none;
+        .dropdown-content a:hover, .dropdown-content a.active {
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
 
         .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900; letter-spacing: 3px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
-            margin-bottom: 10px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3); margin-bottom: 10px;
         }
 
         .sub-title {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 25px;
-            white-space: normal;
+            font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--text-muted);
+            letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 25px;
         }
 
-        /* ================= CONTENT / TABLES ================= */
-        main {
-            padding: 20px 0 60px;
+        /* LAYOUT DUA KOLOM */
+        main { flex: 1; padding: 20px 0 60px; }
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .column-left {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .section-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 35px;
+            padding: 30px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            height: auto;
+            overflow: hidden;
         }
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--gold);
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        th, td {
-            padding: 12px 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        th {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--neon-blue);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .text-left {
-            text-align: left;
-            padding-left: 15px;
-        }
-
-        .total-row {
-            background: rgba(157, 78, 221, 0.15);
-            font-weight: bold;
-            color: var(--gold);
-        }
-
-        /* SUMMARY CARDS GRID DI 1 BARIS (4 KOLOM) UNTUK PC */
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .summary-card {
-            background: rgba(15, 21, 42, 0.8);
+        /* ACCORDION DROPDOWNS */
+        .admin-accordion {
+            background: rgba(15, 21, 42, 0.85);
             border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 16px 10px;
-            text-align: center;
-            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+        }
+
+        .admin-accordion:hover {
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .accordion-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.12), rgba(0, 210, 255, 0.08));
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.22), rgba(0, 210, 255, 0.15));
+        }
+
+        .accordion-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .accordion-title-wrap i {
+            font-size: 1.25rem;
+            color: var(--neon-blue);
+            flex-shrink: 0;
+        }
+
+        .accordion-title-wrap span {
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .accordion-arrow {
+            color: var(--gold);
+            font-size: 0.95rem;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+
+        .admin-accordion.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(10, 14, 30, 0.65);
+        }
+
+        .admin-accordion.open .accordion-content {
+            max-height: 650px;
+            overflow-y: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .accordion-content::-webkit-scrollbar { width: 5px; }
+        .accordion-content::-webkit-scrollbar-track { background: rgba(15, 21, 42, 0.5); }
+        .accordion-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--neon-purple), var(--neon-blue));
+            border-radius: 10px;
+        }
+
+        .dropdown-items-list {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .dropdown-item-card {
+            background: rgba(20, 26, 50, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            width: 100%;
+        }
+
+        .dropdown-item-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateX(4px);
+            background: rgba(0, 210, 255, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.15);
+        }
+
+        .dropdown-item-card.locked:hover {
+            border-color: rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.06);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
+        }
+
+        .item-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-text strong {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .item-text small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .item-btn-tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .tag-active {
+            background: linear-gradient(135deg, var(--neon-purple), #7b2cbf);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+
+        .tag-drive {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(157, 78, 221, 0.2));
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+        }
+
+        .dropdown-item-card:hover .tag-drive {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+        }
+
+        .tag-locked {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+        }
+
+        /* ─── NESTED ACCORDION KHUSUS SOAL BABAK SELEKSI ─── */
+        .nested-accordion {
+            background: rgba(20, 26, 50, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            width: 100%;
+        }
+
+        .nested-accordion:hover {
+            border-color: var(--neon-blue);
+        }
+
+        .nested-accordion.locked:hover {
+            border-color: rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.06);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
+        }
+
+        .nested-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: transparent;
+            transition: all 0.25s ease;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: rgba(12, 16, 32, 0.9);
+            padding: 0 12px;
+        }
+
+        .nested-accordion.open .nested-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nested-accordion.open .nested-content {
+            max-height: 600px;
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nested-arrow {
+            color: var(--neon-blue);
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Sub Category Jenjang Box */
+        .jenjang-group {
+            margin-bottom: 12px;
+            background: rgba(20, 26, 50, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             overflow: hidden;
         }
 
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--gold));
+        .jenjang-group:last-child {
+            margin-bottom: 0;
         }
 
-        .summary-card h4 {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-
-        .summary-card .number-lg {
+        .jenjang-title {
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--gold);
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .sub-breakdown {
+            background: rgba(255, 215, 0, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
-            justify-content: space-around;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 6px;
-            white-space: nowrap;
+            align-items: center;
+            gap: 6px;
         }
 
-        .sub-breakdown span strong {
+        .mapel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .mapel-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 21, 42, 0.9);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 8px;
+            padding: 8px 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .mapel-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.25), rgba(157, 78, 221, 0.25));
+            border-color: var(--neon-blue);
+            transform: translateY(-2px);
+            color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+
+        .mapel-btn i {
+            font-size: 0.75rem;
             color: var(--neon-blue);
         }
 
-        /* Responsif untuk Tablet & HP */
-        @media (max-width: 1024px) {
-            .summary-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* CUSTOM GLOW MODAL POPUP */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 10, 0.82);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-card {
+            background: rgba(15, 21, 42, 0.95);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 24px;
+            padding: 35px 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.25);
+            transform: scale(0.85);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card { transform: scale(1); }
+
+        .modal-icon {
+            font-size: 3.2rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+            animation: pulseIcon 2s infinite alternate;
+        }
+
+        @keyframes pulseIcon { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .btn-modal-close {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-modal-close:hover {
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE SMARTPHONE (HP) */
+        @media (max-width: 900px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .column-left {
+                gap: 20px;
+            }
+            .section-box {
+                padding: 22px 16px;
             }
         }
 
         @media (max-width: 600px) {
-            .summary-grid {
-                grid-template-columns: 1fr;
+            .dropdown-item-card,
+            .nested-header {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+                padding: 12px !important;
             }
-        }
-
-        /* Spreadsheet Action */
-        .spreadsheet-action-box {
-            text-align: center;
-            margin-top: 40px;
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.08), rgba(157, 78, 221, 0.08));
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 20px;
-            padding: 30px 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .spreadsheet-action-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .btn-spreadsheet {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 35px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-spreadsheet:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.7);
-            filter: brightness(1.1);
-        }
-
-        /* FOOTER */
-        footer {
-            background: rgba(5, 7, 15, 0.95);
-            border-top: 1px solid var(--border);
-            padding: 35px 0 20px;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            max-width: 1150px;
-            margin: 0 auto;
-        }
-
-        .footer-brand h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .footer-brand p {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        .footer-contacts {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-btn.wa:hover {
-            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
-        }
-
-        .contact-btn.ig:hover {
-            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
-            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            color: var(--muted);
-            font-size: 0.8rem;
+            .dropdown-item-card .item-btn-tag,
+            .nested-header .item-btn-tag {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 8px 14px !important;
+            }
+            .mapel-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -605,7 +673,6 @@
         <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
     </audio>
 
-    <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
     <div class="space-bg">
         <div class="stars"></div>
         <div class="galaxy-blob blob-1"></div>
@@ -631,90 +698,307 @@
         <header id="header-placeholder"></header>
 
         <div style="text-align: center; margin-bottom: 25px;">
-            <h1 class="main-title">REKAP PESERTA AMSO 2026</h1>
-            <div class="sub-title">Data Statistik Peserta</div>
+            <h1 class="main-title">ADMINISTRASI AMSO 2026</h1>
+            <div class="sub-title">Arsip Surat, Pengumpulan Data & Lainnya</div>
         </div>
+    </div>
 
-        <main>
-            <!-- REKAPITULASI SUMMARY CARDS (SEJAJAR 1 BARIS DI PC) -->
+    <main class="container">
+        <div class="admin-layout">
+            
+            <!-- KOLOM KIRI: DAFTAR SURAT & LAINNYA -->
+            <div class="column-left">
+                
+                <!-- KOTAK 1: DAFTAR SURAT -->
+                <div class="section-box">
+                    <div class="section-title"><i class="fa-solid fa-folder-open"></i> DAFTAR SURAT</div>
+                    
+                    <div class="admin-accordion" id="suratAccordion" onmouseleave="closeAccordion('suratAccordion')">
+                        <div class="accordion-header" onclick="toggleAccordion('suratAccordion')">
+                            <div class="accordion-title-wrap">
+                                <i class="fa-solid fa-envelope-circle-check"></i>
+                                <span>Pilih Surat</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="dropdown-items-list">
+                                <!-- SURAT 1: SELEKSI & BUKU PANDUAN (TERBARU) -->
+                                <a href="https://drive.google.com/file/d/1cHPmGzxoP_odZXuYtTVmFd9KBYY5aF-q/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Pelaksanaan Babak Seleksi dan Link Buku Panduan</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+
+                                <!-- SURAT 2: TRYOUT -->
+                                <a href="https://drive.google.com/file/d/1ezADrPdOI9LZpC3yMRYKXPEPF0VDEp0l/view?usp=drive_link" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Surat Edaran Pelaksanaan Tryout AMSO 2026</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KOTAK 2: LAINNYA (DI BAWAH DAFTAR SURAT) -->
+                <div class="section-box">
+                    <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
+                    
+                    <div class="admin-accordion" id="lainnyaAccordion" onmouseleave="closeAccordion('lainnyaAccordion')">
+                        <div class="accordion-header" onclick="toggleAccordion('lainnyaAccordion')">
+                            <div class="accordion-title-wrap">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <span>Pilih Berkas / File</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                        </div>
+
+                        <div class="accordion-content">
+                            <div class="dropdown-items-list">
+
+                                <!-- ITEM 1: SOAL BABAK SELEKSI (POSISI PALING ATAS) -->
+                                <div class="nested-accordion" id="soalSeleksiAccordion">
+                                    <div class="nested-header" onclick="handleSoalSeleksiClick(event)">
+                                        <div class="item-text">
+                                            <strong>Soal Babak Seleksi AMSO 2026</strong>
+                                        </div>
+                                        <span id="tagBtnSoalSeleksi" class="item-btn-tag">
+                                        </span>
+                                    </div>
+
+                                    <div class="nested-content">
+                                        <!-- JENJANG SD / MI -->
+                                        <div class="jenjang-group">
+                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SD / MI</div>
+                                            <div class="mapel-grid">
+                                                <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">MTK <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">IPA <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">IPS <i class="fa-solid fa-download"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- JENJANG SMP / MTs -->
+                                        <div class="jenjang-group">
+                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMP / MTs</div>
+                                            <div class="mapel-grid">
+                                                <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">MTK <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">IPA <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">IPS <i class="fa-solid fa-download"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- JENJANG SMA -->
+                                        <div class="jenjang-group">
+                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMA</div>
+                                            <div class="mapel-grid">
+                                                <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">MTK <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">FIS <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">EKO <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">GEO <i class="fa-solid fa-download"></i></a>
+                                                <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-btn">TIK <i class="fa-solid fa-download"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ITEM 2: BANNER AMSO 2026 -->
+                                <a href="https://drive.google.com/file/d/16i1-mAGyfhdyZ23oaCNq6ulLEVfIBq9g/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Banner AMSO 2026</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+
+                                <!-- ITEM 3: NAMETAG PESERTA -->
+                                <a href="https://drive.google.com/file/d/1rT4b-zf82lzdBrcW6tRSjK0G3qXXGGu7/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Nametag Peserta AMSO 2026</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+
+                                <!-- ITEM 4: VIRTUAL BACKGROUND BIMTEK -->
+                                <a href="https://drive.google.com/file/d/1VS_wVVGrsPV4MCy7Q6DAhu7enD1brLOy/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Virtual Background Bimtek AMSO 2026</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- KOLOM KANAN: UPLOAD DATA -->
             <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-chart-pie"></i> REKAPITULASI</div>
-                <div class="summary-grid">
-                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7,350</div><div class="sub-breakdown"><span>SD: <strong>1.8K</strong></span><span>SMP: <strong>2.4K</strong></span><span>SMA: <strong>3.1K</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">3,094</div><div class="sub-breakdown"><span>SD: <strong>543</strong></span><span>SMP: <strong>732</strong></span><span>SMA: <strong>1.5K</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Semifinal</h4><div class="number-lg">220</div><div class="sub-breakdown"><span>SD: <strong>60</strong></span><span>SMP: <strong>60</strong></span><span>SMA: <strong>100</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD: <strong>30</strong></span><span>SMP: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
+                <div class="section-title"><i class="fa-solid fa-cloud-arrow-up"></i> UPLOAD DATA</div>
+                
+                <div class="admin-accordion" id="uploadAccordion" onmouseleave="closeAccordion('uploadAccordion')">
+                    <div class="accordion-header" onclick="toggleAccordion('uploadAccordion')">
+                        <div class="accordion-title-wrap">
+                            <i class="fa-solid fa-folder-closed"></i>
+                            <span>Pilih Formulir Pengumpulan</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+
+                    <div class="accordion-content">
+                        <div class="dropdown-items-list">
+                            
+                            <a href="form-tryout.html" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Form Hasil Tryout AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-active">
+                                    <i class="fa-solid fa-file-circle-plus"></i> Buka Form
+                                </span>
+                            </a>
+
+                            <a href="form-hasilbabakseleksiamso2026.html" id="linkCardSeleksi" class="dropdown-item-card" onclick="handleSeleksiClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Hasil Babak Seleksi AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnSeleksi" class="item-btn-tag">
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- TABEL 1: SEKOLAH ANGKASA -->
-            <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-school"></i> RINCIAN DATA SEKOLAH ANGKASA</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">NO</th>
-                                <th rowspan="2">JENJANG</th>
-                                <th rowspan="2">SELEKSI</th>
-                                <th colspan="7">PENYISIHAN</th>
-                                <th rowspan="2">TOTAL PENYISIHAN</th>
-                            </tr>
-                            <tr>
-                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td class="text-left">SD/MI</td><td>1808</td><td>181</td><td>181</td><td>181</td><td>-</td><td>-</td><td>-</td><td>-</td><td>543</td></tr>
-                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>2441</td><td>244</td><td>244</td><td>244</td><td>-</td><td>-</td><td>-</td><td>-</td><td>732</td></tr>
-                            <tr><td>3</td><td class="text-left">SMA</td><td>3101</td><td>311</td><td>-</td><td>-</td><td>311</td><td>311</td><td>311</td><td>311</td><td>1555</td></tr>
-                            <tr class="total-row"><td colspan="2">TOTAL</td><td>7350</td><td>736</td><td>425</td><td>425</td><td>311</td><td>311</td><td>311</td><td>311</td><td>3094</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        </div>
+    </main>
 
-            <!-- TABEL 2: SEKOLAH UNDANGAN -->
-            <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-file-contract"></i> RINCIAN DATA SEKOLAH UNDANGAN</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">NO</th>
-                                <th rowspan="2">JENJANG</th>
-                                <th rowspan="2">SELEKSI</th>
-                                <th colspan="7">PENYISIHAN</th>
-                                <th rowspan="2">TOTAL PENYISIHAN</th>
-                            </tr>
-                            <tr>
-                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td class="text-left">SD/MI</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
-                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
-                            <tr><td>3</td><td class="text-left">SMA</td><td>-</td><td>24</td><td>-</td><td>-</td><td>24</td><td>24</td><td>24</td><td>24</td><td>120</td></tr>
-                            <tr class="total-row"><td colspan="2">TOTAL</td><td>-</td><td>72</td><td>48</td><td>48</td><td>24</td><td>24</td><td>24</td><td>24</td><td>264</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- SPREADSHEET BUTTON -->
-            <div class="spreadsheet-action-box">
-                <p>DATA PESERTA SECARA RINCI</p>
-                <a href="https://docs.google.com/spreadsheets/d/1-bKEgl7N6kTovBq2K6OYXy_wQepseYbW/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="btn-spreadsheet">
-                    <i class="fa-solid fa-file-excel"></i> KLIK DISINI <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
-                </a>
-            </div>
-        </main>
+    <div id="statusModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+            <h2 class="modal-title" id="modalTitleText">Belum Tersedia</h2>
+            <p class="modal-desc" id="modalDescText">Formulir <strong>Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan.</p>
+            <button class="btn-modal-close" onclick="closeModal()">Mengerti</button>
+        </div>
     </div>
 
     <!-- FOOTER OTOMATIS -->
     <footer id="footer-placeholder"></footer>
 
+    <script>
+        // ==========================================
+        // 1. STATUS PENGUNCIAN FORM & SOAL SELEKSI
+        // Ganti 'true' untuk BUKA, 'false' untuk KUNCI
+        // ==========================================
+        const isSeleksiOpen = true; 
+        const isSoalSeleksiOpen = true; // Buka accordion soal
+
+        // Kontrol Tombol Form Seleksi
+        function updateSeleksiButtonState() {
+            const linkCard = document.getElementById("linkCardSeleksi");
+            const tagBtn = document.getElementById("tagBtnSeleksi");
+
+            if (isSeleksiOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
+        // Kontrol Tombol/Accordion Soal Babak Seleksi
+        function updateSoalSeleksiState() {
+            const soalCard = document.getElementById("soalSeleksiAccordion");
+            const tagBtn = document.getElementById("tagBtnSoalSeleksi");
+
+            if (isSoalSeleksiOpen) {
+                soalCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-drive";
+                tagBtn.innerHTML = `Buka Soal <i class="fa-solid fa-chevron-down nested-arrow" style="font-size: 0.7rem; margin-left: 3px;"></i>`;
+            } else {
+                soalCard.classList.remove("open");
+                soalCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
+        updateSeleksiButtonState();
+        updateSoalSeleksiState();
+
+        function handleSeleksiClick(event) {
+            if (!isSeleksiOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                );
+            }
+        }
+
+        // Handler Klik Khusus Soal Babak Seleksi
+        function handleSoalSeleksiClick(event) {
+            event.stopPropagation();
+            if (!isSoalSeleksiOpen) {
+                openModal(
+                    "Belum Tersedia",
+                    "Naskah berkas <strong>Soal Babak Seleksi AMSO 2026</strong> saat ini belum dapat diunduh"
+                );
+            } else {
+                const nested = document.getElementById("soalSeleksiAccordion");
+                nested.classList.toggle("open");
+            }
+        }
+
+        function toggleAccordion(accordionId) {
+            const accordion = document.getElementById(accordionId);
+            accordion.classList.toggle("open");
+        }
+
+        function closeAccordion(accordionId) {
+            if (window.innerWidth > 900) {
+                const accordion = document.getElementById(accordionId);
+                if (accordion) {
+                    accordion.classList.remove("open");
+                }
+            }
+        }
+
+        function openModal(title, desc) {
+            if (title) document.getElementById("modalTitleText").innerHTML = title;
+            if (desc) document.getElementById("modalDescText").innerHTML = desc;
+            document.getElementById("statusModal").classList.add("active");
+        }
+
+        function closeModal() {
+            document.getElementById("statusModal").classList.remove("active");
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target === document.getElementById("statusModal")) {
+                closeModal();
+            }
+        }
+    </script>
+
     <!-- PANGGIL SCRIPT GLOBAL -->
     <script src="global-audio.js"></script>
+
 </body>
 </html>
