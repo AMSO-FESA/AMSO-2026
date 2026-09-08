@@ -5,32 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buku Panduan - AMSO 2026</title>
 
-    <!-- FAVICON (LOGO TAB BROWSER) -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-dark: #070913;
-            --card-bg: rgba(20, 26, 50, 0.65);
-            --card-border: rgba(0, 210, 255, 0.2);
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
-            --gold: #ffd700;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-            --muted: #94a3b8;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #8b5cf6;        
+            --blue2: #3b82f6;       
+            --navy: #0f172a;        
+            --gold: #22d3ee;        
+            --bg-dark: #070913;          
+            --text: #f8fafc;        
+            --muted: #94a3b8;       
+            --white: #ffffff;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(15, 23, 42, 0.6); 
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
         }
 
         html {
@@ -41,7 +44,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: var(--text);
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
@@ -53,14 +56,14 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO DIKUNCI FIX AGAR POSISINYA DIJAMIN SAMA PERSIS DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
         .audio-float-btn {
-            position: fixed !important;
-            top: 25px !important;
-            right: 20px !important;
-            z-index: 99999;
-            background: rgba(20, 26, 50, 0.65);
-            border: 1px solid rgba(0, 210, 255, 0.4);
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
             width: 34px;
             height: 34px;
@@ -72,27 +75,26 @@
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
             font-size: 0.8rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .audio-float-btn:hover {
-            background: rgba(0, 210, 255, 0.2);
+            background: rgba(0, 210, 255, 0.15);
             border-color: var(--neon-blue);
             color: #fff;
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .audio-float-btn.playing {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
             border-color: var(--gold);
             color: var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         @media (max-width: 600px) {
             .audio-float-btn {
-                top: 15px !important;
-                right: 12px !important;
+                top: 15px;
+                right: 12px;
                 width: 30px;
                 height: 30px;
                 font-size: 0.72rem;
@@ -112,7 +114,6 @@
             background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
         }
 
-        /* Bintang Berkelap-kelip */
         .stars {
             position: absolute;
             width: 100%;
@@ -134,7 +135,6 @@
             100% { opacity: 0.8; }
         }
 
-        /* Galaksi / Nebula Melayang */
         .galaxy-blob {
             position: absolute;
             border-radius: 50%;
@@ -152,7 +152,6 @@
             100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Elemen Melayang */
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
@@ -165,13 +164,11 @@
         .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
         .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
         
-        /* Alat Fisika & Sains */
         .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
         .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
-        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--muted); animation: flySatellite 16s infinite linear; }
 
-        /* Simbol Matematika */
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
         .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
@@ -204,17 +201,16 @@
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            max-width: 1150px;
+            margin: auto;
+            padding: 0 20px 80px;
             position: relative;
             z-index: 1;
-            width: 100%;
         }
 
-        /* ================= HEADER ================= */
+        /* HEADER */
         header {
-            padding: 30px 0 20px;
+            padding: 30px 0 25px;
             text-align: center;
             position: relative;
         }
@@ -250,15 +246,13 @@
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
 
-        /* Ukuran Logo Presisi */
-        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
-        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
-        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+        .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
 
-        /* Navigation Menu */
         nav {
             background: rgba(15, 21, 42, 0.8);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
             border-radius: 50px;
             padding: 8px;
             backdrop-filter: blur(12px);
@@ -267,11 +261,11 @@
             flex-wrap: wrap;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         nav a {
-            color: var(--text-muted);
+            color: var(--muted);
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 30px;
@@ -290,7 +284,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
-        /* Dropdown */
         .dropdown {
             position: relative;
             display: inline-flex;
@@ -305,7 +298,7 @@
             left: 50%;
             transform: translateX(-50%);
             background: rgba(15, 21, 42, 0.95);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
             border-radius: 15px;
             min-width: 190px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
@@ -316,7 +309,7 @@
         }
 
         .dropdown-content a {
-            color: var(--text-muted);
+            color: var(--muted);
             padding: 10px 15px;
             text-decoration: none;
             display: block;
@@ -340,21 +333,24 @@
 
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
             font-weight: 900;
             letter-spacing: 3px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            line-height: 1.1;
+            margin-bottom: 10px;
         }
 
         .sub-title {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--muted);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
         }
 
         /* Action Buttons */
@@ -363,7 +359,7 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
         }
 
         .btn-action {
@@ -414,7 +410,6 @@
             align-items: center;
         }
 
-        /* Lebar proporsional dokumen buku (A4 centered) */
         .viewer-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -426,7 +421,7 @@
             flex-direction: column;
             position: relative;
             width: 100%;
-            max-width: 820px; /* Lebar dokumen A4 presisi */
+            max-width: 820px;
             margin: 0 auto;
         }
 
@@ -449,7 +444,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--muted);
         }
 
         .viewer-header .file-title {
@@ -460,7 +455,6 @@
             font-weight: 600;
         }
 
-        /* Tinggi 1 Halaman A4 Proporsional (1 : 1.414) */
         .viewer-frame-container {
             width: 100%;
             height: 84vh;
@@ -477,7 +471,6 @@
             display: block;
         }
 
-        /* Responsif untuk Layar HP */
         @media (max-width: 768px) {
             .viewer-box {
                 max-width: 100%;
@@ -491,129 +484,156 @@
 
         /* ================= FOOTER ================= */
         footer {
-            background: #050811;
-            color: white;
-            padding: 35px 20px;
-            text-align: center;
+            background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
-            width: 100%;
+            padding: 35px 0 20px;
             margin-top: auto;
         }
 
-        footer strong {
-            font-size: 18px;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        footer p {
-            margin-top: 7px;
-            font-size: 11px;
-            opacity: .55;
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        @media(max-width: 600px) {
+            .sub-title {
+                white-space: normal; 
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="space-bg">
-        <div class="stars"></div>
-        <div class="galaxy-blob blob-1"></div>
-        <div class="galaxy-blob blob-2"></div>
-        <div class="galaxy-blob blob-3"></div>
+<!-- ELEMEN AUDIO -->
+<audio id="bgAudio" loop>
+    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+</audio>
 
-        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
-        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
-        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
-        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+<!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+<div class="space-bg">
+    <div class="stars"></div>
+    <div class="galaxy-blob blob-1"></div>
+    <div class="galaxy-blob blob-2"></div>
+    <div class="galaxy-blob blob-3"></div>
 
-        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
-        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
-        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+    <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+    <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+    <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+    <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
 
-        <div class="floating-icon el-math1">&pi;</div>
-        <div class="floating-icon el-math2">&sum;</div>
-        <div class="floating-icon el-math3">&radic;</div>
+    <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+    <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+    <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+
+    <div class="floating-icon el-math1">&pi;</div>
+    <div class="floating-icon el-math2">&sum;</div>
+    <div class="floating-icon el-math3">&radic;</div>
+</div>
+
+<div class="container">
+    <!-- HEADER GLOBAL OTOMATIS (SAMA PERSIS DENGAN INDEX) -->
+    <header id="header-placeholder"></header>
+
+    <!-- JUDUL & TOMBOL AKSI BUKU PANDUAN -->
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h1 class="main-title">BUKU PANDUAN AMSO 2026</h1>
+        <div class="sub-title">Petunjuk Teknis & Pelaksanaan Kegiatan</div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <a href="https://drive.google.com/uc?export=download&id=1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3" class="btn-action btn-download">
+                <i class="fa-solid fa-file-arrow-down"></i> Unduh Buku Panduan (PDF)
+            </a>
+
+            <a href="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action btn-fullscreen">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Layar Penuh
+            </a>
+        </div>
     </div>
 
-    <div class="container">
-        <header>
-            <div class="logo-group">
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
+    <!-- ================= MAIN CONTENT VIEWER ================= -->
+    <main>
+        <div class="viewer-box">
+            <div class="viewer-header">
+                <div class="file-title">
+                    <i class="fa-solid fa-file-pdf" style="color: #ff4757; font-size: 1.1rem;"></i>
+                    <span>Buku_Panduan_AMSO_2026.pdf</span>
                 </div>
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/fesa.png" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
-                </div>
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
-                </div>
+                <span><i class="fa-solid fa-eye" style="color: var(--neon-blue);"></i> Mode Pratinjau Dokumen</span>
             </div>
 
-            <!-- NAVBAR -->
-            <nav>
-                <a href="https://amso.web.id/"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="https://timeline.amso.web.id/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
-                <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                <a href="https://bukupanduan.amso.web.id/" class="active"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
-                
-                <div class="dropdown">
-                    <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="https://peserta.amso.web.id/"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data Peserta</a>
-                        <a href="https://administrasi.amso.web.id/"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Administrasi</a>
-                    </div>
-                </div>
-
-                <a href="https://amso-fesa.github.io/Pengumuman-AMSO-2026/"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
-            </nav>
-        </header>
-
-        <div style="text-align: center;">
-            <h1 class="main-title">BUKU PANDUAN AMSO 2026</h1>
-            <p class="sub-title">Petunjuk Teknis & Pelaksanaan Kegiatan</p>
-
-            <!-- ACTION BUTTONS -->
-            <div class="action-buttons">
-                <!-- DOWNLOAD LANGSUNG -->
-                <a href="https://drive.google.com/uc?export=download&id=1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3" class="btn-action btn-download">
-                    <i class="fa-solid fa-file-arrow-down"></i> Unduh Buku Panduan (PDF)
-                </a>
-
-                <!-- BUKA TAB BARU / FULLSCREEN -->
-                <a href="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action btn-fullscreen">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Layar Penuh
-                </a>
+            <div class="viewer-frame-container">
+                <iframe 
+                    src="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/preview" 
+                    allow="autoplay"
+                    loading="lazy">
+                </iframe>
             </div>
         </div>
+    </main>
+</div>
 
-        <!-- ================= MAIN CONTENT VIEWER ================= -->
-        <main>
-            <div class="viewer-box">
-                <div class="viewer-header">
-                    <div class="file-title">
-                        <i class="fa-solid fa-file-pdf" style="color: #ff4757; font-size: 1.1rem;"></i>
-                        <span>Buku_Panduan_AMSO_2026.pdf</span>
-                    </div>
-                    <span><i class="fa-solid fa-eye" style="color: var(--neon-blue);"></i> Mode Pratinjau Dokumen</span>
-                </div>
+<!-- FOOTER OTOMATIS (SAMA PERSIS DENGAN INDEX) -->
+<footer id="footer-placeholder"></footer>
 
-                <div class="viewer-frame-container">
-                    <iframe 
-                        src="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/preview" 
-                        allow="autoplay"
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- ================= FOOTER ================= -->
-    <footer>
-        <strong>AMSO 2026</strong>
-        <p>Angkasa Mathematic & Science Olympiad</p>
-    </footer>
-
-    <!-- PANGGIL SCRIPT GLOBAL -->
-    <script src="global-audio.js"></script>
+<!-- PANGGIL SCRIPT GLOBAL -->
+<script src="global-audio.js"></script>
 
 </body>
 </html>
