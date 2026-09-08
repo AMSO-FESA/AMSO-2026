@@ -59,7 +59,7 @@ const footerHTML = `
 `;
 
 // ==========================================
-// 3. FUNGSI PEMUTAR MUSIK LATAR (AUDIO PLAYER)
+// 3. FUNGSI AUDIO CONTINUOUS & KONTROL PEMUTAR
 // ==========================================
 function toggleAudio() {
     const audio = document.getElementById("bgAudio");
@@ -70,6 +70,7 @@ function toggleAudio() {
 
     if (audio.paused) {
         audio.play().then(() => {
+            localStorage.setItem("amso_audio_playing", "true");
             if (btn) btn.classList.add("playing");
             if (icon) icon.className = "fa-solid fa-volume-high";
         }).catch(err => {
@@ -77,18 +78,64 @@ function toggleAudio() {
         });
     } else {
         audio.pause();
+        localStorage.setItem("amso_audio_playing", "false");
         if (btn) btn.classList.remove("playing");
         if (icon) icon.className = "fa-solid fa-volume-xmark";
     }
 }
 
-// Buka blokir pemutaran otomatis pada klik pertama pengunjung
+// Sinkronisasi posisi waktu lagu secara berkala ke penyimpanan lokal
+setInterval(() => {
+    const audio = document.getElementById("bgAudio");
+    if (audio && !audio.paused) {
+        localStorage.setItem("amso_audio_time", audio.currentTime);
+    }
+}, 500);
+
+// ==========================================
+// 4. SUNTIK OTOMATIS & INISIALISASI AUDIO
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Suntik Header & Footer
+    const headerEl = document.getElementById("header-placeholder");
+    const footerEl = document.getElementById("footer-placeholder");
+    if (headerEl) headerEl.innerHTML = headerHTML;
+    if (footerEl) footerEl.innerHTML = footerHTML;
+
+    // Atur Posisi & Status Audio Antar Halaman
+    const audio = document.getElementById("bgAudio");
+    const btn = document.getElementById("audioToggleBtn");
+    const icon = document.getElementById("audioIcon");
+
+    if (audio) {
+        // Ambil detik terakhir lagu dari halaman sebelumnya
+        const savedTime = localStorage.getItem("amso_audio_time");
+        if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+        }
+
+        // Jika sebelumnya sedang berputar, teruskan pemutaran otomatis
+        const wasPlaying = localStorage.getItem("amso_audio_playing");
+        if (wasPlaying === "true") {
+            audio.play().then(() => {
+                if (btn) btn.classList.add("playing");
+                if (icon) icon.className = "fa-solid fa-volume-high";
+            }).catch(() => {
+                // Tangani jika browser memblokir autoplay tanpa interaksi
+                if (btn) btn.classList.remove("playing");
+                if (icon) icon.className = "fa-solid fa-volume-xmark";
+            });
+        }
+    }
+});
+
+// Buka blokir pemutaran otomatis pada klik pertama jika belum aktif
 document.addEventListener("click", function initAutoplayOnce() {
     const audio = document.getElementById("bgAudio");
     const btn = document.getElementById("audioToggleBtn");
     const icon = document.getElementById("audioIcon");
 
-    if (audio && audio.paused) {
+    if (audio && audio.paused && localStorage.getItem("amso_audio_playing") === "true") {
         audio.play().then(() => {
             if (btn) btn.classList.add("playing");
             if (icon) icon.className = "fa-solid fa-volume-high";
@@ -96,14 +143,3 @@ document.addEventListener("click", function initAutoplayOnce() {
     }
     document.removeEventListener("click", initAutoplayOnce);
 }, { once: true });
-
-// ==========================================
-// 4. SUNTIK OTOMATIS HEADER & FOOTER KE HALAMAN
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    const headerEl = document.getElementById("header-placeholder");
-    const footerEl = document.getElementById("footer-placeholder");
-
-    if (headerEl) headerEl.innerHTML = headerHTML;
-    if (footerEl) footerEl.innerHTML = footerHTML;
-});
