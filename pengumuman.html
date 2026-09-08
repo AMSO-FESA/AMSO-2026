@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMSO 2026</title>
-
-    <!-- FAVICON (LOGO TAB BROWSER) -->
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
-
-    <!-- CSS / Fonts lainnya ... -->
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengumuman - AMSO 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-dark: #070913;
-            --card-bg: rgba(20, 26, 50, 0.65);
-            --card-border: rgba(0, 210, 255, 0.2);
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
-            --gold: #ffd700;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #8b5cf6;        
+            --blue2: #3b82f6;       
+            --navy: #0f172a;        
+            --gold: #22d3ee;        
+            --bg-dark: #070913;          
+            --text: #f8fafc;        
+            --muted: #94a3b8;       
+            --white: #ffffff;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(15, 23, 42, 0.6); 
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
         }
 
         html {
@@ -44,15 +44,66 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: var(--text);
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* =========================
+           ANIMASI LATAR BELAKANG SAINS & SPACE
+        ========================= */
         .space-bg {
             position: fixed;
             top: 0;
@@ -65,7 +116,6 @@
             background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
         }
 
-        /* Bintang Berkelap-kelip */
         .stars {
             position: absolute;
             width: 100%;
@@ -87,7 +137,6 @@
             100% { opacity: 0.8; }
         }
 
-        /* Galaksi / Nebula Melayang */
         .galaxy-blob {
             position: absolute;
             border-radius: 50%;
@@ -105,39 +154,36 @@
             100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Elemen Melayang */
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
-            opacity: 0.55;
+            opacity: 0.5;
             user-select: none;
             filter: drop-shadow(0 0 12px currentColor);
         }
 
-        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
-        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
-        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
-        
-        /* Alat Fisika & Sains */
-        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
-        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
-        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
-        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+        .el-rocket { top: 25% !important; left: 6% !important; font-size: 2.5rem; color: var(--neon-blue); animation: flyRocket 15s infinite ease-in-out; }
+        .el-astronaut1 { top: 65% !important; right: 5% !important; font-size: 2.3rem; color: var(--gold); animation: floatItem1 12s infinite alternate ease-in-out; }
+        .el-astronaut2 { bottom: 10% !important; left: 10% !important; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 10s infinite alternate ease-in-out; opacity: 0.4; }
 
-        /* Simbol Matematika */
-        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+        .el-atom { top: 40% !important; right: 12% !important; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { top: 15% !important; left: 12% !important; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; }
+        .el-magnet { bottom: 20% !important; left: 8% !important; font-size: 2.2rem; color: #ff4757; animation: floatItem2 11s infinite alternate ease-in-out; }
+        .el-satellite { top: 10% !important; right: 35% !important; font-size: 2rem; color: var(--muted); animation: flySatellite 18s infinite linear; }
+
+        .el-math1 { top: 30% !important; left: 20% !important; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { bottom: 30% !important; right: 25% !important; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 55% !important; left: 5% !important; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
 
         @keyframes flyRocket {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(-50px, 70px) rotate(40deg); }
-            100% { transform: translate(0, 0) rotate(45deg); }
+            0% { transform: translate(0, 0) rotate(25deg); }
+            50% { transform: translate(40px, -50px) rotate(30deg); }
+            100% { transform: translate(0, 0) rotate(25deg); }
         }
 
         @keyframes floatItem1 {
             0% { transform: translateY(0) rotate(-10deg); }
-            100% { transform: translateY(-45px) rotate(15deg); }
+            100% { transform: translateY(-40px) rotate(15deg); }
         }
 
         @keyframes floatItem2 {
@@ -152,146 +198,29 @@
         }
 
         @keyframes flySatellite {
-            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
-            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
+            0% { transform: translateX(-30vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(110vw) translateY(-20px) rotate(360deg); }
         }
 
+        /* =========================
+           CONTAINER & LAYOUT
+        ========================= */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            max-width: 1150px;
+            margin: auto;
+            padding: 0 20px 80px;
             position: relative;
             z-index: 1;
-            width: 100%;
         }
 
-        /* ================= HEADER ================= */
+        /* HEADER */
         header {
             padding: 30px 0 25px;
             text-align: center;
             position: relative;
         }
 
-        .logo-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .logo-item {
-            background: transparent;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            box-shadow: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .logo-item:hover {
-            transform: scale(1.08);
-            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
-        }
-
-        .logo-item img {
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
-        }
-
-        /* Ukuran Logo Presisi */
-        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
-        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
-        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
-
-        /* Navigation Menu */
-        nav {
-            background: rgba(15, 21, 42, 0.8);
-            border: 1px solid var(--card-border);
-            border-radius: 50px;
-            padding: 8px;
-            backdrop-filter: blur(12px);
-            display: inline-flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav a:hover, nav a.active {
-            color: #fff;
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
-            border: 1px solid rgba(0, 210, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-flex;
-            padding-bottom: 15px; 
-            margin-bottom: -15px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%; 
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(15, 21, 42, 0.95);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            min-width: 190px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-            z-index: 100;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .dropdown-content a {
-            color: var(--text-muted);
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--neon-blue);
-            border: none;
-            box-shadow: none;
-            transform: none;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* ================= MAIN CONTENT (MEDALI LEBIH BESAR & LEBIH KE BAWAH) ================= */
+        /* ================= MAIN CONTENT (MEDALI BESAR) ================= */
         main {
             flex: 1;
             display: flex;
@@ -331,96 +260,61 @@
             }
         }
 
-        /* ================= FOOTER (PERSIS KATEGORI) ================= */
+        /* ================= FOOTER ================= */
         footer {
-            background: #050811;
-            color: white;
-            padding: 35px 20px;
-            text-align: center;
+            background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
-            width: 100%;
+            padding: 35px 0 20px;
             margin-top: auto;
-        }
-
-        footer strong {
-            font-size: 18px;
-        }
-
-        footer p {
-            margin-top: 7px;
-            font-size: 11px;
-            opacity: .55;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="space-bg">
-        <div class="stars"></div>
-        <div class="galaxy-blob blob-1"></div>
-        <div class="galaxy-blob blob-2"></div>
-        <div class="galaxy-blob blob-3"></div>
+<!-- ELEMEN AUDIO -->
+<audio id="bgAudio" loop>
+    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+</audio>
 
-        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
-        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
-        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
-        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+<!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+<div class="space-bg">
+    <div class="stars"></div>
+    <div class="galaxy-blob blob-1"></div>
+    <div class="galaxy-blob blob-2"></div>
+    <div class="galaxy-blob blob-3"></div>
 
-        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
-        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
-        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+    <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+    <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+    <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+    <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
 
-        <div class="floating-icon el-math1">&pi;</div>
-        <div class="floating-icon el-math2">&sum;</div>
-        <div class="floating-icon el-math3">&radic;</div>
-    </div>
+    <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+    <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+    <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
 
-    <div class="container">
-        <header>
-            <div class="logo-group">
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png" alt="Logo Yasarini" title="Yayasan Ardhya Garini">
-                </div>
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/fesa.png" alt="Logo FESA" title="Festival Edukasi Sekolah Angkasa">
-                </div>
-                <div class="logo-item">
-                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png" alt="Logo AMSO" title="Angkasa Mathematic and Science Olympiad">
-                </div>
-            </div>
+    <div class="floating-icon el-math1">&pi;</div>
+    <div class="floating-icon el-math2">&sum;</div>
+    <div class="floating-icon el-math3">&radic;</div>
+</div>
 
-            <!-- NAVBAR DENGAN STRUKTUR PERSIS HALAMAN UTAMA -->
-            <nav>
-                <a href="https://amso-fesa.github.io/AMSO-2026/"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
-                <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
-                <a href="https://amso-fesa.github.io/BukuPanduan-AMSO-2026/"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
-                
-                <div class="dropdown">
-                    <a href="#"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="https://amso-fesa.github.io/Data-Peserta-AMSO-2026/"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data Peserta</a>
-                        <a href="https://amso-fesa.github.io/Administrasi-AMSO-2026/"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Administrasi</a>
-                    </div>
-                </div>
+<div class="container">
+    <!-- HEADER GLOBAL OTOMATIS -->
+    <header id="header-placeholder"></header>
 
-                <a href="#" class="active"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
-            </nav>
-        </header>
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="medal-container">
+            <i class="fa-solid fa-medal big-medal" title="Pengumuman AMSO 2026"></i>
+        </div>
+    </main>
+</div>
 
-        <!-- ================= MAIN CONTENT (HANYA MEDALI BESAR) ================= -->
-        <main>
-            <div class="medal-container">
-                <i class="fa-solid fa-medal big-medal" title="Pengumuman AMSO 2026"></i>
-            </div>
-        </main>
-    </div>
+<!-- FOOTER GLOBAL OTOMATIS -->
+<footer id="footer-placeholder"></footer>
 
-    <!-- ================= FOOTER (PERSIS KATEGORI) ================= -->
-    <footer>
-        <strong>AMSO 2026</strong>
-        <p>Angkasa Mathematic & Science Olympiad</p>
-    </footer>
+<!-- PANGGIL SCRIPT GLOBAL -->
+<script src="global-audio.js"></script>
 
 </body>
 </html>
