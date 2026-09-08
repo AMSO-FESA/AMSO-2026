@@ -201,7 +201,7 @@
         }
 
         /* =========================
-           HERO & HEADER NAVIGATION (GLOBAL)
+           HEADER GLOBAL (PERSIS BERANDA)
         ========================= */
         header {
             padding: 30px 0 25px;
@@ -325,21 +325,18 @@
             display: block;
         }
 
-        .hero {
-            background: transparent;
-            color: white;
-            padding: 20px 20px 30px; 
-            border-bottom: none;
-            position: relative; 
+        /* HERO TIMELINE */
+        .timeline-hero {
             text-align: center;
+            margin-bottom: 30px;
         }
 
-        .hero h1 {
+        .timeline-hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(38px, 6vw, 68px);
             line-height: .95;
             letter-spacing: -3px;
-            margin-top: 10px; 
+            margin-bottom: 10px;
         }
 
         .text-neon {
@@ -350,28 +347,30 @@
         }
 
         .hero-desc {
-            margin: 12px auto 0; 
             color: var(--muted);
             max-width: 650px;
+            margin: 0 auto;
             font-size: 15px;
         }
 
         /* =========================
-           MAIN
+           MAIN & LAYOUT
         ========================= */
-
         .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 35px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
             z-index: 1;
+        }
+
+        main {
+            padding: 20px 0 60px;
         }
 
         /* =========================
            PROGRESS
         ========================= */
-
         .progress-section {
             margin-top: 15px;
         }
@@ -411,7 +410,6 @@
         /* =========================
            PHASES
         ========================= */
-
         .phase-section {
             margin-top: 45px;
         }
@@ -429,13 +427,11 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 18px;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-
             cursor: pointer;
             transition: .25s;
         }
@@ -461,7 +457,6 @@
         /* =========================
            FILTER
         ========================= */
-
         .timeline-header {
             margin-top: 50px;
             display: flex;
@@ -502,7 +497,6 @@
         /* =========================
            AGENDA GRID
         ========================= */
-
         .agenda {
             margin-top: 18px;
             display: grid;
@@ -517,7 +511,6 @@
             border: 1px solid var(--border);
             border-radius: 17px;
             padding: 20px;
-
             transition: .25s;
             position: relative;
             overflow: hidden;
@@ -583,7 +576,7 @@
         }
 
         /* =========================
-           FOOTER (GLOBAL)
+           FOOTER GLOBAL
         ========================= */
         footer {
             background: rgba(5, 7, 15, 0.95);
@@ -655,7 +648,6 @@
         /* =========================
            MOBILE
         ========================= */
-
         @media(max-width: 850px) {
             .phases {
                 grid-template-columns: repeat(2, 1fr);
@@ -666,9 +658,6 @@
         }
 
         @media(max-width: 600px) {
-            .hero {
-                padding-top: 15px; 
-            }
             .phases,
             .agenda {
                 grid-template-columns: 1fr;
@@ -683,12 +672,12 @@
 
 <body>
 
-<!-- ELEMEN AUDIO DI REPOSITORY -->
+<!-- ELEMEN AUDIO -->
 <audio id="bgAudio" loop>
     <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
 </audio>
 
-<!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+<!-- LATAR BELAKANG -->
 <div class="space-bg">
     <div class="stars"></div>
     <div class="galaxy-blob blob-1"></div>
@@ -709,118 +698,82 @@
     <div class="floating-icon el-math3">&radic;</div>
 </div>
 
-<!-- =========================
-     NAVIGASI & HEADER GLOBAL
-========================= -->
-<div class="container" style="padding-bottom: 0;">
+<div class="container">
+    <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
+
+    <!-- JUDUL HALAMAN TIMELINE -->
+    <div class="timeline-hero">
+        <h1><span class="text-neon">TIMELINE AMSO 2026</span></h1>
+        <p class="hero-desc">
+            RANGKAIAN LENGKAP PELAKSANAAN AMSO 2026,
+            DARI TAHAP TRYOUT HINGGA PENGUMUMAN PEMENANG
+        </p>
+    </div>
+
+    <main>
+        <!-- PROGRESS -->
+        <section class="progress-section">
+            <h2 class="section-title">PROGRESS AMSO 2026</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="progress-info">
+                <span id="progressText">0% perjalanan</span>
+                <span>12 Agustus – 15 Desember 2026</span>
+            </div>
+        </section>
+
+        <!-- PHASES -->
+        <section class="phase-section">
+            <h2 class="section-title">TAHAPAN UTAMA</h2>
+            <div class="phases">
+                <div class="phase">
+                    <h3>TRYOUT</h3>
+                    <p>18 – 28 Agustus</p>
+                </div>
+                <div class="phase">
+                    <h3>SELEKSI SEKOLAH</h3>
+                    <p>8 – 11 September</p>
+                </div>
+                <div class="phase">
+                    <h3>PENYISIHAN</h3>
+                    <p>23-24 September</p>
+                </div>
+                <div class="phase">
+                    <h3>SEMIFINAL</h3>
+                    <p>6 Oktober</p>
+                </div>
+                <div class="phase">
+                    <h3>FINAL</h3>
+                    <p>20 Oktober</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section>
+            <div class="timeline-header">
+                <h2 class="section-title">SELURUH AGENDA</h2>
+                <div class="filters">
+                    <button class="filter active" data-month="all">Semua</button>
+                    <button class="filter" data-month="8">Agustus</button>
+                    <button class="filter" data-month="9">September</button>
+                    <button class="filter" data-month="10">Oktober</button>
+                    <button class="filter" data-month="12">Desember</button>
+                </div>
+            </div>
+            <div class="agenda" id="agenda"></div>
+        </section>
+    </main>
 </div>
 
-<!-- HERO KHUSUS TIMELINE -->
-<section class="hero">
-    <h1><span class="text-neon">TIMELINE AMSO 2026</span></h1>
-    <p class="hero-desc">
-        RANGKAIAN LENGKAP PELAKSANAAN AMSO 2026,
-        DARI TAHAP TRYOUT HINGGA PENGUMUMAN PEMENANG
-    </p>
-</section>
-
-<main class="container">
-
-<!-- =========================
-     PROGRESS
-========================= -->
-
-<section class="progress-section">
-    <h2 class="section-title">
-        PROGRESS AMSO 2026
-    </h2>
-    <div class="progress-bar">
-        <div class="progress-fill" id="progress"></div>
-    </div>
-    <div class="progress-info">
-        <span id="progressText">0% perjalanan</span>
-        <span>12 Agustus – 15 Desember 2026</span>
-    </div>
-</section>
-
-
-<!-- =========================
-     PHASES
-========================= -->
-
-<section class="phase-section">
-    <h2 class="section-title">
-        TAHAPAN UTAMA
-    </h2>
-    <div class="phases">
-        <div class="phase">
-            <h3>TRYOUT</h3>
-            <p>18 – 28 Agustus</p>
-        </div>
-        <div class="phase">
-            <h3>SELEKSI SEKOLAH</h3>
-            <p>8 – 11 September</p>
-        </div>
-        <div class="phase">
-            <h3>PENYISIHAN</h3>
-            <p>23-24 September</p>
-        </div>
-        <div class="phase">
-            <h3>SEMIFINAL</h3>
-            <p>6 Oktober</p>
-        </div>
-        <div class="phase">
-            <h3>FINAL</h3>
-            <p>20 Oktober</p>
-        </div>
-    </div>
-</section>
-
-
-<!-- =========================
-     AGENDA
-========================= -->
-
-<section>
-    <div class="timeline-header">
-        <h2 class="section-title">
-            SELURUH AGENDA
-        </h2>
-        <div class="filters">
-            <button class="filter active" data-month="all">
-                Semua
-            </button>
-            <button class="filter" data-month="8">
-                Agustus
-            </button>
-            <button class="filter" data-month="9">
-                September
-            </button>
-            <button class="filter" data-month="10">
-                Oktober
-            </button>
-            <button class="filter" data-month="12">
-                Desember
-            </button>
-        </div>
-    </div>
-    <div class="agenda" id="agenda"></div>
-</section>
-
-</main>
-
-<!-- FOOTER GLOBAL -->
+<!-- FOOTER GLOBAL OTOMATIS -->
 <footer id="footer-placeholder"></footer>
-
 
 <!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 <script>
-/* =========================
-   DATA AGENDA
-========================= */
-
 const events = [
     { no: 1, date: "2026-08-12", display: "Rabu, 12 Agustus 2026", title: "Pengiriman Surat Pemberitahuan Tryout AMSO 2026", month: 8 },
     { no: 2, date: "2026-08-18", display: "18 – 28 Agustus 2026", title: "Pelaksanaan Tryout di Sekolah Masing-masing & Batas Akhir Pengumpulan Hasil Tryout", month: 8 },
@@ -846,15 +799,10 @@ const events = [
     { no: 22, date: "2026-12-15", display: "Selasa, 15 Desember 2026", title: "Pengumuman Pemenang AMSO 2026", month: 12, major: true }
 ];
 
-/* =========================
-   RENDER AGENDA
-========================= */
-
 const agenda = document.getElementById("agenda");
 
 function renderEvents(month = "all") {
     agenda.innerHTML = "";
-    
     const filtered = month === "all" ? events : events.filter(event => event.month == month);
 
     filtered.forEach((event, index) => {
@@ -871,10 +819,6 @@ function renderEvents(month = "all") {
 }
 renderEvents();
 
-/* =========================
-   FILTER
-========================= */
-
 document.querySelectorAll(".filter").forEach(button => {
     button.addEventListener("click", () => {
         document.querySelectorAll(".filter").forEach(btn => btn.classList.remove("active"));
@@ -882,10 +826,6 @@ document.querySelectorAll(".filter").forEach(button => {
         renderEvents(button.dataset.month);
     });
 });
-
-/* =========================
-   PROGRESS AMSO
-========================= */
 
 function updateProgress() {
     const start = new Date("2026-08-12T00:00:00");
