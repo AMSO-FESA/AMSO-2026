@@ -90,7 +90,7 @@ setInterval(() => {
     if (audio && !audio.paused) {
         localStorage.setItem("amso_audio_time", audio.currentTime);
     }
-}, 500);
+}, 300);
 
 // ==========================================
 // 4. SUNTIK OTOMATIS & INISIALISASI AUDIO
@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (btn) btn.classList.add("playing");
                 if (icon) icon.className = "fa-solid fa-volume-high";
             }).catch(() => {
-                // Tangani jika browser memblokir autoplay tanpa interaksi
                 if (btn) btn.classList.remove("playing");
                 if (icon) icon.className = "fa-solid fa-volume-xmark";
             });
@@ -129,8 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Buka blokir pemutaran otomatis pada klik pertama jika belum aktif
-document.addEventListener("click", function initAutoplayOnce() {
+// Buka blokir pemutaran otomatis pada sentuhan/klik pertama di HP maupun PC
+function unlockAudioMobile() {
     const audio = document.getElementById("bgAudio");
     const btn = document.getElementById("audioToggleBtn");
     const icon = document.getElementById("audioIcon");
@@ -141,5 +140,9 @@ document.addEventListener("click", function initAutoplayOnce() {
             if (icon) icon.className = "fa-solid fa-volume-high";
         }).catch(() => {});
     }
-    document.removeEventListener("click", initAutoplayOnce);
-}, { once: true });
+    document.removeEventListener("click", unlockAudioMobile);
+    document.removeEventListener("touchstart", unlockAudioMobile);
+}
+
+document.addEventListener("click", unlockAudioMobile, { once: true });
+document.addEventListener("touchstart", unlockAudioMobile, { once: true });
