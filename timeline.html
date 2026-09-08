@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buku Panduan - AMSO 2026</title>
+    <title>Timeline AMSO 2026</title>
 
     <!-- FAVICON (LOGO TAB BROWSER) -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
@@ -350,54 +350,7 @@
             font-size: 13.5px;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 11px 22px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-download {
-            background: linear-gradient(135deg, #059669, #10b981);
-            color: #ffffff;
-            border: 1px solid rgba(16, 185, 129, 0.5);
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
-        }
-
-        .btn-fullscreen {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.25), rgba(0, 210, 255, 0.2));
-            color: #fff;
-            border: 1px solid var(--neon-blue);
-            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.2);
-        }
-
-        .btn-fullscreen:hover {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
-            transform: translateY(-2px);
+            white-space: nowrap;
         }
 
         /* =========================
@@ -411,85 +364,211 @@
             z-index: 1;
         }
 
-        /* ================= MAIN CONTENT VIEWER (A4 PROPORTIONS) ================= */
-        main {
-            flex: 1;
-            padding: 10px 0 60px;
+        /* =========================
+           PROGRESS
+        ========================= */
+        .progress-section {
+            margin-top: 15px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--blue2), var(--gold));
+            border-radius: 20px;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================
+           PHASES
+        ========================= */
+        .phase-section {
+            margin-top: 45px;
+        }
+
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .phase {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: .25s;
         }
 
-        .viewer-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            overflow: hidden;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            width: 100%;
-            max-width: 820px;
-            margin: 0 auto;
+        .phase:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
         }
 
-        .viewer-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--gold));
-            z-index: 2;
+        .phase h3 {
+            margin-top: 5px;
+            font-size: 15px;
+            color: var(--text);
         }
 
-        .viewer-header {
-            padding: 14px 20px;
-            background: rgba(15, 21, 42, 0.95);
-            border-bottom: 1px solid var(--card-border);
+        .phase p {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* =========================
+           FILTER
+        ========================= */
+        .timeline-header {
+            margin-top: 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            color: var(--muted);
+            gap: 20px;
         }
 
-        .viewer-header .file-title {
+        .filters {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #fff;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            padding: 8px 13px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 11px;
             font-weight: 600;
+            color: var(--muted);
+            transition: 0.3s ease;
         }
 
-        .viewer-frame-container {
-            width: 100%;
-            height: 84vh;
-            min-height: 680px;
-            max-height: 1080px;
-            background: #0b0f25;
+        .filter:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .filter.active {
+            background: linear-gradient(90deg, var(--blue), var(--blue2));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* =========================
+           AGENDA GRID
+        ========================= */
+        .agenda {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 20px;
+            transition: .25s;
             position: relative;
+            overflow: hidden;
         }
 
-        .viewer-frame-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
         }
 
-        @media (max-width: 768px) {
-            .viewer-box {
-                max-width: 100%;
-                border-radius: 16px;
-            }
-            .viewer-frame-container {
-                height: 75vh;
-                min-height: 520px;
-            }
+        .card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--blue2);
+        }
+
+        .card.major::before {
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        .card-number {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 800;
+        }
+
+        .card-date {
+            margin-top: 7px;
+            font-size: 12px;
+            color: var(--blue2);
+            font-weight: 800;
+        }
+
+        .card h3 {
+            font-size: 15px;
+            line-height: 1.4;
+            margin-top: 9px;
+            color: var(--text);
+        }
+
+        .card p {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--gold);
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
         }
 
         /* ================= FOOTER ================= */
@@ -511,7 +590,25 @@
             opacity: .55;
         }
 
+        /* ================= MOBILE ================= */
+        @media(max-width: 850px) {
+            .phases {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .agenda {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media(max-width: 600px) {
+            .phases,
+            .agenda {
+                grid-template-columns: 1fr;
+            }
+            .timeline-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
             .sub-title {
                 white-space: normal; 
             }
@@ -551,44 +648,66 @@
     <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
-    <!-- JUDUL & TOMBOL AKSI -->
+    <!-- JUDUL HALAMAN TIMELINE -->
     <div class="hero">
-        <h1 class="main-title">BUKU PANDUAN AMSO 2026</h1>
-        <p class="sub-title">Petunjuk Teknis & Pelaksanaan Kegiatan</p>
-
-        <!-- ACTION BUTTONS -->
-        <div class="action-buttons">
-            <!-- DOWNLOAD LANGSUNG -->
-            <a href="https://drive.google.com/uc?export=download&id=1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3" class="btn-action btn-download">
-                <i class="fa-solid fa-file-arrow-down"></i> Unduh Buku Panduan (PDF)
-            </a>
-
-            <!-- BUKA TAB BARU / FULLSCREEN -->
-            <a href="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action btn-fullscreen">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Layar Penuh
-            </a>
-        </div>
+        <h1 class="main-title"><span class="text-neon">TIMELINE AMSO 2026</span></h1>
+        <p class="sub-title">RANGKAIAN LENGKAP PELAKSANAAN AMSO 2026, DARI TAHAP TRYOUT HINGGA PENGUMUMAN PEMENANG</p>
     </div>
 
-    <!-- ================= MAIN CONTENT VIEWER ================= -->
     <main>
-        <div class="viewer-box">
-            <div class="viewer-header">
-                <div class="file-title">
-                    <i class="fa-solid fa-file-pdf" style="color: #ff4757; font-size: 1.1rem;"></i>
-                    <span>Buku_Panduan_AMSO_2026.pdf</span>
-                </div>
-                <span><i class="fa-solid fa-eye" style="color: var(--neon-blue);"></i> Mode Pratinjau Dokumen</span>
+        <!-- PROGRESS -->
+        <section class="progress-section">
+            <h2 class="section-title">PROGRESS AMSO 2026</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
             </div>
+            <div class="progress-info">
+                <span id="progressText">0% perjalanan</span>
+                <span>12 Agustus – 15 Desember 2026</span>
+            </div>
+        </section>
 
-            <div class="viewer-frame-container">
-                <iframe 
-                    src="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/preview" 
-                    allow="autoplay"
-                    loading="lazy">
-                </iframe>
+        <!-- PHASES -->
+        <section class="phase-section">
+            <h2 class="section-title">TAHAPAN UTAMA</h2>
+            <div class="phases">
+                <div class="phase">
+                    <h3>TRYOUT</h3>
+                    <p>18 – 28 Agustus</p>
+                </div>
+                <div class="phase">
+                    <h3>SELEKSI SEKOLAH</h3>
+                    <p>8 – 11 September</p>
+                </div>
+                <div class="phase">
+                    <h3>PENYISIHAN</h3>
+                    <p>23-24 September</p>
+                </div>
+                <div class="phase">
+                    <h3>SEMIFINAL</h3>
+                    <p>6 Oktober</p>
+                </div>
+                <div class="phase">
+                    <h3>FINAL</h3>
+                    <p>20 Oktober</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section>
+            <div class="timeline-header">
+                <h2 class="section-title">SELURUH AGENDA</h2>
+                <div class="filters">
+                    <button class="filter active" data-month="all">Semua</button>
+                    <button class="filter" data-month="8">Agustus</button>
+                    <button class="filter" data-month="9">September</button>
+                    <button class="filter" data-month="10">Oktober</button>
+                    <button class="filter" data-month="12">Desember</button>
+                </div>
+            </div>
+            <div class="agenda" id="agenda"></div>
+        </section>
     </main>
 </div>
 
@@ -597,6 +716,75 @@
 
 <!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
+<script>
+const events = [
+    { no: 1, date: "2026-08-12", display: "Rabu, 12 Agustus 2026", title: "Pengiriman Surat Pemberitahuan Tryout AMSO 2026", month: 8 },
+    { no: 2, date: "2026-08-18", display: "18 – 28 Agustus 2026", title: "Pelaksanaan Tryout di Sekolah Masing-masing & Batas Akhir Pengumpulan Hasil Tryout", month: 8 },
+    { no: 3, date: "2026-08-31", display: "Senin, 31 Agustus 2026", title: "Pengiriman Buku Panduan AMSO 2026 ke Yasarini Jajaran", month: 8 },
+    { no: 4, date: "2026-09-07", display: "Senin, 7 September 2026", title: "Bimbingan Teknis AMSO 2026", month: 9 },
+    { no: 5, date: "2026-09-08", display: "Selasa - Jum'at, 8 – 11 September 2026", title: "Pelaksanaan Babak Seleksi Sekolah", month: 9, major: true, badge: "SELEKSI" },
+    { no: 6, date: "2026-09-11", display: "Jum’at, 11 September 2026", title: "Batas Akhir Pengiriman Hasil Babak Seleksi Sekolah", month: 9 },
+    { no: 7, date: "2026-09-14", display: "Senin, 14 September 2026", title: "Bimtek Babak Penyisihan & Semifinal", month: 9, major: true, badge: "BIMTEK" },
+    { no: 8, date: "2026-09-15", display: "Selasa, 15 September 2026", title: "Pengiriman Nomor Peserta yang Lolos ke Babak Penyisihan", month: 9 },
+    { no: 9, date: "2026-09-17", display: "Kamis, 17 September 2026", title: "Uji Coba Link Soal Babak Penyisihan", month: 9 },
+    { no: 10, date: "2026-09-23", display: "Rabu - Kamis, 23 - 24 September 2026", title: "Pelaksanaan Babak Penyisihan", month: 9, major: true, badge: "PENYISIHAN" },
+    { no: 11, date: "2026-09-24", display: "Kamis, 24 September 2026", title: "Batas Akhir Pengiriman Berita Acara, Absensi, Pakta Integritas Kepala Sekolah dan Pengawas", month: 9 },
+    { no: 12, date: "2026-09-28", display: "Senin, 28 September 2026", title: "Pengumuman Peserta Lolos ke Babak Semifinal", month: 9 },
+    { no: 13, date: "2026-10-05", display: "Senin, 5 Oktober 2026", title: "Uji Coba Link Babak Semifinal", month: 10 },
+    { no: 14, date: "2026-10-06", display: "Selasa, 6 Oktober 2026", title: "Pelaksanaan Babak Semifinal", month: 10, major: true, badge: "SEMIFINAL" },
+    { no: 15, date: "2026-10-07", display: "Rabu, 7 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Semifinal", month: 10 },
+    { no: 16, date: "2026-10-12", display: "Senin, 12 Oktober 2026", title: "Pengumuman Peserta Lolos ke Babak Final dan Detail Babak Final", month: 10 },
+    { no: 17, date: "2026-10-14", display: "Rabu, 14 Oktober 2026", title: "Bimtek Babak Final", month: 10 },
+    { no: 18, date: "2026-10-16", display: "Jum’at, 16 Oktober 2026", title: "Batas Akhir Pengiriman Foto dan Nomor Rekening Peserta Babak Final", month: 10 },
+    { no: 19, date: "2026-10-19", display: "Senin, 19 Oktober 2026", title: "Gladi Jaringan dan Soal Babak Final AMSO", month: 10 },
+    { no: 20, date: "2026-10-20", display: "Selasa, 20 Oktober 2026", title: "Pelaksanaan Babak Final AMSO", month: 10, major: true, badge: "FINAL" },
+    { no: 21, date: "2026-10-21", display: "Rabu, 21 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Final", month: 10 },
+    { no: 22, date: "2026-12-15", display: "Selasa, 15 Desember 2026", title: "Pengumuman Pemenang AMSO 2026", month: 12, major: true }
+];
 
+const agenda = document.getElementById("agenda");
+
+function renderEvents(month = "all") {
+    agenda.innerHTML = "";
+    const filtered = month === "all" ? events : events.filter(event => event.month == month);
+
+    filtered.forEach((event, index) => {
+        const card = document.createElement("div");
+        card.className = "card" + (event.major ? " major" : "");
+        card.innerHTML = `
+            <div class="card-number">AGENDA ${String(index + 1).padStart(2,"0")}</div>
+            <div class="card-date">${event.display}</div>
+            <h3>${event.title}</h3>
+            ${event.badge ? `<div class="badge">${event.badge}</div>` : ""}
+        `;
+        agenda.appendChild(card);
+    });
+}
+renderEvents();
+
+document.querySelectorAll(".filter").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        renderEvents(button.dataset.month);
+    });
+});
+
+/* =========================
+   PROGRESS AMSO
+========================= */
+function updateProgress() {
+    const start = new Date("2026-08-12T00:00:00");
+    const end = new Date("2026-12-15T23:59:59");
+    const now = new Date();
+    
+    let percentage = ((now - start) / (end - start)) * 100;
+    percentage = Math.max(0, Math.min(100, percentage));
+
+    document.getElementById("progress").style.width = percentage + "%";
+    document.getElementById("progressText").textContent = Math.round(percentage) + "% perjalanan";
+}
+updateProgress();
+</script>
 </body>
 </html>
