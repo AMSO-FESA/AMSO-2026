@@ -56,11 +56,11 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN (DIGESER SEDIKIT KE KANAN) ─── */
         .audio-float-btn {
-            position: absolute;
-            top: 25px;
-            right: 20px;
+            position: absolute !important;
+            top: 25px !important;
+            right: 14px !important; /* Digeser pas ke kanan */
             z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
@@ -93,8 +93,8 @@
 
         @media (max-width: 600px) {
             .audio-float-btn {
-                top: 15px;
-                right: 12px;
+                top: 15px !important;
+                right: 8px !important;
                 width: 30px;
                 height: 30px;
                 font-size: 0.72rem;
@@ -587,7 +587,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS (SAMA PERSIS DENGAN INDEX) -->
+    <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL & TOMBOL AKSI BUKU PANDUAN -->
@@ -629,7 +629,7 @@
     </main>
 </div>
 
-<!-- FOOTER OTOMATIS (SAMA PERSIS DENGAN INDEX) -->
+<!-- FOOTER OTOMATIS -->
 <footer id="footer-placeholder"></footer>
 
 <!-- PANGGIL SCRIPT GLOBAL -->
