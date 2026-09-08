@@ -56,12 +56,12 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS (DISAMAKAN PERSIS DENGAN INDEX) ─── */
         .audio-float-btn {
             position: absolute;
             top: 25px;
             right: 20px;
-            z-index: 50;
+            z-index: 100;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
@@ -522,7 +522,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS (SAMA PERSIS DENGAN HALAMAN UTAMA) -->
+    <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL & TOMBOL AKSI BUKU PANDUAN -->
@@ -532,12 +532,10 @@
 
         <!-- ACTION BUTTONS -->
         <div class="action-buttons">
-            <!-- DOWNLOAD LANGSUNG -->
             <a href="https://drive.google.com/uc?export=download&id=1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3" class="btn-action btn-download">
                 <i class="fa-solid fa-file-arrow-down"></i> Unduh Buku Panduan (PDF)
             </a>
 
-            <!-- BUKA TAB BARU / FULLSCREEN -->
             <a href="https://drive.google.com/file/d/1Yn5YBSoViDjtx9G1MzA9bPicCB2y9yF3/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action btn-fullscreen">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Layar Penuh
             </a>
