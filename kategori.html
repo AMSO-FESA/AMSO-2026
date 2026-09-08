@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kategori Lomba - AMSO 2026</title>
 
-    <!-- FAVICON -->
+    <!-- FAVICON (LOGO TAB BROWSER) -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
-    <!-- FontAwesome & Fonts -->
+    <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
@@ -32,8 +32,6 @@
             --glass-bg: rgba(15, 23, 42, 0.6); 
             --neon-blue: #00d2ff;
             --neon-purple: #9d4edd;
-            --card-bg: rgba(20, 26, 50, 0.65);
-            --card-border: rgba(0, 210, 255, 0.2);
         }
 
         html {
@@ -155,61 +153,52 @@
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
-            opacity: 0.55;
+            opacity: 0.5;
             user-select: none;
             filter: drop-shadow(0 0 12px currentColor);
         }
 
-        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
-        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
-        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
-        
-        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
-        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
-        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
-        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--muted); animation: flySatellite 16s infinite linear; }
+        .el-rocket { top: 18% !important; left: 8% !important; font-size: 2.6rem; color: var(--neon-blue); animation: flyRocket 16s infinite ease-in-out; }
+        .el-astronaut1 { top: 55% !important; right: 6% !important; font-size: 2.4rem; color: var(--gold); animation: floatItem1 13s infinite alternate ease-in-out; }
+        .el-astronaut2 { bottom: 15% !important; left: 12% !important; font-size: 2.1rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.45; }
 
-        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+        .el-atom { top: 30% !important; right: 15% !important; font-size: 2.3rem; color: var(--gold); animation: rotateAtom 14s infinite linear; }
+        .el-flask { top: 22% !important; right: 35% !important; font-size: 2.2rem; color: var(--neon-blue); animation: floatItem1 10s infinite alternate ease-in-out; }
+        .el-magnet { bottom: 25% !important; left: 6% !important; font-size: 2.3rem; color: #ff4757; animation: floatItem2 12s infinite alternate ease-in-out; }
+        .el-satellite { top: 12% !important; left: 38% !important; font-size: 2.1rem; color: var(--muted); animation: flySatellite 20s infinite linear; }
+
+        .el-math1 { top: 45% !important; left: 15% !important; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { bottom: 35% !important; right: 28% !important; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 10s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 70% !important; left: 22% !important; font-size: 1.9rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
 
         @keyframes flyRocket {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(-50px, 70px) rotate(40deg); }
-            100% { transform: translate(0, 0) rotate(45deg); }
+            0% { transform: translate(0, 0) rotate(35deg); }
+            50% { transform: translate(-45px, 60px) rotate(30deg); }
+            100% { transform: translate(0, 0) rotate(35deg); }
         }
 
         @keyframes floatItem1 {
-            0% { transform: translateY(0) rotate(-10deg); }
+            0% { transform: translateY(0) rotate(-12deg); }
             100% { transform: translateY(-45px) rotate(15deg); }
         }
 
         @keyframes floatItem2 {
-            0% { transform: translateY(0) rotate(10deg); }
-            100% { transform: translateY(35px) rotate(-15deg); }
+            0% { transform: translateY(0) rotate(12deg); }
+            100% { transform: translateY(40px) rotate(-15deg); }
         }
 
         @keyframes rotateAtom {
             0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1.15); }
             100% { transform: rotate(360deg) scale(1); }
         }
 
         @keyframes flySatellite {
-            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
-            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
+            0% { transform: translateX(-35vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(115vw) translateY(-25px) rotate(360deg); }
         }
 
-        .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 0 20px 80px;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-
-        /* HEADER */
+        /* ================= HEADER ================= */
         header {
             padding: 30px 0 25px;
             text-align: center;
@@ -333,54 +322,139 @@
             display: block;
         }
 
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
-            line-height: 1.1;
+        .hero {
+            text-align: center;
             margin-bottom: 10px;
         }
 
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: .95;
+            letter-spacing: -3px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-neon {
+            background: linear-gradient(90deg, var(--gold), var(--blue2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
         .sub-title {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: var(--muted);
-            letter-spacing: 2px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            font-size: 13.5px;
             text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 25px;
+            letter-spacing: 2px;
             white-space: normal;
         }
 
         /* ================= MAIN CONTENT ================= */
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 0 20px 80px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
         main {
             flex: 1;
             padding: 20px 0 60px;
         }
 
-        .categories-grid {
+        .categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .category-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        .cat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 35px 25px;
+            transition: .25s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            transition: transform 0.3s ease;
         }
 
-        .category-card:hover {
-            transform: translateY(-5px);
+        .cat-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .cat-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue), var(--blue2));
+        }
+
+        .cat-icon {
+            font-size: 45px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+        }
+
+        .cat-card h3 {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .subject-list {
+            list-style: none;
+            width: 100%;
+            text-align: left;
+            margin-bottom: auto; 
+        }
+
+        .subject-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s ease;
+        }
+
+        .subject-list li:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: var(--text);
+            transform: translateX(5px);
+        }
+
+        .subject-list li i {
+            color: var(--gold);
+            font-size: 14px;
         }
 
         /* ================= FOOTER ================= */
@@ -452,6 +526,19 @@
             color: var(--muted);
             font-size: 0.8rem;
         }
+
+        /* ================= MOBILE ================= */
+        @media(max-width: 900px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        @media(max-width: 600px) {
+            .categories {
+                grid-template-columns: 1fr; 
+            }
+        }
     </style>
 </head>
 
@@ -488,30 +575,44 @@
     <header id="header-placeholder"></header>
 
     <!-- JUDUL HALAMAN -->
-    <div style="text-align: center; margin-bottom: 35px;">
-        <h1 class="main-title">KATEGORI LOMBA</h1>
-        <div class="sub-title">Pilihan Cabang Olimpiade AMSO 2026</div>
+    <div class="hero">
+        <h1 class="main-title"><span class="text-neon">KATEGORI LOMBA</span></h1>
+        <p class="sub-title">DAFTAR BIDANG MATA PELAJARAN YANG DILOMBAKAN SECARA NASIONAL PADA AMSO 2026</p>
     </div>
 
     <!-- MAIN CONTENT KATEGORI -->
     <main>
-        <div class="categories-grid">
-            <div class="category-card">
-                <i class="fa-solid fa-calculator" style="font-size: 3rem; color: var(--neon-blue); margin-bottom: 15px;"></i>
-                <h3 style="color: #fff; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">Matematika</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">Olimpiade Matematika tingkat Sekolah Angkasa.</p>
+        <section class="categories">
+            <div class="cat-card">
+                <i class="fa-solid fa-child-reaching cat-icon"></i>
+                <h3>TINGKAT SD / MI</h3>
+                <ul class="subject-list">
+                    <li><i class="fa-solid fa-calculator"></i> MATEMATIKA</li>
+                    <li><i class="fa-solid fa-flask"></i> ILMU PENGETAHUAN ALAM</li>
+                    <li><i class="fa-solid fa-globe"></i> ILMU PENGETAHUAN SOSIAL</li>
+                </ul>
             </div>
-            <div class="category-card">
-                <i class="fa-solid fa-atom" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px;"></i>
-                <h3 style="color: #fff; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">Sains / IPA</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">Olimpiade Ilmu Pengetahuan Alam tingkat Sekolah Angkasa.</p>
+            <div class="cat-card">
+                <i class="fa-solid fa-book-open-reader cat-icon"></i>
+                <h3>TINGKAT SMP / MTs</h3>
+                <ul class="subject-list">
+                    <li><i class="fa-solid fa-calculator"></i> MATEMATIKA</li>
+                    <li><i class="fa-solid fa-flask"></i> ILMU PENGETAHUAN ALAM</li>
+                    <li><i class="fa-solid fa-globe"></i> ILMU PENGETAHUAN SOSIAL</li>
+                </ul>
             </div>
-            <div class="category-card">
-                <i class="fa-solid fa-globe" style="font-size: 3rem; color: var(--neon-purple); margin-bottom: 15px;"></i>
-                <h3 style="color: #fff; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">IPS / Kebumian</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">Olimpiade Ilmu Pengetahuan Sosial tingkat Sekolah Angkasa.</p>
+            <div class="cat-card">
+                <i class="fa-solid fa-graduation-cap cat-icon"></i>
+                <h3>TINGKAT SMA</h3>
+                <ul class="subject-list">
+                    <li><i class="fa-solid fa-calculator"></i> MATEMATIKA</li>
+                    <li><i class="fa-solid fa-atom"></i> FISIKA</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> GEOGRAFI</li>
+                    <li><i class="fa-solid fa-chart-line"></i> EKONOMI</li>
+                    <li><i class="fa-solid fa-laptop-code"></i> TEKNOLOGI INFORMASI & KOMUNIKASI</li>
+                </ul>
             </div>
-        </div>
+        </section>
     </main>
 </div>
 
