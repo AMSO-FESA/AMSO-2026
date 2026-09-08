@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMSO 2026 - Angkasa Mathematic and Science Olympiad</title>
 
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-dark: #070913;
-            --card-bg: rgba(20, 26, 50, 0.65);
-            --card-border: rgba(0, 210, 255, 0.2);
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
-            --gold: #ffd700;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #8b5cf6;        
+            --blue2: #3b82f6;       
+            --navy: #0f172a;        
+            --gold: #22d3ee;        
+            --bg-dark: #070913;          
+            --text: #f8fafc;        
+            --muted: #94a3b8;       
+            --white: #ffffff;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(15, 23, 42, 0.6); 
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
         }
 
         html {
@@ -38,15 +42,19 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: var(--text);
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO MENEMPEL (KECIL & TRANSPARAN) DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
         .audio-float-btn {
             position: absolute;
             top: 25px;
@@ -54,7 +62,7 @@
             z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
-            color: var(--text-muted);
+            color: var(--muted);
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -91,7 +99,9 @@
             }
         }
 
-        /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
+        /* =========================
+           ANIMASI LATAR BELAKANG SAINS & SPACE
+        ========================= */
         .space-bg {
             position: fixed;
             top: 0;
@@ -145,33 +155,33 @@
         .floating-icon {
             position: absolute;
             color: var(--neon-blue);
-            opacity: 0.55;
+            opacity: 0.5;
             user-select: none;
             filter: drop-shadow(0 0 12px currentColor);
         }
 
-        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
-        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
-        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
-        
-        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
-        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
-        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
-        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+        .el-rocket { top: 25% !important; left: 6% !important; font-size: 2.5rem; color: var(--neon-blue); animation: flyRocket 15s infinite ease-in-out; }
+        .el-astronaut1 { top: 65% !important; right: 5% !important; font-size: 2.3rem; color: var(--gold); animation: floatItem1 12s infinite alternate ease-in-out; }
+        .el-astronaut2 { bottom: 10% !important; left: 10% !important; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 10s infinite alternate ease-in-out; opacity: 0.4; }
 
-        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
-        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+        .el-atom { top: 40% !important; right: 12% !important; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { top: 15% !important; left: 12% !important; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; }
+        .el-magnet { bottom: 20% !important; left: 8% !important; font-size: 2.2rem; color: #ff4757; animation: floatItem2 11s infinite alternate ease-in-out; }
+        .el-satellite { top: 10% !important; right: 35% !important; font-size: 2rem; color: var(--muted); animation: flySatellite 18s infinite linear; }
+
+        .el-math1 { top: 30% !important; left: 20% !important; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { bottom: 30% !important; right: 25% !important; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 55% !important; left: 5% !important; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
 
         @keyframes flyRocket {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(-50px, 70px) rotate(40deg); }
-            100% { transform: translate(0, 0) rotate(45deg); }
+            0% { transform: translate(0, 0) rotate(25deg); }
+            50% { transform: translate(40px, -50px) rotate(30deg); }
+            100% { transform: translate(0, 0) rotate(25deg); }
         }
 
         @keyframes floatItem1 {
             0% { transform: translateY(0) rotate(-10deg); }
-            100% { transform: translateY(-45px) rotate(15deg); }
+            100% { transform: translateY(-40px) rotate(15deg); }
         }
 
         @keyframes floatItem2 {
@@ -186,19 +196,13 @@
         }
 
         @keyframes flySatellite {
-            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
-            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
+            0% { transform: translateX(-30vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(110vw) translateY(-20px) rotate(360deg); }
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* HEADER */
+        /* =========================
+           HEADER GLOBAL & LOGO FIX
+        ========================= */
         header {
             padding: 30px 0 25px;
             text-align: center;
@@ -242,7 +246,7 @@
 
         nav {
             background: rgba(15, 21, 42, 0.8);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
             border-radius: 50px;
             padding: 8px;
             backdrop-filter: blur(12px);
@@ -255,7 +259,7 @@
         }
 
         nav a {
-            color: var(--text-muted);
+            color: var(--muted);
             text-decoration: none;
             padding: 10px 22px;
             border-radius: 30px;
@@ -277,18 +281,18 @@
         .dropdown {
             position: relative;
             display: inline-flex;
-            padding-bottom: 15px; 
+            padding-bottom: 15px;
             margin-bottom: -15px;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 100%; 
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(15, 21, 42, 0.95);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
             border-radius: 15px;
             min-width: 190px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
@@ -299,7 +303,7 @@
         }
 
         .dropdown-content a {
-            color: var(--text-muted);
+            color: var(--muted);
             padding: 10px 15px;
             text-decoration: none;
             display: block;
@@ -311,7 +315,7 @@
 
         .dropdown-content a:hover {
             background: rgba(0, 210, 255, 0.15);
-            color: var(--neon-blue);
+            color: #00d2ff;
             border: none;
             box-shadow: none;
             transform: none;
@@ -336,15 +340,23 @@
 
         .sub-title {
             font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-muted);
+            color: var(--muted);
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 35px;
         }
 
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 35px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
         main {
-            padding: 40px 0 60px;
+            padding: 20px 0 60px;
         }
 
         .section-header {
@@ -364,7 +376,7 @@
         .section-header .line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, var(--card-border), transparent);
+            background: linear-gradient(90deg, var(--border), transparent);
         }
 
         .spotlight-grid {
@@ -374,8 +386,8 @@
         }
 
         .spotlight-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--glass-bg);
+            border: 1px solid var(--border);
             border-radius: 20px;
             padding: 25px;
             backdrop-filter: blur(10px);
@@ -429,7 +441,7 @@
         }
 
         .card-desc {
-            color: var(--text-muted);
+            color: var(--muted);
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 15px;
@@ -467,7 +479,7 @@
 
         .stat-item p {
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--muted);
         }
 
         /* ================= HORIZONTAL SLIDER GALERI DRIVE ================= */
@@ -501,8 +513,8 @@
         .gallery-item {
             flex: 0 0 280px;
             position: relative;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--glass-bg);
+            border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
             aspect-ratio: 4 / 3;
@@ -654,7 +666,7 @@
         /* ================= FOOTER ================= */
         footer {
             background: rgba(5, 7, 15, 0.95);
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid var(--border);
             padding: 35px 0 20px;
             margin-top: auto;
         }
@@ -677,7 +689,7 @@
         }
 
         .footer-brand p {
-            color: var(--text-muted);
+            color: var(--muted);
             font-size: 0.85rem;
         }
 
@@ -696,7 +708,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-main);
+            color: var(--text);
             text-decoration: none;
             font-size: 1.25rem;
             transition: all 0.3s ease;
@@ -715,233 +727,238 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            color: var(--text-muted);
+            color: var(--muted);
             font-size: 0.8rem;
         }
     </style>
 </head>
+
 <body>
 
-    <audio id="bgAudio" loop>
-        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
-    </audio>
+<!-- ELEMEN AUDIO -->
+<audio id="bgAudio" loop>
+    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+</audio>
 
-    <div class="space-bg">
-        <div class="stars"></div>
-        <div class="galaxy-blob blob-1"></div>
-        <div class="galaxy-blob blob-2"></div>
-        <div class="galaxy-blob blob-3"></div>
+<!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+<div class="space-bg">
+    <div class="stars"></div>
+    <div class="galaxy-blob blob-1"></div>
+    <div class="galaxy-blob blob-2"></div>
+    <div class="galaxy-blob blob-3"></div>
 
-        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
-        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
-        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
-        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+    <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+    <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+    <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+    <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
 
-        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
-        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
-        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+    <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+    <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+    <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
 
-        <div class="floating-icon el-math1">&pi;</div>
-        <div class="floating-icon el-math2">&sum;</div>
-        <div class="floating-icon el-math3">&radic;</div>
+    <div class="floating-icon el-math1">&pi;</div>
+    <div class="floating-icon el-math2">&sum;</div>
+    <div class="floating-icon el-math3">&radic;</div>
+</div>
+
+<div class="container">
+    <!-- HEADER GLOBAL OTOMATIS (SAMA PERSIS DENGAN TIMELINE) -->
+    <header id="header-placeholder"></header>
+
+    <!-- JUDUL UTAMA HALAMAN BERANDA -->
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h1 class="main-title">AMSO 2026</h1>
+        <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
     </div>
 
-    <!-- STRUKTUR HEADER DISAMAKAN PERSIS DENGAN HALAMAN TIMELINE -->
-    <div class="container" style="padding-bottom: 0;">
-        <header id="header-placeholder"></header>
-    </div>
-
-    <div class="container">
-        <!-- JUDUL UTAMA HALAMAN BERANDA -->
-        <div style="text-align: center; margin-bottom: 25px;">
-            <h1 class="main-title">AMSO 2026</h1>
-            <div class="sub-title">Angkasa Mathematic and Science Olympiad</div>
+    <main>
+        <div class="section-header">
+            <h2><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> SPOTLIGHT AMSO 2026</h2>
+            <div class="line"></div>
         </div>
 
-        <main>
-            <div class="section-header">
-                <h2><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> SPOTLIGHT AMSO 2026</h2>
-                <div class="line"></div>
+        <div class="spotlight-grid">
+            <div class="spotlight-card col-8">
+                <span class="card-tag tag-gold"><i class="fa-solid fa-bullhorn"></i> Pengumuman Utama</span>
+                <h3 class="card-title">Pelaksanaan AMSO 2026 Sudah Dimulai</h3>
+                <p class="card-desc">
+                    Ajang olimpiade antar Sekolah se-Indonesia kembali hadir. Persiapkan seluruh murid terbaik untuk mengikuti AMSO 2026
+                </p>
+                <a href="timeline.html" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <div class="spotlight-grid">
-                <div class="spotlight-card col-8">
-                    <span class="card-tag tag-gold"><i class="fa-solid fa-bullhorn"></i> Pengumuman Utama</span>
-                    <h3 class="card-title">Pelaksanaan AMSO 2026 Sudah Dimulai</h3>
-                    <p class="card-desc">
-                        Ajang olimpiade antar Sekolah se-Indonesia kembali hadir. Persiapkan seluruh murid terbaik untuk mengikuti AMSO 2026
-                    </p>
-                    <a href="timeline.html" class="btn-action">Lihat Jadwal Lengkap <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="spotlight-card col-4">
-                    <span class="card-tag tag-blue"><i class="fa-solid fa-chart-simple"></i> Target Jangkauan</span>
-                    <h3 class="card-title">Skala Nasional</h3>
-                    <div class="stat-grid">
-                        <div class="stat-item">
-                            <h4>40+</h4>
-                            <p>Cabang Yasarini</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>7K+</h4>
-                            <p>Murid Angkasa dan Undangan</p>
-                        </div>
+            <div class="spotlight-card col-4">
+                <span class="card-tag tag-blue"><i class="fa-solid fa-chart-simple"></i> Target Jangkauan</span>
+                <h3 class="card-title">Skala Nasional</h3>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <h4>40+</h4>
+                        <p>Cabang Yasarini</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>7K+</h4>
+                        <p>Murid Angkasa dan Undangan</p>
                     </div>
                 </div>
-
-                <div class="spotlight-card col-6">
-                    <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
-                    <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
-                    <p class="card-desc">
-                        Unduh buku panduan pelaksanaan, kisi-kisi materi untuk semua jenjang perlombaan
-                    </p>
-                    <a href="bukupanduan.html" class="btn-action">Buka & Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="spotlight-card col-6">
-                    <span class="card-tag tag-gold"><i class="fa-solid fa-trophy"></i> Babak Seleksi</span>
-                    <h3 class="card-title">Babak Seleksi AMSO 2026</h3>
-                    <p class="card-desc" style="margin-bottom: 0;">
-                        Pelaksanaan Babak Seleksi berlangsung pada tanggal <strong>8 – 11 September 2026</strong> secara serentak di masing-masing sekolah jajaran
-                    </p>
-                </div>
             </div>
 
-            <div class="section-header" style="margin-top: 50px;">
-                <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
-                <div class="line"></div>
+            <div class="spotlight-card col-6">
+                <span class="card-tag tag-purple"><i class="fa-solid fa-book"></i> Juknis Resmi</span>
+                <h3 class="card-title">Buku Panduan & Kisi-Kisi AMSO 2026</h3>
+                <p class="card-desc">
+                    Unduh buku panduan pelaksanaan, kisi-kisi materi untuk semua jenjang perlombaan
+                </p>
+                <a href="bukupanduan.html" class="btn-action">Buka & Unduh Buku Panduan PDF <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <div class="slider-wrapper">
-                <button class="slider-btn prev" onclick="slideGallery(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                
-                <div class="gallery-slider" id="gallerySlider">
-                    <div class="gallery-skeleton"></div>
-                    <div class="gallery-skeleton"></div>
-                    <div class="gallery-skeleton"></div>
-                    <div class="gallery-skeleton"></div>
-                </div>
-
-                <button class="slider-btn next" onclick="slideGallery(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="spotlight-card col-6">
+                <span class="card-tag tag-gold"><i class="fa-solid fa-trophy"></i> Babak Seleksi</span>
+                <h3 class="card-title">Babak Seleksi AMSO 2026</h3>
+                <p class="card-desc" style="margin-bottom: 0;">
+                    Pelaksanaan Babak Seleksi berlangsung pada tanggal <strong>8 – 11 September 2026</strong> secara serentak di masing-masing sekolah jajaran
+                </p>
             </div>
-        </main>
-    </div>
-
-    <div id="imgModal" class="img-modal" onclick="closeImgModal(event)">
-        <div class="img-modal-content">
-            <button class="img-modal-close" onclick="closeImgModalBtn()">&times;</button>
-            <img id="modalImgTag" src="" alt="Preview Dokumentasi">
         </div>
-    </div>
 
-    <!-- FOOTER OTOMATIS -->
-    <footer id="footer-placeholder"></footer>
+        <div class="section-header" style="margin-top: 50px;">
+            <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
+            <div class="line"></div>
+        </div>
 
-    <!-- PANGGIL SCRIPT GLOBAL -->
-    <script src="global-audio.js"></script>
-    <script>
-        const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
-
-        let autoSlideTimer = null;
-        let isUserHovered = false;
-
-        async function loadDriveGallery() {
-            const gallerySlider = document.getElementById("gallerySlider");
-
-            try {
-                const response = await fetch(SCRIPT_GALLERY_URL);
-                const photos = await response.json();
-
-                if (!photos || photos.length === 0) {
-                    gallerySlider.innerHTML = `
-                        <div style="width: 100%; text-align: center; color: var(--text-muted); padding: 30px;">
-                            <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                            Belum ada foto dokumentasi di folder Google Drive.
-                        </div>`;
-                    return;
-                }
-
-                gallerySlider.innerHTML = "";
-
-                photos.forEach(photo => {
-                    const item = document.createElement("div");
-                    item.className = "gallery-item";
-                    item.onclick = () => openImgModal(photo.url);
-
-                    item.innerHTML = `
-                        <img src="${photo.url}" alt="${photo.name}" loading="lazy">
-                        <div class="gallery-overlay">
-                            <span><i class="fa-solid fa-expand"></i> ${photo.name}</span>
-                        </div>
-                    `;
-                    gallerySlider.appendChild(item);
-                });
-
-                setupAutoSlide();
-
-            } catch (err) {
-                gallerySlider.innerHTML = `
-                    <div style="width: 100%; text-align: center; color: #f87171; padding: 30px;">
-                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                        Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan benar.
-                    </div>`;
-            }
-        }
-
-        function setupAutoSlide() {
-            const slider = document.getElementById("gallerySlider");
-            if (!slider) return;
-
-            slider.addEventListener("mouseenter", () => { isUserHovered = true; });
-            slider.addEventListener("mouseleave", () => { isUserHovered = false; });
+        <div class="slider-wrapper">
+            <button class="slider-btn prev" onclick="slideGallery(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             
-            slider.addEventListener("touchstart", () => { isUserHovered = true; }, { passive: true });
-            slider.addEventListener("touchend", () => { 
-                setTimeout(() => { isUserHovered = false; }, 2000); 
-            }, { passive: true });
+            <div class="gallery-slider" id="gallerySlider">
+                <div class="gallery-skeleton"></div>
+                <div class="gallery-skeleton"></div>
+                <div class="gallery-skeleton"></div>
+                <div class="gallery-skeleton"></div>
+            </div>
 
-            if (autoSlideTimer) clearInterval(autoSlideTimer);
+            <button class="slider-btn next" onclick="slideGallery(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </main>
+</div>
 
-            autoSlideTimer = setInterval(() => {
-                if (!isUserHovered) {
-                    const maxScroll = slider.scrollWidth - slider.clientWidth;
-                    if (slider.scrollLeft >= maxScroll - 15) {
-                        slider.scrollTo({ left: 0, behavior: "smooth" });
-                    } else {
-                        slider.scrollBy({ left: 300, behavior: "smooth" });
-                    }
-                }
-            }, 3000);
-        }
+<!-- FOOTER OTOMATIS -->
+<footer id="footer-placeholder"></footer>
 
-        function slideGallery(direction) {
-            const slider = document.getElementById("gallerySlider");
-            const scrollDistance = 300;
-            slider.scrollBy({
-                left: direction * scrollDistance,
-                behavior: "smooth"
-            });
-        }
+<!-- MODAL GAMBAR -->
+<div id="imgModal" class="img-modal" onclick="closeImgModal(event)">
+    <div class="img-modal-content">
+        <button class="img-modal-close" onclick="closeImgModalBtn()">&times;</button>
+        <img id="modalImgTag" src="" alt="Preview Dokumentasi">
+    </div>
+</div>
 
-        function openImgModal(imgUrl) {
-            isUserHovered = true;
-            document.getElementById("modalImgTag").src = imgUrl;
-            document.getElementById("imgModal").classList.add("active");
-        }
+<!-- PANGGIL SCRIPT GLOBAL -->
+<script src="global-audio.js"></script>
+<script>
+    const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
 
-        function closeImgModal(e) {
-            if (e.target.id === "imgModal") {
-                document.getElementById("imgModal").classList.remove("active");
-                isUserHovered = false;
+    let autoSlideTimer = null;
+    let isUserHovered = false;
+
+    async function loadDriveGallery() {
+        const gallerySlider = document.getElementById("gallerySlider");
+
+        try {
+            const response = await fetch(SCRIPT_GALLERY_URL);
+            const photos = await response.json();
+
+            if (!photos || photos.length === 0) {
+                gallerySlider.innerHTML = `
+                    <div style="width: 100%; text-align: center; color: var(--text-muted); padding: 30px;">
+                        <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                        Belum ada foto dokumentasi di folder Google Drive.
+                    </div>`;
+                return;
             }
-        }
 
-        function closeImgModalBtn() {
-            document.getElementById("imgModal").classList.remove("active");
+            gallerySlider.innerHTML = "";
+
+            photos.forEach(photo => {
+                const item = document.createElement("div");
+                item.className = "gallery-item";
+                item.onclick = () => openImgModal(photo.url);
+
+                item.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.name}" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span><i class="fa-solid fa-expand"></i> ${photo.name}</span>
+                    </div>
+                `;
+                gallerySlider.appendChild(item);
+            });
+
+            setupAutoSlide();
+
+        } catch (err) {
+            gallerySlider.innerHTML = `
+                <div style="width: 100%; text-align: center; color: #f87171; padding: 30px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                    Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan benar.
+                </div>`;
+        }
+    }
+
+    function setupAutoSlide() {
+        const slider = document.getElementById("gallerySlider");
+        if (!slider) return;
+
+        slider.addEventListener("mouseenter", () => { isUserHovered = true; });
+        slider.addEventListener("mouseleave", () => { isUserHovered = false; });
+        
+        slider.addEventListener("touchstart", () => { isUserHovered = true; }, { passive: true });
+        slider.addEventListener("touchend", () => { 
+            setTimeout(() => { isUserHovered = false; }, 2000); 
+        }, { passive: true });
+
+        if (autoSlideTimer) clearInterval(autoSlideTimer);
+
+        autoSlideTimer = setInterval(() => {
+            if (!isUserHovered) {
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+                if (slider.scrollLeft >= maxScroll - 15) {
+                    slider.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    slider.scrollBy({ left: 300, behavior: "smooth" });
+                }
+            }
+        }, 3000);
+    }
+
+    function slideGallery(direction) {
+        const slider = document.getElementById("gallerySlider");
+        const scrollDistance = 300;
+        slider.scrollBy({
+            left: direction * scrollDistance,
+            behavior: "smooth"
+        });
+    }
+
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImgTag");
+
+    function openImgModal(url) {
+        isUserHovered = true;
+        modalImg.src = url;
+        modal.classList.add("active");
+    }
+
+    function closeImgModal(e) {
+        if (e.target === modal) {
+            modal.classList.remove("active");
             isUserHovered = false;
         }
+    }
 
-        document.addEventListener("DOMContentLoaded", loadDriveGallery);
-    </script>
+    function closeImgModalBtn() {
+        modal.classList.remove("active");
+        isUserHovered = false;
+    }
+
+    document.addEventListener("DOMContentLoaded", loadDriveGallery);
+</script>
 </body>
 </html>
