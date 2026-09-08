@@ -198,7 +198,7 @@
         }
 
         .container {
-            max-width: 1150px;
+            max-width: 1250px;
             margin: auto;
             padding: 0 20px 80px;
             position: relative;
@@ -418,11 +418,11 @@
             color: var(--gold);
         }
 
-        /* SUMMARY CARDS GRID */
+        /* SUMMARY CARDS GRID DI 1 BARIS (4 KOLOM) UNTUK PC */
         .summary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr); /* Dipaksa 4 kolom sejajar di PC */
+            gap: 15px;
             margin-top: 10px;
         }
 
@@ -430,7 +430,7 @@
             background: rgba(15, 21, 42, 0.8);
             border: 1px solid var(--card-border);
             border-radius: 15px;
-            padding: 20px;
+            padding: 18px 12px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -447,31 +447,46 @@
         }
 
         .summary-card h4 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .summary-card .number-lg {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .sub-breakdown {
             display: flex;
             justify-content: space-around;
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 8px;
+            padding-top: 6px;
+            white-space: nowrap;
         }
 
         .sub-breakdown span strong {
             color: var(--neon-blue);
+        }
+
+        /* Responsif untuk Tablet & HP */
+        @media (max-width: 1024px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 kolom di tablet */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .summary-grid {
+                grid-template-columns: 1fr; /* 1 kolom penuh ke bawah di HP */
+            }
         }
 
         /* Spreadsheet Action */
@@ -528,7 +543,7 @@
             gap: 25px;
             padding-bottom: 25px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            max-width: 1150px;
+            max-width: 1250px;
             margin: 0 auto;
         }
 
@@ -621,14 +636,14 @@
         </div>
 
         <main>
-            <!-- REKAPITULASI SUMMARY CARDS -->
+            <!-- REKAPITULASI SUMMARY CARDS (SEJAJAR 1 BARIS DI PC) -->
             <div class="section-box">
                 <div class="section-title"><i class="fa-solid fa-chart-pie"></i> REKAPITULASI</div>
                 <div class="summary-grid">
-                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7,350</div><div class="sub-breakdown"><span>SD/MI: <strong>1,808</strong></span><span>SMP/MTs: <strong>2,441</strong></span><span>SMA: <strong>3,101</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">3,094</div><div class="sub-breakdown"><span>SD/MI: <strong>543</strong></span><span>SMP/MTs: <strong>732</strong></span><span>SMA: <strong>1,555</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Semifinal</h4><div class="number-lg">220</div><div class="sub-breakdown"><span>SD/MI: <strong>60</strong></span><span>SMP/MTs: <strong>60</strong></span><span>SMA: <strong>100</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD/MI: <strong>30</strong></span><span>SMP/MTs: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7,350</div><div class="sub-breakdown"><span>SD: <strong>1.8K</strong></span><span>SMP: <strong>2.4K</strong></span><span>SMA: <strong>3.1K</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">3,094</div><div class="sub-breakdown"><span>SD: <strong>543</strong></span><span>SMP: <strong>732</strong></span><span>SMA: <strong>1.5K</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Semifinal</h4><div class="number-lg">220</div><div class="sub-breakdown"><span>SD: <strong>60</strong></span><span>SMP: <strong>60</strong></span><span>SMA: <strong>100</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD: <strong>30</strong></span><span>SMP: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
                 </div>
             </div>
 
