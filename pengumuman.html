@@ -200,15 +200,16 @@
             100% { transform: translateX(110vw) translateY(-20px) rotate(360deg); }
         }
 
+        /* ================= CONTAINER & HEADER ================= */
         .container {
             max-width: 1150px;
             margin: auto;
             padding: 0 20px 80px;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
-        /* HEADER & LOGO FIX */
         header {
             padding: 30px 0 25px;
             text-align: center;
@@ -262,6 +263,7 @@
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 30px;
+            max-width: 100%;
         }
 
         nav a {
@@ -337,19 +339,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 100px 0 100px;
+            padding: 60px 0 100px;
         }
 
         .medal-container {
             display: flex;
             align-items: center;
             justify-content: center;
+            max-width: 100%;
         }
 
         .big-medal {
-            font-size: clamp(12rem, 30vw, 20rem);
+            font-size: clamp(10rem, 25vw, 18rem);
             color: var(--gold);
-            filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.7));
+            filter: drop-shadow(0 0 50px rgba(34, 211, 238, 0.7));
             animation: medalFloat 3.5s infinite alternate ease-in-out;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -357,17 +360,17 @@
 
         .big-medal:hover {
             transform: scale(1.08);
-            filter: drop-shadow(0 0 75px rgba(255, 215, 0, 0.95));
+            filter: drop-shadow(0 0 75px rgba(34, 211, 238, 0.95));
         }
 
         @keyframes medalFloat {
             0% {
                 transform: translateY(0) scale(1);
-                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.5));
+                filter: drop-shadow(0 0 40px rgba(34, 211, 238, 0.5));
             }
             100% {
                 transform: translateY(-20px) scale(1.04);
-                filter: drop-shadow(0 0 70px rgba(255, 215, 0, 0.9));
+                filter: drop-shadow(0 0 70px rgba(34, 211, 238, 0.9));
             }
         }
 
@@ -377,7 +380,68 @@
             border-top: 1px solid var(--border);
             padding: 35px 0 20px;
             margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
             text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
         }
     </style>
 </head>
