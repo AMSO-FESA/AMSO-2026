@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMSO 2026</title>
+
+    <!-- FAVICON (LOGO TAB BROWSER) -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <!-- CSS / Fonts lainnya ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Peserta AMSO 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #070913;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --gold: #ffd700;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            opacity: 0.45;
+            animation: twinkle 4s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .galaxy-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.18;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.15); }
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--neon-blue);
+            opacity: 0.55;
+            user-select: none;
+            filter: drop-shadow(0 0 12px currentColor);
+        }
+
+        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
+        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
+        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
+        
+        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
+        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
+        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+
+        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+
+        @keyframes flyRocket {
+            0% { transform: translate(0, 0) rotate(45deg); }
+            50% { transform: translate(-50px, 70px) rotate(40deg); }
+            100% { transform: translate(0, 0) rotate(45deg); }
+        }
+
+        @keyframes floatItem1 {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-45px) rotate(15deg); }
+        }
+
+        @keyframes floatItem2 {
+            0% { transform: translateY(0) rotate(10deg); }
+            100% { transform: translateY(35px) rotate(-15deg); }
+        }
+
+        @keyframes rotateAtom {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes flySatellite {
+            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
+        }
+        /* ====================================================================== */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            padding: 30px 0 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+
+        /* Navigation Menu */
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+            padding-bottom: 15px; 
+            margin-bottom: -15px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CONTENT / TABLES ================= */
+        main {
+            padding: 20px 0 60px;
+        }
+
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        th {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .text-left {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .total-row {
+            background: rgba(157, 78, 221, 0.15);
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        /* SUMMARY CARDS GRID */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .summary-card {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--gold));
+        }
+
+        .summary-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-card .number-lg {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .sub-breakdown {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 8px;
+        }
+
+        .sub-breakdown span strong {
+            color: var(--neon-blue);
+        }
+
+        /* Spreadsheet Action */
+        .spreadsheet-action-box {
+            text-align: center;
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.08), rgba(157, 78, 221, 0.08));
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .spreadsheet-action-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-spreadsheet {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 35px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-spreadsheet:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.7);
+            filter: brightness(1.1);
+        }
+
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--card-border);
+            padding: 40px 0 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        footer strong { font-size: 1.1rem; }
+        footer p { margin-top: 7px; font-size: 0.85rem; opacity: .55; }
+    </style>
+</head>
+<body>
+
+    <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+    <div class="space-bg">
+        <div class="stars"></div>
+        <div class="galaxy-blob blob-1"></div>
+        <div class="galaxy-blob blob-2"></div>
+        <div class="galaxy-blob blob-3"></div>
+
+        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+
+        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+
+        <div class="floating-icon el-math1">&pi;</div>
+        <div class="floating-icon el-math2">&sum;</div>
+        <div class="floating-icon el-math3">&radic;</div>
+    </div>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo-group">
+                <div class="logo-item"><img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png" alt="Logo Yasarini"></div>
+                <div class="logo-item"><img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/fesa.png" alt="Logo FESA"></div>
+                <div class="logo-item"><img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png" alt="Logo AMSO"></div>
+            </div>
+
+            <!-- NAVBAR DENGAN LINK PENGUMUMAN AKTIF -->
+            <nav>
+                <a href="https://amso-fesa.github.io/AMSO-2026/"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="https://amso-fesa.github.io/Timeline-AMSO-2026/"><i class="fa-solid fa-calendar-days"></i> Timeline</a>
+                <a href="https://amso-fesa.github.io/Kategori-AMSO-2026/"><i class="fa-solid fa-layer-group"></i> Kategori</a>
+                <a href="https://amso-fesa.github.io/BukuPanduan-AMSO-2026/"><i class="fa-solid fa-clipboard-check"></i> Buku Panduan</a>
+                <div class="dropdown">
+                    <a href="#" class="active"><i class="fa-solid fa-folder-open"></i> Data <i class="fa-solid fa-angle-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://amso-fesa.github.io/Data-Peserta-AMSO-2026/" class="active"><i class="fa-solid fa-users" style="margin-right: 6px;"></i> Data Peserta</a>
+                        <a href="https://amso-fesa.github.io/Administrasi-AMSO-2026/"><i class="fa-solid fa-envelope-open-text" style="margin-right: 6px;"></i> Administrasi</a>
+                    </div>
+                </div>
+                <a href="https://amso-fesa.github.io/Pengumuman-AMSO-2026/"><i class="fa-solid fa-trophy"></i> Pengumuman</a>
+            </nav>
+
+            <h1 class="main-title">REKAP PESERTA AMSO 2026</h1>
+            <div class="sub-title">Data Statistik Peserta</div>
+        </header>
+
+        <main>
+            <!-- REKAPITULASI SUMMARY CARDS -->
+            <div class="section-box">
+                <div class="section-title"><i class="fa-solid fa-chart-pie"></i> REKAPITULASI</div>
+                <div class="summary-grid">
+                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7,350</div><div class="sub-breakdown"><span>SD/MI: <strong>1,808</strong></span><span>SMP/MTs: <strong>2,441</strong></span><span>SMA: <strong>3,101</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">3,094</div><div class="sub-breakdown"><span>SD/MI: <strong>543</strong></span><span>SMP/MTs: <strong>732</strong></span><span>SMA: <strong>1,555</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Semifinal</h4><div class="number-lg">220</div><div class="sub-breakdown"><span>SD/MI: <strong>60</strong></span><span>SMP/MTs: <strong>60</strong></span><span>SMA: <strong>100</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD/MI: <strong>30</strong></span><span>SMP/MTs: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
+                </div>
+            </div>
+
+            <!-- TABEL 1: SEKOLAH ANGKASA -->
+            <div class="section-box">
+                <div class="section-title"><i class="fa-solid fa-school"></i> RINCIAN DATA SEKOLAH ANGKASA</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">NO</th>
+                                <th rowspan="2">JENJANG</th>
+                                <th rowspan="2">SELEKSI</th>
+                                <th colspan="7">PENYISIHAN</th>
+                                <th rowspan="2">TOTAL PENYISIHAN</th>
+                            </tr>
+                            <tr>
+                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td class="text-left">SD/MI</td><td>1808</td><td>181</td><td>181</td><td>181</td><td>-</td><td>-</td><td>-</td><td>-</td><td>543</td></tr>
+                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>2441</td><td>244</td><td>244</td><td>244</td><td>-</td><td>-</td><td>-</td><td>-</td><td>732</td></tr>
+                            <tr><td>3</td><td class="text-left">SMA</td><td>3101</td><td>311</td><td>-</td><td>-</td><td>311</td><td>311</td><td>311</td><td>311</td><td>1555</td></tr>
+                            <tr class="total-row"><td colspan="2">TOTAL</td><td>7350</td><td>736</td><td>425</td><td>425</td><td>311</td><td>311</td><td>311</td><td>311</td><td>3094</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL 2: SEKOLAH UNDANGAN -->
+            <div class="section-box">
+                <div class="section-title"><i class="fa-solid fa-file-contract"></i> RINCIAN DATA SEKOLAH UNDANGAN</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">NO</th>
+                                <th rowspan="2">JENJANG</th>
+                                <th rowspan="2">SELEKSI</th>
+                                <th colspan="7">PENYISIHAN</th>
+                                <th rowspan="2">TOTAL PENYISIHAN</th>
+                            </tr>
+                            <tr>
+                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td class="text-left">SD/MI</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
+                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
+                            <tr><td>3</td><td class="text-left">SMA</td><td>-</td><td>24</td><td>-</td><td>-</td><td>24</td><td>24</td><td>24</td><td>24</td><td>120</td></tr>
+                            <tr class="total-row"><td colspan="2">TOTAL</td><td>-</td><td>72</td><td>48</td><td>48</td><td>24</td><td>24</td><td>24</td><td>24</td><td>264</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SPREADSHEET BUTTON -->
+            <div class="spreadsheet-action-box">
+                <p>DATA PESERTA SECARA RINCI</p>
+                <a href="https://docs.google.com/spreadsheets/d/1-bKEgl7N6kTovBq2K6OYXy_wQepseYbW/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="btn-spreadsheet">
+                    <i class="fa-solid fa-file-excel"></i> KLIK DISINI <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <strong>AMSO 2026</strong>
+            <p>&copy; 2026 Angkasa Mathematic and Science Olympiad. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
