@@ -204,6 +204,7 @@
             padding: 0 20px 80px;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
         /* HEADER */
@@ -260,6 +261,7 @@
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 30px;
+            max-width: 100%;
         }
 
         nav a {
@@ -331,9 +333,9 @@
 
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 7vw, 5rem);
+            font-size: clamp(2.2rem, 6vw, 5rem);
             font-weight: 900;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -343,12 +345,14 @@
         }
 
         .sub-title {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: clamp(0.85rem, 2vw, 1.3rem);
             color: var(--muted);
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 35px;
+            white-space: normal; /* PERBAIKAN UTAMA AGAR AMAN DI HP */
+            padding: 0 10px;
         }
 
         main {
@@ -364,7 +368,7 @@
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #fff;
             letter-spacing: 1px;
         }
@@ -949,7 +953,6 @@
         }
     }
 
-    // Mendukung penutupan modal via tombol "X"
     function closeImgModalBtn() {
         modal.classList.remove("active");
         isUserHovered = false;
