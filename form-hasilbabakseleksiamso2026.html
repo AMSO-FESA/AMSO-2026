@@ -27,7 +27,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-y: scroll; }
+        html { scroll-behavior: smooth; overflow-y: scroll; height: 100%; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -35,7 +35,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
-            min-height: 100vh;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
             background-image: 
@@ -233,10 +233,11 @@
             word-break: break-word;
         }
 
-        /* FORM CONTAINER - DIBERI JARAK SPASI BAWAH YANG LEGA */
+        /* ─── PENGATURAN UTAMA AGAR FOOTER TIDAK PERNAH MENEMPEL ─── */
         main { 
             flex: 1 0 auto; 
             padding: 10px 0 120px; 
+            width: 100%;
         }
         
         .form-wrapper {
@@ -707,13 +708,14 @@
             transform: translateY(-2px);
         }
 
-        /* FOOTER MODULAR MASTER */
+        /* ─── KUNCI POSISI FOOTER AGAR TIDAK MENEMPEL ─── */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
             padding: 35px 0 20px;
             flex-shrink: 0;
             width: 100%;
+            margin-top: auto;
         }
 
         .footer-content {
