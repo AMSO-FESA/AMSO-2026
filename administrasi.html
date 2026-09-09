@@ -219,10 +219,11 @@
             letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 25px;
         }
 
-        /* PERBAIKAN UTAMA JARAK SPASI BAWAH FOOTER AGAR TIDAK MENEMPEL */
+        /* JARAK SPASI BAWAH YANG DILEGAKAN DISAMAKAN DENGAN HALAMAN LAIN (MIN-HEIGHT & PADDING DIPERLUAS) */
         main { 
             flex: 1 0 auto; 
-            padding: 20px 0 80px; 
+            padding: 20px 0 100px; 
+            min-height: 550px;
         }
         
         .admin-layout {
@@ -230,7 +231,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             align-items: start;
-            margin-bottom: 40px; 
         }
 
         .column-left {
