@@ -225,7 +225,7 @@
 
         .main-title {
             font-family: 'Orbitron', sans-serif; 
-            font-size: clamp(1.8rem, 4.5vw, 3.5rem); /* Diperbaiki agar tidak terpotong di HP */
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
             font-weight: 900; 
             letter-spacing: 2px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
@@ -235,8 +235,11 @@
             word-break: break-word;
         }
 
-        /* FORM CONTAINER */
-        main { flex: 1; padding: 10px 0 60px; }
+        /* FORM CONTAINER - DIBERI JARAK SPASI BAWAH YANG AMAN DAN LEGA */
+        main { 
+            flex: 1 0 auto; 
+            padding: 10px 0 120px; 
+        }
         
         .form-wrapper {
             max-width: 780px;
@@ -310,7 +313,7 @@
             font-size: 0.92rem;
             font-weight: 700;
             color: #f1f5f9;
-            display: inline-flex; /* Diubah agar icon menyatu rapat dengan teks */
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -628,7 +631,7 @@
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
             padding: 35px 0 20px;
-            margin-top: auto;
+            flex-shrink: 0;
             width: 100%;
         }
 
