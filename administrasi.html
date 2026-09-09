@@ -482,7 +482,7 @@
         }
 
         .nested-accordion.open .nested-content {
-            max-height: 800px;
+            max-height: 650px;
             padding: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -521,73 +521,65 @@
 
         .mapel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Kembali ke format 3 kolom proporsional */
             gap: 8px;
             padding: 10px;
         }
 
-        .mapel-item-box {
+        .mapel-btn-wrap {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             background: rgba(15, 21, 42, 0.9);
             border: 1px solid rgba(0, 210, 255, 0.2);
             border-radius: 8px;
-            padding: 8px 10px;
-            color: #fff;
-            font-size: 0.8rem;
-            font-weight: 700;
+            overflow: hidden;
             transition: all 0.25s ease;
         }
 
-        .mapel-item-box:hover {
+        .mapel-btn-wrap:hover {
             border-color: var(--neon-blue);
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
         }
 
-        .mapel-name {
-            letter-spacing: 0.5px;
-        }
-
-        .mapel-actions {
+        .mapel-link {
+            flex: 1;
+            padding: 9px 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
             display: flex;
-            gap: 6px;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s ease;
         }
 
-        .action-btn {
-            display: inline-flex;
+        .mapel-link:hover {
+            background: rgba(0, 210, 255, 0.12);
+            color: var(--neon-blue);
+        }
+
+        .mapel-link i {
+            font-size: 0.75rem;
+            color: var(--neon-blue);
+        }
+
+        .key-btn {
+            padding: 9px 11px;
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--gold);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            text-decoration: none;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            text-decoration: none;
             transition: all 0.2s ease;
             font-size: 0.75rem;
         }
 
-        .btn-soal {
-            background: rgba(0, 210, 255, 0.15);
-            color: var(--neon-blue);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-        }
-
-        .btn-soal:hover {
-            background: var(--neon-blue);
-            color: #070913;
-            transform: translateY(-2px);
-        }
-
-        .btn-kunci {
-            background: rgba(255, 215, 0, 0.15);
-            color: var(--gold);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .btn-kunci:hover {
+        .key-btn:hover {
             background: var(--gold);
             color: #070913;
-            transform: translateY(-2px);
         }
 
         /* CUSTOM GLOW MODAL POPUP */
@@ -768,7 +760,7 @@
                 padding: 8px 14px !important;
             }
             .mapel-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -887,28 +879,31 @@
                                             <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SD / MI</div>
                                             <div class="mapel-grid">
                                                 <!-- MTK -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">MTK</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1bM7X3gCwUqqC6ai1fihjemDjAttiaviq/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1bM7X3gCwUqqC6ai1fihjemDjAttiaviq/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- IPA -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">IPA</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/11i_5Wsx5gvawZD7r2WFhk2SkVEt-ksO4/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
+                                                        <span>IPA</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/11i_5Wsx5gvawZD7r2WFhk2SkVEt-ksO4/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- IPS -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">IPS</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1e_rvkP4f4KxwLNJml0nCZt0UEYepkK8L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
+                                                        <span>IPS</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1e_rvkP4f4KxwLNJml0nCZt0UEYepkK8L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -918,28 +913,31 @@
                                             <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMP / MTs</div>
                                             <div class="mapel-grid">
                                                 <!-- MTK -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">MTK</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1hiFXFQjJk0HPB6j2AL0n78FOEcnnffBc/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1hiFXFQjJk0HPB6j2AL0n78FOEcnnffBc/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- IPA -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">IPA</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/10g-z9XlF4tx8DwKcmXMnJ_es0MLL7w9L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
+                                                        <span>IPA</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/10g-z9XlF4tx8DwKcmXMnJ_es0MLL7w9L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- IPS -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">IPS</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1p7-42uqcPOlL-aArM6p8QxRtTn_TnEjY/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
+                                                        <span>IPS</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1p7-42uqcPOlL-aArM6p8QxRtTn_TnEjY/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -949,44 +947,49 @@
                                             <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMA</div>
                                             <div class="mapel-grid">
                                                 <!-- MTK -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">MTK</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1FIxz_qG6jppcH9AA0QgPhR3gHBmltMj5/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1FIxz_qG6jppcH9AA0QgPhR3gHBmltMj5/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- FIS -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">FIS</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1Gym6lU4TypE7zKIHBsTQokcOpR1dNgPJ/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal FIS">
+                                                        <span>FIS</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1Gym6lU4TypE7zKIHBsTQokcOpR1dNgPJ/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban FIS">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- EKO -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">EKO</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1PD2NCrBEPwsfUJXUxYYNIZcltsRwKFBH/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal EKO">
+                                                        <span>EKO</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1PD2NCrBEPwsfUJXUxYYNIZcltsRwKFBH/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban EKO">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- GEO -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">GEO</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1WFc--G78_XulGOhimAC2g-dhhT2C9KWD/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal GEO">
+                                                        <span>GEO</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1WFc--G78_XulGOhimAC2g-dhhT2C9KWD/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban GEO">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                                 <!-- TIK -->
-                                                <div class="mapel-item-box">
-                                                    <span class="mapel-name">TIK</span>
-                                                    <div class="mapel-actions">
-                                                        <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-soal" title="Unduh Soal"><i class="fa-solid fa-download"></i></a>
-                                                        <a href="https://docs.google.com/document/d/1PbSO2TemxPT4WBBWJwOybwoir-_dGb2G/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="action-btn btn-kunci" title="Kunci Jawaban"><i class="fa-solid fa-key"></i></a>
-                                                    </div>
+                                                <div class="mapel-btn-wrap">
+                                                    <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal TIK">
+                                                        <span>TIK</span> <i class="fa-solid fa-download"></i>
+                                                    </a>
+                                                    <a href="https://docs.google.com/document/d/1PbSO2TemxPT4WBBWJwOybwoir-_dGb2G/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban TIK">
+                                                        <i class="fa-solid fa-key"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
