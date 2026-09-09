@@ -885,7 +885,7 @@
                 <i class="fa-solid fa-image"></i> Dokumentasi Tryout
             </button>
             <button class="doc-tab-btn" onclick="switchDocTab('seleksi', event)">
-                <i class="fa-solid fa-award"></i> Dokumentasi Babak Seleksi
+                <i class="fa-solid fa-image"></i> Dokumentasi Babak Seleksi
             </button>
         </div>
 
@@ -933,7 +933,7 @@
 <!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 <script>
-    // Endpoint Google Apps Script (Tryout & Babak Seleksi menggunakan 1 Web App dengan parameter ?type=seleksi)
+    // Endpoint Google Apps Script
     const SCRIPT_GALLERY_TRYOUT = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
     const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=seleksi"; 
 
@@ -950,7 +950,7 @@
                 gallerySlider.innerHTML = `
                     <div style="width: 100%; text-align: center; color: var(--muted); padding: 30px;">
                         <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block; color: var(--gold);"></i>
-                        Belum ada foto dokumentasi di folder ini (Kegiatan sedang berlangsung).
+                        Belum Ada Foto Dokumentasi (Kegiatan Sedang Berlangsung)
                     </div>`;
                 return;
             }
@@ -975,7 +975,7 @@
             gallerySlider.innerHTML = `
                 <div style="width: 100%; text-align: center; color: var(--muted); padding: 30px;">
                     <i class="fa-solid fa-hourglass-half" style="font-size: 2rem; margin-bottom: 10px; display: block; color: var(--gold);"></i>
-                    Dokumentasi akan segera diunggah setelah kegiatan berlangsung.
+                    Belum Ada Foto Dokumentasi (Kegiatan sedang berlangsung)
                 </div>`;
         }
     }
