@@ -219,13 +219,18 @@
             letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 25px;
         }
 
-        /* LAYOUT DUA KOLOM - DIBERI SPASI BAWAH AGAR TIDAK MENEMPEL FOOTER */
-        main { flex: 1; padding: 20px 0 80px; }
+        /* PERBAIKAN UTAMA JARAK SPASI BAWAH FOOTER AGAR TIDAK MENEMPEL */
+        main { 
+            flex: 1 0 auto; 
+            padding: 20px 0 80px; 
+        }
+        
         .admin-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             align-items: start;
+            margin-bottom: 40px; 
         }
 
         .column-left {
@@ -666,7 +671,7 @@
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
             padding: 35px 0 20px;
-            margin-top: auto;
+            flex-shrink: 0;
             width: 100%;
         }
 
