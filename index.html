@@ -482,7 +482,57 @@
             color: var(--muted);
         }
 
-        /* ================= HORIZONTAL SLIDER GALERI DRIVE ================= */
+        /* ================= TAB SELECTOR & GALERI FOTO ================= */
+        .doc-tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .doc-tab-btn {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doc-tab-btn:hover {
+            color: #fff;
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .doc-tab-btn.active {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            color: #fff;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .doc-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .doc-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .slider-wrapper {
             position: relative;
             width: 100%;
@@ -817,28 +867,54 @@
                 <span class="card-tag tag-gold"><i class="fa-solid fa-trophy"></i> Babak Seleksi</span>
                 <h3 class="card-title">Babak Seleksi AMSO 2026</h3>
                 <p class="card-desc" style="margin-bottom: 0;">
-                    Pelaksanaan Babak Seleksi berlangsung pada tanggal <strong>8 – 11 September 2026</strong> secara serentak di masing-masing sekolah jajaran<br><br>
-                    Khusus untuk sekolah yang terdampak erupsi ataupun karhutla, akan diberi perpanjangan waktu 1-2 hari (menyesuaikan situasi dan kondisi) atau pelaksanaannya dapat melalui e-learning (gform/moodle/etc) yang digunakan oleh sekolah
+                    Pelaksanaan Babak Seleksi berlangsung pada tanggal <strong>8 – 11 September 2026</strong> secara serentak di masing-masing sekolah jajaran.<br><br>
+                    Khusus untuk sekolah yang terdampak erupsi ataupun karhutla, akan diberi perpanjangan waktu 1-2 hari (menyesuaikan situasi dan kondisi) atau pelaksanaannya dapat melalui e-learning (gform/moodle/etc) yang digunakan oleh sekolah.
                 </p>
             </div>
         </div>
 
+        <!-- SECTION DOKUMENTASI DENGAN TAB SELECTOR -->
         <div class="section-header" style="margin-top: 50px;">
-            <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI TRYOUT AMSO 2026</h2>
+            <h2><i class="fa-solid fa-camera-retro" style="color: var(--neon-blue);"></i> DOKUMENTASI AMSO 2026</h2>
             <div class="line"></div>
         </div>
 
-        <div class="slider-wrapper">
-            <button class="slider-btn prev" onclick="slideGallery(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-            
-            <div class="gallery-slider" id="gallerySlider">
-                <div class="gallery-skeleton"></div>
-                <div class="gallery-skeleton"></div>
-                <div class="gallery-skeleton"></div>
-                <div class="gallery-skeleton"></div>
-            </div>
+        <!-- TOMBOL PILIHAN TAB -->
+        <div class="doc-tabs-container">
+            <button class="doc-tab-btn active" onclick="switchDocTab('tryout', event)">
+                <i class="fa-solid fa-image"></i> Dokumentasi Tryout
+            </button>
+            <button class="doc-tab-btn" onclick="switchDocTab('seleksi', event)">
+                <i class="fa-solid fa-award"></i> Dokumentasi Babak Seleksi
+            </button>
+        </div>
 
-            <button class="slider-btn next" onclick="slideGallery(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <!-- KONTEN TAB 1: TRYOUT -->
+        <div id="tabTryout" class="doc-tab-content active">
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery('gallerySliderTryout', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-slider" id="gallerySliderTryout">
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+                <button class="slider-btn next" onclick="slideGallery('gallerySliderTryout', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- KONTEN TAB 2: BABAK SELEKSI -->
+        <div id="tabSeleksi" class="doc-tab-content">
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery('gallerySliderSeleksi', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-slider" id="gallerySliderSeleksi">
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+                <button class="slider-btn next" onclick="slideGallery('gallerySliderSeleksi', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
         </div>
     </main>
 </div>
@@ -857,23 +933,26 @@
 <!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 <script>
-    const SCRIPT_GALLERY_URL = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
+    // Endpoint Google Apps Script Tryout
+    const SCRIPT_GALLERY_TRYOUT = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
+    
+    // Endpoint Google Apps Script khusus Folder Babak Seleksi (Ganti URL ini jika sudah deploy untuk folder Seleksi)
+    const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/1ElglixHRatpylly77BpOgnjOBIXnhG9B/exec"; 
 
-    let autoSlideTimer = null;
     let isUserHovered = false;
 
-    async function loadDriveGallery() {
-        const gallerySlider = document.getElementById("gallerySlider");
+    async function loadDriveGallery(scriptUrl, sliderId) {
+        const gallerySlider = document.getElementById(sliderId);
 
         try {
-            const response = await fetch(SCRIPT_GALLERY_URL);
+            const response = await fetch(scriptUrl);
             const photos = await response.json();
 
             if (!photos || photos.length === 0) {
                 gallerySlider.innerHTML = `
-                    <div style="width: 100%; text-align: center; color: var(--text-muted); padding: 30px;">
-                        <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                        Belum ada foto dokumentasi di folder Google Drive.
+                    <div style="width: 100%; text-align: center; color: var(--muted); padding: 30px;">
+                        <i class="fa-solid fa-images" style="font-size: 2rem; margin-bottom: 10px; display: block; color: var(--gold);"></i>
+                        Belum ada foto dokumentasi di folder ini (Kegiatan sedang berlangsung).
                     </div>`;
                 return;
             }
@@ -894,19 +973,17 @@
                 gallerySlider.appendChild(item);
             });
 
-            setupAutoSlide();
-
         } catch (err) {
             gallerySlider.innerHTML = `
-                <div style="width: 100%; text-align: center; color: #f87171; padding: 30px;">
-                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-                    Gagal memuat galeri foto. Pastikan Google Apps Script sudah di-deploy dengan benar.
+                <div style="width: 100%; text-align: center; color: var(--muted); padding: 30px;">
+                    <i class="fa-solid fa-hourglass-half" style="font-size: 2rem; margin-bottom: 10px; display: block; color: var(--gold);"></i>
+                    Dokumentasi akan segera diunggah setelah kegiatan berlangsung.
                 </div>`;
         }
     }
 
-    function setupAutoSlide() {
-        const slider = document.getElementById("gallerySlider");
+    function setupAutoSlide(sliderId) {
+        const slider = document.getElementById(sliderId);
         if (!slider) return;
 
         slider.addEventListener("mouseenter", () => { isUserHovered = true; });
@@ -917,9 +994,7 @@
             setTimeout(() => { isUserHovered = false; }, 2000); 
         }, { passive: true });
 
-        if (autoSlideTimer) clearInterval(autoSlideTimer);
-
-        autoSlideTimer = setInterval(() => {
+        setInterval(() => {
             if (!isUserHovered) {
                 const maxScroll = slider.scrollWidth - slider.clientWidth;
                 if (slider.scrollLeft >= maxScroll - 15) {
@@ -928,16 +1003,28 @@
                     slider.scrollBy({ left: 300, behavior: "smooth" });
                 }
             }
-        }, 3000);
+        }, 3500);
     }
 
-    function slideGallery(direction) {
-        const slider = document.getElementById("gallerySlider");
+    function slideGallery(sliderId, direction) {
+        const slider = document.getElementById(sliderId);
         const scrollDistance = 300;
         slider.scrollBy({
             left: direction * scrollDistance,
             behavior: "smooth"
         });
+    }
+
+    function switchDocTab(tabName, event) {
+        document.querySelectorAll(".doc-tab-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelectorAll(".doc-tab-content").forEach(content => content.classList.remove("active"));
+
+        event.currentTarget.classList.add("active");
+        if (tabName === 'tryout') {
+            document.getElementById("tabTryout").classList.add("active");
+        } else if (tabName === 'seleksi') {
+            document.getElementById("tabSeleksi").classList.add("active");
+        }
     }
 
     const modal = document.getElementById("imgModal");
@@ -961,7 +1048,12 @@
         isUserHovered = false;
     }
 
-    document.addEventListener("DOMContentLoaded", loadDriveGallery);
+    document.addEventListener("DOMContentLoaded", () => {
+        loadDriveGallery(SCRIPT_GALLERY_TRYOUT, "gallerySliderTryout");
+        loadDriveGallery(SCRIPT_GALLERY_SELEKSI, "gallerySliderSeleksi");
+        setupAutoSlide("gallerySliderTryout");
+        setupAutoSlide("gallerySliderSeleksi");
+    });
 </script>
 </body>
 </html>
