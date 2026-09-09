@@ -27,7 +27,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-y: scroll; height: 100%; }
+        html { scroll-behavior: smooth; overflow-y: scroll; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -35,7 +35,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
-            min-height: 100%;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             background-image: 
@@ -235,16 +235,16 @@
             word-break: break-word;
         }
 
-        /* ─── PENGATURAN UTAMA AGAR FOOTER TIDAK PERNAH MENEMPEL ─── */
+        /* ─── PENGATURAN SPASI BAWAH AGAR TIDAK MENEMPEL FOOTER ─── */
         main { 
             flex: 1 0 auto; 
-            padding: 10px 0 80px; 
+            padding: 10px 0 40px; 
             width: 100%;
         }
         
         .form-wrapper {
             max-width: 780px;
-            margin: 0 auto;
+            margin: 0 auto 100px auto; /* Diberikan jarak margin bawah 100px yang memaksa spasi aman */
             position: relative;
             z-index: 10;
         }
