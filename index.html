@@ -933,11 +933,9 @@
 <!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 <script>
-    // Endpoint Google Apps Script Tryout
-    const SCRIPT_GALLERY_TRYOUT = "https://script.google.com/macros/s/AKfycbwVLjDXQnRf49xqBXet0eCimO0tcNZ_kEDMl3WD-7h7nLqxzAE2-NRvcqPIadYN-QdpKg/exec";
-    
-    // Endpoint Google Apps Script khusus Folder Babak Seleksi (Ganti URL ini jika sudah deploy untuk folder Seleksi)
-    const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/1ElglixHRatpylly77BpOgnjOBIXnhG9B/exec"; 
+    // Endpoint Google Apps Script (Tryout & Babak Seleksi menggunakan 1 Web App dengan parameter ?type=seleksi)
+    const SCRIPT_GALLERY_TRYOUT = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
+    const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=seleksi"; 
 
     let isUserHovered = false;
 
