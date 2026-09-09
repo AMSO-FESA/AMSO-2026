@@ -233,16 +233,16 @@
             word-break: break-word;
         }
 
-        /* ─── PENGATURAN UTAMA AGAR FOOTER TIDAK PERNAH MENEMPEL ─── */
+        /* ─── PENGATURAN SPASI BAWAH AGAR TIDAK MENEMPEL FOOTER ─── */
         main { 
             flex: 1 0 auto; 
-            padding: 10px 0 120px; 
+            padding: 10px 0 40px; 
             width: 100%;
         }
         
         .form-wrapper {
             max-width: 780px;
-            margin: 0 auto;
+            margin: 0 auto 100px auto; /* Diberikan margin bawah 100px agar aman dari footer */
             position: relative;
             z-index: 10;
         }
@@ -1146,7 +1146,7 @@
                 clearInterval(progressInterval);
                 progressBox.style.display = "none";
                 statusAlert.className = "status-alert status-error";
-                statusAlert.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> <strong>Gagal:</strong> Terjadi kendala koneksi saat mengirim.`;
+                statusAlert.statusAlert = `<i class="fa-solid fa-circle-exclamation"></i> <strong>Gagal:</strong> Terjadi kendala koneksi saat mengirim.`;
                 statusAlert.style.display = "flex";
             } finally {
                 submitBtn.disabled = false;
