@@ -34,6 +34,7 @@
             --neon-purple: #9d4edd;
             --card-bg: rgba(20, 26, 50, 0.65);
             --card-border: rgba(0, 210, 255, 0.2);
+            --fesa-orange: #ff7f00; /* Warna Khas FESA */
         }
 
         html {
@@ -428,19 +429,19 @@
             box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
         }
 
-        /* ─── STYLING KETIKA TAHAPAN UTAMA SUDAH TERLEWAT ─── */
+        /* ─── STYLING KETIKA TAHAPAN UTAMA SUDAH TERLEWAT (ORANYE FESA) ─── */
         .phase.passed {
-            opacity: 0.45;
-            background: rgba(12, 16, 30, 0.3);
-            border-color: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 127, 0, 0.12);
+            border-color: rgba(255, 127, 0, 0.4);
+            box-shadow: 0 0 15px rgba(255, 127, 0, 0.1);
         }
 
         .phase.passed h3 {
-            color: #94a3b8 !important;
+            color: var(--fesa-orange) !important;
         }
 
         .phase.passed p {
-            color: #64748b !important;
+            color: #fdba74 !important;
         }
 
         .phase h3 {
@@ -534,28 +535,28 @@
             box-shadow: 0 0 10px var(--gold);
         }
 
-        /* ─── STYLING KETIKA AGENDA SUDAH TERLEWAT ─── */
+        /* ─── STYLING KETIKA AGENDA SUDAH TERLEWAT (ORANYE FESA) ─── */
         .card.passed {
-            opacity: 0.5;
-            background: rgba(12, 16, 30, 0.35);
-            border-color: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 127, 0, 0.08);
+            border-color: rgba(255, 127, 0, 0.35);
+            box-shadow: 0 0 20px rgba(255, 127, 0, 0.08);
         }
 
         .card.passed::before {
-            background: #475569 !important;
-            box-shadow: none !important;
+            background: var(--fesa-orange) !important;
+            box-shadow: 0 0 10px var(--fesa-orange) !important;
         }
 
         .card.passed .card-date {
-            color: #64748b !important;
+            color: var(--fesa-orange) !important;
         }
 
         .card.passed h3 {
-            color: #94a3b8 !important;
+            color: #fff !important;
         }
 
         .card.passed p {
-            color: #64748b !important;
+            color: #cbd5e1 !important;
         }
 
         .card-number {
@@ -741,7 +742,7 @@
             </div>
         </section>
 
-        <!-- PHASES (TAHAPAN UTAMA DENGAN AUTO-PASSED) -->
+        <!-- PHASES (TAHAPAN UTAMA) -->
         <section class="phase-section">
             <h2 class="section-title">TAHAPAN UTAMA</h2>
             <div class="phases">
@@ -822,17 +823,20 @@ function renderEvents(month = "all") {
     agenda.innerHTML = "";
     const filtered = month === "all" ? events : events.filter(event => event.month == month);
 
-    // Tanggal hari ini (10 September 2026)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // Batas akhir periode aktif: 16 Desember 2026. 
+    // Jika hari ini >= 17 Desember 2026, maka semua efek oranye di-reset kembali normal.
+    const resetDate = new Date("2026-12-17T00:00:00");
+    const isResetPeriod = today >= resetDate;
+
     filtered.forEach((event, index) => {
-        // Ambil tanggal akhir agenda untuk memastikan event benar-benar sudah lewat
         const endDate = new Date(event.end);
         endDate.setHours(0, 0, 0, 0);
         
-        // Agenda dianggap lewat jika hari ini > tanggal akhir agenda
-        const isPassed = today > endDate;
+        // Lewat jika hari ini > tanggal akhir DAN belum masuk masa reset 17 Desember
+        const isPassed = !isResetPeriod && (today > endDate);
 
         const card = document.createElement("div");
         card.className = "card" + (event.major ? " major" : "") + (isPassed ? " passed" : "");
@@ -848,19 +852,24 @@ function renderEvents(month = "all") {
 }
 renderEvents();
 
-// Auto-cek untuk Tahapan Utama (Phases)
+// Auto-cek untuk Tahapan Utama (Phases) dengan fitur Reset 17 Desember
 function updatePhasesState() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    const resetDate = new Date("2026-12-17T00:00:00");
+    const isResetPeriod = today >= resetDate;
+
     document.querySelectorAll(".phase").forEach(phase => {
         const endDateStr = phase.getAttribute("data-end");
-        if (endDateStr) {
+        if (endDateStr && !isResetPeriod) {
             const endDate = new Date(endDateStr);
             endDate.setHours(0, 0, 0, 0);
             if (today > endDate) {
                 phase.classList.add("passed");
             }
+        } else {
+            phase.classList.remove("passed");
         }
     });
 }
