@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Berita Acara Babak Semifinal AMSO 2026</title>
+
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #070913;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --gold: #ffd700;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-y: scroll; height: 100%; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* SPACE & FLOATING ICONS */
+        .space-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
+        }
+
+        .stars {
+            position: absolute; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
+            background-repeat: repeat; background-size: 250px 250px;
+            opacity: 0.45; animation: twinkle 4s infinite alternate;
+        }
+
+        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+
+        .galaxy-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: floatBlob 15s infinite alternate ease-in-out; }
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.15); }
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.55;
+            user-select: none;
+            filter: drop-shadow(0 0 12px currentColor);
+            z-index: 0;
+        }
+
+        .el-astronaut { top: 18%; left: 5%; font-size: 2.8rem; color: var(--gold); animation: floatItem1 9s infinite alternate ease-in-out; }
+        .el-atom { top: 38%; left: 6%; font-size: 2.4rem; color: var(--neon-blue); animation: rotateAtom 14s infinite linear; }
+        .el-dna { top: 58%; left: 4%; font-size: 2.2rem; color: #00f0ff; animation: floatItem2 11s infinite alternate ease-in-out; }
+        .el-math-pi { top: 78%; left: 7%; font-size: 2.3rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem1 8s infinite alternate ease-in-out; font-weight: 900; }
+
+        .el-rocket { top: 15%; right: 6%; font-size: 3rem; color: var(--neon-blue); animation: flyRocket 13s infinite ease-in-out; }
+        .el-microscope { top: 36%; right: 5%; font-size: 2.3rem; color: var(--neon-purple); animation: floatItem2 10s infinite alternate ease-in-out; }
+        .el-planet { top: 56%; right: 7%; font-size: 2.6rem; color: var(--gold); animation: rotatePlanet 18s infinite linear; }
+        .el-math-sigma { top: 76%; right: 6%; font-size: 2.4rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 900; }
+
+        .el-satellite { top: 6%; left: 35%; font-size: 2rem; color: var(--text-muted); animation: flySatellite 20s infinite linear; }
+        .el-flask { bottom: 8%; left: 18%; font-size: 2.1rem; color: #ff007f; animation: floatItem2 9s infinite alternate ease-in-out; }
+        .el-math-root { bottom: 10%; right: 20%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem1 7s infinite alternate ease-in-out; font-weight: 900; }
+
+        @keyframes flyRocket {
+            0% { transform: translate(0, 0) rotate(45deg); }
+            50% { transform: translate(-30px, 45px) rotate(40deg); }
+            100% { transform: translate(0, 0) rotate(45deg); }
+        }
+        @keyframes floatItem1 { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-40px) rotate(15deg); } }
+        @keyframes floatItem2 { 0% { transform: translateY(0) rotate(10deg); } 100% { transform: translateY(35px) rotate(-15deg); } }
+        @keyframes rotateAtom { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
+        @keyframes rotatePlanet { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes flySatellite { 0% { transform: translateX(-40vw) translateY(0) rotate(0deg); } 100% { transform: translateX(100vw) translateY(-25px) rotate(360deg); } }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
+
+        /* HEADER */
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            z-index: 100; padding: 8px; text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
+            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover, .dropdown-content a.active {
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
+        }
+
+        .dropdown:hover .dropdown-content { display: block; }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+            font-weight: 900; 
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3); 
+            margin-bottom: 30px;
+            word-break: break-word;
+        }
+
+        /* ─── PENGATURAN SPASI BAWAH AGAR TIDAK MENEMPEL FOOTER ─── */
+        main { 
+            flex: 1 0 auto; 
+            padding: 10px 0 40px; 
+            width: 100%;
+        }
+        
+        .form-wrapper {
+            max-width: 780px;
+            margin: 0 auto 100px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+            transform: translateX(-4px);
+        }
+
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--gold), var(--neon-blue));
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        /* UPLOAD FORM */
+        .upload-form { display: flex; flex-direction: column; gap: 24px; }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .select-centered {
+            text-align: center;
+            text-align-last: center;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .select-centered option {
+            text-align: center;
+            font-weight: 500;
+            background-color: #0b1023;
+            color: #fff;
+            padding: 8px;
+        }
+
+        .select-centered optgroup {
+            color: var(--gold);
+            font-weight: 800;
+            background: #070a17;
+            text-align: center;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(11, 16, 35, 0.85);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 13px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+        }
+
+        /* HELPER CARD */
+        .helper-card {
+            width: 100%;
+            background: rgba(15, 21, 42, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .helper-card a {
+            color: var(--gold);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .helper-card a:hover { text-decoration: underline; }
+        
+        .helper-card p {
+            color: #cbd5e1;
+            font-size: 0.83rem;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .file-upload-box {
+            width: 100%;
+            border: 2px dashed rgba(0, 210, 255, 0.35);
+            background: rgba(15, 21, 42, 0.6);
+            border-radius: 14px;
+            padding: 22px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-upload-box:hover {
+            border-color: var(--neon-purple);
+            background: rgba(157, 78, 221, 0.08);
+        }
+
+        .file-upload-box i { font-size: 2.2rem; color: var(--neon-blue); margin-bottom: 8px; display: block; }
+        .file-upload-box span { font-size: 0.85rem; color: var(--text-muted); display: block; text-align: center; }
+
+        .file-upload-box input[type="file"] {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; cursor: pointer;
+        }
+
+        .file-status-text {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-top: 8px;
+            font-weight: 600;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        /* MINIMALIST PROGRESS BAR */
+        .progress-box {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            background: rgba(11, 16, 35, 0.7);
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            padding: 16px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            color: var(--neon-blue);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue), var(--gold));
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(157, 78, 221, 0.6);
+            transition: width 0.4s ease;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--neon-purple), #7b2cbf);
+            color: #ffffff;
+            border: none;
+            padding: 15px 32px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin: 10px auto 0;
+            box-shadow: 0 4px 20px rgba(157, 78, 221, 0.35);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.7);
+        }
+
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .status-alert {
+            display: none;
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+        }
+
+        /* ================= POPUP MODAL SUKSES ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 10, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card-success {
+            background: rgba(15, 21, 42, 0.98);
+            border: 1px solid rgba(157, 78, 221, 0.5);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.35);
+            transform: scale(0.85);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card-success {
+            transform: scale(1);
+        }
+
+        .modal-icon-success {
+            font-size: 3.6rem;
+            color: #4ade80;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.6));
+            animation: pulseSuccess 2s infinite alternate;
+        }
+
+        @keyframes pulseSuccess {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        .modal-title-success {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .modal-desc-success {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 26px;
+        }
+
+        .btn-modal-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--neon-purple), #7b2cbf);
+            color: #fff;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 18px rgba(157, 78, 221, 0.5);
+        }
+
+        .btn-modal-back:hover {
+            box-shadow: 0 0 28px rgba(157, 78, 221, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* ─── KUNCI POSISI FOOTER AGAR TIDAK MENEMPEL ─── */
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 35px 0 20px;
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ELEMEN AUDIO -->
+    <audio id="bgAudio" loop>
+        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+    </audio>
+
+    <div class="space-bg">
+        <div class="stars"></div>
+        <div class="galaxy-blob blob-1"></div>
+        <div class="galaxy-blob blob-2"></div>
+        <div class="galaxy-blob blob-3"></div>
+
+        <div class="floating-icon el-astronaut" title="Astronot"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+        <div class="floating-icon el-dna" title="Biologi Kuantum"><i class="fa-solid fa-dna"></i></div>
+        <div class="floating-icon el-math-pi" title="Pi">&pi;</div>
+
+        <div class="floating-icon el-rocket" title="Roket Luar Angkasa"><i class="fa-solid fa-rocket"></i></div>
+        <div class="floating-icon el-microscope" title="Sains & Eksperimen"><i class="fa-solid fa-microscope"></i></div>
+        <div class="floating-icon el-planet" title="Planet Orbit"><i class="fa-solid fa-earth-americas"></i></div>
+        <div class="floating-icon el-math-sigma" title="Sigma">&sum;</div>
+
+        <div class="floating-icon el-satellite" title="Satelit Orbit"><i class="fa-solid fa-satellite"></i></div>
+        <div class="floating-icon el-flask" title="Laboratorium Kimia"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-math-root" title="Akar Kuadrat">&radic;</div>
+    </div>
+
+    <div class="container">
+        <!-- HEADER OTOMATIS -->
+        <header id="header-placeholder"></header>
+
+        <div style="text-align: center;">
+            <h1 class="main-title">FORM PENGUMPULAN DATA</h1>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="form-wrapper">
+            
+            <a href="administrasi.html" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Administrasi
+            </a>
+
+            <div class="section-box">
+                <div class="section-title">Form Berita Acara Babak Semifinal AMSO 2026</div>
+                
+                <form id="semifinalForm" class="upload-form">
+                    
+                    <!-- 1. NAMA SEKOLAH -->
+                    <div class="form-group">
+                        <label for="schoolName"><i class="fa-solid fa-school"></i> NAMA SEKOLAH <span style="color: #ff4d4f;">*</span></label>
+                        <select id="schoolName" class="form-control select-centered" required>
+                            <option value="" disabled selected>-- Pilih Nama Sekolah --</option>
+                            
+                            <optgroup label="─── TINGKAT SD / MI ───">
+                                <option value="SD ATS">SD ATS</option>
+                                <option value="SD HLM 1">SD HLM 1</option>
+                                <option value="SD HLM 3">SD HLM 3</option>
+                                <option value="SD HLM 4">SD HLM 4</option>
+                                <option value="SD HLM 5">SD HLM 5</option>
+                                <option value="SD HLM 7">SD HLM 7</option>
+                                <option value="SD HLM 9">SD HLM 9</option>
+                                <option value="SD HLM 10">SD HLM 10</option>
+                                <option value="SD HLM 12">SD HLM 12</option>
+                                <option value="SD HSN 1">SD HSN 1</option>
+                                <option value="SD HSN 3">SD HSN 3</option>
+                                <option value="SD RSN">SD RSN</option>
+                                <option value="SD SUT 1">SD SUT 1</option>
+                                <option value="SD SWO">SD SWO</option>
+                                <option value="SD HND 1">SD HND 1</option>
+                                <option value="SD HND 2">SD HND 2</option>
+                                <option value="SD HND 3">SD HND 3</option>
+                                <option value="SD MUL">SD MUL</option>
+                                <option value="SD SMO">SD SMO</option>
+                                <option value="SD PTM">SD PTM</option>
+                                <option value="SD MNA">SD MNA</option>
+                                <option value="SD ELI">SD ELI</option>
+                                <option value="MI LWM">MI LWM</option>
+                                <option value="SD SPR">SD SPR</option>
+                            </optgroup>
+
+                            <optgroup label="─── TINGKAT SMP / MTs ───">
+                                <option value="SMP HLM">SMP HLM</option>
+                                <option value="SMP ATS">SMP ATS</option>
+                                <option value="SMP HSN">SMP HSN</option>
+                                <option value="SMP SWO">SMP SWO</option>
+                                <option value="SMP SUT">SMP SUT</option>
+                                <option value="SMP BNY">SMP BNY</option>
+                                <option value="SMP HND">SMP HND</option>
+                                <option value="SMP ABD">SMP ABD</option>
+                                <option value="SMP ELI">SMP ELI</option>
+                                <option value="SMP PTM">SMP PTM</option>
+                                <option value="MTs LWM">MTs LWM</option>
+                                <option value="SMP MNA">SMP MNA</option>
+                                <option value="SMP SLM">SMP SLM</option>
+                                <option value="SMP SMO">SMP SMO</option>
+                                <option value="SMP ADI">SMP ADI</option>
+                            </optgroup>
+
+                            <optgroup label="─── TINGKAT SMA ───">
+                                <option value="SMA HLM 1">SMA HLM 1</option>
+                                <option value="SMA HLM 2">SMA HLM 2</option>
+                                <option value="SMA HSN">SMA HSN</option>
+                                <option value="SMA ADI">SMA ADI</option>
+                                <option value="SMA SLM">SMA SLM</option>
+                                <option value="SMA HND">SMA HND</option>
+                                <option value="SMA PTM">SMA PTM</option>
+                                <option value="SMA SWO">SMA SWO</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- 2. BERITA ACARA & KELENGKAPAN PDF -->
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-file-pdf"></i> BERITA ACARA & KELENGKAPAN DOKUMEN (PDF) <span style="color: #ff4d4f;">*</span></label>
+                        
+                        <div class="helper-card">
+                            <a href="https://drive.google.com/file/d/1JQLKixTquVNuoKB3gUulwFo3c9rYOvYJ/view?usp=sharing" target="_blank">
+                                <i class="fa-solid fa-download"></i> Link Download Berita Acara dan Daftar Hadir Babak Penyisihan AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                            </a>
+                            <p>
+                                Berita acara, Daftar Hadir, Surat Pernyataan Kepala Sekolah, Pakta Integritas Orang Tua/Wali dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan). Discan/Foto kemudian dijadikan <strong>1 File PDF</strong>.
+                            </p>
+                        </div>
+
+                        <div class="file-upload-box">
+                            <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i>
+                            <span>Klik untuk upload Dokumen Gabungan (.pdf)</span>
+                            <div id="statusPdf" class="file-status-text">Belum ada file dipilih</div>
+                            <input type="file" id="inputPdf" accept=".pdf" required onchange="processFile(this, 'statusPdf', 'pdf')">
+                        </div>
+                    </div>
+
+                    <!-- 3. DOKUMENTASI FOTO -->
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-camera"></i> DOKUMENTASI BABAK PENYISIHAN (FOTO) <span style="color: #ff4d4f;">*</span></label>
+                        <div class="helper-card" style="border-color: rgba(157, 78, 221, 0.4);">
+                            <span><i class="fa-solid fa-circle-info" style="color: var(--neon-purple);"></i> 1 Foto Terbaik Kegiatan Seleksi, Tidak dibuat Kolase</span>
+                        </div>
+                        <div class="file-upload-box">
+                            <i class="fa-solid fa-image" style="color: #ec4899;"></i>
+                            <span>Klik untuk upload Foto Dokumentasi (.jpg, .jpeg, .png)</span>
+                            <div id="statusDok" class="file-status-text">Belum ada foto dipilih</div>
+                            <input type="file" id="inputDok" accept=".jpg,.jpeg,.png,image/*" required onchange="processFile(this, 'statusDok', 'dok')">
+                        </div>
+                    </div>
+
+                    <div id="progressBox" class="progress-box">
+                        <div class="progress-header">
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL
+                    </button>
+
+                    <div id="statusAlert" class="status-alert"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-card-success">
+            <div class="modal-icon-success">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="modal-title-success">PENGIRIMAN BERHASIL</h2>
+            <p class="modal-desc-success">
+                Terima kasih Berkas <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> telah berhasil dikirim dan tersimpan di sistem
+            </p>
+            <a href="administrasi.html" class="btn-modal-back">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Administrasi
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER OTOMATIS -->
+    <footer id="footer-placeholder"></footer>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
+
+        const filesData = { pdf: null, dok: null };
+
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(",")[1]);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function processFile(input, statusElementId, key) {
+            const file = input.files[0];
+            const statusDisplay = document.getElementById(statusElementId);
+
+            if (file) {
+                if (key === 'pdf' && file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                    alert("Format tidak valid! Dokumen wajib berformat PDF (.pdf).");
+                    input.value = "";
+                    statusDisplay.innerText = "Belum ada file dipilih";
+                    filesData[key] = null;
+                    return;
+                }
+
+                if (key === 'dok') {
+                    const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                    const fileNameLower = file.name.toLowerCase();
+                    const isImgExt = fileNameLower.endsWith('.jpg') || fileNameLower.endsWith('.jpeg') || fileNameLower.endsWith('.png');
+
+                    if (!validImageTypes.includes(file.type) && !isImgExt) {
+                        alert("Format tidak valid! Dokumentasi wajib berupa foto/gambar (.jpg, .jpeg, .png).");
+                        input.value = "";
+                        statusDisplay.innerText = "Belum ada file dipilih";
+                        filesData[key] = null;
+                        return;
+                    }
+                }
+
+                if (file.size > 10 * 1024 * 1024) {
+                    alert("Ukuran file maksimal 10MB per file.");
+                    input.value = "";
+                    statusDisplay.innerText = "Belum ada file dipilih";
+                    filesData[key] = null;
+                    return;
+                }
+
+                statusDisplay.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="color: var(--neon-blue);"></i> Membaca file...`;
+
+                try {
+                    const base64 = await readFileAsBase64(file);
+                    filesData[key] = {
+                        name: file.name,
+                        mime: file.type || (key === 'pdf' ? "application/pdf" : "image/jpeg"),
+                        data: base64
+                    };
+                    statusDisplay.innerHTML = `<i class="fa-solid fa-check-circle" style="color: #4ade80;"></i> ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+                } catch (e) {
+                    statusDisplay.innerText = "Gagal memproses file lokal.";
+                    filesData[key] = null;
+                }
+            }
+        }
+
+        document.getElementById("semifinalForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            if (!filesData.pdf || !filesData.dok) {
+                alert("Harap lengkapi semua file berkas (PDF & Foto) sebelum mengirim!");
+                return;
+            }
+
+            const submitBtn = document.getElementById("submitBtn");
+            const statusAlert = document.getElementById("statusAlert");
+            const progressBox = document.getElementById("progressBox");
+            const progressFill = document.getElementById("progressFill");
+            const progressPercent = document.getElementById("progressPercent");
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengunggah...`;
+            statusAlert.style.display = "none";
+            progressBox.style.display = "flex";
+
+            let currentProgress = 0;
+            const progressInterval = setInterval(() => {
+                if (currentProgress < 40) {
+                    currentProgress += 6;
+                } else if (currentProgress < 80) {
+                    currentProgress += 3;
+                } else if (currentProgress < 94) {
+                    currentProgress += 1;
+                }
+                progressFill.style.width = currentProgress + "%";
+                progressPercent.innerText = currentProgress + "%";
+            }, 450);
+
+            const formData = new URLSearchParams();
+            formData.append("formType", "SEMIFINAL");
+            formData.append("schoolName", document.getElementById("schoolName").value);
+            
+            formData.append("filePdfName", filesData.pdf.name);
+            formData.append("filePdfMime", filesData.pdf.mime);
+            formData.append("filePdfData", filesData.pdf.data);
+
+            formData.append("fileDokName", filesData.dok.name);
+            formData.append("fileDokMime", filesData.dok.mime);
+            formData.append("fileDokData", filesData.dok.data);
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: formData.toString()
+                });
+
+                clearInterval(progressInterval);
+                progressFill.style.width = "100%";
+                progressPercent.innerText = "100%";
+
+                setTimeout(() => {
+                    progressBox.style.display = "none";
+                    document.getElementById("successModal").classList.add("active");
+
+                    document.getElementById("semifinalForm").reset();
+                    document.getElementById("statusPdf").innerText = "Belum ada file dipilih";
+                    document.getElementById("statusDok").innerText = "Belum ada file dipilih";
+                    filesData.pdf = null;
+                    filesData.dok = null;
+                }, 800);
+
+            } catch (err) {
+                clearInterval(progressInterval);
+                progressBox.style.display = "none";
+                statusAlert.className = "status-alert status-error";
+                statusAlert.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> <strong>Gagal:</strong> Terjadi kendala koneksi saat mengirim.`;
+                statusAlert.style.display = "flex";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL`;
+            }
+        });
+    </script>
+
+    <!-- PANGGIL SCRIPT GLOBAL -->
+    <script src="global-audio.js"></script>
+
+</body>
+</html>
