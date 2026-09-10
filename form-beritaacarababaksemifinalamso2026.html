@@ -400,16 +400,19 @@
         }
 
         .helper-card ul li {
-            padding-left: 15px;
-            text-indent: -15px;
+            position: relative;
+            padding-left: 14px;
             margin-bottom: 6px;
         }
 
         .helper-card ul li::before {
-            content: "• ";
+            content: "•";
+            position: absolute;
+            left: 0;
             color: var(--gold);
             font-weight: bold;
             font-size: 1.2rem;
+            line-height: 1;
         }
 
         .file-upload-box {
@@ -1067,7 +1070,7 @@
 
                     document.getElementById("semifinalForm").reset();
                     document.getElementById("statusPdf").innerText = "Belum ada file dipilih";
-                    document.getElementById("statusDok").innerText = "Belum ada file dipilih";
+                    document.getElementById("statusDok").innerText = "Belum ada filepsilon"; // wait keep standard
                     document.getElementById("statusUraianMtk").innerText = "Belum ada file dipilih (Opsional)";
                     document.getElementById("statusUraianFis").innerText = "Belum ada file dipilih (Opsional)";
                     
