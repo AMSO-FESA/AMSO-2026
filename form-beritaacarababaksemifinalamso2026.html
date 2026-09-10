@@ -360,7 +360,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
         }
 
-        /* HELPER CARD DENGAN ISI RATA TENGAH */
+        /* HELPER CARD DENGAN LIST BULLET RAPI (TANPA JARAK LEBAR) */
         .helper-card {
             width: 100%;
             background: rgba(15, 21, 42, 0.9);
@@ -391,31 +391,16 @@
         .helper-card a:hover { text-decoration: underline; }
         
         .helper-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0 auto;
             color: #cbd5e1;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            width: 100%;
-            align-items: center;
+            display: inline-block;
+            text-align: left;
         }
 
         .helper-card ul li {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 8px;
-            text-align: center;
-        }
-
-        .helper-card ul li::before {
-            content: "•";
-            color: var(--gold);
-            font-weight: bold;
-            font-size: 1.1rem;
-            line-height: 1;
+            margin-bottom: 4px;
         }
 
         .file-upload-box {
@@ -755,9 +740,9 @@
             </a>
 
             <div class="section-box">
-                <div class="section-title">Form Berita Acara Babak Penyisihan AMSO 2026</div>
+                <div class="section-title">Form Berita Acara Babak Semifinal AMSO 2026</div>
                 
-                <form id="penyisihanForm" class="upload-form">
+                <form id="semifinalForm" class="upload-form">
                     
                     <!-- 1. NAMA SEKOLAH -->
                     <div class="form-group">
@@ -829,7 +814,7 @@
                         
                         <div class="helper-card">
                             <a href="https://drive.google.com/file/d/1TyM7pAMv2s37TKP6RbxgHCUk4nHOPCjx/view?usp=sharing" target="_blank">
-                                <i class="fa-solid fa-download"></i> Link Download Berita Acara dan Daftar Hadir Babak Penyisihan AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                                <i class="fa-solid fa-download"></i> Link Download Berita Acara dan Daftar Hadir Babak Semifinal AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
                             </a>
                             <ul>
                                 <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan).</li>
@@ -847,10 +832,10 @@
 
                     <!-- 3. DOKUMENTASI FOTO -->
                     <div class="form-group">
-                        <label><i class="fa-solid fa-camera"></i> DOKUMENTASI BABAK PENYISIHAN (FOTO) <span style="color: #ff4d4f;">*</span></label>
+                        <label><i class="fa-solid fa-camera"></i> DOKUMENTASI BABAK SEMIFINAL (FOTO) <span style="color: #ff4d4f;">*</span></label>
                         <div class="helper-card" style="border-color: rgba(157, 78, 221, 0.4);">
                             <ul>
-                                <li>1 Foto Terbaik Kegiatan Seleksi, Tidak dibuat Kolase.</li>
+                                <li>1 Foto Terbaik Kegiatan Semifinal, Tidak dibuat Kolase.</li>
                             </ul>
                         </div>
                         <div class="file-upload-box">
@@ -903,7 +888,7 @@
                     </div>
 
                     <button type="submit" id="submitBtn" class="btn-submit">
-                        <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS PENYISIHAN
+                        <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL
                     </button>
 
                     <div id="statusAlert" class="status-alert"></div>
@@ -919,7 +904,7 @@
             </div>
             <h2 class="modal-title">PENGIRIMAN BERHASIL!</h2>
             <p class="modal-desc">
-                Terima kasih! Berkas <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> telah berhasil dikirim dan tersimpan di sistem.
+                Terima kasih! Berkas <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> telah berhasil dikirim dan tersimpan di sistem.
             </p>
             <a href="administrasi.html" class="btn-modal-back">
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Administrasi
@@ -999,7 +984,7 @@
             }
         }
 
-        document.getElementById("penyisihanForm").addEventListener("submit", async function(e) {
+        document.getElementById("semifinalForm").addEventListener("submit", async function(e) {
             e.preventDefault();
 
             if (!filesData.pdf || !filesData.dok) {
@@ -1071,7 +1056,7 @@
                     progressBox.style.display = "none";
                     document.getElementById("successModal").classList.add("active");
 
-                    document.getElementById("penyisihanForm").reset();
+                    document.getElementById("semifinalForm").reset();
                     document.getElementById("statusPdf").innerText = "Belum ada file dipilih";
                     document.getElementById("statusDok").innerText = "Belum ada file dipilih";
                     document.getElementById("statusUraianMtk").innerText = "Belum ada file dipilih (Opsional)";
@@ -1091,7 +1076,7 @@
                 statusAlert.style.display = "flex";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS PENYISIHAN`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL`;
             }
         });
     </script>
