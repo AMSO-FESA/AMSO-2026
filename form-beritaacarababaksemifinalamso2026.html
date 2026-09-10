@@ -360,7 +360,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
         }
 
-        /* HELPER CARD DENGAN BULLET KUNING RAPAT & POSISI RATA TENGAH KESELURUHAN */
+        /* HELPER CARD DENGAN BULLET KUNING RAPAT & TEKS RATA TENGAH SEMPURNA */
         .helper-card {
             width: 100%;
             background: rgba(15, 21, 42, 0.9);
@@ -395,28 +395,27 @@
             padding: 0;
             margin: 0;
             color: #cbd5e1;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            width: 100%;
-            align-items: center;
+            gap: 6px;
+            text-align: center;
         }
 
         .helper-card ul li {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 8px;
+            display: block;
             text-align: center;
+            line-height: 1.6;
+            width: 100%;
         }
 
         .helper-card ul li::before {
             content: "•";
             color: var(--gold);
             font-weight: bold;
-            font-size: 1.1rem;
-            line-height: 1;
-            flex-shrink: 0;
+            font-size: 1.15rem;
+            margin-right: 6px;
+            display: inline;
         }
 
         .file-upload-box {
@@ -833,8 +832,8 @@
                                 <i class="fa-solid fa-download"></i> Link Download Berita Acara dan Daftar Hadir Babak Semifinal AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
                             </a>
                             <ul>
-                                <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan).</li>
-                                <li>Discan/Foto kemudian dijadikan <strong>1 File PDF</strong>.</li>
+                                <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan)</li>
+                                <li>Discan/Foto kemudian dijadikan <strong>1 File PDF</strong></li>
                             </ul>
                         </div>
 
@@ -851,7 +850,7 @@
                         <label><i class="fa-solid fa-camera"></i> DOKUMENTASI BABAK SEMIFINAL (FOTO) <span style="color: #ff4d4f;">*</span></label>
                         <div class="helper-card" style="border-color: rgba(157, 78, 221, 0.4);">
                             <ul>
-                                <li>1 Foto Terbaik Kegiatan Semifinal, Tidak dibuat Kolase.</li>
+                                <li>1 Foto Terbaik Kegiatan Semifinal, Tidak dibuat Kolase</li>
                             </ul>
                         </div>
                         <div class="file-upload-box">
@@ -872,8 +871,8 @@
                                 <i class="fa-solid fa-download"></i> Link Download Lembar Jawaban Uraian AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
                             </a>
                             <ul>
-                                <li>Khusus untuk jenjang SMA yang memiliki soal uraian.</li>
-                                <li>Dijadikan 1 file sesuai mata pelajaran.</li>
+                                <li>Khusus untuk jenjang SMA yang memiliki soal uraian</li>
+                                <li>Dijadikan 1 file sesuai mata pelajaran</li>
                             </ul>
                         </div>
 
