@@ -395,7 +395,7 @@
             font-size: 12px;
         }
 
-        /* ================= PHASES ================= */
+        /* ================= PHASES (TAHAPAN UTAMA) ================= */
         .phase-section {
             margin-top: 45px;
         }
@@ -426,6 +426,21 @@
             transform: translateY(-4px);
             border-color: rgba(59, 130, 246, 0.5);
             box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        /* ─── STYLING KETIKA TAHAPAN UTAMA SUDAH TERLEWAT ─── */
+        .phase.passed {
+            opacity: 0.45;
+            background: rgba(12, 16, 30, 0.3);
+            border-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .phase.passed h3 {
+            color: #94a3b8 !important;
+        }
+
+        .phase.passed p {
+            color: #64748b !important;
         }
 
         .phase h3 {
@@ -519,7 +534,7 @@
             box-shadow: 0 0 10px var(--gold);
         }
 
-        /* ─── STYLING KETIKA KEGIATAN SUDAH TERLEWAT (BERUBAH WARNA REDUP) ─── */
+        /* ─── STYLING KETIKA AGENDA SUDAH TERLEWAT ─── */
         .card.passed {
             opacity: 0.5;
             background: rgba(12, 16, 30, 0.35);
@@ -726,27 +741,27 @@
             </div>
         </section>
 
-        <!-- PHASES -->
+        <!-- PHASES (TAHAPAN UTAMA DENGAN AUTO-PASSED) -->
         <section class="phase-section">
             <h2 class="section-title">TAHAPAN UTAMA</h2>
             <div class="phases">
-                <div class="phase">
+                <div class="phase" data-end="2026-08-28">
                     <h3>TRYOUT</h3>
                     <p>18 – 28 Agustus</p>
                 </div>
-                <div class="phase">
+                <div class="phase" data-end="2026-09-11">
                     <h3>SELEKSI SEKOLAH</h3>
                     <p>8 – 11 September</p>
                 </div>
-                <div class="phase">
+                <div class="phase" data-end="2026-09-24">
                     <h3>PENYISIHAN</h3>
                     <p>23-24 September</p>
                 </div>
-                <div class="phase">
+                <div class="phase" data-end="2026-10-06">
                     <h3>SEMIFINAL</h3>
                     <p>6 Oktober</p>
                 </div>
-                <div class="phase">
+                <div class="phase" data-end="2026-10-20">
                     <h3>FINAL</h3>
                     <p>20 Oktober</p>
                 </div>
@@ -777,28 +792,28 @@
 <script src="global-audio.js"></script>
 <script>
 const events = [
-    { no: 1, date: "2026-08-12", display: "Rabu, 12 Agustus 2026", title: "Pengiriman Surat Pemberitahuan Tryout AMSO 2026", month: 8 },
-    { no: 2, date: "2026-08-18", display: "18 – 28 Agustus 2026", title: "Pelaksanaan Tryout di Sekolah Masing-masing & Batas Akhir Pengumpulan Hasil Tryout", month: 8 },
-    { no: 3, date: "2026-08-31", display: "Senin, 31 Agustus 2026", title: "Pengiriman Buku Panduan AMSO 2026 ke Yasarini Jajaran", month: 8 },
-    { no: 4, date: "2026-09-07", display: "Senin, 7 September 2026", title: "Bimbingan Teknis AMSO 2026", month: 9 },
-    { no: 5, date: "2026-09-08", display: "Selasa - Jum'at, 8 – 11 September 2026", title: "Pelaksanaan Babak Seleksi Sekolah", month: 9, major: true, badge: "SELEKSI" },
-    { no: 6, date: "2026-09-11", display: "Jum’at, 11 September 2026", title: "Batas Akhir Pengiriman Hasil Babak Seleksi Sekolah", month: 9 },
-    { no: 7, date: "2026-09-14", display: "Senin, 14 September 2026", title: "Bimtek Babak Penyisihan & Semifinal", month: 9, major: true, badge: "BIMTEK" },
-    { no: 8, date: "2026-09-15", display: "Selasa, 15 September 2026", title: "Pengiriman Nomor Peserta yang Lolos ke Babak Penyisihan", month: 9 },
-    { no: 9, date: "2026-09-17", display: "Kamis, 17 September 2026", title: "Uji Coba Link Soal Babak Penyisihan", month: 9 },
-    { no: 10, date: "2026-09-23", display: "Rabu - Kamis, 23 - 24 September 2026", title: "Pelaksanaan Babak Penyisihan", month: 9, major: true, badge: "PENYISIHAN" },
-    { no: 11, date: "2026-09-24", display: "Kamis, 24 September 2026", title: "Batas Akhir Pengiriman Berita Acara, Absensi, Pakta Integritas Kepala Sekolah dan Pengawas", month: 9 },
-    { no: 12, date: "2026-09-28", display: "Senin, 28 September 2026", title: "Pengumuman Peserta Lolos ke Babak Semifinal", month: 9 },
-    { no: 13, date: "2026-10-05", display: "Senin, 5 Oktober 2026", title: "Uji Coba Link Babak Semifinal", month: 10 },
-    { no: 14, date: "2026-10-06", display: "Selasa, 6 Oktober 2026", title: "Pelaksanaan Babak Semifinal", month: 10, major: true, badge: "SEMIFINAL" },
-    { no: 15, date: "2026-10-07", display: "Rabu, 7 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Semifinal", month: 10 },
-    { no: 16, date: "2026-10-12", display: "Senin, 12 Oktober 2026", title: "Pengumuman Peserta Lolos ke Babak Final dan Detail Babak Final", month: 10 },
-    { no: 17, date: "2026-10-14", display: "Rabu, 14 Oktober 2026", title: "Bimtek Babak Final", month: 10 },
-    { no: 18, date: "2026-10-16", display: "Jum’at, 16 Oktober 2026", title: "Batas Akhir Pengiriman Foto dan Nomor Rekening Peserta Babak Final", month: 10 },
-    { no: 19, date: "2026-10-19", display: "Senin, 19 Oktober 2026", title: "Gladi Jaringan dan Soal Babak Final AMSO", month: 10 },
-    { no: 20, date: "2026-10-20", display: "Selasa, 20 Oktober 2026", title: "Pelaksanaan Babak Final AMSO", month: 10, major: true, badge: "FINAL" },
-    { no: 21, date: "2026-10-21", display: "Rabu, 21 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Final", month: 10 },
-    { no: 22, date: "2026-12-15", display: "Selasa, 15 Desember 2026", title: "Pengumuman Pemenang AMSO 2026", month: 12, major: true }
+    { no: 1, start: "2026-08-12", end: "2026-08-12", display: "Rabu, 12 Agustus 2026", title: "Pengiriman Surat Pemberitahuan Tryout AMSO 2026", month: 8 },
+    { no: 2, start: "2026-08-18", end: "2026-08-28", display: "18 – 28 Agustus 2026", title: "Pelaksanaan Tryout di Sekolah Masing-masing & Batas Akhir Pengumpulan Hasil Tryout", month: 8 },
+    { no: 3, start: "2026-08-31", end: "2026-08-31", display: "Senin, 31 Agustus 2026", title: "Pengiriman Buku Panduan AMSO 2026 ke Yasarini Jajaran", month: 8 },
+    { no: 4, start: "2026-09-07", end: "2026-09-07", display: "Senin, 7 September 2026", title: "Bimbingan Teknis AMSO 2026", month: 9 },
+    { no: 5, start: "2026-09-08", end: "2026-09-11", display: "Selasa - Jum'at, 8 – 11 September 2026", title: "Pelaksanaan Babak Seleksi Sekolah", month: 9, major: true, badge: "SELEKSI" },
+    { no: 6, start: "2026-09-11", end: "2026-09-11", display: "Jum’at, 11 September 2026", title: "Batas Akhir Pengiriman Hasil Babak Seleksi Sekolah", month: 9 },
+    { no: 7, start: "2026-09-14", end: "2026-09-14", display: "Senin, 14 September 2026", title: "Bimtek Babak Penyisihan & Semifinal", month: 9, major: true, badge: "BIMTEK" },
+    { no: 8, start: "2026-09-15", end: "2026-09-15", display: "Selasa, 15 September 2026", title: "Pengiriman Nomor Peserta yang Lolos ke Babak Penyisihan", month: 9 },
+    { no: 9, start: "2026-09-17", end: "2026-09-17", display: "Kamis, 17 September 2026", title: "Uji Coba Link Soal Babak Penyisihan", month: 9 },
+    { no: 10, start: "2026-09-23", end: "2026-09-24", display: "Rabu - Kamis, 23 - 24 September 2026", title: "Pelaksanaan Babak Penyisihan", month: 9, major: true, badge: "PENYISIHAN" },
+    { no: 11, start: "2026-09-24", end: "2026-09-24", display: "Kamis, 24 September 2026", title: "Batas Akhir Pengiriman Berita Acara, Absensi, Pakta Integritas Kepala Sekolah dan Pengawas", month: 9 },
+    { no: 12, start: "2026-09-28", end: "2026-09-28", display: "Senin, 28 September 2026", title: "Pengumuman Peserta Lolos ke Babak Semifinal", month: 9 },
+    { no: 13, start: "2026-10-05", end: "2026-10-05", display: "Senin, 5 Oktober 2026", title: "Uji Coba Link Babak Semifinal", month: 10 },
+    { no: 14, start: "2026-10-06", end: "2026-10-06", display: "Selasa, 6 Oktober 2026", title: "Pelaksanaan Babak Semifinal", month: 10, major: true, badge: "SEMIFINAL" },
+    { no: 15, start: "2026-10-07", end: "2026-10-07", display: "Rabu, 7 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Semifinal", month: 10 },
+    { no: 16, start: "2026-10-12", end: "2026-10-12", display: "Senin, 12 Oktober 2026", title: "Pengumuman Peserta Lolos ke Babak Final dan Detail Babak Final", month: 10 },
+    { no: 17, start: "2026-10-14", end: "2026-10-14", display: "Rabu, 14 Oktober 2026", title: "Bimtek Babak Final", month: 10 },
+    { no: 18, start: "2026-10-16", end: "2026-10-16", display: "Jum’at, 16 Oktober 2026", title: "Batas Akhir Pengiriman Foto dan Nomor Rekening Peserta Babak Final", month: 10 },
+    { no: 19, start: "2026-10-19", end: "2026-10-19", display: "Senin, 19 Oktober 2026", title: "Gladi Jaringan dan Soal Babak Final AMSO", month: 10 },
+    { no: 20, start: "2026-10-20", end: "2026-10-20", display: "Selasa, 20 Oktober 2026", title: "Pelaksanaan Babak Final AMSO", month: 10, major: true, badge: "FINAL" },
+    { no: 21, start: "2026-10-21", end: "2026-10-21", display: "Rabu, 21 Oktober 2026", title: "Batas Akhir Pengiriman Berita Acara & Absensi Babak Final", month: 10 },
+    { no: 22, start: "2026-12-15", end: "2026-12-15", display: "Selasa, 15 Desember 2026", title: "Pengumuman Pemenang AMSO 2026", month: 12, major: true }
 ];
 
 const agenda = document.getElementById("agenda");
@@ -807,18 +822,19 @@ function renderEvents(month = "all") {
     agenda.innerHTML = "";
     const filtered = month === "all" ? events : events.filter(event => event.month == month);
 
-    // Dapatkan tanggal hari ini (tanpa jam/menit/detik untuk perbandingan akurat)
+    // Tanggal hari ini (10 September 2026)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
     filtered.forEach((event, index) => {
-        // Cek apakah tanggal event sudah lewat dari hari ini
-        const eventDate = new Date(event.date);
-        eventDate.setHours(0, 0, 0, 0);
-        const isPassed = eventDate < today;
+        // Ambil tanggal akhir agenda untuk memastikan event benar-benar sudah lewat
+        const endDate = new Date(event.end);
+        endDate.setHours(0, 0, 0, 0);
+        
+        // Agenda dianggap lewat jika hari ini > tanggal akhir agenda
+        const isPassed = today > endDate;
 
         const card = document.createElement("div");
-        // Tambahkan class 'passed' jika tanggalnya sudah lewat
         card.className = "card" + (event.major ? " major" : "") + (isPassed ? " passed" : "");
         
         card.innerHTML = `
@@ -831,6 +847,24 @@ function renderEvents(month = "all") {
     });
 }
 renderEvents();
+
+// Auto-cek untuk Tahapan Utama (Phases)
+function updatePhasesState() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    document.querySelectorAll(".phase").forEach(phase => {
+        const endDateStr = phase.getAttribute("data-end");
+        if (endDateStr) {
+            const endDate = new Date(endDateStr);
+            endDate.setHours(0, 0, 0, 0);
+            if (today > endDate) {
+                phase.classList.add("passed");
+            }
+        }
+    });
+}
+updatePhasesState();
 
 document.querySelectorAll(".filter").forEach(button => {
     button.addEventListener("click", () => {
