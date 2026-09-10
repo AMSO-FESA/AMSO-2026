@@ -34,7 +34,7 @@
             --neon-purple: #9d4edd;
             --card-bg: rgba(20, 26, 50, 0.65);
             --card-border: rgba(0, 210, 255, 0.2);
-            --fesa-orange: #ff7f00; /* Warna Khas FESA */
+            --fesa-orange: #ff7f00; /* Warna Khas FESA untuk yang belum lewat / aktif */
         }
 
         html {
@@ -429,18 +429,18 @@
             box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
         }
 
-        /* ─── STYLING KETIKA TAHAPAN UTAMA SUDAH TERLEWAT (ORANYE FESA) ─── */
-        .phase.passed {
+        /* ─── STYLING KETIKA TAHAPAN UTAMA BELUM LEWAT (ORANYE FESA) ─── */
+        .phase.upcoming {
             background: rgba(255, 127, 0, 0.12);
             border-color: rgba(255, 127, 0, 0.4);
             box-shadow: 0 0 15px rgba(255, 127, 0, 0.1);
         }
 
-        .phase.passed h3 {
+        .phase.upcoming h3 {
             color: var(--fesa-orange) !important;
         }
 
-        .phase.passed p {
+        .phase.upcoming p {
             color: #fdba74 !important;
         }
 
@@ -535,27 +535,27 @@
             box-shadow: 0 0 10px var(--gold);
         }
 
-        /* ─── STYLING KETIKA AGENDA SUDAH TERLEWAT (ORANYE FESA) ─── */
-        .card.passed {
+        /* ─── STYLING KETIKA AGENDA BELUM LEWAT (ORANYE FESA) ─── */
+        .card.upcoming {
             background: rgba(255, 127, 0, 0.08);
             border-color: rgba(255, 127, 0, 0.35);
             box-shadow: 0 0 20px rgba(255, 127, 0, 0.08);
         }
 
-        .card.passed::before {
+        .card.upcoming::before {
             background: var(--fesa-orange) !important;
             box-shadow: 0 0 10px var(--fesa-orange) !important;
         }
 
-        .card.passed .card-date {
+        .card.upcoming .card-date {
             color: var(--fesa-orange) !important;
         }
 
-        .card.passed h3 {
+        .card.upcoming h3 {
             color: #fff !important;
         }
 
-        .card.passed p {
+        .card.upcoming p {
             color: #cbd5e1 !important;
         }
 
@@ -826,8 +826,6 @@ function renderEvents(month = "all") {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Batas akhir periode aktif: 16 Desember 2026. 
-    // Jika hari ini >= 17 Desember 2026, maka semua efek oranye di-reset kembali normal.
     const resetDate = new Date("2026-12-17T00:00:00");
     const isResetPeriod = today >= resetDate;
 
@@ -835,11 +833,11 @@ function renderEvents(month = "all") {
         const endDate = new Date(event.end);
         endDate.setHours(0, 0, 0, 0);
         
-        // Lewat jika hari ini > tanggal akhir DAN belum masuk masa reset 17 Desember
-        const isPassed = !isResetPeriod && (today > endDate);
+        // Beri status 'upcoming' (oranye) jika tanggal hari ini <= tanggal akhir event (dan belum masa reset)
+        const isUpcoming = !isResetPeriod && (today <= endDate);
 
         const card = document.createElement("div");
-        card.className = "card" + (event.major ? " major" : "") + (isPassed ? " passed" : "");
+        card.className = "card" + (event.major ? " major" : "") + (isUpcoming ? " upcoming" : "");
         
         card.innerHTML = `
             <div class="card-number">AGENDA ${String(event.no).padStart(2,"0")}</div>
@@ -852,7 +850,7 @@ function renderEvents(month = "all") {
 }
 renderEvents();
 
-// Auto-cek untuk Tahapan Utama (Phases) dengan fitur Reset 17 Desember
+// Auto-cek untuk Tahapan Utama (Phases)
 function updatePhasesState() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -865,11 +863,11 @@ function updatePhasesState() {
         if (endDateStr && !isResetPeriod) {
             const endDate = new Date(endDateStr);
             endDate.setHours(0, 0, 0, 0);
-            if (today > endDate) {
-                phase.classList.add("passed");
+            if (today <= endDate) {
+                phase.classList.add("upcoming");
             }
         } else {
-            phase.classList.remove("passed");
+            phase.classList.remove("upcoming");
         }
     });
 }
