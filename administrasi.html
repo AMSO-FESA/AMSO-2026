@@ -1071,6 +1071,14 @@
                                 </span>
                             </a>
 
+                            <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnSemifinal" class="item-btn-tag">
+                                </span>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -1083,7 +1091,7 @@
         <div class="modal-card">
             <div class="modal-icon"><i class="fa-solid fa-hourglass-half"></i></div>
             <h2 class="modal-title" id="modalTitleText">Belum Tersedia</h2>
-            <p class="modal-desc" id="modalDescText">Formulir <strong>Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan.</p>
+            <p class="modal-desc" id="modalDescText">Formulir saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan.</p>
             <button class="btn-modal-close" onclick="closeModal()">Mengerti</button>
         </div>
     </div>
@@ -1097,6 +1105,7 @@
         // Ganti 'true' untuk BUKA, 'false' untuk KUNCI
         // ==========================================
         const isSeleksiOpen = true; 
+        const isSemifinalOpen = true; // Ganti false jika ingin mengunci form semifinal
         const isSoalSeleksiOpen = true; // Buka accordion soal
 
         // Kontrol Tombol Form Seleksi
@@ -1105,6 +1114,22 @@
             const tagBtn = document.getElementById("tagBtnSeleksi");
 
             if (isSeleksiOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
+        // Kontrol Tombol Form Semifinal (Berita Acara Babak Penyisihan)
+        function updateSemifinalButtonState() {
+            const linkCard = document.getElementById("linkCardSemifinal");
+            const tagBtn = document.getElementById("tagBtnSemifinal");
+
+            if (isSemifinalOpen) {
                 linkCard.classList.remove("locked");
                 tagBtn.className = "item-btn-tag tag-active";
                 tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
@@ -1133,6 +1158,7 @@
         }
 
         updateSeleksiButtonState();
+        updateSemifinalButtonState();
         updateSoalSeleksiState();
 
         function handleSeleksiClick(event) {
@@ -1141,6 +1167,16 @@
                 openModal(
                     "Belum Tersedia",
                     "Formulir <strong>Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                );
+            }
+        }
+
+        function handleSemifinalClick(event) {
+            if (!isSemifinalOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
                 );
             }
         }
