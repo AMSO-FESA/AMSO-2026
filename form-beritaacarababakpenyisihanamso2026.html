@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Berita Acara Babak Semifinal AMSO 2026</title>
+    <title>Form Berita Acara Babak Penyisihan AMSO 2026</title>
 
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
 
@@ -372,7 +372,7 @@
             line-height: 1.6;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Dirubah rata kiri agar poin rapi */
+            align-items: flex-start;
             text-align: left;
         }
 
@@ -384,7 +384,7 @@
             align-items: center;
             gap: 6px;
             margin-bottom: 12px;
-            align-self: center; /* Tombol download tetap di tengah */
+            align-self: center;
             text-align: center;
         }
 
@@ -752,9 +752,9 @@
             </a>
 
             <div class="section-box">
-                <div class="section-title">Form Berita Acara Babak Semifinal AMSO 2026</div>
+                <div class="section-title">Form Berita Acara Babak Penyisihan AMSO 2026</div>
                 
-                <form id="semifinalForm" class="upload-form">
+                <form id="penyisihanForm" class="upload-form">
                     
                     <!-- 1. NAMA SEKOLAH -->
                     <div class="form-group">
@@ -868,7 +868,7 @@
                     </div>
 
                     <button type="submit" id="submitBtn" class="btn-submit">
-                        <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL
+                        <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS PENYISIHAN
                     </button>
 
                     <div id="statusAlert" class="status-alert"></div>
@@ -884,7 +884,7 @@
             </div>
             <h2 class="modal-title">PENGIRIMAN BERHASIL!</h2>
             <p class="modal-desc">
-                Terima kasih! Berkas <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> telah berhasil dikirim dan tersimpan di sistem.
+                Terima kasih! Berkas <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> telah berhasil dikirim dan tersimpan di sistem.
             </p>
             <a href="administrasi.html" class="btn-modal-back">
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Administrasi
@@ -961,7 +961,7 @@
             }
         }
 
-        document.getElementById("semifinalForm").addEventListener("submit", async function(e) {
+        document.getElementById("penyisihanForm").addEventListener("submit", async function(e) {
             e.preventDefault();
 
             if (!filesData.pdf || !filesData.dok) {
@@ -1021,7 +1021,7 @@
                     progressBox.style.display = "none";
                     document.getElementById("successModal").classList.add("active");
 
-                    document.getElementById("semifinalForm").reset();
+                    document.getElementById("penyisihanForm").reset();
                     document.getElementById("statusPdf").innerText = "Belum ada file dipilih";
                     document.getElementById("statusDok").innerText = "Belum ada file dipilih";
                     filesData.pdf = null;
@@ -1036,7 +1036,7 @@
                 statusAlert.style.display = "flex";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS SEMIFINAL`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS PENYISIHAN`;
             }
         });
     </script>
