@@ -24,7 +24,7 @@
             --blue2: #3b82f6;       
             --navy: #0f172a;        
             --gold: #22d3ee;        
-            --bg-dark: #070913;          
+            --bg-dark: #070913;         
             --text: #f8fafc;        
             --muted: #94a3b8;       
             --white: #ffffff;
@@ -519,6 +519,30 @@
             box-shadow: 0 0 10px var(--gold);
         }
 
+        /* ─── STYLING KETIKA KEGIATAN SUDAH TERLEWAT (BERUBAH WARNA REDUP) ─── */
+        .card.passed {
+            opacity: 0.5;
+            background: rgba(12, 16, 30, 0.35);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+
+        .card.passed::before {
+            background: #475569 !important;
+            box-shadow: none !important;
+        }
+
+        .card.passed .card-date {
+            color: #64748b !important;
+        }
+
+        .card.passed h3 {
+            color: #94a3b8 !important;
+        }
+
+        .card.passed p {
+            color: #64748b !important;
+        }
+
         .card-number {
             font-size: 11px;
             color: var(--muted);
@@ -783,11 +807,22 @@ function renderEvents(month = "all") {
     agenda.innerHTML = "";
     const filtered = month === "all" ? events : events.filter(event => event.month == month);
 
+    // Dapatkan tanggal hari ini (tanpa jam/menit/detik untuk perbandingan akurat)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     filtered.forEach((event, index) => {
+        // Cek apakah tanggal event sudah lewat dari hari ini
+        const eventDate = new Date(event.date);
+        eventDate.setHours(0, 0, 0, 0);
+        const isPassed = eventDate < today;
+
         const card = document.createElement("div");
-        card.className = "card" + (event.major ? " major" : "");
+        // Tambahkan class 'passed' jika tanggalnya sudah lewat
+        card.className = "card" + (event.major ? " major" : "") + (isPassed ? " passed" : "");
+        
         card.innerHTML = `
-            <div class="card-number">AGENDA ${String(index + 1).padStart(2,"0")}</div>
+            <div class="card-number">AGENDA ${String(event.no).padStart(2,"0")}</div>
             <div class="card-date">${event.display}</div>
             <h3>${event.title}</h3>
             ${event.badge ? `<div class="badge">${event.badge}</div>` : ""}
@@ -806,7 +841,7 @@ document.querySelectorAll(".filter").forEach(button => {
 });
 
 /* =========================
-   PROGRESS AMSO
+    PROGRESS AMSO
 ========================= */
 function updateProgress() {
     const start = new Date("2026-08-12T00:00:00");
