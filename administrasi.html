@@ -125,10 +125,12 @@
         .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; animation: flyRocket 14s infinite ease-in-out; }
         .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
         .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
+        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+
         .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
         .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; animation: floatItem1 8s infinite alternate ease-in-out; }
         .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
-        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+
         .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
         .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
         .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
@@ -568,7 +570,6 @@
             color: var(--neon-blue);
         }
 
-        /* Tombol kunci jawaban dibuat polos transparan tanpa latar belakang kuning */
         .key-btn {
             padding: 8px 10px;
             background: transparent;
@@ -828,7 +829,7 @@
 
                         <div class="accordion-content">
                             <div class="dropdown-items-list">
-                                <!-- SURAT 1: SELEKSI & BUKU PANDUAN (TERBARU) -->
+                                <!-- SURAT 1: SELEKSI & BUKU PANDUAN -->
                                 <a href="https://drive.google.com/file/d/1cHPmGzxoP_odZXuYtTVmFd9KBYY5aF-q/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                     <div class="item-text">
                                         <strong>Pelaksanaan Babak Seleksi dan Link Buku Panduan</strong>
@@ -852,7 +853,7 @@
                     </div>
                 </div>
 
-                <!-- KOTAK 2: LAINNYA (DI BAWAH DAFTAR SURAT) -->
+                <!-- KOTAK 2: LAINNYA -->
                 <div class="section-box">
                     <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
                     
@@ -868,7 +869,17 @@
                         <div class="accordion-content">
                             <div class="dropdown-items-list">
 
-                                <!-- ITEM 1: SOAL BABAK SELEKSI (DENGAN TOMBOL KUNCI JAWABAN POLOS) -->
+                                <!-- ITEM TAMBAHAN: LEMBAR JAWABAN URAIAN AMSO 2026 (DI PALING ATAS SEBELUM SOAL SELEKSI) -->
+                                <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                    <div class="item-text">
+                                        <strong>Lembar Jawaban Uraian AMSO 2026</strong>
+                                    </div>
+                                    <span class="item-btn-tag tag-drive">
+                                        <i class="fa-brands fa-google-drive"></i> Unduh Berkas <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                    </span>
+                                </a>
+
+                                <!-- ITEM 1: SOAL BABAK SELEKSI -->
                                 <div class="nested-accordion" id="soalSeleksiAccordion">
                                     <div class="nested-header" onclick="handleSoalSeleksiClick(event)">
                                         <div class="item-text">
@@ -1078,6 +1089,15 @@
                                 </span>
                             </a>
 
+                            <!-- FORM BARU: BERITA ACARA BABAK SEMIFINAL -->
+                            <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnSemifinal" class="item-btn-tag">
+                                </span>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -1100,12 +1120,13 @@
 
     <script>
         // ==========================================
-        // 1. STATUS PENGUNCIAN FORM & SOAL SELEKSI
+        // STATUS PENGUNCIAN FORM & SOAL SELEKSI
         // Ganti 'true' untuk BUKA, 'false' untuk KUNCI
         // ==========================================
         const isSeleksiOpen = true; 
         const isPenyisihanOpen = true; 
-        const isSoalSeleksiOpen = true; // Buka accordion soal
+        const isSemifinalOpen = true; // Atur status form semifinal (true = buka)
+        const isSoalSeleksiOpen = true; 
 
         // Kontrol Tombol Form Seleksi
         function updateSeleksiButtonState() {
@@ -1139,6 +1160,22 @@
             }
         }
 
+        // Kontrol Tombol Form Semifinal
+        function updateSemifinalButtonState() {
+            const linkCard = document.getElementById("linkCardSemifinal");
+            const tagBtn = document.getElementById("tagBtnSemifinal");
+
+            if (isSemifinalOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
         // Kontrol Tombol/Accordion Soal Babak Seleksi
         function updateSoalSeleksiState() {
             const soalCard = document.getElementById("soalSeleksiAccordion");
@@ -1158,6 +1195,7 @@
 
         updateSeleksiButtonState();
         updatePenyisihanButtonState();
+        updateSemifinalButtonState();
         updateSoalSeleksiState();
 
         function handleSeleksiClick(event) {
@@ -1176,6 +1214,16 @@
                 openModal(
                     "Belum Tersedia",
                     "Formulir <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                );
+            }
+        }
+
+        function handleSemifinalClick(event) {
+            if (!isSemifinalOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
                 );
             }
         }
