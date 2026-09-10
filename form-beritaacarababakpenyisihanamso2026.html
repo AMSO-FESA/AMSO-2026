@@ -372,7 +372,7 @@
             line-height: 1.6;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Dirubah rata tengah agar sesuai dengan yang lain */
+            align-items: center;
             text-align: center;
         }
 
@@ -399,7 +399,7 @@
             flex-direction: column;
             gap: 8px;
             width: 100%;
-            align-items: center; /* Poin-poin diset ke tengah */
+            align-items: center;
         }
 
         .helper-card ul li {
@@ -997,7 +997,7 @@
             }, 450);
 
             const formData = new URLSearchParams();
-            formData.append("formType", "SEMIFINAL");
+            formData.append("formType", "PENYISIHAN"); // <--- DIUBAH MENJADI PENYISIHAN
             formData.append("schoolName", document.getElementById("schoolName").value);
             
             formData.append("filePdfName", filesData.pdf.name);
