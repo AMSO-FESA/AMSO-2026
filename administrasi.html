@@ -219,7 +219,6 @@
             letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 25px;
         }
 
-        /* PERBAIKAN JARAK SPASI AMAN: PADDING BAWAH DIUJUNG DIPERBESAR DAN ADA MARGIN DI LAYOUT */
         main { 
             flex: 1 0 auto; 
             padding: 20px 0 120px; 
@@ -1071,11 +1070,11 @@
                                 </span>
                             </a>
 
-                            <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
+                            <a href="form-beritaacarababakpenyisihanamso2026.html" id="linkCardPenyisihan" class="dropdown-item-card" onclick="handlePenyisihanClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnSemifinal" class="item-btn-tag">
+                                <span id="tagBtnPenyisihan" class="item-btn-tag">
                                 </span>
                             </a>
 
@@ -1105,7 +1104,7 @@
         // Ganti 'true' untuk BUKA, 'false' untuk KUNCI
         // ==========================================
         const isSeleksiOpen = true; 
-        const isSemifinalOpen = true; // Ganti false jika ingin mengunci form semifinal
+        const isPenyisihanOpen = true; 
         const isSoalSeleksiOpen = true; // Buka accordion soal
 
         // Kontrol Tombol Form Seleksi
@@ -1124,12 +1123,12 @@
             }
         }
 
-        // Kontrol Tombol Form Semifinal (Berita Acara Babak Penyisihan)
-        function updateSemifinalButtonState() {
-            const linkCard = document.getElementById("linkCardSemifinal");
-            const tagBtn = document.getElementById("tagBtnSemifinal");
+        // Kontrol Tombol Form Penyisihan
+        function updatePenyisihanButtonState() {
+            const linkCard = document.getElementById("linkCardPenyisihan");
+            const tagBtn = document.getElementById("tagBtnPenyisihan");
 
-            if (isSemifinalOpen) {
+            if (isPenyisihanOpen) {
                 linkCard.classList.remove("locked");
                 tagBtn.className = "item-btn-tag tag-active";
                 tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
@@ -1158,7 +1157,7 @@
         }
 
         updateSeleksiButtonState();
-        updateSemifinalButtonState();
+        updatePenyisihanButtonState();
         updateSoalSeleksiState();
 
         function handleSeleksiClick(event) {
@@ -1171,8 +1170,8 @@
             }
         }
 
-        function handleSemifinalClick(event) {
-            if (!isSemifinalOpen) {
+        function handlePenyisihanClick(event) {
+            if (!isPenyisihanOpen) {
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
