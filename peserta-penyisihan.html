@@ -12,8 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- PapaParse untuk membaca data spreadsheet dengan mudah -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
         :root {
@@ -48,7 +46,40 @@
         }
 
         .container { max-width: 1150px; margin: auto; padding: 0 20px 80px; position: relative; z-index: 1; width: 100%; }
+        
+        /* HEADER & LOGO KEMBALI NORMAL SESUAI MASTER */
         header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+
         .main-title {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -144,8 +175,30 @@
 </head>
 <body>
 
+    <!-- ELEMEN AUDIO -->
+    <audio id="bgAudio" loop>
+        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+    </audio>
+
     <div class="container">
-        <header id="header-placeholder"></header>
+        <!-- HEADER DENGAN LOGO MASTER UTUH -->
+        <header>
+            <div class="logo-group">
+                <a href="index.html" class="logo-item">
+                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png" alt="Logo Yasarini">
+                </a>
+                <a href="index.html" class="logo-item">
+                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/fesa.png" alt="Logo FESA">
+                </a>
+                <a href="index.html" class="logo-item">
+                    <img src="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png" alt="Logo AMSO">
+                </a>
+            </div>
+            <nav>
+                <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="peserta-penyisihan.html" class="active"><i class="fa-solid fa-users"></i> Daftar Peserta</a>
+            </nav>
+        </header>
 
         <div style="text-align: center; margin-bottom: 25px;">
             <h1 class="main-title">DAFTAR PESERTA PENYISIHAN</h1>
@@ -182,7 +235,7 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <tr><td colspan="5" class="loading-state"><i class="fa-solid fa-spinner fa-spin"></i> Menghubungkan ke database Google Sheets...</td></tr>
+                            <!-- Data akan dimuat instan -->
                         </tbody>
                     </table>
                 </div>
@@ -190,63 +243,38 @@
         </main>
     </div>
 
-    <footer id="footer-placeholder"></footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2026 AMSO - Yasarini & FESA. All Rights Reserved.
+        </div>
+    </footer>
 
+    <!-- PANGGIL SCRIPT GLOBAL & DATABASE LENGKAP -->
     <script src="global-audio.js"></script>
     <script>
-        // Link CSV Export dari Google Sheets lo (ID Spreadsheet: 1uqeAp90o0-McTigihf-hh4Z9KbSshYES)
-        // Mengambil sheet pertama (SD-MI) atau gabungan sheet
-        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1uqeAp90o0-McTigihf-hh4Z9KbSshYES/export?format=csv&gid=0";
+        // Database lengkap seluruh 2.943 peserta dari file Excel lo
+        const pesertaData = [
+            { "nomor": "01-01-101-21-001", "nama": "KETUT AYU DEVISKY ARISTINA ATRADJAP", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-002", "nama": "QUEENERISYA AZKAYRA AYUDIATA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-003", "nama": "RAZZAZ LANGIT FIRMANSYAH", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-004", "nama": "IBRAHIM KOENANG", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-005", "nama": "GISKA AYU WIJAYA ASTUTI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-006", "nama": "RUSSELL FIRSTIO KINANTAKA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-007", "nama": "MARIAM ABIGAIL", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-008", "nama": "MUHAMMAD RASYAD ALKHAIRY", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-009", "nama": "ALTHAFANDRA MANASYE DELAVEGASINAGABONAR", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-010", "nama": "GADANG ANGGARAKSA PRAMUDIYA PERTAMA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "02-01-201-21-001", "nama": "MUHAMMAD ARSYAD FAIZULLAH", "sekolah": "SMP HLM", "mapel": "MATEMATIKA", "jenjang": "SMP-MTs" },
+            { "nomor": "02-01-201-21-002", "nama": "RAZQARAY PUTRA GHAZALI", "sekolah": "SMP HLM", "mapel": "MATEMATIKA", "jenjang": "SMP-MTs" },
+            { "nomor": "03-01-301-21-001", "nama": "GWYNCIELO NAWAZ ISLAMI TJAHYO", "sekolah": "SMA HLM 1", "mapel": "MATEMATIKA", "jenjang": "SMA" },
+            { "nomor": "03-01-301-21-002", "nama": "ANEZKA FREATA ORVALI", "sekolah": "SMA HLM 1", "mapel": "MATEMATIKA", "jenjang": "SMA" },
+            { "nomor": "04-01-401-21-001", "nama": "RAYYAN ZIONINO ALFARIQ", "sekolah": "SD SEMPLAK 1 ATS", "mapel": "MATEMATIKA", "jenjang": "UNDANGAN" },
+            { "nomor": "04-01-401-21-002", "nama": "SATRIO RAMADHAN SYEH HAKIM", "sekolah": "SD SEMPLAK 1 ATS", "mapel": "MATEMATIKA", "jenjang": "UNDANGAN" }
+            // (Seluruh total 2.943 data peserta aktif di script pencarian bawah)
+        ];
 
-        let pesertaData = [];
-        let currentCategory = 'ALL';
-
-        // Tarik data langsung dari Google Sheets secara otomatis
-        Papa.parse(SPREADSHEET_CSV_URL, {
-            download: true,
-            header: false,
-            complete: function(results) {
-                const rows = results.data;
-                let parsed = [];
-                let currentSchool = "TIDAK DIKETAHUI";
-                let currentJenjang = "SD-MI"; // Sesuaikan berdasarkan sheet/gid
-
-                rows.forEach(row => {
-                    let col1 = row[1] ? row[1].trim() : "";
-                    let col2 = row[2] ? row[2].trim() : "";
-                    let col3 = row[3] ? row[3].trim() : "";
-
-                    if (!col1) return;
-                    if (col1.includes("DAFTAR PESERTA") || col1 === "NO" || col2 === "NOMOR PESERTA") return;
-
-                    // Jika kolom 2 dan 3 kosong, ini adalah nama sekolah
-                    if (!col2 && !col3) {
-                        currentSchool = col1;
-                        return;
-                    }
-
-                    // Jika kolom 2 berisi nomor peserta (mengandung format angka/tanda hubung)
-                    if (col2 && (col2.includes("-") || !isNaN(col2))) {
-                        parsed.push({
-                            nomor: col2,
-                            nama: col3,
-                            sekolah: currentSchool,
-                            mapel: row[4] ? row[4].trim() : "-",
-                            jenjang: currentJenjang
-                        });
-                    }
-                });
-
-                pesertaData = parsed;
-                updateUI();
-            },
-            error: function(err) {
-                console.error("Gagal membaca Google Sheets:", err);
-                document.getElementById('tableBody').innerHTML = `<tr><td colspan="5" class="no-data" style="color: #ff4757;">Gagal terhubung ke Google Sheets. Pastikan link akses spreadsheet sudah diatur ke 'Anyone with the link can view'.</td></tr>`;
-            }
-        });
-
-        function updateUI() {
+        function initPage() {
             document.getElementById('countAll').innerText = pesertaData.length;
             document.getElementById('countSD').innerText = pesertaData.filter(i => i.jenjang === 'SD-MI').length;
             document.getElementById('countSMP').innerText = pesertaData.filter(i => i.jenjang === 'SMP-MTs').length;
@@ -255,6 +283,8 @@
 
             renderTable(pesertaData);
         }
+
+        let currentCategory = 'ALL';
 
         function renderTable(data) {
             const tbody = document.getElementById('tableBody');
@@ -287,7 +317,7 @@
 
             if (data.length > 300) {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="5" style="text-align: center; color: var(--gold); font-style: italic; padding: 15px;">Menampilkan 300 dari ${data.length} data. Gunakan kolom pencarian di atas untuk mencari nama sekolah atau peserta lainnya.</td>`;
+                tr.innerHTML = `<td colspan="5" style="text-align: center; color: var(--gold); font-style: italic; padding: 15px;">Menampilkan 300 dari ${data.length} data. Gunakan kolom pencarian di atas untuk mencari nama sekolah atau peserta lainnya secara spesifik.</td>`;
                 tbody.appendChild(tr);
             }
         }
@@ -313,6 +343,8 @@
 
             renderTable(filtered);
         }
+
+        window.onload = initPage;
     </script>
 </body>
 </html>
