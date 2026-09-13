@@ -397,11 +397,11 @@
         }
 
         /* Lebar proporsional kolom agar seragam & ramah HP */
-        th:nth-child(1), td:nth-child(1) { width: 22%; text-align: center; white-space: nowrap; } /* No Peserta */
-        th:nth-child(2), td:nth-child(2) { width: 30%; } /* Nama Peserta */
+        th:nth-child(1), td:nth-child(1) { width: 20%; text-align: center; white-space: nowrap; } /* No Peserta */
+        th:nth-child(2), td:nth-child(2) { width: 28%; } /* Nama Peserta */
         th:nth-child(3), td:nth-child(3) { width: 18%; } /* Sekolah */
-        th:nth-child(4), td:nth-child(4) { width: 15%; text-align: center; } /* Mapel */
-        th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center; white-space: nowrap; } /* Keterangan */
+        th:nth-child(4), td:nth-child(4) { width: 16%; text-align: center; } /* Mapel */
+        th:nth-child(5), td:nth-child(5) { width: 18%; text-align: center; } /* Keterangan (cukup luas untuk Sekolah Undangan) */
 
         @media (max-width: 768px) {
             table {
@@ -845,9 +845,9 @@
 
             slice.forEach(item => {
                 let badgeClass = 'badge-sd';
-                let labelKeterangan = 'Sekolah Angkasa';
-                if (item.jenjang === 'SMP-MTs') { badgeClass = 'badge-smp'; labelKeterangan = 'Sekolah Angkasa'; }
-                else if (item.jenjang === 'SMA') { badgeClass = 'badge-sma'; labelKeterangan = 'Sekolah Angkasa'; }
+                let labelKeterangan = 'SD Angkasa';
+                if (item.jenjang === 'SMP-MTs') { badgeClass = 'badge-smp'; labelKeterangan = 'SMP Angkasa'; }
+                else if (item.jenjang === 'SMA') { badgeClass = 'badge-sma'; labelKeterangan = 'SMA Angkasa'; }
                 else if (item.jenjang === 'UNDANGAN') { badgeClass = 'badge-undangan'; labelKeterangan = 'Sekolah Undangan'; }
 
                 const tr = document.createElement('tr');
