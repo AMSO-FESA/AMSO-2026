@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peserta Babak Penyisihan AMSO 2026</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #070913;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --gold: #22d3ee;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* ================= ANIMASI LATAR BELAKANG SAINS & SPACE ================= */
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 250px 250px;
+            opacity: 0.45;
+            animation: twinkle 4s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .galaxy-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.18;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.15); }
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--neon-blue);
+            opacity: 0.55;
+            user-select: none;
+            filter: drop-shadow(0 0 12px currentColor);
+        }
+
+        .el-rocket { top: 12%; right: 7%; font-size: 2.8rem; color: var(--neon-blue); animation: flyRocket 14s infinite ease-in-out; }
+        .el-astronaut1 { bottom: 15%; left: 4%; font-size: 2.5rem; color: var(--gold); animation: floatItem1 11s infinite alternate ease-in-out; }
+        .el-astronaut2 { top: 35%; left: 8%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 9s infinite alternate ease-in-out; opacity: 0.4; }
+        
+        .el-atom { top: 18%; left: 15%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { bottom: 25%; right: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 8s infinite alternate ease-in-out; }
+        .el-magnet { top: 60%; left: 12%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 10s infinite alternate ease-in-out; }
+        .el-satellite { top: 8%; left: 40%; font-size: 2.2rem; color: var(--text-muted); animation: flySatellite 16s infinite linear; }
+
+        .el-math1 { top: 25%; right: 25%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { top: 75%; left: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 50%; right: 8%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+
+        @keyframes flyRocket {
+            0% { transform: translate(0, 0) rotate(45deg); }
+            50% { transform: translate(-50px, 70px) rotate(40deg); }
+            100% { transform: translate(0, 0) rotate(45deg); }
+        }
+
+        @keyframes floatItem1 {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-45px) rotate(15deg); }
+        }
+
+        @keyframes floatItem2 {
+            0% { transform: translateY(0) rotate(10deg); }
+            100% { transform: translateY(35px) rotate(-15deg); }
+        }
+
+        @keyframes rotateAtom {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes flySatellite {
+            0% { transform: translateX(-50vw) translateY(0) rotate(0deg); }
+            100% { transform: translateX(100vw) translateY(-30px) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 0 20px 80px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* HEADER */
+        header {
+            padding: 30px 0 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+            padding-bottom: 15px; 
+            margin-bottom: -15px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 30px;
+            white-space: normal;
+        }
+
+        /* ================= TABS & PDF VIEWER ================= */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
+
+        .pdf-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            display: none;
+        }
+
+        .pdf-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pdf-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+        }
+
+        .pdf-viewer-wrapper {
+            width: 100%;
+            height: 650px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+        }
+
+        .pdf-viewer-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 35px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ELEMEN AUDIO -->
+    <audio id="bgAudio" loop>
+        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+    </audio>
+
+    <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+    <div class="space-bg">
+        <div class="stars"></div>
+        <div class="galaxy-blob blob-1"></div>
+        <div class="galaxy-blob blob-2"></div>
+        <div class="galaxy-blob blob-3"></div>
+
+        <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+        <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+        <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+
+        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
+        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+
+        <div class="floating-icon el-math1">&pi;</div>
+        <div class="floating-icon el-math2">&sum;</div>
+        <div class="floating-icon el-math3">&radic;</div>
+    </div>
+
+    <div class="container">
+        <!-- HEADER OTOMATIS -->
+        <header id="header-placeholder"></header>
+
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h1 class="main-title">DAFTAR PESERTA PENYISIHAN</h1>
+            <div class="sub-title">AMSO 2026 - RANGKAIAN BABAK PENYISIHAN</div>
+        </div>
+
+        <main>
+            <!-- TABS NAVIGATION -->
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab(event, 'sd')">SD / MI</button>
+                <button class="tab-btn" onclick="switchTab(event, 'smp')">SMP / MTs</button>
+                <button class="tab-btn" onclick="switchTab(event, 'sma')">SMA</button>
+                <button class="tab-btn" onclick="switchTab(event, 'undangan')">SEKOLAH UNDANGAN</button>
+            </div>
+
+            <!-- TAB 1: SD / MI -->
+            <div id="sd" class="pdf-section active">
+                <div class="pdf-header">
+                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SD / MI</div>
+                    <a href="https://drive.google.com/file/d/1ngPzjvx2qOO1v1bfM6dJZ0kFpoSFrDoc/view?usp=sharing" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> Download / Buka PDF
+                    </a>
+                </div>
+                <div class="pdf-viewer-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1ngPzjvx2qOO1v1bfM6dJZ0kFpoSFrDoc/preview"></iframe>
+                </div>
+            </div>
+
+            <!-- TAB 2: SMP / MTs -->
+            <div id="smp" class="pdf-section">
+                <div class="pdf-header">
+                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SMP / MTs</div>
+                    <a href="https://drive.google.com/file/d/12q4PZ5EVYmLzv5iB1UosQVCOk3qR2DaB/view?usp=sharing" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> Download / Buka PDF
+                    </a>
+                </div>
+                <div class="pdf-viewer-wrapper">
+                    <iframe src="https://drive.google.com/file/d/12q4PZ5EVYmLzv5iB1UosQVCOk3qR2DaB/preview"></iframe>
+                </div>
+            </div>
+
+            <!-- TAB 3: SMA -->
+            <div id="sma" class="pdf-section">
+                <div class="pdf-header">
+                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SMA</div>
+                    <a href="https://drive.google.com/file/d/1beDMLUCYQ4MRzCEc3yPiFO2iXZ8tj057/view?usp=sharing" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> Download / Buka PDF
+                    </a>
+                </div>
+                <div class="pdf-viewer-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1beDMLUCYQ4MRzCEc3yPiFO2iXZ8tj057/preview"></iframe>
+                </div>
+            </div>
+
+            <!-- TAB 4: SEKOLAH UNDANGAN -->
+            <div id="undangan" class="pdf-section">
+                <div class="pdf-header">
+                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SEKOLAH UNDANGAN</div>
+                    <a href="https://drive.google.com/file/d/1Npuzuhg8_aIR-yy3gtlqyMLbquTAUC-m/view?usp=sharing" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> Download / Buka PDF
+                    </a>
+                </div>
+                <div class="pdf-viewer-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1Npuzuhg8_aIR-yy3gtlqyMLbquTAUC-m/preview"></iframe>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER OTOMATIS -->
+    <footer id="footer-placeholder"></footer>
+
+    <!-- PANGGIL SCRIPT GLOBAL & TAB SCRIPT -->
+    <script src="global-audio.js"></script>
+    <script>
+        function switchTab(evt, tabId) {
+            const sections = document.querySelectorAll('.pdf-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
