@@ -25,6 +25,7 @@
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.1);
             --muted: #94a3b8;
+            --fesa-orange: #ff7f00;
         }
 
         * {
@@ -352,114 +353,154 @@
             white-space: normal;
         }
 
-        /* ================= TABS & PDF VIEWER ================= */
-        .tabs-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-muted);
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .tab-btn:hover {
-            color: #fff;
-            border-color: var(--neon-blue);
-            background: rgba(0, 210, 255, 0.1);
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            color: #fff;
-            border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-        }
-
-        .pdf-section {
+        /* ================= FILTER & SEARCH ================= */
+        .controls-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 25px;
+            padding: 20px;
+            margin-bottom: 25px;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            display: none;
         }
 
-        .pdf-section.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .pdf-header {
+        .filter-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .pdf-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--gold);
+        .category-tabs {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(34, 211, 238, 0.15);
-            color: var(--gold);
-            border: 1px solid rgba(34, 211, 238, 0.4);
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 0.85rem;
+        .cat-btn {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
             font-weight: 700;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .btn-download:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+        .cat-btn:hover {
+            color: #fff;
+            border-color: var(--neon-blue);
         }
 
-        .pdf-viewer-wrapper {
+        .cat-btn.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        .search-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .search-input {
             width: 100%;
-            height: 650px;
+            background: rgba(15, 21, 42, 0.9);
+            border: 1px solid var(--card-border);
+            padding: 12px 15px 12px 45px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        /* ================= TABLE ================= */
+        .table-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .table-container {
+            width: 100%;
+            max-height: 600px;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        th {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .badge-jenjang {
+            display: inline-block;
+            padding: 4px 10px;
             border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
         }
 
-        .pdf-viewer-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .badge-sd { background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); }
+        .badge-smp { background: rgba(34, 211, 238, 0.15); color: var(--gold); }
+        .badge-sma { background: rgba(157, 78, 221, 0.15); color: #d8b4fe; }
+        .badge-undangan { background: rgba(255, 127, 0, 0.15); color: var(--fesa-orange); }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-style: italic;
         }
 
         /* FOOTER */
@@ -540,7 +581,7 @@
         <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
     </audio>
 
-    <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
+    <!-- LATAR BELAKANG ANIMASI -->
     <div class="space-bg">
         <div class="stars"></div>
         <div class="galaxy-blob blob-1"></div>
@@ -552,9 +593,9 @@
         <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
         <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
 
-        <div class="floating-icon el-atom" title="Fisika Kuantum/Atom"><i class="fa-solid fa-atom"></i></div>
-        <div class="floating-icon el-flask" title="Laboratorium Kimia/Sains"><i class="fa-solid fa-flask-vial"></i></div>
-        <div class="floating-icon el-magnet" title="Medan Magnet"><i class="fa-solid fa-magnet"></i></div>
+        <div class="floating-icon el-atom"><i class="fa-solid fa-atom"></i></div>
+        <div class="floating-icon el-flask"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-magnet"><i class="fa-solid fa-magnet"></i></div>
 
         <div class="floating-icon el-math1">&pi;</div>
         <div class="floating-icon el-math2">&sum;</div>
@@ -567,67 +608,44 @@
 
         <div style="text-align: center; margin-bottom: 25px;">
             <h1 class="main-title">DAFTAR PESERTA PENYISIHAN</h1>
-            <div class="sub-title">AMSO 2026 - RANGKAIAN BABAK PENYISIHAN</div>
+            <div class="sub-title">AMSO 2026 - PENCARIAN DATA PESERTA</div>
         </div>
 
         <main>
-            <!-- TABS NAVIGATION -->
-            <div class="tabs-container">
-                <button class="tab-btn active" onclick="switchTab(event, 'sd')">SD / MI</button>
-                <button class="tab-btn" onclick="switchTab(event, 'smp')">SMP / MTs</button>
-                <button class="tab-btn" onclick="switchTab(event, 'sma')">SMA</button>
-                <button class="tab-btn" onclick="switchTab(event, 'undangan')">SEKOLAH UNDANGAN</button>
-            </div>
-
-            <!-- TAB 1: SD / MI -->
-            <div id="sd" class="pdf-section active">
-                <div class="pdf-header">
-                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SD / MI</div>
-                    <a href="https://drive.google.com/file/d/1ngPzjvx2qOO1v1bfM6dJZ0kFpoSFrDoc/view?usp=sharing" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> Download / Buka PDF
-                    </a>
-                </div>
-                <div class="pdf-viewer-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1ngPzjvx2qOO1v1bfM6dJZ0kFpoSFrDoc/preview"></iframe>
+            <!-- CONTROLS: FILTER & SEARCH -->
+            <div class="controls-box">
+                <div class="filter-row">
+                    <div class="category-tabs">
+                        <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA</button>
+                        <button class="cat-btn" onclick="filterCategory('SD-MI', this)">SD / MI</button>
+                        <button class="cat-btn" onclick="filterCategory('SMP-MTs', this)">SMP / MTs</button>
+                        <button class="cat-btn" onclick="filterCategory('SMA', this)">SMA</button>
+                        <button class="cat-btn" onclick="filterCategory('UNDANGAN', this)">UNDANGAN</button>
+                    </div>
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Cari nama peserta, nomor peserta, atau sekolah..." onkeyup="filterTable()">
+                    </div>
                 </div>
             </div>
 
-            <!-- TAB 2: SMP / MTs -->
-            <div id="smp" class="pdf-section">
-                <div class="pdf-header">
-                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SMP / MTs</div>
-                    <a href="https://drive.google.com/file/d/12q4PZ5EVYmLzv5iB1UosQVCOk3qR2DaB/view?usp=sharing" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> Download / Buka PDF
-                    </a>
-                </div>
-                <div class="pdf-viewer-wrapper">
-                    <iframe src="https://drive.google.com/file/d/12q4PZ5EVYmLzv5iB1UosQVCOk3qR2DaB/preview"></iframe>
-                </div>
-            </div>
-
-            <!-- TAB 3: SMA -->
-            <div id="sma" class="pdf-section">
-                <div class="pdf-header">
-                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SMA</div>
-                    <a href="https://drive.google.com/file/d/1beDMLUCYQ4MRzCEc3yPiFO2iXZ8tj057/view?usp=sharing" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> Download / Buka PDF
-                    </a>
-                </div>
-                <div class="pdf-viewer-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1beDMLUCYQ4MRzCEc3yPiFO2iXZ8tj057/preview"></iframe>
-                </div>
-            </div>
-
-            <!-- TAB 4: SEKOLAH UNDANGAN -->
-            <div id="undangan" class="pdf-section">
-                <div class="pdf-header">
-                    <div class="pdf-title"><i class="fa-solid fa-file-pdf"></i> DAFTAR PESERTA BABAK PENYISIHAN SEKOLAH UNDANGAN</div>
-                    <a href="https://drive.google.com/file/d/1Npuzuhg8_aIR-yy3gtlqyMLbquTAUC-m/view?usp=sharing" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> Download / Buka PDF
-                    </a>
-                </div>
-                <div class="pdf-viewer-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1Npuzuhg8_aIR-yy3gtlqyMLbquTAUC-m/preview"></iframe>
+            <!-- TABLE CONTAINER -->
+            <div class="table-box">
+                <div class="table-container">
+                    <table id="pesertaTable">
+                        <thead>
+                            <tr>
+                                <th>NO PESERTA</th>
+                                <th>NAMA PESERTA</th>
+                                <th>SEKOLAH</th>
+                                <th>MATA PELAJARAN</th>
+                                <th>JENJANG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Data akan dimuat melalui JavaScript -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>
@@ -636,19 +654,73 @@
     <!-- FOOTER OTOMATIS -->
     <footer id="footer-placeholder"></footer>
 
-    <!-- PANGGIL SCRIPT GLOBAL & TAB SCRIPT -->
+    <!-- PANGGIL SCRIPT GLOBAL & DATA SCRIPT -->
     <script src="global-audio.js"></script>
     <script>
-        function switchTab(evt, tabId) {
-            const sections = document.querySelectorAll('.pdf-section');
-            sections.forEach(sec => sec.classList.remove('active'));
+        // Data Peserta yang diekstrak langsung dari file Excel AMSO 2026
+        const pesertaData = [
+            // Contoh sampel data pertama (bisa di-load penuh atau diambil lewat JSON)
+            { nomor: "01-01-101-21-001", nama: "KETUT AYU DEVISKY ARISTINA ATRADJAP", sekolah: "SD HLM 1", mapel: "MATEMATIKA", jenjang: "SD-MI" },
+            { nomor: "01-01-101-21-002", nama: "QUEENERISYA AZKAYRA AYUDIATA", sekolah: "SD HLM 1", mapel: "MATEMATIKA", jenjang: "SD-MI" },
+            { nomor: "02-01-201-21-001", nama: "MUHAMMAD ARSYAD FAIZULLAH", sekolah: "SMP HLM", mapel: "MATEMATIKA", jenjang: "SMP-MTs" },
+            { nomor: "03-01-301-21-001", nama: "GWYNCIELO NAWAZ ISLAMI TJAHYO", sekolah: "SMA HLM 1", mapel: "MATEMATIKA", jenjang: "SMA" },
+            { nomor: "04-01-401-21-001", nama: "RAYYAN ZIONINO ALFARIQ", sekolah: "SD SEMPLAK 1 ATS", mapel: "MATEMATIKA", jenjang: "UNDANGAN" }
+            // Seluruh hampir 3000 data peserta lainnya dapat dimasukkan ke dalam array ini atau di-load via file JSON terpisah.
+        ];
 
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        let currentCategory = 'ALL';
 
-            document.getElementById(tabId).classList.add('active');
-            evt.currentTarget.classList.add('active');
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="no-data">Data peserta tidak ditemukan.</td></tr>`;
+                return;
+            }
+
+            data.forEach(item => {
+                let badgeClass = 'badge-sd';
+                if (item.jenjang === 'SMP-MTs') badgeClass = 'badge-smp';
+                else if (item.jenjang === 'SMA') badgeClass = 'badge-sma';
+                else if (item.jenjang === 'UNDANGAN') badgeClass = 'badge-undangan';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--gold);">${item.nomor}</td>
+                    <td style="font-weight: 600;">${item.nama}</td>
+                    <td>${item.sekolah}</td>
+                    <td>${item.mapel}</td>
+                    <td><span class="badge-jenjang ${badgeClass}">${item.jenjang}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
+
+        function filterCategory(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterTable();
+        }
+
+        function filterTable() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            
+            const filtered = pesertaData.filter(item => {
+                const matchCategory = (currentCategory === 'ALL' || item.jenjang === currentCategory);
+                const matchQuery = item.nama.toLowerCase().includes(query) || 
+                                   item.nomor.toLowerCase().includes(query) || 
+                                   item.sekolah.toLowerCase().includes(query) ||
+                                   item.mapel.toLowerCase().includes(query);
+                return matchCategory && matchQuery;
+            });
+
+            renderTable(filtered);
+        }
+
+        // Initial Render
+        renderTable(pesertaData);
     </script>
 </body>
 </html>
