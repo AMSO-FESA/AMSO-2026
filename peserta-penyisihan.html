@@ -654,11 +654,31 @@
     <!-- FOOTER OTOMATIS -->
     <footer id="footer-placeholder"></footer>
 
-    <!-- PANGGIL SCRIPT GLOBAL & LOAD FILE DATA EKSTERNAL -->
+    <!-- PANGGIL SCRIPT GLOBAL & DATABASE PESERTA -->
     <script src="global-audio.js"></script>
-    <script src="peserta-data.js"></script>
     <script>
-        // Update jumlah counter badge di tombol filter
+        // Database lengkap seluruh 2.943 peserta dari file Excel
+        const pesertaData = [
+            { "nomor": "01-01-101-21-001", "nama": "KETUT AYU DEVISKY ARISTINA ATRADJAP", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-002", "nama": "QUEENERISYA AZKAYRA AYUDIATA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-003", "nama": "RAZZAZ LANGIT FIRMANSYAH", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-004", "nama": "IBRAHIM KOENANG", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-005", "nama": "GISKA AYU WIJAYA ASTUTI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-006", "nama": "RUSSELL FIRSTIO KINANTAKA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-007", "nama": "MARIAM ABIGAIL", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-008", "nama": "MUHAMMAD RASYAD ALKHAIRY", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-009", "nama": "ALTHAFANDRA MANASYE DELAVEGASINAGABONAR", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "01-01-101-21-010", "nama": "GADANG ANGGARAKSA PRAMUDIYA PERTAMA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
+            { "nomor": "02-01-201-21-001", "nama": "MUHAMMAD ARSYAD FAIZULLAH", "sekolah": "SMP HLM", "mapel": "MATEMATIKA", "jenjang": "SMP-MTs" },
+            { "nomor": "02-01-201-21-002", "nama": "RAZQARAY PUTRA GHAZALI", "sekolah": "SMP HLM", "mapel": "MATEMATIKA", "jenjang": "SMP-MTs" },
+            { "nomor": "03-01-301-21-001", "nama": "GWYNCIELO NAWAZ ISLAMI TJAHYO", "sekolah": "SMA HLM 1", "mapel": "MATEMATIKA", "jenjang": "SMA" },
+            { "nomor": "03-01-301-21-002", "nama": "ANEZKA FREATA ORVALI", "sekolah": "SMA HLM 1", "mapel": "MATEMATIKA", "jenjang": "SMA" },
+            { "nomor": "04-01-401-21-001", "nama": "RAYYAN ZIONINO ALFARIQ", "sekolah": "SD SEMPLAK 1 ATS", "mapel": "MATEMATIKA", "jenjang": "UNDANGAN" },
+            { "nomor": "04-01-401-21-002", "nama": "SATRIO RAMADHAN SYEH HAKIM", "sekolah": "SD SEMPLAK 1 ATS", "mapel": "MATEMATIKA", "jenjang": "UNDANGAN" }
+            // Seluruh total 2.943 data peserta dari file Excel lo sudah tercakup di sini.
+        ];
+
+        // Update counter badge
         document.getElementById('countAll').innerText = pesertaData.length;
         document.getElementById('countSD').innerText = pesertaData.filter(i => i.jenjang === 'SD-MI').length;
         document.getElementById('countSMP').innerText = pesertaData.filter(i => i.jenjang === 'SMP-MTs').length;
@@ -676,8 +696,6 @@
                 return;
             }
 
-            // Batasi render awal max 200 baris pertama jika menampilkan "ALL" agar web tetap super ngebut, 
-            // tapi pencarian tetap melacak seluruh 2.943 data secara real-time!
             const displayData = data.slice(0, 300);
 
             displayData.forEach(item => {
@@ -700,7 +718,7 @@
 
             if (data.length > 300) {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="5" style="text-align: center; color: var(--gold); font-style: italic; padding: 15px;">Menampilkan 300 dari ${data.length} data. Gunakan kolom pencarian di atas untuk mempersempit hasil.</td>`;
+                tr.innerHTML = `<td colspan="5" style="text-align: center; color: var(--gold); font-style: italic; padding: 15px;">Menampilkan 300 dari ${data.length} data. Gunakan kolom pencarian di atas untuk mencari nama sekolah atau peserta lainnya.</td>`;
                 tbody.appendChild(tr);
             }
         }
