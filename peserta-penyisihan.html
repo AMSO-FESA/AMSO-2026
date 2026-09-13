@@ -616,11 +616,11 @@
             <div class="controls-box">
                 <div class="filter-row">
                     <div class="category-tabs">
-                        <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA</button>
-                        <button class="cat-btn" onclick="filterCategory('SD-MI', this)">SD / MI</button>
-                        <button class="cat-btn" onclick="filterCategory('SMP-MTs', this)">SMP / MTs</button>
-                        <button class="cat-btn" onclick="filterCategory('SMA', this)">SMA</button>
-                        <button class="cat-btn" onclick="filterCategory('UNDANGAN', this)">UNDANGAN</button>
+                        <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA (<span id="countAll">0</span>)</button>
+                        <button class="cat-btn" onclick="filterCategory('SD-MI', this)">SD / MI (<span id="countSD">0</span>)</button>
+                        <button class="cat-btn" onclick="filterCategory('SMP-MTs', this)">SMP / MTs (<span id="countSMP">0</span>)</button>
+                        <button class="cat-btn" onclick="filterCategory('SMA', this)">SMA (<span id="countSMA">0</span>)</button>
+                        <button class="cat-btn" onclick="filterCategory('UNDANGAN', this)">UNDANGAN (<span id="countUndangan">0</span>)</button>
                     </div>
                     <div class="search-wrapper">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -654,88 +654,16 @@
     <!-- FOOTER OTOMATIS -->
     <footer id="footer-placeholder"></footer>
 
-    <!-- PANGGIL SCRIPT GLOBAL & DATA SCRIPT -->
+    <!-- PANGGIL SCRIPT GLOBAL & LOAD FILE DATA EKSTERNAL -->
     <script src="global-audio.js"></script>
+    <script src="peserta-data.js"></script>
     <script>
-        // Seluruh 2.943 data peserta lengkap hasil ekstraksi dari file Excel AMSO 2026
-        const pesertaData = [
-{ "nomor": "01-01-101-21-001", "nama": "KETUT AYU DEVISKY ARISTINA ATRADJAP", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-002", "nama": "QUEENERISYA AZKAYRA AYUDIATA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-003", "nama": "RAZZAZ LANGIT FIRMANSYAH", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-004", "nama": "IBRAHIM KOENANG", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-005", "nama": "GISKA AYU WIJAYA ASTUTI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-006", "nama": "RUSSELL FIRSTIO KINANTAKA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-007", "nama": "MARIAM ABIGAIL", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-008", "nama": "MUHAMMAD RASYAD ALKHAIRY", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-009", "nama": "ALTHAFANDRA MANASYE DELAVEGASINAGABONAR", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-010", "nama": "GADANG ANGGARAKSA PRAMUDIYA PERTAMA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-011", "nama": "AZZAHRA KEYLA FADHILAH", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-012", "nama": "GAVIN GIOVANI PRASETIYO", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-013", "nama": "MUHAMMAD ARKANZA ALKHALIFI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-014", "nama": "KAYLA MAJDA NAFISAH", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-015", "nama": "NADINE MAHESWARI AURELLIA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-016", "nama": "GHAISANAH KHANSA KHAIRUNNISA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-017", "nama": "MUHAMMAD AL FATHIR", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-018", "nama": "AQEELA AZZAHRA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-019", "nama": "ALFATHIYYAH SALSABILA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-020", "nama": "MUHAMMAD GHAZY AL-GHIFARY", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-021", "nama": "MUHAMMAD RAFIQI SYAHPUTRA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-022", "nama": "SABRINA AURELLIA PUTRI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-023", "nama": "ABIDZAR AL-GHIFARI", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-024", "nama": "AULIA SHAZIA PUTRI ANARGYA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-21-025", "nama": "AMIRA KHAIRUNNISA", "sekolah": "SD HLM 1", "mapel": "MATEMATIKA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-001", "nama": "MUHAMMAD BINTANG ALKHALIFI", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-002", "nama": "FADHILAH KHAIRIYAH", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-003", "nama": "MIKHAILA NARA FAHREZA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-004", "nama": "RAIHAN ARKA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-005", "nama": "GHANIA KINASIH", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-006", "nama": "ALFATHUNISSA FAKHRUNNISA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-007", "nama": "MUHAMMAD FAIZ AL-FARUQ", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-008", "nama": "MUHAMMAD HAFIDZ ALVARO", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-009", "nama": "ALMIRA ZALFA SALSABILA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-010", "nama": "ZAHIRA ALMAHYRA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-011", "nama": "M. RAFI PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-012", "nama": "NADHIF ATHAILLAH", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-013", "nama": "RAKA ADITYA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-014", "nama": "NAYLA SALSABILA PUTRI", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-015", "nama": "KEVIN MAHESWARA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-016", "nama": "AQILAH ZAHRA KHAIRUNNISA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-017", "nama": "ALIFIA RAHMA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-018", "nama": "FAREL ALVARO", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-019", "nama": "SALSABILA PUTRI", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-020", "nama": "DIAN PRATIWI", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-021", "nama": "RIFQI RAMADHAN", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-022", "nama": "ZAHRA AULIA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-023", "nama": "FAHRI ALFARIZI", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-024", "nama": "NADIA SYAKIRA", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-22-025", "nama": "AZKA RAFAEL", "sekolah": "SD HLM 1", "mapel": "IPA", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-001", "nama": "KENZO ALFARIZI", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-002", "nama": "KEYLA AZZAHRA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-003", "nama": "DANISH AHMAD", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-004", "nama": "AISYAH PUTRI", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-005", "nama": "RAKA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-006", "nama": "NABILA SYAKIRA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-007", "nama": "ZIKRI RAMADHAN", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-008", "nama": "AURELIA PUTRI", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-009", "nama": "FAHMI ALFARIZI", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-010", "nama": "CLARA DIVA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-011", "nama": "SATRIA WIRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-012", "nama": "TSAMARA AQUILLA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-013", "nama": "RANGGA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-014", "nama": "KHAIRUNNISA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-015", "nama": "GIBRAN RAKABUMING", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-016", "nama": "SYAKIRA AULIA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-017", "nama": "BIMO PRAKOSO", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-018", "nama": "NAURA ZAHRA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-019", "nama": "ARKA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-020", "nama": "ZAHWA AURELIA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-021", "nama": "RADITYA PRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-022", "nama": "KEYSHA AULIA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-023", "nama": "DANENDRA WIRATAMA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-024", "nama": "AULIA ZAHRA", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" },
-{ "nomor": "01-01-101-23-025", "nama": "GAVIN ALFARIZI", "sekolah": "SD HLM 1", "mapel": "IPS", "jenjang": "SD-MI" }
-// (Catatan: 2.800+ data peserta lainnya dari sheet SMP, SMA, dan Undangan sudah ter-generate lengkap di sistem).
-        ];
+        // Update jumlah counter badge di tombol filter
+        document.getElementById('countAll').innerText = pesertaData.length;
+        document.getElementById('countSD').innerText = pesertaData.filter(i => i.jenjang === 'SD-MI').length;
+        document.getElementById('countSMP').innerText = pesertaData.filter(i => i.jenjang === 'SMP-MTs').length;
+        document.getElementById('countSMA').innerText = pesertaData.filter(i => i.jenjang === 'SMA').length;
+        document.getElementById('countUndangan').innerText = pesertaData.filter(i => i.jenjang === 'UNDANGAN').length;
 
         let currentCategory = 'ALL';
 
@@ -748,11 +676,16 @@
                 return;
             }
 
-            data.forEach(item => {
+            // Batasi render awal max 200 baris pertama jika menampilkan "ALL" agar web tetap super ngebut, 
+            // tapi pencarian tetap melacak seluruh 2.943 data secara real-time!
+            const displayData = data.slice(0, 300);
+
+            displayData.forEach(item => {
                 let badgeClass = 'badge-sd';
-                if (item.jenjang === 'SMP-MTs') badgeClass = 'badge-smp';
-                else if (item.jenjang === 'SMA') badgeClass = 'badge-sma';
-                else if (item.jenjang === 'UNDANGAN') badgeClass = 'badge-undangan';
+                let labelJenjang = 'SD/MI';
+                if (item.jenjang === 'SMP-MTs') { badgeClass = 'badge-smp'; labelJenjang = 'SMP/MTs'; }
+                else if (item.jenjang === 'SMA') { badgeClass = 'badge-sma'; labelJenjang = 'SMA'; }
+                else if (item.jenjang === 'UNDANGAN') { badgeClass = 'badge-undangan'; labelJenjang = 'Undangan'; }
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -760,10 +693,16 @@
                     <td style="font-weight: 600;">${item.nama}</td>
                     <td>${item.sekolah}</td>
                     <td>${item.mapel}</td>
-                    <td><span class="badge-jenjang ${badgeClass}">${item.jenjang}</span></td>
+                    <td><span class="badge-jenjang ${badgeClass}">${labelJenjang}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
+
+            if (data.length > 300) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td colspan="5" style="text-align: center; color: var(--gold); font-style: italic; padding: 15px;">Menampilkan 300 dari ${data.length} data. Gunakan kolom pencarian di atas untuk mempersempit hasil.</td>`;
+                tbody.appendChild(tr);
+            }
         }
 
         function filterCategory(category, btn) {
