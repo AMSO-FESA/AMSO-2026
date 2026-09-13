@@ -610,43 +610,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
-        /* Spreadsheet Action */
-        .spreadsheet-action-box {
-            text-align: center;
-            margin-top: 25px;
-            background: linear-gradient(135deg, rgba(0, 210, 255, 0.08), rgba(157, 78, 221, 0.08));
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 20px;
-            padding: 25px 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .spreadsheet-action-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .btn-spreadsheet {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 26px;
-            border-radius: 35px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-spreadsheet:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.7);
-            filter: brightness(1.1);
-        }
+        
 
         /* Responsif untuk Tablet & HP */
         @media (max-width: 1024px) {
@@ -770,72 +734,18 @@
         </div>
 
         <main>
-            <!-- REKAPITULASI SUMMARY CARDS (SEJAJAR 1 BARIS DI PC) -->
+            <!-- REKAPITULASI SUMMARY CARDS -->
             <div class="section-box">
                 <div class="section-title"><i class="fa-solid fa-chart-pie"></i> REKAPITULASI</div>
                 <div class="summary-grid">
-                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7,350</div><div class="sub-breakdown"><span>SD: <strong>1.8K</strong></span><span>SMP: <strong>2.4K</strong></span><span>SMA: <strong>3.1K</strong></span></div></div>
-                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">3,094</div><div class="sub-breakdown"><span>SD: <strong>543</strong></span><span>SMP: <strong>732</strong></span><span>SMA: <strong>1.5K</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Seleksi</h4><div class="number-lg">7.350</div><div class="sub-breakdown"><span>SD: <strong>1.8K</strong></span><span>SMP: <strong>2.4K</strong></span><span>SMA: <strong>3.1K</strong></span></div></div>
+                    <div class="summary-card"><h4>Total Babak Penyisihan</h4><div class="number-lg">2.943</div><div class="sub-breakdown"><span>SD: <strong>543</strong></span><span>SMP: <strong>732</strong></span><span>SMA: <strong>1.5K</strong></span><span>Und: <strong>166</strong></span></div></div>
                     <div class="summary-card"><h4>Total Babak Semifinal</h4><div class="number-lg">220</div><div class="sub-breakdown"><span>SD: <strong>60</strong></span><span>SMP: <strong>60</strong></span><span>SMA: <strong>100</strong></span></div></div>
                     <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD: <strong>30</strong></span><span>SMP: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
                 </div>
             </div>
 
-            <!-- TABEL 1: SEKOLAH ANGKASA -->
-            <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-school"></i> RINCIAN DATA SEKOLAH ANGKASA</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">NO</th>
-                                <th rowspan="2">JENJANG</th>
-                                <th rowspan="2">SELEKSI</th>
-                                <th colspan="7">PENYISIHAN</th>
-                                <th rowspan="2">TOTAL PENYISIHAN</th>
-                            </tr>
-                            <tr>
-                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td class="text-left">SD/MI</td><td>1808</td><td>181</td><td>181</td><td>181</td><td>-</td><td>-</td><td>-</td><td>-</td><td>543</td></tr>
-                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>2441</td><td>244</td><td>244</td><td>244</td><td>-</td><td>-</td><td>-</td><td>-</td><td>732</td></tr>
-                            <tr><td>3</td><td class="text-left">SMA</td><td>3101</td><td>311</td><td>-</td><td>-</td><td>311</td><td>311</td><td>311</td><td>311</td><td>1555</td></tr>
-                            <tr class="total-row"><td colspan="2">TOTAL</td><td>7350</td><td>736</td><td>425</td><td>425</td><td>311</td><td>311</td><td>311</td><td>311</td><td>3094</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- TABEL 2: SEKOLAH UNDANGAN -->
-            <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-file-contract"></i> RINCIAN DATA SEKOLAH UNDANGAN</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">NO</th>
-                                <th rowspan="2">JENJANG</th>
-                                <th rowspan="2">SELEKSI</th>
-                                <th colspan="7">PENYISIHAN</th>
-                                <th rowspan="2">TOTAL PENYISIHAN</th>
-                            </tr>
-                            <tr>
-                                <th>MTK</th><th>IPA</th><th>IPS</th><th>FISIKA</th><th>EKONOMI</th><th>GEOGRAFI</th><th>TIK</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td class="text-left">SD/MI</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
-                            <tr><td>2</td><td class="text-left">SMP/MTs</td><td>-</td><td>24</td><td>24</td><td>24</td><td>-</td><td>-</td><td>-</td><td>-</td><td>72</td></tr>
-                            <tr><td>3</td><td class="text-left">SMA</td><td>-</td><td>24</td><td>-</td><td>-</td><td>24</td><td>24</td><td>24</td><td>24</td><td>120</td></tr>
-                            <tr class="total-row"><td colspan="2">TOTAL</td><td>-</td><td>72</td><td>48</td><td>48</td><td>24</td><td>24</td><td>24</td><td>24</td><td>264</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- TABEL 3: PENCARIAN & DATA LENGKAP PESERTA PENYISIHAN (2.943 PESERTA) -->
+            <!-- DAFTAR & PENCARIAN PESERTA BABAK PENYISIHAN (2.943 PESERTA) -->
             <div class="section-box" id="daftar-peserta">
                 <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR & PENCARIAN PESERTA BABAK PENYISIHAN</div>
                 
@@ -875,14 +785,6 @@
                     </table>
                 </div>
                 <button id="btnLoadMore" class="btn-load-more" style="display: none;" onclick="loadMore()">TAMPILKAN LEBIH BANYAK</button>
-            </div>
-
-            <!-- SPREADSHEET BUTTON -->
-            <div class="spreadsheet-action-box">
-                <p>DATA PESERTA SECARA RINCI (GOOGLE SPREADSHEET)</p>
-                <a href="https://docs.google.com/spreadsheets/d/1-bKEgl7N6kTovBq2K6OYXy_wQepseYbW/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="btn-spreadsheet">
-                    <i class="fa-solid fa-file-excel"></i> BUKA GOOGLE SHEETS ASLI <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
-                </a>
             </div>
         </main>
     </div>
