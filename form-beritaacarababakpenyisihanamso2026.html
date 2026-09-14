@@ -820,6 +820,13 @@
                                 <option value="SMA PTM">SMA PTM</option>
                                 <option value="SMA SWO">SMA SWO</option>
                             </optgroup>
+
+                            <optgroup label="─── SEKOLAH UNDANGAN ───">
+                                <option value="Lanud ATS">Lanud ATS</option>
+                                <option value="Lanud HSN">Lanud HSN</option>
+                                <option value="Lanud ADI">Lanud ADI</option>
+                                <option value="Lanud HND">Lanud HND</option>
+                            </optgroup>
                         </select>
                     </div>
 
@@ -939,8 +946,8 @@
                     }
                 }
 
-                if (file.size > 10 * 1024 * 1024) {
-                    alert("Ukuran file maksimal 10MB per file.");
+                if (file.size > 50 * 1024 * 1024) {
+                    alert("Ukuran file maksimal 50MB per file.");
                     input.value = "";
                     statusDisplay.innerText = "Belum ada file dipilih";
                     filesData[key] = null;
@@ -997,7 +1004,7 @@
             }, 450);
 
             const formData = new URLSearchParams();
-            formData.append("formType", "PENYISIHAN"); // <--- DIUBAH MENJADI PENYISIHAN
+            formData.append("formType", "PENYISIHAN");
             formData.append("schoolName", document.getElementById("schoolName").value);
             
             formData.append("filePdfName", filesData.pdf.name);
