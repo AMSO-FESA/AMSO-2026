@@ -888,6 +888,12 @@
             <button class="doc-tab-btn" onclick="switchDocTab('seleksi', event)">
                 <i class="fa-solid fa-image"></i> Dokumentasi Babak Seleksi
             </button>
+            <button class="doc-tab-btn" onclick="switchDocTab('penyisihan', event)">
+                <i class="fa-solid fa-image"></i> Dokumentasi Babak Penyisihan
+            </button>
+            <button class="doc-tab-btn" onclick="switchDocTab('semifinal', event)">
+                <i class="fa-solid fa-image"></i> Dokumentasi Babak Semifinal
+            </button>
         </div>
 
         <!-- KONTEN TAB 1: TRYOUT -->
@@ -917,6 +923,34 @@
                 <button class="slider-btn next" onclick="slideGallery('gallerySliderSeleksi', 1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
+
+        <!-- KONTEN TAB 3: BABAK PENYISIHAN -->
+        <div id="tabPenyisihan" class="doc-tab-content">
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery('gallerySliderPenyisihan', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-slider" id="gallerySliderPenyisihan">
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+                <button class="slider-btn next" onclick="slideGallery('gallerySliderPenyisihan', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- KONTEN TAB 4: BABAK SEMIFINAL -->
+        <div id="tabSemifinal" class="doc-tab-content">
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery('gallerySliderSemifinal', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-slider" id="gallerySliderSemifinal">
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+                <button class="slider-btn next" onclick="slideGallery('gallerySliderSemifinal', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -937,6 +971,8 @@
     // Endpoint Google Apps Script
     const SCRIPT_GALLERY_TRYOUT = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
     const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=seleksi"; 
+    const SCRIPT_GALLERY_PENYISIHAN = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=penyisihan"; 
+    const SCRIPT_GALLERY_SEMIFINAL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=semifinal"; 
 
     let isUserHovered = false;
 
@@ -1023,6 +1059,10 @@
             document.getElementById("tabTryout").classList.add("active");
         } else if (tabName === 'seleksi') {
             document.getElementById("tabSeleksi").classList.add("active");
+        } else if (tabName === 'penyisihan') {
+            document.getElementById("tabPenyisihan").classList.add("active");
+        } else if (tabName === 'semifinal') {
+            document.getElementById("tabSemifinal").classList.add("active");
         }
     }
 
@@ -1050,8 +1090,13 @@
     document.addEventListener("DOMContentLoaded", () => {
         loadDriveGallery(SCRIPT_GALLERY_TRYOUT, "gallerySliderTryout");
         loadDriveGallery(SCRIPT_GALLERY_SELEKSI, "gallerySliderSeleksi");
+        loadDriveGallery(SCRIPT_GALLERY_PENYISIHAN, "gallerySliderPenyisihan");
+        loadDriveGallery(SCRIPT_GALLERY_SEMIFINAL, "gallerySliderSemifinal");
+        
         setupAutoSlide("gallerySliderTryout");
         setupAutoSlide("gallerySliderSeleksi");
+        setupAutoSlide("gallerySliderPenyisihan");
+        setupAutoSlide("gallerySliderSemifinal");
     });
 </script>
 </body>
