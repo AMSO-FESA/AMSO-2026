@@ -395,7 +395,6 @@
             padding: 0;
             margin: 0;
             color: #cbd5e1;
-            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -820,6 +819,13 @@
                                 <option value="SMA PTM">SMA PTM</option>
                                 <option value="SMA SWO">SMA SWO</option>
                             </optgroup>
+
+                            <optgroup label="─── SEKOLAH UNDANGAN ───">
+                                <option value="LANUD ATS">LANUD ATS</option>
+                                <option value="LANUD HSN">LANUD HSN</option>
+                                <option value="LANUD ADI">LANUD ADI</option>
+                                <option value="LANUD HND">LANUD HND</option>
+                            </optgroup>
                         </select>
                     </div>
 
@@ -971,8 +977,8 @@
                     }
                 }
 
-                if (file.size > 10 * 1024 * 1024) {
-                    alert("Ukuran file maksimal 10MB per file.");
+                if (file.size > 50 * 1024 * 1024) {
+                    alert("Ukuran file maksimal 50MB per file.");
                     input.value = "";
                     statusDisplay.innerText = "Belum ada file dipilih";
                     filesData[key] = null;
