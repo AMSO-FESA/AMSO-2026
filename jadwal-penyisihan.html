@@ -199,7 +199,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: auto;
             padding: 0 20px 80px;
             position: relative;
@@ -336,14 +336,15 @@
             display: block;
         }
 
-        /* ─── JUDUL UTAMA STATIS (TANPA ANIMASI) ─── */
+        /* ─── JUDUL UTAMA STATIS DENGAN GRADASI WARNA KOTA/SAINS ─── */
         .main-title {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(2rem, 4.5vw, 3.2rem);
             font-weight: 900;
             letter-spacing: 2px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1.1;
             margin-bottom: 10px;
         }
@@ -445,13 +446,9 @@
             text-align: center !important; 
         }
 
-        /* Atur perataan sel tabel */
+        /* Perataan sel tabel */
         .schedule-table td.col-center {
             text-align: center;
-        }
-
-        .schedule-table td.col-left {
-            text-align: left;
         }
 
         .schedule-table tr:hover {
@@ -467,6 +464,11 @@
         }
         .badge-pagi { background: rgba(34, 211, 238, 0.15); color: var(--gold); }
         .badge-siang { background: rgba(157, 78, 221, 0.15); color: var(--neon-purple); }
+
+        /* Warna khusus teks jenjang */
+        .jenjang-sd { color: #38bdf8; font-weight: 700; }    /* Biru Cerah */
+        .jenjang-smp { color: #c084fc; font-weight: 700; }   /* Ungu */
+        .jenjang-sma { color: #facc15; font-weight: 700; }   /* Emas / Kuning */
 
         /* ================= FOOTER ================= */
         footer {
@@ -591,53 +593,53 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 28%;">Sesi / Waktu</th>
-                            <th style="width: 32%;">Mata Pelajaran</th>
-                            <th style="width: 22%;">Jenjang</th>
-                            <th style="width: 18%;">Durasi</th>
+                            <th style="width: 30%;">Sesi / Waktu</th>
+                            <th style="width: 25%;">Jenjang</th>
+                            <th style="width: 25%;">Mata Pelajaran</th>
+                            <th style="width: 20%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
-                            <td class="col-left">Matematika</td>
-                            <td class="col-left">SD</td>
+                            <td class="col-center"><span class="jenjang-sd">SD</span></td>
+                            <td class="col-center">Matematika</td>
                             <td class="col-center">60 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
-                            <td class="col-left">IPA</td>
-                            <td class="col-left">SD</td>
+                            <td class="col-center"><span class="jenjang-sd">SD</span></td>
+                            <td class="col-center">IPA</td>
                             <td class="col-center">60 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
-                            <td class="col-left">IPS</td>
-                            <td class="col-left">SD</td>
+                            <td class="col-center"><span class="jenjang-sd">SD</span></td>
+                            <td class="col-center">IPS</td>
                             <td class="col-center">60 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 09.00</small></td>
-                            <td class="col-left">IPA</td>
-                            <td class="col-left">SMP</td>
+                            <td class="col-center"><span class="jenjang-smp">SMP</span></td>
+                            <td class="col-center">IPA</td>
                             <td class="col-center">90 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
-                            <td class="col-left">Matematika</td>
-                            <td class="col-left">SMP</td>
+                            <td class="col-center"><span class="jenjang-smp">SMP</span></td>
+                            <td class="col-center">Matematika</td>
                             <td class="col-center">120 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
-                            <td class="col-left">IPS</td>
-                            <td class="col-left">SMP</td>
+                            <td class="col-center"><span class="jenjang-smp">SMP</span></td>
+                            <td class="col-center">IPS</td>
                             <td class="col-center">120 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 11.30</small></td>
-                            <td class="col-left">Ekonomi</td>
-                            <td class="col-left">SMA</td>
+                            <td class="col-center"><span class="jenjang-sma">SMA</span></td>
+                            <td class="col-center">Ekonomi</td>
                             <td class="col-center">90 Menit</td>
                         </tr>
                     </tbody>
@@ -650,35 +652,35 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 28%;">Sesi / Waktu</th>
-                            <th style="width: 32%;">Mata Pelajaran</th>
-                            <th style="width: 22%;">Jenjang</th>
-                            <th style="width: 18%;">Durasi</th>
+                            <th style="width: 30%;">Sesi / Waktu</th>
+                            <th style="width: 25%;">Jenjang</th>
+                            <th style="width: 25%;">Mata Pelajaran</th>
+                            <th style="width: 20%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
-                            <td class="col-left">Geografi</td>
-                            <td class="col-left">SMA</td>
+                            <td class="col-center"><span class="jenjang-sma">SMA</span></td>
+                            <td class="col-center">Geografi</td>
                             <td class="col-center">180 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
-                            <td class="col-left">TIK</td>
-                            <td class="col-left">SMA</td>
+                            <td class="col-center"><span class="jenjang-sma">SMA</span></td>
+                            <td class="col-center">TIK</td>
                             <td class="col-center">180 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
-                            <td class="col-left">Matematika</td>
-                            <td class="col-left">SMA</td>
+                            <td class="col-center"><span class="jenjang-sma">SMA</span></td>
+                            <td class="col-center">Matematika</td>
                             <td class="col-center">120 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
-                            <td class="col-left">Fisika</td>
-                            <td class="col-left">SMA</td>
+                            <td class="col-center"><span class="jenjang-sma">SMA</span></td>
+                            <td class="col-center">Fisika</td>
                             <td class="col-center">120 Menit</td>
                         </tr>
                     </tbody>
