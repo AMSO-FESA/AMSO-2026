@@ -215,6 +215,127 @@
             z-index: 1000;
         }
 
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        /* Ukuran logo header besar persis halaman utama */
+        .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+            padding-bottom: 15px; 
+            margin-bottom: -15px;
+            z-index: 1002;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1003;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         /* ─── ANIMASI JUDUL UTAMA ─── */
         @keyframes floatTitle {
             0%, 100% { transform: translateY(0px); }
@@ -337,16 +458,27 @@
 
         .schedule-table th, .schedule-table td {
             padding: 14px 16px;
-            text-align: left;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        /* Judul header tabel rata tengah */
         .schedule-table th {
             background: rgba(0, 210, 255, 0.12);
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
+            text-align: center !important; 
+        }
+
+        /* Kolom Sesi / Waktu diatur rata tengah */
+        .schedule-table td.col-center {
+            text-align: center;
+        }
+
+        /* Kolom Mata Pelajaran & Durasi diatur rata kiri */
+        .schedule-table td.col-left {
+            text-align: left;
         }
 
         .schedule-table tr:hover {
@@ -481,7 +613,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS (Sama persis dengan halaman depan) -->
+    <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
     <!-- TOMBOL KEMBALI -->
@@ -506,21 +638,39 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 25%;">Sesi / Waktu</th>
-                            <th style="width: 55%;">Mata Pelajaran & Jenjang</th>
+                            <th style="width: 28%;">Sesi / Waktu</th>
+                            <th style="width: 52%;">Mata Pelajaran & Jenjang</th>
                             <th style="width: 20%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
-                            <td>🔹 SD Matematika<br>🔹 SD IPA<br>🔹 SD IPS<br>▫️ SMP IPA</td>
-                            <td>60 Menit (SD)<br>90 Menit (SMP IPA)</td>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
+                            <td class="col-left">
+                                SD Matematika<br>
+                                SD IPA<br>
+                                SD IPS<br>
+                                SMP IPA
+                            </td>
+                            <td class="col-left">
+                                60 Menit<br>
+                                60 Menit<br>
+                                60 Menit<br>
+                                90 Menit
+                            </td>
                         </tr>
                         <tr>
-                            <td><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
-                            <td>▫️ SMP Matematika<br>▫️ SMP IPS<br>🔸 SMA Ekonomi</td>
-                            <td>120 Menit (SMP)<br>90 Menit (SMA Eko)</td>
+                            <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
+                            <td class="col-left">
+                                SMP Matematika<br>
+                                SMP IPS<br>
+                                SMA Ekonomi
+                            </td>
+                            <td class="col-left">
+                                120 Menit<br>
+                                120 Menit<br>
+                                90 Menit
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -532,21 +682,33 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 25%;">Sesi / Waktu</th>
-                            <th style="width: 55%;">Mata Pelajaran & Jenjang</th>
+                            <th style="width: 28%;">Sesi / Waktu</th>
+                            <th style="width: 52%;">Mata Pelajaran & Jenjang</th>
                             <th style="width: 20%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
-                            <td>▫️ SMA Geografi<br>▫️ SMA TIK</td>
-                            <td>180 Menit</td>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
+                            <td class="col-left">
+                                SMA Geografi<br>
+                                SMA TIK
+                            </td>
+                            <td class="col-left">
+                                180 Menit<br>
+                                180 Menit
+                            </td>
                         </tr>
                         <tr>
-                            <td><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
-                            <td>▫️ SMA Matematika<br>▫️ SMA Fisika</td>
-                            <td>120 Menit</td>
+                            <td class="col-center"><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
+                            <td class="col-left">
+                                SMA Matematika<br>
+                                SMA Fisika
+                            </td>
+                            <td class="col-left">
+                                120 Menit<br>
+                                120 Menit
+                            </td>
                         </tr>
                     </tbody>
                 </table>
