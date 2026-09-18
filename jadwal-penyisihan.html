@@ -54,12 +54,12 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS (DISAMAKAN DENGAN INDEX) ─── */
         .audio-float-btn {
-            position: fixed !important;
+            position: absolute;
             top: 25px;
             right: 20px;
-            z-index: 9999;
+            z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
@@ -547,15 +547,6 @@
 
 <body>
 
-<!-- ELEMEN AUDIO (Tombol di pojok kanan atas) -->
-<button id="audioToggle" class="audio-float-btn" title="Putar/Hentikan Musik Jingle">
-    <i class="fa-solid fa-music"></i>
-</button>
-
-<audio id="bgAudio" loop>
-    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
-</audio>
-
 <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
 <div class="space-bg">
     <div class="stars"></div>
@@ -578,7 +569,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS -->
+    <!-- HEADER GLOBAL OTOMATIS (Mengambil struktur yang sama persis seperti halaman index) -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL HALAMAN STATIS -->
@@ -701,7 +692,7 @@
 <!-- FOOTER OTOMATIS -->
 <footer id="footer-placeholder"></footer>
 
-<!-- PANGGIL SCRIPT GLOBAL -->
+<!-- PANGGIL SCRIPT GLOBAL (Termasuk pemuatan header & tombol audio global dari file master) -->
 <script src="global-audio.js"></script>
 </body>
 </html>
