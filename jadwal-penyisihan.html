@@ -54,6 +54,51 @@
             background-attachment: fixed;
         }
 
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS HEADER ─── */
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
         /* ================= ANIMASI LATAR BELAKANG KAYA SAINS & SPACE ================= */
         .space-bg {
             position: fixed;
@@ -162,12 +207,133 @@
             width: 100%;
         }
 
-        /* HEADER */
+        /* HEADER & KONTROL UKURAN LOGO (DISAMAKAN PERSIS) */
         header {
             padding: 30px 0 25px;
             text-align: center;
             position: relative;
             z-index: 1000;
+        }
+
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        /* Ukuran logo dikunci proporsional persis halaman lain */
+        .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+            padding-bottom: 15px; 
+            margin-bottom: -15px;
+            z-index: 1002;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1003;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* ─── JUDUL UTAMA STATIS ─── */
@@ -409,7 +575,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS (Murni kosong seperti index.html, biarkan global-audio.js yang menyuntikkan isi dan tombol audionya) -->
+    <!-- HEADER GLOBAL OTOMATIS (global-audio.js akan menyuntikkan isi header dan tombol audio ke dalam tag ini secara presisi) -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL HALAMAN STATIS -->
@@ -532,7 +698,7 @@
 <!-- FOOTER OTOMATIS -->
 <footer id="footer-placeholder"></footer>
 
-<!-- PANGGIL SCRIPT MASTER GLOBAL -->
+<!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 </body>
 </html>
