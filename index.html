@@ -212,7 +212,7 @@
             padding: 30px 0 25px;
             text-align: center;
             position: relative;
-            z-index: 1000; /* Memastikan header & menu selalu di lapisan paling atas */
+            z-index: 1000;
         }
 
         .logo-group {
@@ -383,7 +383,7 @@
             margin-bottom: 10px;
             display: inline-block;
             position: relative;
-            z-index: 1; /* Di bawah menu dropdown */
+            z-index: 1;
             animation: introGlitch 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
                        floatTitle 5s ease-in-out infinite 1.2s,
                        neonPulse 4s ease-in-out infinite alternate;
@@ -515,7 +515,38 @@
 
         .btn-action:hover {
             gap: 12px;
-            color: #fff;
+        }
+
+        /* ─── TOMBOL KOTAK UTAMA (BUTTON SHAPE) TANPA IKON ─── */
+        .btn-box-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-box:hover {
+            background: var(--neon-blue);
+            color: #070913;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         .stat-grid {
@@ -923,12 +954,12 @@
                 <span class="card-tag tag-gold"><i class="fa-solid fa-trophy"></i> Babak Penyisihan</span>
                 <h3 class="card-title">Babak Penyisihan AMSO 2026</h3>
                 <p class="card-desc" style="margin-bottom: 15px;">
-                    Pelaksanaan Babak Penyisihan Berlangsung Pada Tanggal <strong>23-24 September 2026</strong><br><br>
-                    Ujicoba Link Soal Pengerjaan Dilakukan Tanggal 17 September 2026
+                    Pelaksanaan Babak Penyisihan Berlangsung Pada Tanggal <strong>23-24 September 2026</strong>
                 </p>
-                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                    <a href="jadwal-penyisihan.html" class="btn-action" style="color: var(--gold);"><i class="fa-regular fa-calendar-days"></i> Jadwal Babak Penyisihan <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="https://amso.sekolah-angkasa.sch.id" target="_blank" class="btn-action">Akses Link Soal <i class="fa-solid fa-arrow-right"></i></a>
+                <!-- DUA TOMBOL KOTAK (BUTTON SHAPE) TANPA IKON -->
+                <div class="btn-box-group">
+                    <a href="jadwal-penyisihan.html" class="btn-box">Jadwal Babak Penyisihan</a>
+                    <a href="https://amso.sekolah-angkasa.sch.id" target="_blank" class="btn-box">Akses Link Soal</a>
                 </div>
             </div>
         </div>
