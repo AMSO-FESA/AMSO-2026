@@ -54,12 +54,12 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN (DIKUNCI FIXED KE LAYAR BROWSER) ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI DALAM HEADER ─── */
         .audio-float-btn {
-            position: fixed !important;
+            position: absolute;
             top: 25px;
-            right: 25px;
-            z-index: 99999;
+            right: 20px;
+            z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
@@ -92,7 +92,7 @@
         @media (max-width: 600px) {
             .audio-float-btn {
                 top: 15px;
-                right: 15px;
+                right: 12px;
                 width: 30px;
                 height: 30px;
                 font-size: 0.72rem;
@@ -211,7 +211,7 @@
         header {
             padding: 30px 0 25px;
             text-align: center;
-            position: relative;
+            position: relative; /* Kunci utama agar absolute child mengacu ke header */
             z-index: 1000;
         }
 
@@ -547,6 +547,11 @@
 
 <body>
 
+<!-- ELEMEN AUDIO -->
+<audio id="bgAudio" loop>
+    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+</audio>
+
 <!-- LATAR BELAKANG ANIMASI SAINS & LUAR ANGKASA -->
 <div class="space-bg">
     <div class="stars"></div>
@@ -569,7 +574,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS -->
+    <!-- HEADER GLOBAL OTOMATIS (Tombol audio otomatis di-inject di dalam header lewat script global) -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL HALAMAN STATIS -->
@@ -664,7 +669,7 @@
                             <td class="col-center">180 Menit</td>
                         </tr>
                         <tr class="row-sma">
-                            <td class="col-center"><span class="badge-session badge-pagi">Pgi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
                             <td class="col-center">SMA</td>
                             <td class="col-center">TIK</td>
                             <td class="col-center">180 Menit</td>
@@ -692,7 +697,7 @@
 <!-- FOOTER OTOMATIS -->
 <footer id="footer-placeholder"></footer>
 
-<!-- PANGGIL SCRIPT GLOBAL -->
+<!-- PANGGIL SCRIPT GLOBAL (Script ini yang mengatur injeksi header & tombol audio secara dinamis dan konsisten) -->
 <script src="global-audio.js"></script>
 </body>
 </html>
