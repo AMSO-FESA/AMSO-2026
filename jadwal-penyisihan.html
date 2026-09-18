@@ -381,7 +381,7 @@
             background: linear-gradient(90deg, var(--border), transparent);
         }
 
-        /* ─── KARTU KONTEN UTAMA & TABEL RESPONSIF ─── */
+        /* ─── KARTU KONTEN UTAMA & TABEL SUPER RESPONSIF MOBILE ─── */
         .content-card {
             background: var(--glass-bg);
             border: 1px solid var(--border);
@@ -406,8 +406,6 @@
 
         .schedule-table-wrapper {
             margin-bottom: 25px;
-            overflow-x: auto; /* Memastikan tabel aman digeser di layar HP kecil */
-            -webkit-overflow-scrolling: touch;
         }
 
         .schedule-table-wrapper:last-child {
@@ -430,13 +428,11 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            min-width: 500px; /* Lebar minimum agar kolom tidak saling berdesakan di HP */
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 11px 14px;
+            padding: 11px 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            white-space: nowrap; /* Mencegah teks terpotong turun baris sembarangan */
         }
 
         /* Judul header tabel rata tengah dan huruf kapital semua */
@@ -444,16 +440,14 @@
             background: rgba(0, 210, 255, 0.12);
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 0.5px;
             text-align: center !important; 
             text-transform: uppercase;
         }
 
-        /* Perataan sel tabel */
         .schedule-table td.col-center {
             text-align: center;
-            white-space: normal; /* Khusus waktu/sesi boleh turun baris rapi */
         }
 
         .schedule-table tr:hover {
@@ -462,18 +456,34 @@
 
         .badge-session {
             display: inline-block;
-            padding: 3px 8px;
+            padding: 3px 6px;
             border-radius: 6px;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 700;
         }
         .badge-pagi { background: rgba(34, 211, 238, 0.15); color: var(--gold); }
         .badge-siang { background: rgba(157, 78, 221, 0.15); color: var(--neon-purple); }
 
-        /* Warna khusus per jenjang (SD, SMP, SMA) untuk seluruh kolom di baris tersebut */
-        .row-sd { color: #38bdf8; font-weight: 700; }    /* Biru Cerah */
-        .row-smp { color: #34d399; font-weight: 700; }   /* Hijau Mint / Emerald */
-        .row-sma { color: #facc15; font-weight: 700; }   /* Kuning Emas */
+        /* Warna khusus per jenjang */
+        .row-sd { color: #38bdf8; font-weight: 700; }    
+        .row-smp { color: #34d399; font-weight: 700; }   
+        .row-sma { color: #facc15; font-weight: 700; }   
+
+        /* ─── OPTIMASI KHUSUS HP (LAYAR KECIL) ─── */
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 15px 12px;
+            }
+            .schedule-table {
+                font-size: 0.8rem;
+            }
+            .schedule-table th, .schedule-table td {
+                padding: 8px 6px;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
 
         /* ================= FOOTER ================= */
         footer {
@@ -598,9 +608,9 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 30%;">SESI / WAKTU</th>
-                            <th style="width: 25%;">JENJANG</th>
-                            <th style="width: 25%;">MATA PELAJARAN</th>
+                            <th style="width: 32%;">SESI / WAKTU</th>
+                            <th style="width: 20%;">JENJANG</th>
+                            <th style="width: 28%;">MATA PELAJARAN</th>
                             <th style="width: 20%;">DURASI</th>
                         </tr>
                     </thead>
@@ -657,9 +667,9 @@
                 <table class="schedule-table">
                     <thead>
                         <tr>
-                            <th style="width: 30%;">SESI / WAKTU</th>
-                            <th style="width: 25%;">JENJANG</th>
-                            <th style="width: 25%;">MATA PELAJARAN</th>
+                            <th style="width: 32%;">SESI / WAKTU</th>
+                            <th style="width: 20%;">JENJANG</th>
+                            <th style="width: 28%;">MATA PELAJARAN</th>
                             <th style="width: 20%;">DURASI</th>
                         </tr>
                     </thead>
