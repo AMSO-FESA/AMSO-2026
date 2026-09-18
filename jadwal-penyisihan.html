@@ -56,10 +56,10 @@
 
         /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
         .audio-float-btn {
-            position: absolute;
+            position: fixed !important;
             top: 25px;
             right: 20px;
-            z-index: 50;
+            z-index: 9999;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
@@ -407,7 +407,7 @@
         .schedule-table-wrapper {
             margin-bottom: 25px;
             width: 100%;
-            overflow-x: auto; /* Mengaktifkan fungsi geser ke kanan-kiri khusus perangkat mobile */
+            overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
@@ -431,13 +431,13 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            min-width: 520px; /* Lebar aman agar kolom proporsional dan bisa discroll leluasa */
+            min-width: 520px;
         }
 
         .schedule-table th, .schedule-table td {
             padding: 12px 15px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            white-space: nowrap; /* Menjaga struktur kolom tetap lurus */
+            white-space: nowrap;
         }
 
         .schedule-table th {
@@ -547,7 +547,11 @@
 
 <body>
 
-<!-- ELEMEN AUDIO -->
+<!-- ELEMEN AUDIO (Tombol di pojok kanan atas) -->
+<button id="audioToggle" class="audio-float-btn" title="Putar/Hentikan Musik Jingle">
+    <i class="fa-solid fa-music"></i>
+</button>
+
 <audio id="bgAudio" loop>
     <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
 </audio>
