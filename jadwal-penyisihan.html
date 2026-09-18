@@ -199,7 +199,7 @@
         }
 
         .container {
-            max-width: 1150px;
+            max-width: 1100px;
             margin: auto;
             padding: 0 20px 80px;
             position: relative;
@@ -336,55 +336,29 @@
             display: block;
         }
 
-        /* ─── ANIMASI JUDUL UTAMA ─── */
-        @keyframes floatTitle {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes neonPulse {
-            0%, 100% {
-                text-shadow: 0 0 15px rgba(0, 210, 255, 0.4), 0 0 30px rgba(157, 78, 221, 0.3);
-            }
-            50% {
-                text-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 50px rgba(157, 78, 221, 0.6), 0 0 70px rgba(0, 210, 255, 0.4);
-            }
-        }
-
-        @keyframes introGlitch {
-            0% { opacity: 0; transform: scale(0.9) skewX(-10deg); filter: blur(10px); }
-            40% { opacity: 1; transform: scale(1.05) skewX(5deg); filter: blur(0px); }
-            70% { transform: scale(0.98) skewX(-2deg); }
-            100% { opacity: 1; transform: scale(1) skewX(0deg); filter: blur(0px); }
-        }
-
+        /* ─── JUDUL UTAMA STATIS (TANPA ANIMASI) ─── */
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
             font-weight: 900;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
             line-height: 1.1;
             margin-bottom: 10px;
-            display: inline-block;
-            animation: introGlitch 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
-                       floatTitle 5s ease-in-out infinite 1.2s,
-                       neonPulse 4s ease-in-out infinite alternate;
         }
 
         .sub-title {
-            font-size: clamp(0.85rem, 2vw, 1.2rem);
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
             color: var(--muted);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 35px;
         }
 
         main {
-            padding: 20px 0 60px;
+            padding: 10px 0 60px;
         }
 
         .section-header {
@@ -396,7 +370,7 @@
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #fff;
             letter-spacing: 1px;
         }
@@ -407,7 +381,7 @@
             background: linear-gradient(90deg, var(--border), transparent);
         }
 
-        /* ─── KARTU KONTEN UTAMA & TABEL ─── */
+        /* ─── KARTU KONTEN UTAMA & TABEL KOMPAK ─── */
         .content-card {
             background: var(--glass-bg);
             border: 1px solid var(--border);
@@ -431,7 +405,7 @@
         }
 
         .schedule-table-wrapper {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .schedule-table-wrapper:last-child {
@@ -440,24 +414,24 @@
 
         .schedule-date-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--gold);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 14px 16px;
+            padding: 11px 14px;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -466,17 +440,16 @@
             background: rgba(0, 210, 255, 0.12);
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
             text-align: center !important; 
         }
 
-        /* Kolom Sesi / Waktu diatur rata tengah */
+        /* Atur perataan sel tabel */
         .schedule-table td.col-center {
             text-align: center;
         }
 
-        /* Kolom Mata Pelajaran & Durasi diatur rata kiri */
         .schedule-table td.col-left {
             text-align: left;
         }
@@ -487,30 +460,13 @@
 
         .badge-session {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
         }
         .badge-pagi { background: rgba(34, 211, 238, 0.15); color: var(--gold); }
         .badge-siang { background: rgba(157, 78, 221, 0.15); color: var(--neon-purple); }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            transition: all 0.2s ease;
-        }
-
-        .back-btn:hover {
-            color: #fff;
-            transform: translateX(-5px);
-        }
 
         /* ================= FOOTER ================= */
         footer {
@@ -616,18 +572,15 @@
     <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
-    <!-- TOMBOL KEMBALI -->
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
-
-    <!-- JUDUL HALAMAN -->
-    <div style="text-align: center; margin-bottom: 35px;">
+    <!-- JUDUL HALAMAN STATIS -->
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 35px;">
         <h1 class="main-title">JADWAL BABAK PENYISIHAN</h1>
         <div class="sub-title">AMSO 2026 - Rincian Sesi & Waktu Pengerjaan</div>
     </div>
 
     <main>
         <div class="content-card">
-            <div class="section-header" style="margin-bottom: 25px;">
+            <div class="section-header" style="margin-bottom: 20px;">
                 <h2><i class="fa-solid fa-calendar-alt" style="color: var(--neon-blue);"></i> TABEL PELAKSANAAN SESI</h2>
                 <div class="line"></div>
             </div>
@@ -639,38 +592,53 @@
                     <thead>
                         <tr>
                             <th style="width: 28%;">Sesi / Waktu</th>
-                            <th style="width: 52%;">Mata Pelajaran & Jenjang</th>
-                            <th style="width: 20%;">Durasi</th>
+                            <th style="width: 32%;">Mata Pelajaran</th>
+                            <th style="width: 22%;">Jenjang</th>
+                            <th style="width: 18%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
-                            <td class="col-left">
-                                SD Matematika<br>
-                                SD IPA<br>
-                                SD IPS<br>
-                                SMP IPA
-                            </td>
-                            <td class="col-left">
-                                60 Menit<br>
-                                60 Menit<br>
-                                60 Menit<br>
-                                90 Menit
-                            </td>
+                            <td class="col-left">Matematika</td>
+                            <td class="col-left">SD</td>
+                            <td class="col-center">60 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
+                            <td class="col-left">IPA</td>
+                            <td class="col-left">SD</td>
+                            <td class="col-center">60 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 08.30</small></td>
+                            <td class="col-left">IPS</td>
+                            <td class="col-left">SD</td>
+                            <td class="col-center">60 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 09.00</small></td>
+                            <td class="col-left">IPA</td>
+                            <td class="col-left">SMP</td>
+                            <td class="col-center">90 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
-                            <td class="col-left">
-                                SMP Matematika<br>
-                                SMP IPS<br>
-                                SMA Ekonomi
-                            </td>
-                            <td class="col-left">
-                                120 Menit<br>
-                                120 Menit<br>
-                                90 Menit
-                            </td>
+                            <td class="col-left">Matematika</td>
+                            <td class="col-left">SMP</td>
+                            <td class="col-center">120 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 12.00</small></td>
+                            <td class="col-left">IPS</td>
+                            <td class="col-left">SMP</td>
+                            <td class="col-center">120 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-siang">Siang (10.00)</span><br><small style="color: var(--muted);">10.00 - 11.30</small></td>
+                            <td class="col-left">Ekonomi</td>
+                            <td class="col-left">SMA</td>
+                            <td class="col-center">90 Menit</td>
                         </tr>
                     </tbody>
                 </table>
@@ -683,32 +651,35 @@
                     <thead>
                         <tr>
                             <th style="width: 28%;">Sesi / Waktu</th>
-                            <th style="width: 52%;">Mata Pelajaran & Jenjang</th>
-                            <th style="width: 20%;">Durasi</th>
+                            <th style="width: 32%;">Mata Pelajaran</th>
+                            <th style="width: 22%;">Jenjang</th>
+                            <th style="width: 18%;">Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
-                            <td class="col-left">
-                                SMA Geografi<br>
-                                SMA TIK
-                            </td>
-                            <td class="col-left">
-                                180 Menit<br>
-                                180 Menit
-                            </td>
+                            <td class="col-left">Geografi</td>
+                            <td class="col-left">SMA</td>
+                            <td class="col-center">180 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
+                            <td class="col-left">TIK</td>
+                            <td class="col-left">SMA</td>
+                            <td class="col-center">180 Menit</td>
                         </tr>
                         <tr>
                             <td class="col-center"><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
-                            <td class="col-left">
-                                SMA Matematika<br>
-                                SMA Fisika
-                            </td>
-                            <td class="col-left">
-                                120 Menit<br>
-                                120 Menit
-                            </td>
+                            <td class="col-left">Matematika</td>
+                            <td class="col-left">SMA</td>
+                            <td class="col-center">120 Menit</td>
+                        </tr>
+                        <tr>
+                            <td class="col-center"><span class="badge-session badge-siang">Siang (11.30)</span><br><small style="color: var(--muted);">11.30 - 13.30</small></td>
+                            <td class="col-left">Fisika</td>
+                            <td class="col-left">SMA</td>
+                            <td class="col-center">120 Menit</td>
                         </tr>
                     </tbody>
                 </table>
