@@ -335,7 +335,7 @@
             display: block;
         }
 
-        /* ─── JUDUL UTAMA STATIS DENGAN GRADASI WARNA KOTA/SAINS ─── */
+        /* ─── JUDUL UTAMA STATIS ─── */
         .main-title {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(2rem, 4.5vw, 3.2rem);
@@ -381,7 +381,7 @@
             background: linear-gradient(90deg, var(--border), transparent);
         }
 
-        /* ─── KARTU KONTEN UTAMA & TABEL SUPER RESPONSIF MOBILE ─── */
+        /* ─── KARTU KONTEN UTAMA & TABEL SCROLL HALUS DI HP ─── */
         .content-card {
             background: var(--glass-bg);
             border: 1px solid var(--border);
@@ -406,6 +406,9 @@
 
         .schedule-table-wrapper {
             margin-bottom: 25px;
+            width: 100%;
+            overflow-x: auto; /* Mengaktifkan fungsi geser ke kanan-kiri khusus perangkat mobile */
+            -webkit-overflow-scrolling: touch;
         }
 
         .schedule-table-wrapper:last-child {
@@ -428,19 +431,20 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
+            min-width: 520px; /* Lebar aman agar kolom proporsional dan bisa discroll leluasa */
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 11px 12px;
+            padding: 12px 15px;
             border: 1px solid rgba(255, 255, 255, 0.08);
+            white-space: nowrap; /* Menjaga struktur kolom tetap lurus */
         }
 
-        /* Judul header tabel rata tengah dan huruf kapital semua */
         .schedule-table th {
             background: rgba(0, 210, 255, 0.12);
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
             text-align: center !important; 
             text-transform: uppercase;
@@ -456,9 +460,9 @@
 
         .badge-session {
             display: inline-block;
-            padding: 3px 6px;
+            padding: 3px 8px;
             border-radius: 6px;
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             font-weight: 700;
         }
         .badge-pagi { background: rgba(34, 211, 238, 0.15); color: var(--gold); }
@@ -468,22 +472,6 @@
         .row-sd { color: #38bdf8; font-weight: 700; }    
         .row-smp { color: #34d399; font-weight: 700; }   
         .row-sma { color: #facc15; font-weight: 700; }   
-
-        /* ─── OPTIMASI KHUSUS HP (LAYAR KECIL) ─── */
-        @media (max-width: 768px) {
-            .content-card {
-                padding: 15px 12px;
-            }
-            .schedule-table {
-                font-size: 0.8rem;
-            }
-            .schedule-table th, .schedule-table td {
-                padding: 8px 6px;
-            }
-            .main-title {
-                font-size: 1.8rem;
-            }
-        }
 
         /* ================= FOOTER ================= */
         footer {
