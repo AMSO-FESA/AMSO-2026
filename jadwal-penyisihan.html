@@ -54,12 +54,12 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS (DISAMAKAN DENGAN INDEX) ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN (DIKUNCI FIXED KE LAYAR BROWSER) ─── */
         .audio-float-btn {
-            position: absolute;
+            position: fixed !important;
             top: 25px;
-            right: 20px;
-            z-index: 50;
+            right: 25px;
+            z-index: 99999;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
@@ -92,7 +92,7 @@
         @media (max-width: 600px) {
             .audio-float-btn {
                 top: 15px;
-                right: 12px;
+                right: 15px;
                 width: 30px;
                 height: 30px;
                 font-size: 0.72rem;
@@ -569,7 +569,7 @@
 </div>
 
 <div class="container">
-    <!-- HEADER GLOBAL OTOMATIS (Mengambil struktur yang sama persis seperti halaman index) -->
+    <!-- HEADER GLOBAL OTOMATIS -->
     <header id="header-placeholder"></header>
 
     <!-- JUDUL HALAMAN STATIS -->
@@ -664,7 +664,7 @@
                             <td class="col-center">180 Menit</td>
                         </tr>
                         <tr class="row-sma">
-                            <td class="col-center"><span class="badge-session badge-pagi">Pagi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
+                            <td class="col-center"><span class="badge-session badge-pagi">Pgi (07.30)</span><br><small style="color: var(--muted);">07.30 - 10.30</small></td>
                             <td class="col-center">SMA</td>
                             <td class="col-center">TIK</td>
                             <td class="col-center">180 Menit</td>
@@ -692,7 +692,7 @@
 <!-- FOOTER OTOMATIS -->
 <footer id="footer-placeholder"></footer>
 
-<!-- PANGGIL SCRIPT GLOBAL (Termasuk pemuatan header & tombol audio global dari file master) -->
+<!-- PANGGIL SCRIPT GLOBAL -->
 <script src="global-audio.js"></script>
 </body>
 </html>
