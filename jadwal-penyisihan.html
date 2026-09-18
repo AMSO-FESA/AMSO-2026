@@ -246,7 +246,6 @@
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
 
-        /* Ukuran logo header besar persis halaman utama */
         .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
         .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
@@ -382,7 +381,7 @@
             background: linear-gradient(90deg, var(--border), transparent);
         }
 
-        /* ─── KARTU KONTEN UTAMA & TABEL KOMPAK ─── */
+        /* ─── KARTU KONTEN UTAMA & TABEL RESPONSIF ─── */
         .content-card {
             background: var(--glass-bg);
             border: 1px solid var(--border);
@@ -407,6 +406,8 @@
 
         .schedule-table-wrapper {
             margin-bottom: 25px;
+            overflow-x: auto; /* Memastikan tabel aman digeser di layar HP kecil */
+            -webkit-overflow-scrolling: touch;
         }
 
         .schedule-table-wrapper:last-child {
@@ -429,11 +430,13 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
+            min-width: 500px; /* Lebar minimum agar kolom tidak saling berdesakan di HP */
         }
 
         .schedule-table th, .schedule-table td {
             padding: 11px 14px;
             border: 1px solid rgba(255, 255, 255, 0.08);
+            white-space: nowrap; /* Mencegah teks terpotong turun baris sembarangan */
         }
 
         /* Judul header tabel rata tengah dan huruf kapital semua */
@@ -450,6 +453,7 @@
         /* Perataan sel tabel */
         .schedule-table td.col-center {
             text-align: center;
+            white-space: normal; /* Khusus waktu/sesi boleh turun baris rapi */
         }
 
         .schedule-table tr:hover {
@@ -468,7 +472,7 @@
 
         /* Warna khusus per jenjang (SD, SMP, SMA) untuk seluruh kolom di baris tersebut */
         .row-sd { color: #38bdf8; font-weight: 700; }    /* Biru Cerah */
-        .row-smp { color: #34d399; font-weight: 700; }   /* Hijau Mint / Emerald (Kontras dari ungu siang) */
+        .row-smp { color: #34d399; font-weight: 700; }   /* Hijau Mint / Emerald */
         .row-sma { color: #facc15; font-weight: 700; }   /* Kuning Emas */
 
         /* ================= FOOTER ================= */
