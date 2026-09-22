@@ -406,13 +406,24 @@
         }
 
         .schedule-table-wrapper {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
         .schedule-table-wrapper:last-child {
+            margin-bottom: 0;
+        }
+
+        .schedule-note {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .schedule-table-wrapper:last-of-type + .schedule-note {
             margin-bottom: 0;
         }
 
@@ -649,9 +660,10 @@
                     </tbody>
                 </table>
             </div>
+            <div class="schedule-note"><em><b>Waktu pelaksanaan mengikuti Zona Waktu Indonesia Barat (WIB)</b></em></div>
 
             <!-- Tanggal 24 September 2026 -->
-            <div class="schedule-table-wrapper">
+            <div class="schedule-table-wrapper" style="margin-top: 25px;">
                 <div class="schedule-date-title"><i class="fa-solid fa-calendar-day"></i> Kamis, 24 September 2026</div>
                 <table class="schedule-table">
                     <thead>
@@ -690,6 +702,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="schedule-note"><em><b>Waktu pelaksanaan mengikuti Zona Waktu Indonesia Barat (WIB)</b></em></div>
 
         </div>
     </main>
