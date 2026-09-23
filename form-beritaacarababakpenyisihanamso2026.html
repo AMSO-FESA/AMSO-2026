@@ -946,8 +946,8 @@
                     }
                 }
 
-                if (file.size > 50 * 1024 * 1024) {
-                    alert("Ukuran file maksimal 50MB per file.");
+                if (file.size > 65 * 1024 * 1024) {
+                    alert("Ukuran file maksimal 65MB per file.");
                     input.value = "";
                     statusDisplay.innerText = "Belum ada file dipilih";
                     filesData[key] = null;
