@@ -52,7 +52,7 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS HEADER ─── */
         .audio-float-btn {
             position: absolute;
             top: 25px;
@@ -121,7 +121,7 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* HEADER & KONTROL UKURAN LOGO */
+        /* HEADER & KONTROL UKURAN LOGO (DISAMAKAN PERSIS) */
         header { padding: 30px 0 25px; text-align: center; position: relative; z-index: 1000; }
 
         .logo-group {
@@ -325,16 +325,6 @@
         .mapel-section.active {
             display: block;
         }
-
-        /* FOOTER */
-        footer {
-            background: rgba(5, 7, 15, 0.95);
-            border-top: 1px solid var(--border);
-            padding: 35px 0 20px;
-            flex-shrink: 0;
-            width: 100%;
-            margin-top: auto;
-        }
     </style>
 </head>
 <body>
@@ -369,7 +359,7 @@
         <!-- KONTEN SD -->
         <div id="jenjang-sd" class="jenjang-container">
             <div class="mapel-tabs">
-                <button class="mapel-btn active" onclick="switchMapel('sd', 'mtk')">Matematika</button>
+                <button class="mapel-btn active" onclick="switchMapel('sd', 'mtk')">MATEMATIKA</button>
                 <button class="mapel-btn" onclick="switchMapel('sd', 'ipa')">IPA</button>
                 <button class="mapel-btn" onclick="switchMapel('sd', 'ips')">IPS</button>
             </div>
@@ -377,39 +367,39 @@
             <!-- TABEL SD - MTK -->
             <div id="sd-mtk" class="content-card mapel-section active">
                 <div class="table-header-info">
-                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Matematika (SD/MI)</b></i></span>
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - MATEMATIKA (SD/MI)</b></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
                 </div>
                 <div class="schedule-table-wrapper">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Ahmad Rizky Pratama</td><td>SD HLM 1</td></tr>
-                            <tr><td class="col-center">2</td><td>Siti Nurhaliza</td><td>SD ATS</td></tr>
-                            <tr><td class="col-center">3</td><td>Budi Santoso</td><td>SD HSN 1</td></tr>
-                            <tr><td class="col-center">4</td><td>Dewi Lestari</td><td>SD SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Rehan Putra Utama</td><td>SD SUT 1</td></tr>
-                            <tr><td class="col-center">6</td><td>Nabila Zahra</td><td>SD HND 1</td></tr>
-                            <tr><td class="col-center">7</td><td>Dimas Anggara</td><td>SD MUL</td></tr>
-                            <tr><td class="col-center">8</td><td>Putri Amalia</td><td>SD SMO</td></tr>
-                            <tr><td class="col-center">9</td><td>Fajar Ramadhan</td><td>SD PTM</td></tr>
-                            <tr><td class="col-center">10</td><td>Zaskia Mecca</td><td>SD MNA</td></tr>
-                            <tr><td class="col-center">11</td><td>Rian Hidayat</td><td>SD ELI</td></tr>
-                            <tr><td class="col-center">12</td><td>Intan Permata</td><td>MI LWM</td></tr>
-                            <tr><td class="col-center">13</td><td>Yoga Pratama</td><td>SD SPR</td></tr>
-                            <tr><td class="col-center">14</td><td>Ratna Suminar</td><td>SD HLM 3</td></tr>
-                            <tr><td class="col-center">15</td><td>Galih Wicaksono</td><td>SD HLM 4</td></tr>
-                            <tr><td class="col-center">16</td><td>Vina Aulia</td><td>SD HLM 5</td></tr>
-                            <tr><td class="col-center">17</td><td>Tegar Saputra</td><td>SD HLM 7</td></tr>
-                            <tr><td class="col-center">18</td><td>Indah Puspita</td><td>SD HLM 9</td></tr>
-                            <tr><td class="col-center">19</td><td>Bayu Pamungkas</td><td>SD HLM 10</td></tr>
-                            <tr><td class="col-center">20</td><td>Kirana Larasati</td><td>SD HLM 12</td></tr>
+                            <tr><td class="col-center">SEM-SD-01</td><td>AHMAD RIZKY PRATAMA</td><td class="col-center">SD HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-02</td><td>SITI NURHALIZA</td><td class="col-center">SD ATS</td></tr>
+                            <tr><td class="col-center">SEM-SD-03</td><td>BUDI SANTOSO</td><td class="col-center">SD HSN 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-04</td><td>DEWI LESTARI</td><td class="col-center">SD SWO</td></tr>
+                            <tr><td class="col-center">SEM-SD-05</td><td>REHAN PUTRA UTAMA</td><td class="col-center">SD SUT 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-06</td><td>NABILA ZAHRA</td><td class="col-center">SD HND 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-07</td><td>DIMAS ANGGARA</td><td class="col-center">SD MUL</td></tr>
+                            <tr><td class="col-center">SEM-SD-08</td><td>PUTRI AMALIA</td><td class="col-center">SD SMO</td></tr>
+                            <tr><td class="col-center">SEM-SD-09</td><td>FAJAR RAMADHAN</td><td class="col-center">SD PTM</td></tr>
+                            <tr><td class="col-center">SEM-SD-10</td><td>ZASKIA MECCA</td><td class="col-center">SD MNA</td></tr>
+                            <tr><td class="col-center">SEM-SD-11</td><td>RIAN HIDAYAT</td><td class="col-center">SD ELI</td></tr>
+                            <tr><td class="col-center">SEM-SD-12</td><td>INTAN PERMATA</td><td class="col-center">MI LWM</td></tr>
+                            <tr><td class="col-center">SEM-SD-13</td><td>YOGA PRATAMA</td><td class="col-center">SD SPR</td></tr>
+                            <tr><td class="col-center">SEM-SD-14</td><td>RATNA SUMINAR</td><td class="col-center">SD HLM 3</td></tr>
+                            <tr><td class="col-center">SEM-SD-15</td><td>GALIH WICAKSONO</td><td class="col-center">SD HLM 4</td></tr>
+                            <tr><td class="col-center">SEM-SD-16</td><td>VINA AULIA</td><td class="col-center">SD HLM 5</td></tr>
+                            <tr><td class="col-center">SEM-SD-17</td><td>TEGAR SAPUTRA</td><td class="col-center">SD HLM 7</td></tr>
+                            <tr><td class="col-center">SEM-SD-18</td><td>INDAH PUSPITA</td><td class="col-center">SD HLM 9</td></tr>
+                            <tr><td class="col-center">SEM-SD-19</td><td>BAYU PAMUNGKAS</td><td class="col-center">SD HLM 10</td></tr>
+                            <tr><td class="col-center">SEM-SD-20</td><td>KIRANA LARASATI</td><td class="col-center">SD HLM 12</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -425,32 +415,32 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Aditya Pratama</td><td>SD ATS</td></tr>
-                            <tr><td class="col-center">2</td><td>Anisa Rahma</td><td>SD HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Kevin Sanjaya</td><td>SD HSN 1</td></tr>
-                            <tr><td class="col-center">4</td><td>Mila Karmila</td><td>SD SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Fauzan Al Ghifari</td><td>SD SUT 1</td></tr>
-                            <tr><td class="col-center">6</td><td>Tasya Kamila</td><td>SD HND 1</td></tr>
-                            <tr><td class="col-center">7</td><td>Riki Martin</td><td>SD MUL</td></tr>
-                            <tr><td class="col-center">8</td><td>Sela Marsela</td><td>SD SMO</td></tr>
-                            <tr><td class="col-center">9</td><td>Dicky Kurniawan</td><td>SD PTM</td></tr>
-                            <tr><td class="col-center">10</td><td>Maya Safira</td><td>SD MNA</td></tr>
-                            <tr><td class="col-center">11</td><td>Eko Prasetyo</td><td>SD ELI</td></tr>
-                            <tr><td class="col-center">12</td><td>Fitri Handayani</td><td>MI LWM</td></tr>
-                            <tr><td class="col-center">13</td><td>Gilang Ramadhan</td><td>SD SPR</td></tr>
-                            <tr><td class="col-center">14</td><td>Siska Melina</td><td>SD HLM 3</td></tr>
-                            <tr><td class="col-center">15</td><td>Hendra Gunawan</td><td>SD HLM 4</td></tr>
-                            <tr><td class="col-center">16</td><td>Wulan Dari</td><td>SD HLM 5</td></tr>
-                            <tr><td class="col-center">17</td><td>Irfan Bachdim</td><td>SD HLM 7</td></tr>
-                            <tr><td class="col-center">18</td><td>Nia Ramadhani</td><td>SD HLM 9</td></tr>
-                            <tr><td class="col-center">19</td><td>Joko Susilo</td><td>SD HLM 10</td></tr>
-                            <tr><td class="col-center">20</td><td>Mega Zaskia</td><td>SD HLM 12</td></tr>
+                            <tr><td class="col-center">SEM-SD-21</td><td>ADITYA PRATAMA</td><td class="col-center">SD ATS</td></tr>
+                            <tr><td class="col-center">SEM-SD-22</td><td>ANISA RAHMA</td><td class="col-center">SD HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-23</td><td>KEVIN SANJAYA</td><td class="col-center">SD HSN 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-24</td><td>MILA KARMILA</td><td class="col-center">SD SWO</td></tr>
+                            <tr><td class="col-center">SEM-SD-25</td><td>FAUZAN AL GHIFARI</td><td class="col-center">SD SUT 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-26</td><td>TASYA KAMILA</td><td class="col-center">SD HND 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-27</td><td>RIKI MARTIN</td><td class="col-center">SD MUL</td></tr>
+                            <tr><td class="col-center">SEM-SD-28</td><td>SELA MARSELA</td><td class="col-center">SD SMO</td></tr>
+                            <tr><td class="col-center">SEM-SD-29</td><td>DICKY KURNIAWAN</td><td class="col-center">SD PTM</td></tr>
+                            <tr><td class="col-center">SEM-SD-30</td><td>MAYA SAFIRA</td><td class="col-center">SD MNA</td></tr>
+                            <tr><td class="col-center">SEM-SD-31</td><td>EKO PRASETYO</td><td class="col-center">SD ELI</td></tr>
+                            <tr><td class="col-center">SEM-SD-32</td><td>FITRI HANDAYANI</td><td class="col-center">MI LWM</td></tr>
+                            <tr><td class="col-center">SEM-SD-33</td><td>GILANG RAMADHAN</td><td class="col-center">SD SPR</td></tr>
+                            <tr><td class="col-center">SEM-SD-34</td><td>SISKA MELINA</td><td class="col-center">SD HLM 3</td></tr>
+                            <tr><td class="col-center">SEM-SD-35</td><td>HENDRA GUNAWAN</td><td class="col-center">SD HLM 4</td></tr>
+                            <tr><td class="col-center">SEM-SD-36</td><td>WULAN DARI</td><td class="col-center">SD HLM 5</td></tr>
+                            <tr><td class="col-center">SEM-SD-37</td><td>IRFAN BACHDIM</td><td class="col-center">SD HLM 7</td></tr>
+                            <tr><td class="col-center">SEM-SD-38</td><td>NIA RAMADHANI</td><td class="col-center">SD HLM 9</td></tr>
+                            <tr><td class="col-center">SEM-SD-39</td><td>JOKO SUSILO</td><td class="col-center">SD HLM 10</td></tr>
+                            <tr><td class="col-center">SEM-SD-40</td><td>MEGA ZASKIA</td><td class="col-center">SD HLM 12</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -466,39 +456,39 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Zidan Malik</td><td>SD HSN 1</td></tr>
-                            <tr><td class="col-center">2</td><td>Rini Yulianti</td><td>SD HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Surya Saputra</td><td>SD ATS</td></tr>
-                            <tr><td class="col-center">4</td><td>Dina Mariana</td><td>SD SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Bambang Pamungkas</td><td>SD SUT 1</td></tr>
-                            <tr><td class="col-center">6</td><td>Lestari Wibowo</td><td>SD HND 1</td></tr>
-                            <tr><td class="col-center">7</td><td>Tomi Wijaya</td><td>SD MUL</td></tr>
-                            <tr><td class="col-center">8</td><td>Yuni Shara</td><td>SD SMO</td></tr>
-                            <tr><td class="col-center">9</td><td>Agus Setiawan</td><td>SD PTM</td></tr>
-                            <tr><td class="col-center">10</td><td>Dewi Persik</td><td>SD MNA</td></tr>
-                            <tr><td class="col-center">11</td><td>Doni Monardo</td><td>SD ELI</td></tr>
-                            <tr><td class="col-center">12</td><td>Siti Badriah</td><td>MI LWM</td></tr>
-                            <tr><td class="col-center">13</td><td>Rizal Djibran</td><td>SD SPR</td></tr>
-                            <tr><td class="col-center">14</td><td>Amelia Putri</td><td>SD HLM 3</td></tr>
-                            <tr><td class="col-center">15</td><td>Candra Wijaya</td><td>SD HLM 4</td></tr>
-                            <tr><td class="col-center">16</td><td>Desi Ratnasari</td><td>SD HLM 5</td></tr>
-                            <tr><td class="col-center">17</td><td>Egi John</td><td>SD HLM 7</td></tr>
-                            <tr><td class="col-center">18</td><td>Fika Effendi</td><td>SD HLM 9</td></tr>
-                            <tr><td class="col-center">19</td><td>Gatot Brajamusti</td><td>SD HLM 10</td></tr>
-                            <tr><td class="col-center">20</td><td>Hesti Purwadinata</td><td>SD HLM 12</td></tr>
+                            <tr><td class="col-center">SEM-SD-41</td><td>ZIDAN MALIK</td><td class="col-center">SD HSN 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-42</td><td>RINI YULIANTI</td><td class="col-center">SD HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-43</td><td>SURYA SAPUTRA</td><td class="col-center">SD ATS</td></tr>
+                            <tr><td class="col-center">SEM-SD-44</td><td>DINA MARIANA</td><td class="col-center">SD SWO</td></tr>
+                            <tr><td class="col-center">SEM-SD-45</td><td>BAMBANG PAMUNGKAS</td><td class="col-center">SD SUT 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-46</td><td>LESTARI WIBOWO</td><td class="col-center">SD HND 1</td></tr>
+                            <tr><td class="col-center">SEM-SD-47</td><td>TOMI WIJAYA</td><td class="col-center">SD MUL</td></tr>
+                            <tr><td class="col-center">SEM-SD-48</td><td>YUNI SHARA</td><td class="col-center">SD SMO</td></tr>
+                            <tr><td class="col-center">SEM-SD-49</td><td>AGUS SETIAWAN</td><td class="col-center">SD PTM</td></tr>
+                            <tr><td class="col-center">SEM-SD-50</td><td>DEWI PERSIK</td><td class="col-center">SD MNA</td></tr>
+                            <tr><td class="col-center">SEM-SD-51</td><td>DONI MONARDO</td><td class="col-center">SD ELI</td></tr>
+                            <tr><td class="col-center">SEM-SD-52</td><td>SITI BADRIAH</td><td class="col-center">MI LWM</td></tr>
+                            <tr><td class="col-center">SEM-SD-53</td><td>RIZAL DJIBRAN</td><td class="col-center">SD SPR</td></tr>
+                            <tr><td class="col-center">SEM-SD-54</td><td>AMELIA PUTRI</td><td class="col-center">SD HLM 3</td></tr>
+                            <tr><td class="col-center">SEM-SD-55</td><td>CANDRA WIJAYA</td><td class="col-center">SD HLM 4</td></tr>
+                            <tr><td class="col-center">SEM-SD-56</td><td>DESI RATNASARI</td><td class="col-center">SD HLM 5</td></tr>
+                            <tr><td class="col-center">SEM-SD-57</td><td>EGI JOHN</td><td class="col-center">SD HLM 7</td></tr>
+                            <tr><td class="col-center">SEM-SD-58</td><td>FIKA EFFENDI</td><td class="col-center">SD HLM 9</td></tr>
+                            <tr><td class="col-center">SEM-SD-59</td><td>GATOT BRAJAMUSTI</td><td class="col-center">SD HLM 10</td></tr>
+                            <tr><td class="col-center">SEM-SD-60</td><td>HESTI PURWADINATA</td><td class="col-center">SD HLM 12</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN SMP (Hidden by default) -->
+        <!-- KONTEN SMP -->
         <div id="jenjang-smp" class="jenjang-container" style="display: none;">
             <div class="mapel-tabs">
                 <button class="mapel-btn active" onclick="switchMapel('smp', 'mtk')">Matematika</button>
@@ -516,32 +506,32 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Farel Prayoga</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">2</td><td>Lesti Kejora</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">3</td><td>Rizky Billar</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">4</td><td>Ayu Ting Ting</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Ruben Onsu</td><td>SMP SUT</td></tr>
-                            <tr><td class="col-center">6</td><td>Sarwendah</td><td>SMP BNY</td></tr>
-                            <tr><td class="col-center">7</td><td>Deddy Corbuzier</td><td>SMP HND</td></tr>
-                            <tr><td class="col-center">8</td><td>Azka Corbuzier</td><td>SMP ABD</td></tr>
-                            <tr><td class="col-center">9</td><td>Sabrina Chairunnisa</td><td>SMP ELI</td></tr>
-                            <tr><td class="col-center">10</td><td>Igun Gunawan</td><td>SMP PTM</td></tr>
-                            <tr><td class="col-center">11</td><td>Wendy Cagur</td><td>MTs LWM</td></tr>
-                            <tr><td class="col-center">12</td><td>Andhika Pratama</td><td>SMP MNA</td></tr>
-                            <tr><td class="col-center">13</td><td>Ussy Sulistiawaty</td><td>SMP SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Sule Prikitiw</td><td>SMP SMO</td></tr>
-                            <tr><td class="col-center">15</td><td>Rizky Febian</td><td>SMP ADI</td></tr>
-                            <tr><td class="col-center">16</td><td>Mahalini Raharja</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">17</td><td>Denny Cagur</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">18</td><td>Marshel Widianto</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">19</td><td>Kiky Saputri</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">20</td><td>Pandji Pragiwaksono</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-01</td><td>FAREL PRAYOGA</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-02</td><td>LESTI KEJORA</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-03</td><td>RIZKY BILLAR</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-04</td><td>AYU TING TING</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-05</td><td>RUBEN ONSU</td><td class="col-center">SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-06</td><td>SARWENDAH</td><td class="col-center">SMP BNY</td></tr>
+                            <tr><td class="col-center">SEM-SMP-07</td><td>DEDDY CORBUZIER</td><td class="col-center">SMP HND</td></tr>
+                            <tr><td class="col-center">SEM-SMP-08</td><td>AZKA CORBUZIER</td><td class="col-center">SMP ABD</td></tr>
+                            <tr><td class="col-center">SEM-SMP-09</td><td>SABRINA CHAIRUNNISA</td><td class="col-center">SMP ELI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-10</td><td>IGUN GUNAWAN</td><td class="col-center">SMP PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-11</td><td>WENDY CAGUR</td><td class="col-center">MTs LWM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-12</td><td>ANDHIKA PRATAMA</td><td class="col-center">SMP MNA</td></tr>
+                            <tr><td class="col-center">SEM-SMP-13</td><td>USSY SULISTIAWATY</td><td class="col-center">SMP SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-14</td><td>SULE PRIKITIW</td><td class="col-center">SMP SMO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-15</td><td>RIZKY FEBIAN</td><td class="col-center">SMP ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-16</td><td>MAHALINI RAHARJA</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-17</td><td>DENNY CAGUR</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-18</td><td>MARSHEL WIDIANTO</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-19</td><td>KIKY SAPUTRI</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-20</td><td>PANDJI PRAGIWAKSONO</td><td class="col-center">SMP SUT</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -557,32 +547,32 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Najwa Shihab</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">2</td><td>Anies Baswedan</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">3</td><td>Ganjar Pranowo</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">4</td><td>Prabowo Subianto</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Joko Widodo</td><td>SMP SUT</td></tr>
-                            <tr><td class="col-center">6</td><td>Iriana Widodo</td><td>SMP BNY</td></tr>
-                            <tr><td class="col-center">7</td><td>Gibran Rakabuming</td><td>SMP HND</td></tr>
-                            <tr><td class="col-center">8</td><td>Kaesang Pangarep</td><td>SMP ABD</td></tr>
-                            <tr><td class="col-center">9</td><td>Erina Gudono</td><td>SMP ELI</td></tr>
-                            <tr><td class="col-center">10</td><td>Bahlil Lahadalia</td><td>SMP PTM</td></tr>
-                            <tr><td class="col-center">11</td><td>Sri Mulyani</td><td>MTs LWM</td></tr>
-                            <tr><td class="col-center">12</td><td>Mahfud MD</td><td>SMP MNA</td></tr>
-                            <tr><td class="col-center">13</td><td>Basuki Hadimuljono</td><td>SMP SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Sandiaga Uno</td><td>SMP SMO</td></tr>
-                            <tr><td class="col-center">15</td><td>Erick Thohir</td><td>SMP ADI</td></tr>
-                            <tr><td class="col-center">16</td><td>Ridwan Kamil</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">17</td><td>Atalia Praratya</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">18</td><td>Ahok Basuki</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">19</td><td>Susi Pudjiastuti</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">20</td><td>Budi Gunadi Sadikin</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-21</td><td>NAJWA SHIHAB</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-22</td><td>ANIES BASWEDAN</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-23</td><td>GANJAR PRANOWO</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-24</td><td>PRABOWO SUBIANTO</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-25</td><td>JOKO WIDODO</td><td class="col-center">SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-26</td><td>IRIANA WIDODO</td><td class="col-center">SMP BNY</td></tr>
+                            <tr><td class="col-center">SEM-SMP-27</td><td>GIBRAN RAKABUMING</td><td class="col-center">SMP HND</td></tr>
+                            <tr><td class="col-center">SEM-SMP-28</td><td>KAESANG PANGAREP</td><td class="col-center">SMP ABD</td></tr>
+                            <tr><td class="col-center">SEM-SMP-29</td><td>ERINA GUDONO</td><td class="col-center">SMP ELI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-30</td><td>BAHLIL LAHADALIA</td><td class="col-center">SMP PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-31</td><td>SRI MULYANI</td><td class="col-center">MTs LWM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-32</td><td>MAHFUD MD</td><td class="col-center">SMP MNA</td></tr>
+                            <tr><td class="col-center">SEM-SMP-33</td><td>BASUKI HADIMULJONO</td><td class="col-center">SMP SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-34</td><td>SANDIAGA UNO</td><td class="col-center">SMP SMO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-35</td><td>ERICK THOHIR</td><td class="col-center">SMP ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-36</td><td>RIDWAN KAMIL</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-37</td><td>ATALIA PRARATYA</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-38</td><td>AHOK BASUKI</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-39</td><td>SUSI PUDJIASTUTI</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-40</td><td>BUDI GUNADI SADIKIN</td><td class="col-center">SMP SUT</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -598,84 +588,84 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Raffi Ahmad</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">2</td><td>Nagita Slavina</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">3</td><td>Rafathar Malik</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">4</td><td>Rayyanza Malik</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">5</td><td>Baim Wong</td><td>SMP SUT</td></tr>
-                            <tr><td class="col-center">6</td><td>Paula Verhoeven</td><td>SMP BNY</td></tr>
-                            <tr><td class="col-center">7</td><td>Kiano Tiger Wong</td><td>SMP HND</td></tr>
-                            <tr><td class="col-center">8</td><td>Atta Halilintar</td><td>SMP ABD</td></tr>
-                            <tr><td class="col-center">9</td><td>Aurel Hermansyah</td><td>SMP ELI</td></tr>
-                            <tr><td class="col-center">10</td><td>Ameena Hanna</td><td>SMP PTM</td></tr>
-                            <tr><td class="col-center">11</td><td>Thariq Halilintar</td><td>MTs LWM</td></tr>
-                            <tr><td class="col-center">12</td><td>Aaliyah Massaid</td><td>SMP MNA</td></tr>
-                            <tr><td class="col-center">13</td><td>Fuji An</td><td>SMP SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Verrel Bramasta</td><td>SMP SMO</td></tr>
-                            <tr><td class="col-center">15</td><td>Natasha Wilona</td><td>SMP ADI</td></tr>
-                            <tr><td class="col-center">16</td><td>Stefan William</td><td>SMP HLM</td></tr>
-                            <tr><td class="col-center">17</td><td>Caesar Hito</td><td>SMP ATS</td></tr>
-                            <tr><td class="col-center">18</td><td>Felicya Angelista</td><td>SMP HSN</td></tr>
-                            <tr><td class="col-center">19</td><td>Immanuel Caesar</td><td>SMP SWO</td></tr>
-                            <tr><td class="col-center">20</td><td>Natasha Ryder</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-41</td><td>RAFFI AHMAD</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-42</td><td>NAGITA SLAVINA</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-43</td><td>RAFATHAR MALIK</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-44</td><td>RAYYANZA MALIK</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-45</td><td>BAIM WONG</td><td class="col-center">SMP SUT</td></tr>
+                            <tr><td class="col-center">SEM-SMP-46</td><td>PAULA VERHOEVEN</td><td class="col-center">SMP BNY</td></tr>
+                            <tr><td class="col-center">SEM-SMP-47</td><td>KIANO TIGER WONG</td><td class="col-center">SMP HND</td></tr>
+                            <tr><td class="col-center">SEM-SMP-48</td><td>ATTA HALILINTAR</td><td class="col-center">SMP ABD</td></tr>
+                            <tr><td class="col-center">SEM-SMP-49</td><td>AUREL HERMANSYAH</td><td class="col-center">SMP ELI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-50</td><td>AMEENA HANNA</td><td class="col-center">SMP PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-51</td><td>THARIQ HALILINTAR</td><td class="col-center">MTs LWM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-52</td><td>AALIYAH MASSAID</td><td class="col-center">SMP MNA</td></tr>
+                            <tr><td class="col-center">SEM-SMP-53</td><td>FUJI AN</td><td class="col-center">SMP SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-54</td><td>VERREL BRAMASTA</td><td class="col-center">SMP SMO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-55</td><td>NATASHA WILONA</td><td class="col-center">SMP ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMP-56</td><td>STEFAN WILLIAM</td><td class="col-center">SMP HLM</td></tr>
+                            <tr><td class="col-center">SEM-SMP-57</td><td>CAESAR HITO</td><td class="col-center">SMP ATS</td></tr>
+                            <tr><td class="col-center">SEM-SMP-58</td><td>FELICYA ANGELISTA</td><td class="col-center">SMP HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMP-59</td><td>IMMANUEL CAESAR</td><td class="col-center">SMP SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMP-60</td><td>NATASHA RYDER</td><td class="col-center">SMP SUT</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN SMA (Hidden by default) -->
+        <!-- KONTEN SMA -->
         <div id="jenjang-sma" class="jenjang-container" style="display: none;">
             <div class="mapel-tabs">
                 <button class="mapel-btn active" onclick="switchMapel('sma', 'mtk')">Matematika</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'fis')">Fisika</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'eko')">Ekonomi</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'geo')">Geografi</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'fis')">FISIKA</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'eko')">EKONOMI</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'geo')">GEOGRAFI</button>
                 <button class="mapel-btn" onclick="switchMapel('sma', 'tik')">TIK</button>
             </div>
 
             <!-- TABEL SMA - MTK -->
             <div id="sma-mtk" class="content-card mapel-section active">
                 <div class="table-header-info">
-                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Matematika (SMA)</b></i></span>
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - MATEMATIKA (SMA)</b></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
                 </div>
                 <div class="schedule-table-wrapper">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Albert Einstein</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">2</td><td>Isaac Newton</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">3</td><td>Nikola Tesla</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">4</td><td>Galileo Galilei</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">5</td><td>Stephen Hawking</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">6</td><td>Marie Curie</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">7</td><td>Charles Darwin</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">8</td><td>Thomas Alva Edison</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">9</td><td>Pythagoras</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">10</td><td>Archimedes</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">11</td><td>Blaise Pascal</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">12</td><td>René Descartes</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">13</td><td>Alan Turing</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Ada Lovelace</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">15</td><td>Carl Friedrich Gauss</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">16</td><td>Leonhard Euler</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">17</td><td>Fibonacci</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">18</td><td>Euclid</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">19</td><td>Alan Watts</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">20</td><td>Max Planck</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-01</td><td>ALBERT EINSTEIN</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-02</td><td>ISAAC NEWTON</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-03</td><td>NIKOLA TESLA</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-04</td><td>GALILEO GALILEI</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-05</td><td>STEPHEN HAWKING</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-06</td><td>MARIE CURIE</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-07</td><td>CHARLES DARWIN</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-08</td><td>THOMAS ALVA EDISON</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-09</td><td>PYTHAGORAS</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-10</td><td>ARCHIMEDES</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-11</td><td>BLAISE PASCAL</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-12</td><td>RENÉ DESCARTES</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-13</td><td>ALAN TURING</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-14</td><td>ADA LOVELACE</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-15</td><td>CARL FRIEDRICH GAUSS</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-16</td><td>LEONHARD EULER</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-17</td><td>FIBONACCI</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-18</td><td>EUCLID</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-19</td><td>ALAN WATTS</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-20</td><td>MAX PLANCK</td><td class="col-center">SMA ADI</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -684,39 +674,39 @@
             <!-- TABEL SMA - FISIKA -->
             <div id="sma-fis" class="content-card mapel-section">
                 <div class="table-header-info">
-                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Fisika (SMA)</b></i></span>
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - FISIKA (SMA)</b></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
                 </div>
                 <div class="schedule-table-wrapper">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Richard Feynman</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">2</td><td>Niels Bohr</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Erwin Schrödinger</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">4</td><td>Werner Heisenberg</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">5</td><td>Paul Dirac</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">6</td><td>Enrico Fermi</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">7</td><td>Robert Oppenheimer</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">8</td><td>James Clerk Maxwell</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">9</td><td>Michael Faraday</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">10</td><td>Hendrik Lorentz</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">11</td><td>J.J. Thomson</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">12</td><td>Ernest Rutherford</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">13</td><td>James Chadwick</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Louis de Broglie</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">15</td><td>Wolfgang Pauli</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">16</td><td>Subrahmanyan Chandrasekhar</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">17</td><td>Chien-Shiung Wu</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">18</td><td>Rosalind Franklin</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">19</td><td>Lise Meitner</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">20</td><td>Evangelista Torricelli</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-21</td><td>RICHARD FEYNMAN</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-22</td><td>NIELS BOHR</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-23</td><td>ERWIN SCHRÖDINGER</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-24</td><td>WERNER HEISENBERG</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-25</td><td>PAUL DIRAC</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-26</td><td>ENRICO FERMI</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-27</td><td>ROBERT OPPENHEIMER</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-28</td><td>JAMES CLERK MAXWELL</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-29</td><td>MICHAEL FARADAY</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-30</td><td>HENDRIK LORENTZ</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-31</td><td>J.J. THOMSON</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-32</td><td>ERNEST RUTHERFORD</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-33</td><td>JAMES CHADWICK</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-34</td><td>LOUIS DE BROGLIE</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-35</td><td>WOLFGANG PAULI</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-36</td><td>SUBRAHMANYAN CHANDRASEKHAR</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-37</td><td>CHIEN-SHIUNG WU</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-38</td><td>ROSALIND FRANKLIN</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-39</td><td>LISE MEITNER</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-40</td><td>EVANGELISTA TORRICELLI</td><td class="col-center">SMA ADI</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -725,39 +715,39 @@
             <!-- TABEL SMA - EKONOMI -->
             <div id="sma-eko" class="content-card mapel-section">
                 <div class="table-header-info">
-                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Ekonomi (SMA)</b></i></span>
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - EKONOMI (SMA)</b></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
                 </div>
                 <div class="schedule-table-wrapper">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Adam Smith</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">2</td><td>John Maynard Keynes</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Milton Friedman</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">4</td><td>Karl Marx</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">5</td><td>David Ricardo</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">6</td><td>Friedrich Hayek</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">7</td><td>Joseph Schumpeter</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">8</td><td>Alfred Marshall</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">9</td><td>Irving Fisher</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">10</td><td>Paul Samuelson</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">11</td><td>Amartya Sen</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">12</td><td>Thomas Piketty</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">13</td><td>Dani Rodrik</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Esther Duflo</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">15</td><td>Abhijit Banerjee</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">16</td><td>Robert Lucas</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">17</td><td>Simon Kuznets</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">18</td><td>Mancur Olson</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">19</td><td>Nouriel Roubini</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">20</td><td>Nassim Nicholas Taleb</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-41</td><td>ADAM SMITH</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-42</td><td>JOHN MAYNARD KEYNES</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-43</td><td>MILTON FRIEDMAN</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-44</td><td>KARL MARX</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-45</td><td>DAVID RICARDO</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-46</td><td>FRIEDRICH HAYEK</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-47</td><td>JOSEPH SCHUMPETER</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-48</td><td>ALFRED MARSHALL</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-49</td><td>IRVING FISHER</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-50</td><td>PAUL SAMUELSON</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-51</td><td>AMARTYA SEN</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-52</td><td>THOMAS PIKETTY</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-53</td><td>DANI RODRIK</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-54</td><td>ESTHER DUFLO</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-55</td><td>ABHIJIT BANERJEE</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-56</td><td>ROBERT LUCAS</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-57</td><td>SIMON KUZNETS</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-58</td><td>MANCUR OLSON</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-59</td><td>NOURIEL ROUBINI</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-60</td><td>NASSIM NICHOLAS TALEB</td><td class="col-center">SMA ADI</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -766,39 +756,39 @@
             <!-- TABEL SMA - GEOGRAFI -->
             <div id="sma-geo" class="content-card mapel-section">
                 <div class="table-header-info">
-                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Geografi (SMA)</b></i></span>
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - GEOGRAFI (SMA)</b></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
                 </div>
                 <div class="schedule-table-wrapper">
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Alexander von Humboldt</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">2</td><td>Carl Ritter</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Ptolemy</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">4</td><td>Gerardus Mercator</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">5</td><td>Eratosthenes</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">6</td><td>Vidal de la Blache</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">7</td><td>Immanuel Kant</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">8</td><td>Alfred Wegener</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">9</td><td>William Morris Davis</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">10</td><td>Walter Christaller</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">11</td><td>Yi-Fu Tuan</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">12</td><td>David Harvey</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">13</td><td>Edward Soja</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Doreen Massey</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">15</td><td>Carl Sauer</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">16</td><td>Richard Hartshorne</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">17</td><td>Torsten Hägerstrand</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">18</td><td>Peter Haggett</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">19</td><td>Brian Berry</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">20</td><td>Margherita Dall'Occo</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-61</td><td>ALEXANDER VON HUMBOLDT</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-62</td><td>CARL RITTER</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-63</td><td>PTOLEMY</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-64</td><td>GERARDUS MERCATOR</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-65</td><td>ERATOSTHENES</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-66</td><td>VIDAL DE LA BLACHE</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-67</td><td>IMMANUEL KANT</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-68</td><td>ALFRED WEGENER</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-69</td><td>WILLIAM MORRIS DAVIS</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-70</td><td>WALTER CHRISTALLER</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-71</td><td>YI-FU TUAN</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-72</td><td>DAVID HARVEY</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-73</td><td>EDWARD SOJA</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-74</td><td>DOREEN MASSEY</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-75</td><td>CARL SAUER</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-76</td><td>RICHARD HARTSHORNE</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-77</td><td>TORSTEN HÄGERSTRAND</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-78</td><td>PETER HAGGETT</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-79</td><td>BRIAN BERRY</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-80</td><td>MARGHERITA DALL'OCCO</td><td class="col-center">SMA ADI</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -814,32 +804,32 @@
                     <table class="schedule-table">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">NO</th>
+                                <th style="width: 25%;">NOMOR PESERTA</th>
                                 <th style="width: 45%;">NAMA PESERTA</th>
-                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                                <th style="width: 30%;">ASAL SEKOLAH</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="col-center">1</td><td>Linus Torvalds</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">2</td><td>Bill Gates</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">3</td><td>Steve Jobs</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">4</td><td>Mark Zuckerberg</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">5</td><td>Tim Berners-Lee</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">6</td><td>Guido van Rossum</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">7</td><td>Bjarne Stroustrup</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">8</td><td>James Gosling</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">9</td><td>Dennis Ritchie</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">10</td><td>Ken Thompson</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">11</td><td>Satya Nadella</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">12</td><td>Sundar Pichai</td><td>SMA ADI</td></tr>
-                            <tr><td class="col-center">13</td><td>Tim Cook</td><td>SMA SLM</td></tr>
-                            <tr><td class="col-center">14</td><td>Jensen Huang</td><td>SMA HND</td></tr>
-                            <tr><td class="col-center">15</td><td>Sam Altman</td><td>SMA PTM</td></tr>
-                            <tr><td class="col-center">16</td><td>Demis Hassabis</td><td>SMA SWO</td></tr>
-                            <tr><td class="col-center">17</td><td>Brendan Eich</td><td>SMA HLM 1</td></tr>
-                            <tr><td class="col-center">18</td><td>Anders Hejlsberg</td><td>SMA HLM 2</td></tr>
-                            <tr><td class="col-center">19</td><td>Richard Stallman</td><td>SMA HSN</td></tr>
-                            <tr><td class="col-center">20</td><td>Margaret Hamilton</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-81</td><td>LINUS TORVALDS</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-82</td><td>BILL GATES</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-83</td><td>STEVE JOBS</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-84</td><td>MARK ZUCKERBERG</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-85</td><td>TIM BERNERS-LEE</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-86</td><td>GUIDO VAN ROSSUM</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-87</td><td>BJARNE STROUSTRUP</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-88</td><td>JAMES GOSLING</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-89</td><td>DENNIS RITCHIE</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-90</td><td>KEN THOMPSON</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-91</td><td>SATYA NADELLA</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-92</td><td>SUNDAR PICHAI</td><td class="col-center">SMA ADI</td></tr>
+                            <tr><td class="col-center">SEM-SMA-93</td><td>TIM COOK</td><td class="col-center">SMA SLM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-94</td><td>JENSEN HUANG</td><td class="col-center">SMA HND</td></tr>
+                            <tr><td class="col-center">SEM-SMA-95</td><td>SAM ALTMAN</td><td class="col-center">SMA PTM</td></tr>
+                            <tr><td class="col-center">SEM-SMA-96</td><td>DEMIS HASSABIS</td><td class="col-center">SMA SWO</td></tr>
+                            <tr><td class="col-center">SEM-SMA-97</td><td>BRENDAN EICH</td><td class="col-center">SMA HLM 1</td></tr>
+                            <tr><td class="col-center">SEM-SMA-98</td><td>ANDERS HEJLSBERG</td><td class="col-center">SMA HLM 2</td></tr>
+                            <tr><td class="col-center">SEM-SMA-99</td><td>RICHARD STALLMAN</td><td class="col-center">SMA HSN</td></tr>
+                            <tr><td class="col-center">SEM-SMA-100</td><td>MARGARET HAMILTON</td><td class="col-center">SMA ADI</td></tr>
                         </tbody>
                     </table>
                 </div>
