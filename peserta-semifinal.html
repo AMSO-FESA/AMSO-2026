@@ -121,8 +121,44 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* HEADER */
-        header { padding: 30px 0 25px; text-align: center; position: relative; }
+        /* HEADER & KONTROL UKURAN LOGO */
+        header { padding: 30px 0 25px; text-align: center; position: relative; z-index: 1000; }
+
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        /* Ukuran logo dikunci proporsional persis halaman lain */
+        .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
 
         .main-title {
             font-family: 'Orbitron', sans-serif;
@@ -817,26 +853,19 @@
     <!-- SCRIPT TAB INTERAKTIF -->
     <script>
         function switchJenjang(jenjang) {
-            // Sembunyikan semua kontainer jenjang
             document.querySelectorAll('.jenjang-container').forEach(el => el.style.display = 'none');
-            // Tampilkan jenjang yang dipilih
             document.getElementById('jenjang-' + jenjang).style.display = 'block';
 
-            // Update status tombol aktif jenjang
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
         }
 
         function switchMapel(jenjang, mapel) {
-            // Ambil kontainer jenjang yang aktif
             const container = document.getElementById('jenjang-' + jenjang);
             
-            // Sembunyikan semua tabel mapel di jenjang tersebut
             container.querySelectorAll('.mapel-section').forEach(el => el.classList.remove('active'));
-            // Tampilkan tabel mapel yang dipilih
             document.getElementById(jenjang + '-' + mapel).classList.add('active');
 
-            // Update status tombol aktif mapel
             container.querySelectorAll('.mapel-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
         }
