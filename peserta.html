@@ -771,242 +771,244 @@
                 </div>
             </div>
 <!-- DAFTAR PESERTA BABAK SEMIFINAL -->
-            <div class="section-box">
-                <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK SEMIFINAL</div>
-                
-                <div class="semifinal-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
-                    <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('smp', this)">SMP / MTs</button>
-                    <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('sma', this)">SMA</button>
-                </div>
+<div class="section-box">
+    <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK SEMIFINAL</div>
+    
+    <!-- TOMBOL JENJANG (DIBUAT BOLD & JARAK BAWAH 6px BIAR NEMPEL) -->
+    <div class="semifinal-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('smp', this)">SMP / MTs</button>
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sma', this)">SMA</button>
+    </div>
 
-                <!-- SEMIFINAL SD -->
-                <div id="semifinal-jenjang-sd" class="semifinal-jenjang-container">
-                    <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'mtk', this)">MATEMATIKA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'ipa', this)">IPA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'ips', this)">IPS</button>
-                    </div>
-                    
-                    <div id="semifinal-sd-mtk" class="semifinal-mapel-section" style="display: block;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sd-ipa" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sd-ips" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPS</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SEMIFINAL SMP -->
-                <div id="semifinal-jenjang-smp" class="semifinal-jenjang-container" style="display: none;">
-                    <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'mtk', this)">MATEMATIKA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'ipa', this)">IPA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'ips', this)">IPS</button>
-                    </div>
-
-                    <div id="semifinal-smp-mtk" class="semifinal-mapel-section" style="display: block;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-smp-ipa" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-smp-ips" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPS</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SEMIFINAL SMA -->
-                <div id="semifinal-jenjang-sma" class="semifinal-jenjang-container" style="display: none;">
-                    <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'mtk', this)">MATEMATIKA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'fis', this)">FISIKA</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'eko', this)">EKONOMI</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'geo', this)">GEOGRAFI</button>
-                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'tik', this)">TIK</button>
-                    </div>
-
-                    <div id="semifinal-sma-mtk" class="semifinal-mapel-section" style="display: block;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sma-fis" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">FISIKA</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sma-eko" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">EKONOMI</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sma-geo" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">GEOGRAFI</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="semifinal-sma-tik" class="semifinal-mapel-section" style="display: none;">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%;">NO PESERTA</th>
-                                        <th style="width: 35%;">NAMA PESERTA</th>
-                                        <th style="width: 25%;">SEKOLAH</th>
-                                        <th style="width: 20%;">MATA PELAJARAN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">TIK</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <!-- SEMIFINAL SD -->
+    <div id="semifinal-jenjang-sd" class="semifinal-jenjang-container" style="display: none;">
+        <!-- TOMBOL MAPEL (KOTAK DENGAN BORDER-RADIUS 6px & RAPAT) -->
+        <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 15px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sd', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sd', 'ipa', this)">IPA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sd', 'ips', this)">IPS</button>
+        </div>
+        
+        <div id="semifinal-sd-mtk" class="semifinal-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+
+        <div id="semifinal-sd-ipa" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-sd-ips" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEMIFINAL SMP -->
+    <div id="semifinal-jenjang-smp" class="semifinal-jenjang-container" style="display: none;">
+        <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 15px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('smp', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('smp', 'ipa', this)">IPA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('smp', 'ips', this)">IPS</button>
+        </div>
+
+        <div id="semifinal-smp-mtk" class="semifinal-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-smp-ipa" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-smp-ips" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">IPS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEMIFINAL SMA -->
+    <div id="semifinal-jenjang-sma" class="semifinal-jenjang-container" style="display: none;">
+        <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 15px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sma', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sma', 'fis', this)">FISIKA</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sma', 'eko', this)">EKONOMI</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sma', 'geo', this)">GEOGRAFI</button>
+            <button type="button" class="cat-btn" style="border-radius: 6px; padding: 7px 14px; font-size: 0.72rem;" onclick="switchSemifinalMapel('sma', 'tik', this)">TIK</button>
+        </div>
+
+        <div id="semifinal-sma-mtk" class="semifinal-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">MATEMATIKA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-sma-fis" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">FISIKA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-sma-eko" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">EKONOMI</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-sma-geo" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">GEOGRAFI</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="semifinal-sma-tik" class="semifinal-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">&nbsp;</td><td></td><td></td><td style="text-align: center;">TIK</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
             
             <div class="section-box" id="daftar-peserta">
                 <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK PENYISIHAN</div>
