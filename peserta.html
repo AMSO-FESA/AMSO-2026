@@ -806,9 +806,9 @@
     
     <!-- TOMBOL JENJANG (DIBUAT BOLD & JARAK BAWAH 6px BIAR NEMPEL) -->
     <div class="semifinal-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
-        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
-        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('smp', this)">SMP / MTs</button>
-        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sma', this)">SMA</button>
+        <button type="button" class="cat-btn-jenjang" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
+        <button type="button" class="cat-btn-jenjang" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('smp', this)">SMP / MTs</button>
+        <button type="button" class="cat-btn-jenjang" style="font-weight: 800; letter-spacing: 1px;" onclick="switchSemifinalJenjang('sma', this)">SMA</button>
     </div>
 
     <!-- SEMIFINAL SD -->
@@ -1093,20 +1093,25 @@
 
     <script>
         function switchSemifinalJenjang(jenjang, btn) {
-            document.querySelectorAll('.semifinal-jenjang-container').forEach(el => el.style.display = 'none');
-            document.getElementById('semifinal-jenjang-' + jenjang).style.display = 'block';
+    document.querySelectorAll('.semifinal-jenjang-container').forEach(el => el.style.display = 'none');
+    const target = document.getElementById('semifinal-jenjang-' + jenjang);
+    if (target) {
+        target.style.display = 'block';
+    }
 
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.cat-btn-jenjang').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
 
-        function switchSemifinalMapel(jenjang, mapel, btn) {
+function switchSemifinalMapel(jenjang, mapel, btn) {
     const container = document.getElementById('semifinal-jenjang-' + jenjang);
     if (container) {
         container.querySelectorAll('.semifinal-mapel-section').forEach(el => el.style.display = 'none');
         const target = document.getElementById('semifinal-' + jenjang + '-' + mapel);
-        if (target) target.style.display = 'block';
+        if (target) {
+            target.style.display = 'block';
+        }
 
         const parent = btn.parentElement;
         parent.querySelectorAll('.cat-btn-mapel').forEach(b => b.classList.remove('active'));
@@ -1126,12 +1131,13 @@
         }
 
         function filterCategory(cat, btn) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            displayedCount = 50;
-            renderTable();
-        }
+    currentCategory = cat;
+    // Ubah selector di bawah ini:
+    btn.parentElement.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    displayedCount = 50;
+    renderTable();
+}
 
         function filterTable() {
             searchQuery = document.getElementById('searchInput').value.toLowerCase();
