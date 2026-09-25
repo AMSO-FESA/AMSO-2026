@@ -52,7 +52,7 @@
             background-attachment: fixed;
         }
 
-        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS HEADER ─── */
+        /* TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS HEADER */
         .audio-float-btn {
             position: absolute;
             top: 25px;
@@ -121,7 +121,7 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* HEADER & KONTROL UKURAN LOGO (DISAMAKAN PERSIS) */
+        /* HEADER & KONTROL UKURAN LOGO */
         header { padding: 30px 0 25px; text-align: center; position: relative; z-index: 1000; }
 
         .logo-group {
@@ -155,7 +155,6 @@
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
 
-        /* Ukuran logo dikunci proporsional persis halaman lain */
         .logo-item img[src="yasarini.png"], .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
         .logo-item img[src="fesa.png"], .logo-item img[alt="Logo FESA"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
@@ -188,12 +187,12 @@
             width: 100%;
         }
 
-        /* TABS KONTROL JENJANG */
+        /* TABS KONTROL JENJANG (BOLD & RAPAT KE BAWAH) */
         .jenjang-tabs {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 6px;
             flex-wrap: wrap;
         }
 
@@ -205,7 +204,8 @@
             border-radius: 30px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -219,12 +219,13 @@
             transform: translateY(-2px);
         }
 
-        /* TABS MATA PELAJARAN */
+        /* TABS MATA PELAJARAN (BENTUK KOTAK & MENEMPEL) */
         .mapel-tabs {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
+            gap: 6px;
+            margin-top: 6px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
@@ -232,10 +233,11 @@
             background: rgba(11, 16, 35, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--muted);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
             cursor: pointer;
             transition: all 0.25s ease;
         }
@@ -425,17 +427,17 @@
     <main class="container">
         <!-- PILIH JENJANG -->
         <div class="jenjang-tabs">
-            <button class="tab-btn active" onclick="switchJenjang('sd')">SD / MI</button>
-            <button class="tab-btn" onclick="switchJenjang('smp')">SMP / MTs</button>
-            <button class="tab-btn" onclick="switchJenjang('sma')">SMA</button>
+            <button type="button" class="tab-btn" onclick="switchJenjang('sd', this)">SD / MI</button>
+            <button type="button" class="tab-btn" onclick="switchJenjang('smp', this)">SMP / MTs</button>
+            <button type="button" class="tab-btn" onclick="switchJenjang('sma', this)">SMA</button>
         </div>
 
         <!-- KONTEN SD -->
-        <div id="jenjang-sd" class="jenjang-container">
+        <div id="jenjang-sd" class="jenjang-container" style="display: none;">
             <div class="mapel-tabs">
-                <button class="mapel-btn active" onclick="switchMapel('sd', 'mtk')">MATEMATIKA</button>
-                <button class="mapel-btn" onclick="switchMapel('sd', 'ipa')">IPA</button>
-                <button class="mapel-btn" onclick="switchMapel('sd', 'ips')">IPS</button>
+                <button type="button" class="mapel-btn active" onclick="switchMapel('sd', 'mtk', this)">MATEMATIKA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sd', 'ipa', this)">IPA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sd', 'ips', this)">IPS</button>
             </div>
             
             <!-- TABEL SD - MTK -->
@@ -565,9 +567,9 @@
         <!-- KONTEN SMP -->
         <div id="jenjang-smp" class="jenjang-container" style="display: none;">
             <div class="mapel-tabs">
-                <button class="mapel-btn active" onclick="switchMapel('smp', 'mtk')">MATEMATIKA</button>
-                <button class="mapel-btn" onclick="switchMapel('smp', 'ipa')">IPA</button>
-                <button class="mapel-btn" onclick="switchMapel('smp', 'ips')">IPS</button>
+                <button type="button" class="mapel-btn active" onclick="switchMapel('smp', 'mtk', this)">MATEMATIKA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('smp', 'ipa', this)">IPA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('smp', 'ips', this)">IPS</button>
             </div>
 
             <!-- TABEL SMP - MTK -->
@@ -697,11 +699,11 @@
         <!-- KONTEN SMA -->
         <div id="jenjang-sma" class="jenjang-container" style="display: none;">
             <div class="mapel-tabs">
-                <button class="mapel-btn active" onclick="switchMapel('sma', 'mtk')">MATEMATIKA</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'fis')">FISIKA</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'eko')">EKONOMI</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'geo')">GEOGRAFI</button>
-                <button class="mapel-btn" onclick="switchMapel('sma', 'tik')">TIK</button>
+                <button type="button" class="mapel-btn active" onclick="switchMapel('sma', 'mtk', this)">MATEMATIKA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sma', 'fis', this)">FISIKA</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sma', 'eko', this)">EKONOMI</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sma', 'geo', this)">GEOGRAFI</button>
+                <button type="button" class="mapel-btn" onclick="switchMapel('sma', 'tik', this)">TIK</button>
             </div>
 
             <!-- TABEL SMA - MTK -->
@@ -916,22 +918,36 @@
 
     <!-- SCRIPT TAB INTERAKTIF -->
     <script>
-        function switchJenjang(jenjang) {
+        function switchJenjang(jenjang, btn) {
             document.querySelectorAll('.jenjang-container').forEach(el => el.style.display = 'none');
-            document.getElementById('jenjang-' + jenjang).style.display = 'block';
+            const targetContainer = document.getElementById('jenjang-' + jenjang);
+            if (targetContainer) {
+                targetContainer.style.display = 'block';
+                
+                // Setel otomatis ke mapel pertama saat jenjang dipilih
+                targetContainer.querySelectorAll('.mapel-section').forEach(el => el.classList.remove('active'));
+                const firstMapel = targetContainer.querySelector('.mapel-section');
+                if (firstMapel) firstMapel.classList.add('active');
 
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+                targetContainer.querySelectorAll('.mapel-tabs .mapel-btn').forEach(b => b.classList.remove('active'));
+                const firstMapelBtn = targetContainer.querySelector('.mapel-tabs .mapel-btn');
+                if (firstMapelBtn) firstMapelBtn.classList.add('active');
+            }
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
         }
 
-        function switchMapel(jenjang, mapel) {
+        function switchMapel(jenjang, mapel, btn) {
             const container = document.getElementById('jenjang-' + jenjang);
-            
-            container.querySelectorAll('.mapel-section').forEach(el => el.classList.remove('active'));
-            document.getElementById(jenjang + '-' + mapel).classList.add('active');
+            if (container) {
+                container.querySelectorAll('.mapel-section').forEach(el => el.classList.remove('active'));
+                const targetMapel = document.getElementById(jenjang + '-' + mapel);
+                if (targetMapel) targetMapel.classList.add('active');
 
-            container.querySelectorAll('.mapel-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+                container.querySelectorAll('.mapel-btn').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
         }
     </script>
 
