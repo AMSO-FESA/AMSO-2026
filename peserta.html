@@ -1040,58 +1040,83 @@
     </div>
 </div>
             
+            <!-- DAFTAR PESERTA BABAK PENYISIHAN (ACCORDION BUKA-TUTUP) -->
             <div class="section-box" id="daftar-peserta">
-                <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK PENYISIHAN</div>
+                <!-- JUDUL BISA DIKLIK UNTUK TOGGLE BUKA / TUTUP -->
+                <div class="section-title" onclick="togglePenyisihan()" style="cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;">
+                    <div>
+                        <i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK PENYISIHAN
+                    </div>
+                    <span id="tanda-buka-penyisihan" style="font-size: 0.8rem; color: var(--neon-blue); font-family: 'Orbitron', sans-serif; font-weight: normal;">[ BUKA ▼ ]</span>
+                </div>
                 
-                <div class="filter-row" style="margin-bottom: 20px;">
-                    <div class="category-tabs">
-                        <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA (<span id="countAll">2897</span>)</button>
-                        <button class="cat-btn" onclick="filterCategory('SD/MI Angkasa', this)">SD/MI (<span id="countSD">543</span>)</button>
-                        <button class="cat-btn" onclick="filterCategory('SMP/MTs Angkasa', this)">SMP/MTs (<span id="countSMP">732</span>)</button>
-                        <button class="cat-btn" onclick="filterCategory('SMA Angkasa', this)">SMA (<span id="countSMA">1455</span>)</button>
-                        <button class="cat-btn" onclick="filterCategory('Undangan', this)">UNDANGAN (<span id="countUndangan">167</span>)</button>
+                <!-- KONTEN PENYISIHAN (DEFAULT SEMBUNYI / MINIMIZE) -->
+                <div id="penyisihan-wrapper" style="display: none; margin-top: 20px;">
+                    <div class="filter-row" style="margin-bottom: 20px;">
+                        <div class="category-tabs">
+                            <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA (<span id="countAll">2897</span>)</button>
+                            <button class="cat-btn" onclick="filterCategory('SD/MI Angkasa', this)">SD/MI (<span id="countSD">543</span>)</button>
+                            <button class="cat-btn" onclick="filterCategory('SMP/MTs Angkasa', this)">SMP/MTs (<span id="countSMP">732</span>)</button>
+                            <button class="cat-btn" onclick="filterCategory('SMA Angkasa', this)">SMA (<span id="countSMA">1455</span>)</button>
+                            <button class="cat-btn" onclick="filterCategory('Undangan', this)">UNDANGAN (<span id="countUndangan">167</span>)</button>
+                        </div>
+                        <div class="search-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Cari nama peserta, nomor peserta, atau sekolah..." onkeyup="filterTable()">
+                        </div>
                     </div>
-                    <div class="search-wrapper">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="searchInput" class="search-input" placeholder="Cari nama peserta, nomor peserta, atau sekolah..." onkeyup="filterTable()">
+
+                    <div class="table-info-bar">
+                        <span id="resultInfo">Menampilkan hasil...</span>
                     </div>
-                </div>
+                    <div class="table-container" style="max-height: 600px; overflow-y: auto;">
+                        <table id="pesertaTable">
+                            <thead>
+                                <tr>
+                                    <th>NO PESERTA</th>
+                                    <th>NAMA PESERTA</th>
+                                    <th>SEKOLAH</th>
+                                    <th>MATA PELAJARAN</th>
+                                    <th>KETERANGAN</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <button id="btnLoadMore" class="btn-load-more" style="display: none;" onclick="loadMore()">TAMPILKAN LEBIH BANYAK</button>
 
-                <div class="table-info-bar">
-                    <span id="resultInfo">Menampilkan hasil...</span>
-                </div>
-                <div class="table-container" style="max-height: 600px; overflow-y: auto;">
-                    <table id="pesertaTable">
-                        <thead>
-                            <tr>
-                                <th>NO PESERTA</th>
-                                <th>NAMA PESERTA</th>
-                                <th>SEKOLAH</th>
-                                <th>MATA PELAJARAN</th>
-                                <th>KETERANGAN</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                        </tbody>
-                    </table>
-                </div>
-                <button id="btnLoadMore" class="btn-load-more" style="display: none;" onclick="loadMore()">TAMPILKAN LEBIH BANYAK</button>
-
-                <!-- TOMBOL DOWNLOAD DATA PESERTA -->
-                <div class="download-section">
-                    <a href="https://drive.google.com/file/d/1zyf3lDbx958F-eDEUcjz9IJ5d0MUNTTH/view?usp=sharing" target="_blank" class="btn-download-excel">
-                        <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD DATA PESERTA BABAK PENYISIHAN
-                    </a>
-                </div>
+                    <!-- TOMBOL DOWNLOAD DATA PESERTA -->
+                    <div class="download-section">
+                        <a href="https://drive.google.com/file/d/1zyf3lDbx958F-eDEUcjz9IJ5d0MUNTTH/view?usp=sharing" target="_blank" class="btn-download-excel">
+                            <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD DATA PESERTA BABAK PENYISIHAN
+                        </a>
+                    </div>
+                </div> <!-- PENUTUP penyisihan-wrapper -->
             </div>
         </main>
     </div>
 
     <footer id="footer-placeholder"></footer>
 
+    <!-- PANGGIL SCRIPT GLOBAL (AUDIO & HEADER) -->
     <script src="global-audio.js"></script>
+    <script src="header.js"></script>
 
     <script>
+        // SCRIPT BUKA-TUTUP TABEL PENYISIHAN
+        function togglePenyisihan() {
+            const box = document.getElementById('penyisihan-wrapper');
+            const label = document.getElementById('tanda-buka-penyisihan');
+            if (box.style.display === 'none' || box.style.display === '') {
+                box.style.display = 'block';
+                if (label) label.textContent = '[ TUTUP ▲ ]';
+            } else {
+                box.style.display = 'none';
+                if (label) label.textContent = '[ BUKA ▼ ]';
+            }
+        }
+
         // SCRIPT TAB SEMIFINAL (JENJANG)
         function switchSemifinalJenjang(jenjang, btn) {
             document.querySelectorAll('.semifinal-jenjang-container').forEach(el => el.style.display = 'none');
@@ -1109,16 +1134,13 @@
         function switchSemifinalMapel(jenjang, mapel, btn) {
             const container = document.getElementById('semifinal-jenjang-' + jenjang);
             if (container) {
-                // Sembunyikan semua tabel mapel di jenjang ini
                 container.querySelectorAll('.semifinal-mapel-section').forEach(el => el.style.display = 'none');
                 
-                // Tampilkan tabel mapel yang dipilih
                 const target = document.getElementById('semifinal-' + jenjang + '-' + mapel);
                 if (target) {
                     target.style.display = 'block';
                 }
 
-                // Ganti status aktif tombol mapel
                 const parent = btn.parentElement;
                 parent.querySelectorAll('.cat-btn-mapel').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
