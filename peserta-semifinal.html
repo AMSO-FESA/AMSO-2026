@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peserta Babak Semifinal - AMSO 2026</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #070913;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --gold: #ffd700;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --muted: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS ─── */
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* SPACE & FLOATING ICONS */
+        .space-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
+        }
+
+        .stars {
+            position: absolute; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
+            background-repeat: repeat; background-size: 250px 250px;
+            opacity: 0.45; animation: twinkle 4s infinite alternate;
+        }
+
+        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
+
+        /* HEADER */
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .sub-title {
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding: 10px 0 60px;
+            width: 100%;
+        }
+
+        /* TABS KONTROL JENJANG */
+        .jenjang-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* TABS MATA PELAJARAN */
+        .mapel-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mapel-btn {
+            background: rgba(11, 16, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .mapel-btn:hover, .mapel-btn.active {
+            background: rgba(0, 210, 255, 0.2);
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+        }
+
+        /* KARTU KONTEN & TABEL */
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--gold));
+        }
+
+        .table-header-info {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .schedule-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 600px;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            white-space: nowrap;
+        }
+
+        .schedule-table th {
+            background: rgba(0, 210, 255, 0.12);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-align: center !important;
+            text-transform: uppercase;
+        }
+
+        .schedule-table td.col-center {
+            text-align: center;
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mapel-section {
+            display: none;
+        }
+
+        .mapel-section.active {
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 35px 0 20px;
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ELEMEN AUDIO -->
+    <audio id="bgAudio" loop>
+        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+    </audio>
+
+    <div class="space-bg">
+        <div class="stars"></div>
+    </div>
+
+    <div class="container">
+        <!-- HEADER OTOMATIS -->
+        <header id="header-placeholder"></header>
+
+        <div>
+            <h1 class="main-title">DAFTAR PESERTA SEMIFINAL</h1>
+            <div class="sub-title">AMSO Tahun 2026</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- PILIH JENJANG -->
+        <div class="jenjang-tabs">
+            <button class="tab-btn active" onclick="switchJenjang('sd')">SD / MI</button>
+            <button class="tab-btn" onclick="switchJenjang('smp')">SMP / MTs</button>
+            <button class="tab-btn" onclick="switchJenjang('sma')">SMA</button>
+        </div>
+
+        <!-- KONTEN SD -->
+        <div id="jenjang-sd" class="jenjang-container">
+            <div class="mapel-tabs">
+                <button class="mapel-btn active" onclick="switchMapel('sd', 'mtk')">Matematika</button>
+                <button class="mapel-btn" onclick="switchMapel('sd', 'ipa')">IPA</button>
+                <button class="mapel-btn" onclick="switchMapel('sd', 'ips')">IPS</button>
+            </div>
+            
+            <!-- TABEL SD - MTK -->
+            <div id="sd-mtk" class="content-card mapel-section active">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Matematika (SD/MI)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Ahmad Rizky Pratama</td><td>SD HLM 1</td></tr>
+                            <tr><td class="col-center">2</td><td>Siti Nurhaliza</td><td>SD ATS</td></tr>
+                            <tr><td class="col-center">3</td><td>Budi Santoso</td><td>SD HSN 1</td></tr>
+                            <tr><td class="col-center">4</td><td>Dewi Lestari</td><td>SD SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Rehan Putra Utama</td><td>SD SUT 1</td></tr>
+                            <tr><td class="col-center">6</td><td>Nabila Zahra</td><td>SD HND 1</td></tr>
+                            <tr><td class="col-center">7</td><td>Dimas Anggara</td><td>SD MUL</td></tr>
+                            <tr><td class="col-center">8</td><td>Putri Amalia</td><td>SD SMO</td></tr>
+                            <tr><td class="col-center">9</td><td>Fajar Ramadhan</td><td>SD PTM</td></tr>
+                            <tr><td class="col-center">10</td><td>Zaskia Mecca</td><td>SD MNA</td></tr>
+                            <tr><td class="col-center">11</td><td>Rian Hidayat</td><td>SD ELI</td></tr>
+                            <tr><td class="col-center">12</td><td>Intan Permata</td><td>MI LWM</td></tr>
+                            <tr><td class="col-center">13</td><td>Yoga Pratama</td><td>SD SPR</td></tr>
+                            <tr><td class="col-center">14</td><td>Ratna Suminar</td><td>SD HLM 3</td></tr>
+                            <tr><td class="col-center">15</td><td>Galih Wicaksono</td><td>SD HLM 4</td></tr>
+                            <tr><td class="col-center">16</td><td>Vina Aulia</td><td>SD HLM 5</td></tr>
+                            <tr><td class="col-center">17</td><td>Tegar Saputra</td><td>SD HLM 7</td></tr>
+                            <tr><td class="col-center">18</td><td>Indah Puspita</td><td>SD HLM 9</td></tr>
+                            <tr><td class="col-center">19</td><td>Bayu Pamungkas</td><td>SD HLM 10</td></tr>
+                            <tr><td class="col-center">20</td><td>Kirana Larasati</td><td>SD HLM 12</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SD - IPA -->
+            <div id="sd-ipa" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - IPA (SD/MI)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Aditya Pratama</td><td>SD ATS</td></tr>
+                            <tr><td class="col-center">2</td><td>Anisa Rahma</td><td>SD HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Kevin Sanjaya</td><td>SD HSN 1</td></tr>
+                            <tr><td class="col-center">4</td><td>Mila Karmila</td><td>SD SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Fauzan Al Ghifari</td><td>SD SUT 1</td></tr>
+                            <tr><td class="col-center">6</td><td>Tasya Kamila</td><td>SD HND 1</td></tr>
+                            <tr><td class="col-center">7</td><td>Riki Martin</td><td>SD MUL</td></tr>
+                            <tr><td class="col-center">8</td><td>Sela Marsela</td><td>SD SMO</td></tr>
+                            <tr><td class="col-center">9</td><td>Dicky Kurniawan</td><td>SD PTM</td></tr>
+                            <tr><td class="col-center">10</td><td>Maya Safira</td><td>SD MNA</td></tr>
+                            <tr><td class="col-center">11</td><td>Eko Prasetyo</td><td>SD ELI</td></tr>
+                            <tr><td class="col-center">12</td><td>Fitri Handayani</td><td>MI LWM</td></tr>
+                            <tr><td class="col-center">13</td><td>Gilang Ramadhan</td><td>SD SPR</td></tr>
+                            <tr><td class="col-center">14</td><td>Siska Melina</td><td>SD HLM 3</td></tr>
+                            <tr><td class="col-center">15</td><td>Hendra Gunawan</td><td>SD HLM 4</td></tr>
+                            <tr><td class="col-center">16</td><td>Wulan Dari</td><td>SD HLM 5</td></tr>
+                            <tr><td class="col-center">17</td><td>Irfan Bachdim</td><td>SD HLM 7</td></tr>
+                            <tr><td class="col-center">18</td><td>Nia Ramadhani</td><td>SD HLM 9</td></tr>
+                            <tr><td class="col-center">19</td><td>Joko Susilo</td><td>SD HLM 10</td></tr>
+                            <tr><td class="col-center">20</td><td>Mega Zaskia</td><td>SD HLM 12</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SD - IPS -->
+            <div id="sd-ips" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - IPS (SD/MI)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Zidan Malik</td><td>SD HSN 1</td></tr>
+                            <tr><td class="col-center">2</td><td>Rini Yulianti</td><td>SD HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Surya Saputra</td><td>SD ATS</td></tr>
+                            <tr><td class="col-center">4</td><td>Dina Mariana</td><td>SD SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Bambang Pamungkas</td><td>SD SUT 1</td></tr>
+                            <tr><td class="col-center">6</td><td>Lestari Wibowo</td><td>SD HND 1</td></tr>
+                            <tr><td class="col-center">7</td><td>Tomi Wijaya</td><td>SD MUL</td></tr>
+                            <tr><td class="col-center">8</td><td>Yuni Shara</td><td>SD SMO</td></tr>
+                            <tr><td class="col-center">9</td><td>Agus Setiawan</td><td>SD PTM</td></tr>
+                            <tr><td class="col-center">10</td><td>Dewi Persik</td><td>SD MNA</td></tr>
+                            <tr><td class="col-center">11</td><td>Doni Monardo</td><td>SD ELI</td></tr>
+                            <tr><td class="col-center">12</td><td>Siti Badriah</td><td>MI LWM</td></tr>
+                            <tr><td class="col-center">13</td><td>Rizal Djibran</td><td>SD SPR</td></tr>
+                            <tr><td class="col-center">14</td><td>Amelia Putri</td><td>SD HLM 3</td></tr>
+                            <tr><td class="col-center">15</td><td>Candra Wijaya</td><td>SD HLM 4</td></tr>
+                            <tr><td class="col-center">16</td><td>Desi Ratnasari</td><td>SD HLM 5</td></tr>
+                            <tr><td class="col-center">17</td><td>Egi John</td><td>SD HLM 7</td></tr>
+                            <tr><td class="col-center">18</td><td>Fika Effendi</td><td>SD HLM 9</td></tr>
+                            <tr><td class="col-center">19</td><td>Gatot Brajamusti</td><td>SD HLM 10</td></tr>
+                            <tr><td class="col-center">20</td><td>Hesti Purwadinata</td><td>SD HLM 12</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- KONTEN SMP (Hidden by default) -->
+        <div id="jenjang-smp" class="jenjang-container" style="display: none;">
+            <div class="mapel-tabs">
+                <button class="mapel-btn active" onclick="switchMapel('smp', 'mtk')">Matematika</button>
+                <button class="mapel-btn" onclick="switchMapel('smp', 'ipa')">IPA</button>
+                <button class="mapel-btn" onclick="switchMapel('smp', 'ips')">IPS</button>
+            </div>
+
+            <!-- TABEL SMP - MTK -->
+            <div id="smp-mtk" class="content-card mapel-section active">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Matematika (SMP/MTs)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Farel Prayoga</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">2</td><td>Lesti Kejora</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">3</td><td>Rizky Billar</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">4</td><td>Ayu Ting Ting</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Ruben Onsu</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">6</td><td>Sarwendah</td><td>SMP BNY</td></tr>
+                            <tr><td class="col-center">7</td><td>Deddy Corbuzier</td><td>SMP HND</td></tr>
+                            <tr><td class="col-center">8</td><td>Azka Corbuzier</td><td>SMP ABD</td></tr>
+                            <tr><td class="col-center">9</td><td>Sabrina Chairunnisa</td><td>SMP ELI</td></tr>
+                            <tr><td class="col-center">10</td><td>Igun Gunawan</td><td>SMP PTM</td></tr>
+                            <tr><td class="col-center">11</td><td>Wendy Cagur</td><td>MTs LWM</td></tr>
+                            <tr><td class="col-center">12</td><td>Andhika Pratama</td><td>SMP MNA</td></tr>
+                            <tr><td class="col-center">13</td><td>Ussy Sulistiawaty</td><td>SMP SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Sule Prikitiw</td><td>SMP SMO</td></tr>
+                            <tr><td class="col-center">15</td><td>Rizky Febian</td><td>SMP ADI</td></tr>
+                            <tr><td class="col-center">16</td><td>Mahalini Raharja</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">17</td><td>Denny Cagur</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">18</td><td>Marshel Widianto</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">19</td><td>Kiky Saputri</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">20</td><td>Pandji Pragiwaksono</td><td>SMP SUT</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMP - IPA -->
+            <div id="smp-ipa" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - IPA (SMP/MTs)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Najwa Shihab</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">2</td><td>Anies Baswedan</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">3</td><td>Ganjar Pranowo</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">4</td><td>Prabowo Subianto</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Joko Widodo</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">6</td><td>Iriana Widodo</td><td>SMP BNY</td></tr>
+                            <tr><td class="col-center">7</td><td>Gibran Rakabuming</td><td>SMP HND</td></tr>
+                            <tr><td class="col-center">8</td><td>Kaesang Pangarep</td><td>SMP ABD</td></tr>
+                            <tr><td class="col-center">9</td><td>Erina Gudono</td><td>SMP ELI</td></tr>
+                            <tr><td class="col-center">10</td><td>Bahlil Lahadalia</td><td>SMP PTM</td></tr>
+                            <tr><td class="col-center">11</td><td>Sri Mulyani</td><td>MTs LWM</td></tr>
+                            <tr><td class="col-center">12</td><td>Mahfud MD</td><td>SMP MNA</td></tr>
+                            <tr><td class="col-center">13</td><td>Basuki Hadimuljono</td><td>SMP SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Sandiaga Uno</td><td>SMP SMO</td></tr>
+                            <tr><td class="col-center">15</td><td>Erick Thohir</td><td>SMP ADI</td></tr>
+                            <tr><td class="col-center">16</td><td>Ridwan Kamil</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">17</td><td>Atalia Praratya</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">18</td><td>Ahok Basuki</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">19</td><td>Susi Pudjiastuti</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">20</td><td>Budi Gunadi Sadikin</td><td>SMP SUT</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMP - IPS -->
+            <div id="smp-ips" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - IPS (SMP/MTs)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Raffi Ahmad</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">2</td><td>Nagita Slavina</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">3</td><td>Rafathar Malik</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">4</td><td>Rayyanza Malik</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">5</td><td>Baim Wong</td><td>SMP SUT</td></tr>
+                            <tr><td class="col-center">6</td><td>Paula Verhoeven</td><td>SMP BNY</td></tr>
+                            <tr><td class="col-center">7</td><td>Kiano Tiger Wong</td><td>SMP HND</td></tr>
+                            <tr><td class="col-center">8</td><td>Atta Halilintar</td><td>SMP ABD</td></tr>
+                            <tr><td class="col-center">9</td><td>Aurel Hermansyah</td><td>SMP ELI</td></tr>
+                            <tr><td class="col-center">10</td><td>Ameena Hanna</td><td>SMP PTM</td></tr>
+                            <tr><td class="col-center">11</td><td>Thariq Halilintar</td><td>MTs LWM</td></tr>
+                            <tr><td class="col-center">12</td><td>Aaliyah Massaid</td><td>SMP MNA</td></tr>
+                            <tr><td class="col-center">13</td><td>Fuji An</td><td>SMP SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Verrel Bramasta</td><td>SMP SMO</td></tr>
+                            <tr><td class="col-center">15</td><td>Natasha Wilona</td><td>SMP ADI</td></tr>
+                            <tr><td class="col-center">16</td><td>Stefan William</td><td>SMP HLM</td></tr>
+                            <tr><td class="col-center">17</td><td>Caesar Hito</td><td>SMP ATS</td></tr>
+                            <tr><td class="col-center">18</td><td>Felicya Angelista</td><td>SMP HSN</td></tr>
+                            <tr><td class="col-center">19</td><td>Immanuel Caesar</td><td>SMP SWO</td></tr>
+                            <tr><td class="col-center">20</td><td>Natasha Ryder</td><td>SMP SUT</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- KONTEN SMA (Hidden by default) -->
+        <div id="jenjang-sma" class="jenjang-container" style="display: none;">
+            <div class="mapel-tabs">
+                <button class="mapel-btn active" onclick="switchMapel('sma', 'mtk')">Matematika</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'fis')">Fisika</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'eko')">Ekonomi</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'geo')">Geografi</button>
+                <button class="mapel-btn" onclick="switchMapel('sma', 'tik')">TIK</button>
+            </div>
+
+            <!-- TABEL SMA - MTK -->
+            <div id="sma-mtk" class="content-card mapel-section active">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Matematika (SMA)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Albert Einstein</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">2</td><td>Isaac Newton</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">3</td><td>Nikola Tesla</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">4</td><td>Galileo Galilei</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">5</td><td>Stephen Hawking</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">6</td><td>Marie Curie</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">7</td><td>Charles Darwin</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">8</td><td>Thomas Alva Edison</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">9</td><td>Pythagoras</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">10</td><td>Archimedes</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">11</td><td>Blaise Pascal</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">12</td><td>René Descartes</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">13</td><td>Alan Turing</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Ada Lovelace</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">15</td><td>Carl Friedrich Gauss</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">16</td><td>Leonhard Euler</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">17</td><td>Fibonacci</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">18</td><td>Euclid</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">19</td><td>Alan Watts</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">20</td><td>Max Planck</td><td>SMA ADI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMA - FISIKA -->
+            <div id="sma-fis" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Fisika (SMA)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Richard Feynman</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">2</td><td>Niels Bohr</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Erwin Schrödinger</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">4</td><td>Werner Heisenberg</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">5</td><td>Paul Dirac</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">6</td><td>Enrico Fermi</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">7</td><td>Robert Oppenheimer</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">8</td><td>James Clerk Maxwell</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">9</td><td>Michael Faraday</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">10</td><td>Hendrik Lorentz</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">11</td><td>J.J. Thomson</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">12</td><td>Ernest Rutherford</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">13</td><td>James Chadwick</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Louis de Broglie</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">15</td><td>Wolfgang Pauli</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">16</td><td>Subrahmanyan Chandrasekhar</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">17</td><td>Chien-Shiung Wu</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">18</td><td>Rosalind Franklin</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">19</td><td>Lise Meitner</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">20</td><td>Evangelista Torricelli</td><td>SMA ADI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMA - EKONOMI -->
+            <div id="sma-eko" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Ekonomi (SMA)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Adam Smith</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">2</td><td>John Maynard Keynes</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Milton Friedman</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">4</td><td>Karl Marx</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">5</td><td>David Ricardo</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">6</td><td>Friedrich Hayek</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">7</td><td>Joseph Schumpeter</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">8</td><td>Alfred Marshall</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">9</td><td>Irving Fisher</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">10</td><td>Paul Samuelson</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">11</td><td>Amartya Sen</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">12</td><td>Thomas Piketty</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">13</td><td>Dani Rodrik</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Esther Duflo</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">15</td><td>Abhijit Banerjee</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">16</td><td>Robert Lucas</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">17</td><td>Simon Kuznets</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">18</td><td>Mancur Olson</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">19</td><td>Nouriel Roubini</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">20</td><td>Nassim Nicholas Taleb</td><td>SMA ADI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMA - GEOGRAFI -->
+            <div id="sma-geo" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - Geografi (SMA)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Alexander von Humboldt</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">2</td><td>Carl Ritter</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Ptolemy</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">4</td><td>Gerardus Mercator</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">5</td><td>Eratosthenes</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">6</td><td>Vidal de la Blache</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">7</td><td>Immanuel Kant</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">8</td><td>Alfred Wegener</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">9</td><td>William Morris Davis</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">10</td><td>Walter Christaller</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">11</td><td>Yi-Fu Tuan</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">12</td><td>David Harvey</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">13</td><td>Edward Soja</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Doreen Massey</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">15</td><td>Carl Sauer</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">16</td><td>Richard Hartshorne</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">17</td><td>Torsten Hägerstrand</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">18</td><td>Peter Haggett</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">19</td><td>Brian Berry</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">20</td><td>Margherita Dall'Occo</td><td>SMA ADI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL SMA - TIK -->
+            <div id="sma-tik" class="content-card mapel-section">
+                <div class="table-header-info">
+                    <span><i class="fa-solid fa-users"><b> Peserta Semifinal - TIK (SMA)</b></i></span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Total: 20 Peserta</span>
+                </div>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%;">NO</th>
+                                <th style="width: 45%;">NAMA PESERTA</th>
+                                <th style="width: 47%;">ASAL SEKOLAH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="col-center">1</td><td>Linus Torvalds</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">2</td><td>Bill Gates</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">3</td><td>Steve Jobs</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">4</td><td>Mark Zuckerberg</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">5</td><td>Tim Berners-Lee</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">6</td><td>Guido van Rossum</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">7</td><td>Bjarne Stroustrup</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">8</td><td>James Gosling</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">9</td><td>Dennis Ritchie</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">10</td><td>Ken Thompson</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">11</td><td>Satya Nadella</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">12</td><td>Sundar Pichai</td><td>SMA ADI</td></tr>
+                            <tr><td class="col-center">13</td><td>Tim Cook</td><td>SMA SLM</td></tr>
+                            <tr><td class="col-center">14</td><td>Jensen Huang</td><td>SMA HND</td></tr>
+                            <tr><td class="col-center">15</td><td>Sam Altman</td><td>SMA PTM</td></tr>
+                            <tr><td class="col-center">16</td><td>Demis Hassabis</td><td>SMA SWO</td></tr>
+                            <tr><td class="col-center">17</td><td>Brendan Eich</td><td>SMA HLM 1</td></tr>
+                            <tr><td class="col-center">18</td><td>Anders Hejlsberg</td><td>SMA HLM 2</td></tr>
+                            <tr><td class="col-center">19</td><td>Richard Stallman</td><td>SMA HSN</td></tr>
+                            <tr><td class="col-center">20</td><td>Margaret Hamilton</td><td>SMA ADI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER OTOMATIS -->
+    <footer id="footer-placeholder"></footer>
+
+    <!-- SCRIPT TAB INTERAKTIF -->
+    <script>
+        function switchJenjang(jenjang) {
+            // Sembunyikan semua kontainer jenjang
+            document.querySelectorAll('.jenjang-container').forEach(el => el.style.display = 'none');
+            // Tampilkan jenjang yang dipilih
+            document.getElementById('jenjang-' + jenjang).style.display = 'block';
+
+            // Update status tombol aktif jenjang
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function switchMapel(jenjang, mapel) {
+            // Ambil kontainer jenjang yang aktif
+            const container = document.getElementById('jenjang-' + jenjang);
+            
+            // Sembunyikan semua tabel mapel di jenjang tersebut
+            container.querySelectorAll('.mapel-section').forEach(el => el.classList.remove('active'));
+            // Tampilkan tabel mapel yang dipilih
+            document.getElementById(jenjang + '-' + mapel).classList.add('active');
+
+            // Update status tombol aktif mapel
+            container.querySelectorAll('.mapel-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+    <!-- PANGGIL SCRIPT GLOBAL -->
+    <script src="global-audio.js"></script>
+
+</body>
+</html>
