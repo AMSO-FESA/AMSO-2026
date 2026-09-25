@@ -775,7 +775,7 @@
                 <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK SEMIFINAL</div>
                 
                 <div class="semifinal-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <button type="button" class="cat-btn active" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
+                    <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('sd', this)">SD / MI</button>
                     <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('smp', this)">SMP / MTs</button>
                     <button type="button" class="cat-btn" onclick="switchSemifinalJenjang('sma', this)">SMA</button>
                 </div>
@@ -783,7 +783,7 @@
                 <!-- SEMIFINAL SD -->
                 <div id="semifinal-jenjang-sd" class="semifinal-jenjang-container">
                     <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn active" onclick="switchSemifinalMapel('sd', 'mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'mtk', this)">MATEMATIKA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'ipa', this)">IPA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sd', 'ips', this)">IPS</button>
                     </div>
@@ -846,7 +846,7 @@
                 <!-- SEMIFINAL SMP -->
                 <div id="semifinal-jenjang-smp" class="semifinal-jenjang-container" style="display: none;">
                     <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn active" onclick="switchSemifinalMapel('smp', 'mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'mtk', this)">MATEMATIKA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'ipa', this)">IPA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('smp', 'ips', this)">IPS</button>
                     </div>
@@ -909,7 +909,7 @@
                 <!-- SEMIFINAL SMA -->
                 <div id="semifinal-jenjang-sma" class="semifinal-jenjang-container" style="display: none;">
                     <div class="semifinal-mapel-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                        <button type="button" class="cat-btn active" onclick="switchSemifinalMapel('sma', 'mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'mtk', this)">MATEMATIKA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'fis', this)">FISIKA</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'eko', this)">EKONOMI</button>
                         <button type="button" class="cat-btn" onclick="switchSemifinalMapel('sma', 'geo', this)">GEOGRAFI</button>
@@ -1013,7 +1013,7 @@
                 
                 <div class="filter-row" style="margin-bottom: 20px;">
                     <div class="category-tabs">
-                        <button class="cat-btn active" onclick="filterCategory('ALL', this)">SEMUA (<span id="countAll">2897</span>)</button>
+                        <button class="cat-btn" onclick="filterCategory('ALL', this)">SEMUA (<span id="countAll">2897</span>)</button>
                         <button class="cat-btn" onclick="filterCategory('SD/MI Angkasa', this)">SD/MI (<span id="countSD">543</span>)</button>
                         <button class="cat-btn" onclick="filterCategory('SMP/MTs Angkasa', this)">SMP/MTs (<span id="countSMP">732</span>)</button>
                         <button class="cat-btn" onclick="filterCategory('SMA Angkasa', this)">SMA (<span id="countSMA">1455</span>)</button>
