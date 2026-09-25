@@ -234,12 +234,6 @@
             margin-bottom: 60px;
         }
 
-        .column-left {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
         .section-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -259,6 +253,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* KOTAK LAINNYA DI TENGAH DENGAN UKURAN PERSIS SEPERTI KOTAK LAIN */
+        @media (min-width: 901px) {
+            .box-lainnya-center {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 100%;
+                max-width: calc(50% - 15px);
+            }
         }
 
         /* ACCORDION DROPDOWNS */
@@ -743,11 +747,12 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .column-left {
-                gap: 20px;
-            }
             .section-box {
                 padding: 22px 16px;
+            }
+            .box-lainnya-center {
+                max-width: 100% !important;
+                justify-self: stretch !important;
             }
         }
 
@@ -811,314 +816,46 @@
     <main class="container">
         <div class="admin-layout">
             
-            <!-- KOLOM KIRI: DAFTAR SURAT & LAINNYA -->
-            <div class="column-left">
+            <!-- KOTAK 1: DAFTAR SURAT -->
+            <div class="section-box">
+                <div class="section-title"><i class="fa-solid fa-folder-open"></i> DAFTAR SURAT</div>
                 
-                <!-- KOTAK 1: DAFTAR SURAT -->
-                <div class="section-box">
-                    <div class="section-title"><i class="fa-solid fa-folder-open"></i> DAFTAR SURAT</div>
-                    
-                    <div class="admin-accordion" id="suratAccordion" onmouseleave="closeAccordion('suratAccordion')">
-                        <div class="accordion-header" onclick="toggleAccordion('suratAccordion')">
-                            <div class="accordion-title-wrap">
-                                <i class="fa-solid fa-envelope-circle-check"></i>
-                                <span>Pilih Surat</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                <div class="admin-accordion" id="suratAccordion" onmouseleave="closeAccordion('suratAccordion')">
+                    <div class="accordion-header" onclick="toggleAccordion('suratAccordion')">
+                        <div class="accordion-title-wrap">
+                            <i class="fa-solid fa-envelope-circle-check"></i>
+                            <span>Pilih Surat</span>
                         </div>
-
-                        <div class="accordion-content">
-                            <div class="dropdown-items-list">
-                                <!-- SURAT 1: SELEKSI & BUKU PANDUAN -->
-                                <a href="https://drive.google.com/file/d/1cHPmGzxoP_odZXuYtTVmFd9KBYY5aF-q/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Pelaksanaan Babak Seleksi dan Link Buku Panduan</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- SURAT 2: TRYOUT -->
-                                <a href="https://drive.google.com/file/d/1ezADrPdOI9LZpC3yMRYKXPEPF0VDEp0l/view?usp=drive_link" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Surat Edaran Pelaksanaan Tryout AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
                     </div>
-                </div>
 
-                <!-- KOTAK 2: LAINNYA -->
-                <div class="section-box">
-                    <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
-                    
-                    <div class="admin-accordion" id="lainnyaAccordion" onmouseleave="closeAccordion('lainnyaAccordion')">
-                        <div class="accordion-header" onclick="toggleAccordion('lainnyaAccordion')">
-                            <div class="accordion-title-wrap">
-                                <i class="fa-solid fa-file-lines"></i>
-                                <span>Pilih Berkas / File</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                        </div>
-
-                        <div class="accordion-content">
-                            <div class="dropdown-items-list">
-
-                                <!-- BERKAS BARU: JADWAL BABAK PENYISIHAN (DITARO PALING ATAS) -->
-                                <a href="jadwal-penyisihan.html" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Jadwal Babak Penyisihan AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-calendar-days"></i> Lihat Jadwal <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- BERKAS 0: Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026 -->
-                                <a href="https://drive.google.com/file/d/1fD2tkwvSi3n7Daw4C4yArFJ1m7zfU1Xr/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- BERKAS 1: Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026 -->
-                                <a href="https://drive.google.com/file/d/1qrzsT_8pF8wq2z3HPW3xdwB28tV4Wogj/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- BERKAS 2: Lembar Jawaban Uraian AMSO 2026 -->
-                                <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Lembar Jawaban Uraian AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- BERKAS 3: Paparan Bimtek Babak Seleksi AMSO 2026 -->
-                                <a href="https://drive.google.com/file/d/1vuCWhvWCCbzqBYhlITCmPM4qBgVXrv-j/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Paparan Bimtek Babak Seleksi AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- ITEM 1: SOAL BABAK SELEKSI -->
-                                <div class="nested-accordion" id="soalSeleksiAccordion">
-                                    <div class="nested-header" onclick="handleSoalSeleksiClick(event)">
-                                        <div class="item-text">
-                                            <strong>Soal Babak Seleksi AMSO 2026</strong>
-                                        </div>
-                                        <span id="tagBtnSoalSeleksi" class="item-btn-tag">
-                                        </span>
-                                    </div>
-
-                                    <div class="nested-content">
-                                        <!-- JENJANG SD / MI -->
-                                        <div class="jenjang-group">
-                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SD / MI</div>
-                                            <div class="mapel-grid">
-                                                <!-- MTK -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
-                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1bM7X3gCwUqqC6ai1fihjemDjAttiaviq/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- IPA -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
-                                                        <span>IPA</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/11i_5Wsx5gvawZD7r2WFhk2SkVEt-ksO4/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- IPS -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
-                                                        <span>IPS</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1e_rvkP4f4KxwLNJml0nCZt0UEYepkK8L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- JENJANG SMP / MTs -->
-                                        <div class="jenjang-group">
-                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMP / MTs</div>
-                                            <div class="mapel-grid">
-                                                <!-- MTK -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
-                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1hiFXFQjJk0HPB6j2AL0n78FOEcnnffBc/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- IPA -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
-                                                        <span>IPA</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/10g-z9XlF4tx8DwKcmXMnJ_es0MLL7w9L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- IPS -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
-                                                        <span>IPS</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1p7-42uqcPOlL-aArM6p8QxRtTn_TnEjY/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- JENJANG SMA -->
-                                        <div class="jenjang-group">
-                                            <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMA</div>
-                                            <div class="mapel-grid">
-                                                <!-- MTK -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
-                                                        <span>MTK</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1FIxz_qG6jppcH9AA0QgPhR3gHBmltMj5/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- FIS -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal FIS">
-                                                        <span>FIS</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1Gym6lU4TypE7zKIHBsTQokcOpR1dNgPJ/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban FIS">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- EKO -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal EKO">
-                                                        <span>EKO</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1PD2NCrBEPwsfUJXUxYYNIZcltsRwKFBH/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban EKO">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- GEO -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal GEO">
-                                                        <span>GEO</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1WFc--G78_XulGOhimAC2g-dhhT2C9KWD/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban GEO">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- TIK -->
-                                                <div class="mapel-btn-wrap">
-                                                    <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal TIK">
-                                                        <span>TIK</span> <i class="fa-solid fa-download"></i>
-                                                    </a>
-                                                    <a href="https://docs.google.com/document/d/1PbSO2TemxPT4WBBWJwOybwoir-_dGb2G/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban TIK">
-                                                        <i class="fa-solid fa-key"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="accordion-content">
+                        <div class="dropdown-items-list">
+                            <!-- SURAT 1: SELEKSI & BUKU PANDUAN -->
+                            <a href="https://drive.google.com/file/d/1cHPmGzxoP_odZXuYtTVmFd9KBYY5aF-q/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Pelaksanaan Babak Seleksi dan Link Buku Panduan</strong>
                                 </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
 
-                                <!-- ITEM 2: BANNER AMSO 2026 -->
-                                <a href="https://drive.google.com/file/d/16i1-mAGyfhdyZ23oaCNq6ulLEVfIBq9g/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Banner AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- ITEM 3: NAMETAG PESERTA -->
-                                <a href="https://drive.google.com/file/d/1rT4b-zf82lzdBrcW6tRSjK0G3qXXGGu7/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Nametag Peserta AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- VIRTUAL BACKGROUND BABAK FINAL -->
-                                <a href="https://drive.google.com/file/d/1tbSBIlewFYIsf6wGILBNTwVVuYuCR-8r/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Virtual Background Babak Final</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- VIRTUAL BACKGROUND BABAK SEMIFINAL -->
-                                <a href="https://drive.google.com/file/d/1kUCI7qvIRRR7WK9vUF0F7FSkbmWObWoS/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Virtual Background Babak Semifinal</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- VIRTUAL BACKGROUND BABAK PENYISIHAN -->
-                                <a href="https://drive.google.com/file/d/1bhTOqOR95_Llif0evwpnkc4IVAB3dQta/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Virtual Background Babak Penyisihan</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-
-                                <!-- ITEM 4: VIRTUAL BACKGROUND BIMTEK -->
-                                <a href="https://drive.google.com/file/d/1VS_wVVGrsPV4MCy7Q6DAhu7enD1brLOy/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                    <div class="item-text">
-                                        <strong>Virtual Background Bimtek AMSO 2026</strong>
-                                    </div>
-                                    <span class="item-btn-tag tag-drive">
-                                        <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                    </span>
-                                </a>
-                            </div>
+                            <!-- SURAT 2: TRYOUT -->
+                            <a href="https://drive.google.com/file/d/1ezADrPdOI9LZpC3yMRYKXPEPF0VDEp0l/view?usp=drive_link" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Surat Edaran Pelaksanaan Tryout AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-brands fa-google-drive"></i> Unduh Surat <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- KOLOM KANAN: UPLOAD DATA -->
+            <!-- KOTAK 3: UPLOAD DATA -->
             <div class="section-box">
                 <div class="section-title"><i class="fa-solid fa-cloud-arrow-up"></i> UPLOAD DATA</div>
                 
@@ -1168,6 +905,269 @@
                                 </span>
                             </a>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KOTAK 2: LAINNYA (DITENGAHKAN PADA LAYAR DESKTOP DENGAN UKURAN KOTAK SAMA PERSIS) -->
+            <div class="section-box box-lainnya-center">
+                <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
+                
+                <div class="admin-accordion" id="lainnyaAccordion" onmouseleave="closeAccordion('lainnyaAccordion')">
+                    <div class="accordion-header" onclick="toggleAccordion('lainnyaAccordion')">
+                        <div class="accordion-title-wrap">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Pilih Berkas / File</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+
+                    <div class="accordion-content">
+                        <div class="dropdown-items-list">
+
+                            <!-- BERKAS BARU: JADWAL BABAK PENYISIHAN (DITARO PALING ATAS) -->
+                            <a href="jadwal-penyisihan.html" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Jadwal Babak Penyisihan AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-calendar-days"></i> Lihat Jadwal <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- BERKAS 0: Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026 -->
+                            <a href="https://drive.google.com/file/d/1fD2tkwvSi3n7Daw4C4yArFJ1m7zfU1Xr/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- BERKAS 1: Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026 -->
+                            <a href="https://drive.google.com/file/d/1qrzsT_8pF8wq2z3HPW3xdwB28tV4Wogj/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- BERKAS 2: Lembar Jawaban Uraian AMSO 2026 -->
+                            <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Lembar Jawaban Uraian AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- BERKAS 3: Paparan Bimtek Babak Seleksi AMSO 2026 -->
+                            <a href="https://drive.google.com/file/d/1vuCWhvWCCbzqBYhlITCmPM4qBgVXrv-j/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Paparan Bimtek Babak Seleksi AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- ITEM 1: SOAL BABAK SELEKSI -->
+                            <div class="nested-accordion" id="soalSeleksiAccordion">
+                                <div class="nested-header" onclick="handleSoalSeleksiClick(event)">
+                                    <div class="item-text">
+                                        <strong>Soal Babak Seleksi AMSO 2026</strong>
+                                    </div>
+                                    <span id="tagBtnSoalSeleksi" class="item-btn-tag">
+                                    </span>
+                                </div>
+
+                                <div class="nested-content">
+                                    <!-- JENJANG SD / MI -->
+                                    <div class="jenjang-group">
+                                        <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SD / MI</div>
+                                        <div class="mapel-grid">
+                                            <!-- MTK -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                    <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1bM7X3gCwUqqC6ai1fihjemDjAttiaviq/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- IPA -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
+                                                    <span>IPA</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/11i_5Wsx5gvawZD7r2WFhk2SkVEt-ksO4/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- IPS -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
+                                                    <span>IPS</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1e_rvkP4f4KxwLNJml0nCZt0UEYepkK8L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- JENJANG SMP / MTs -->
+                                    <div class="jenjang-group">
+                                        <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMP / MTs</div>
+                                        <div class="mapel-grid">
+                                            <!-- MTK -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                    <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1hiFXFQjJk0HPB6j2AL0n78FOEcnnffBc/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- IPA -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
+                                                    <span>IPA</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/10g-z9XlF4tx8DwKcmXMnJ_es0MLL7w9L/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPA">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- IPS -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
+                                                    <span>IPS</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1p7-42uqcPOlL-aArM6p8QxRtTn_TnEjY/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban IPS">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- JENJANG SMA -->
+                                    <div class="jenjang-group">
+                                        <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMA</div>
+                                        <div class="mapel-grid">
+                                            <!-- MTK -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
+                                                    <span>MTK</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1FIxz_qG6jppcH9AA0QgPhR3gHBmltMj5/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban MTK">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- FIS -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal FIS">
+                                                    <span>FIS</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1Gym6lU4TypE7zKIHBsTQokcOpR1dNgPJ/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban FIS">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- EKO -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal EKO">
+                                                    <span>EKO</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1PD2NCrBEPwsfUJXUxYYNIZcltsRwKFBH/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban EKO">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- GEO -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal GEO">
+                                                    <span>GEO</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1WFc--G78_XulGOhimAC2g-dhhT2C9KWD/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban GEO">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                            <!-- TIK -->
+                                            <div class="mapel-btn-wrap">
+                                                <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal TIK">
+                                                    <span>TIK</span> <i class="fa-solid fa-download"></i>
+                                                </a>
+                                                <a href="https://docs.google.com/document/d/1PbSO2TemxPT4WBBWJwOybwoir-_dGb2G/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="key-btn" title="Kunci Jawaban TIK">
+                                                    <i class="fa-solid fa-key"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ITEM 2: BANNER AMSO 2026 -->
+                            <a href="https://drive.google.com/file/d/16i1-mAGyfhdyZ23oaCNq6ulLEVfIBq9g/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Banner AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- ITEM 3: NAMETAG PESERTA -->
+                            <a href="https://drive.google.com/file/d/1rT4b-zf82lzdBrcW6tRSjK0G3qXXGGu7/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Nametag Peserta AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK FINAL -->
+                            <a href="https://drive.google.com/file/d/1tbSBIlewFYIsf6wGILBNTwVVuYuCR-8r/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Final</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK SEMIFINAL -->
+                            <a href="https://drive.google.com/file/d/1kUCI7qvIRRR7WK9vUF0F7FSkbmWObWoS/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Semifinal</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK PENYISIHAN -->
+                            <a href="https://drive.google.com/file/d/1bhTOqOR95_Llif0evwpnkc4IVAB3dQta/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Penyisihan</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- ITEM 4: VIRTUAL BACKGROUND BIMTEK -->
+                            <a href="https://drive.google.com/file/d/1VS_wVVGrsPV4MCy7Q6DAhu7enD1brLOy/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Bimtek AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
