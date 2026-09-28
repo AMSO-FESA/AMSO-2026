@@ -839,13 +839,13 @@
                             </a>
                             <ul>
                                 <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan)</li>
-                                <li>Discan/Foto kemudian dijadikan <strong>1 File PDF</strong></li>
+                                <li>Discan/Foto kemudian dijadikan <strong>1 File PDF (Maksimal 25 MB)</strong></li>
                             </ul>
                         </div>
 
                         <div class="file-upload-box">
                             <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i>
-                            <span>Klik untuk upload Dokumen Gabungan (.pdf)</span>
+                            <span>Klik untuk upload Dokumen Gabungan (.pdf, Maks 25 MB)</span>
                             <div id="statusPdf" class="file-status-text">Belum ada file dipilih</div>
                             <input type="file" id="inputPdf" accept=".pdf" required onchange="processFile(this, 'statusPdf', 'pdf')">
                         </div>
@@ -856,12 +856,12 @@
                         <label><i class="fa-solid fa-camera"></i> DOKUMENTASI BABAK SEMIFINAL (FOTO) <span style="color: #ff4d4f;">*</span></label>
                         <div class="helper-card" style="border-color: rgba(157, 78, 221, 0.4);">
                             <ul>
-                                <li>1 Foto Terbaik Kegiatan Semifinal, Tidak dibuat Kolase</li>
+                                <li>1 Foto Terbaik Kegiatan Semifinal, Tidak dibuat Kolase <strong>(Maksimal 5 MB)</strong></li>
                             </ul>
                         </div>
                         <div class="file-upload-box">
                             <i class="fa-solid fa-image" style="color: #ec4899;"></i>
-                            <span>Klik untuk upload Foto Dokumentasi (.jpg, .jpeg, .png)</span>
+                            <span>Klik untuk upload Foto Dokumentasi (.jpg, .jpeg, .png, Maks 5 MB)</span>
                             <div id="statusDok" class="file-status-text">Belum ada foto dipilih</div>
                             <input type="file" id="inputDok" accept=".jpg,.jpeg,.png,image/*" required onchange="processFile(this, 'statusDok', 'dok')">
                         </div>
@@ -878,14 +878,14 @@
                             </a>
                             <ul>
                                 <li>Khusus untuk jenjang SMA yang memiliki soal uraian</li>
-                                <li>Dijadikan 1 file sesuai mata pelajaran</li>
+                                <li>Dijadikan 1 file PDF sesuai mata pelajaran <strong>(Maksimal 5 MB per mapel)</strong></li>
                             </ul>
                         </div>
 
                         <!-- Upload MTK -->
                         <div class="file-upload-box" style="margin-top: 10px;">
                             <i class="fa-solid fa-file-pdf" style="color: #3b82f6;"></i>
-                            <span>Klik untuk upload Lembar Jawaban Uraian <strong>Matematika (MTK)</strong> (.pdf)</span>
+                            <span>Klik untuk upload Lembar Jawaban Uraian <strong>Matematika (MTK)</strong> (.pdf, Maks 5 MB)</span>
                             <div id="statusUraianMtk" class="file-status-text">Belum ada file dipilih (Opsional)</div>
                             <input type="file" id="inputUraianMtk" accept=".pdf" onchange="processFile(this, 'statusUraianMtk', 'uraianMtk')">
                         </div>
@@ -893,7 +893,7 @@
                         <!-- Upload FIS -->
                         <div class="file-upload-box" style="margin-top: 10px;">
                             <i class="fa-solid fa-file-pdf" style="color: #10b981;"></i>
-                            <span>Klik untuk upload Lembar Jawaban Uraian <strong>Fisika (FIS)</strong> (.pdf)</span>
+                            <span>Klik untuk upload Lembar Jawaban Uraian <strong>Fisika (FIS)</strong> (.pdf, Maks 5 MB)</span>
                             <div id="statusUraianFis" class="file-status-text">Belum ada file dipilih (Opsional)</div>
                             <input type="file" id="inputUraianFis" accept=".pdf" onchange="processFile(this, 'statusUraianFis', 'uraianFis')">
                         </div>
@@ -941,6 +941,16 @@
 
         const filesData = { pdf: null, dok: null, uraianMtk: null, uraianFis: null };
 
+        // KONFIGURASI BATAS MAKSIMAL FILE (DALAM BYTES)
+        const FILE_LIMITS = {
+            pdf: 25 * 1024 * 1024,       // Berita Acara: Maks 25 MB
+            dok: 5 * 1024 * 1024,        // Dokumentasi: Maks 5 MB
+            uraianMtk: 5 * 1024 * 1024,  // Uraian MTK: Maks 5 MB
+            uraianFis: 5 * 1024 * 1024   // Uraian FIS: Maks 5 MB
+        };
+
+        const MAX_TOTAL_BYTES = 35 * 1024 * 1024; // Plafon gabungan aman: 35 MB
+
         function readFileAsBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -955,14 +965,16 @@
             const statusDisplay = document.getElementById(statusElementId);
 
             if (file) {
+                // Validasi Format PDF
                 if ((key === 'pdf' || key === 'uraianMtk' || key === 'uraianFis') && file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
                     alert("Format tidak valid! Dokumen wajib berformat PDF (.pdf).");
                     input.value = "";
-                    statusDisplay.innerText = "Belum ada file dipilih";
+                    statusDisplay.innerText = (key === 'uraianMtk' || key === 'uraianFis') ? "Belum ada file dipilih (Opsional)" : "Belum ada file dipilih";
                     filesData[key] = null;
                     return;
                 }
 
+                // Validasi Format Gambar
                 if (key === 'dok') {
                     const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
                     const fileNameLower = file.name.toLowerCase();
@@ -971,16 +983,27 @@
                     if (!validImageTypes.includes(file.type) && !isImgExt) {
                         alert("Format tidak valid! Dokumentasi wajib berupa foto/gambar (.jpg, .jpeg, .png).");
                         input.value = "";
-                        statusDisplay.innerText = "Belum ada file dipilih";
+                        statusDisplay.innerText = "Belum ada foto dipilih";
                         filesData[key] = null;
                         return;
                     }
                 }
 
-                if (file.size > 50 * 1024 * 1024) {
-                    alert("Ukuran file maksimal 50MB per file.");
+                // VALIDASI UKURAN MASING-MASING FILE
+                const maxAllowed = FILE_LIMITS[key];
+                if (file.size > maxAllowed) {
+                    const fileMB = (file.size / (1024 * 1024)).toFixed(2);
+                    const limitMB = Math.round(maxAllowed / (1024 * 1024));
+                    
+                    let labelBerkas = "Berkas";
+                    if (key === 'pdf') labelBerkas = "Berita Acara & Kelengkapan";
+                    else if (key === 'dok') labelBerkas = "Foto Dokumentasi";
+                    else if (key === 'uraianMtk') labelBerkas = "Lembar Uraian MTK";
+                    else if (key === 'uraianFis') labelBerkas = "Lembar Uraian FIS";
+
+                    alert(`UKURAN FILE TERLALU BESAR!\n\nFile ${labelBerkas} berukuran ${fileMB} MB. Batas maksimal untuk berkas ini adalah ${limitMB} MB.\n\nHarap kompres file Anda terlebih dahulu sebelum mengunggah.`);
                     input.value = "";
-                    statusDisplay.innerText = "Belum ada file dipilih";
+                    statusDisplay.innerText = (key === 'uraianMtk' || key === 'uraianFis') ? "Belum ada file dipilih (Opsional)" : "Belum ada file dipilih";
                     filesData[key] = null;
                     return;
                 }
@@ -992,7 +1015,8 @@
                     filesData[key] = {
                         name: file.name,
                         mime: file.type || (key === 'dok' ? "image/jpeg" : "application/pdf"),
-                        data: base64
+                        data: base64,
+                        size: file.size
                     };
                     statusDisplay.innerHTML = `<i class="fa-solid fa-check-circle" style="color: #4ade80;"></i> ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
                 } catch (e) {
@@ -1001,7 +1025,7 @@
                 }
             } else {
                 filesData[key] = null;
-                statusDisplay.innerText = "Belum ada file dipilih (Opsional)";
+                statusDisplay.innerText = (key === 'uraianMtk' || key === 'uraianFis') ? "Belum ada file dipilih (Opsional)" : "Belum ada file dipilih";
             }
         }
 
@@ -1010,6 +1034,18 @@
 
             if (!filesData.pdf || !filesData.dok) {
                 alert("Harap lengkapi file utama (Berita Acara PDF & Foto Dokumentasi) sebelum mengirim!");
+                return;
+            }
+
+            // CEK TOTAL AKUMULASI SELURUH FILE SEBELUM DIKIRIM (MAKSIMAL 35 MB)
+            let totalBytes = 0;
+            Object.values(filesData).forEach(item => {
+                if (item && item.size) totalBytes += item.size;
+            });
+
+            if (totalBytes > MAX_TOTAL_BYTES) {
+                const totalMB = (totalBytes / (1024 * 1024)).toFixed(2);
+                alert(`Gagal mengirim: Total ukuran akumulasi seluruh berkas adalah ${totalMB} MB (melebihi batas aman 35 MB per pengiriman).\n\nSilakan kompres file Berita Acara atau berkas lainnya terlebih dahulu.`);
                 return;
             }
 
