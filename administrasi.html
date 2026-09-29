@@ -906,12 +906,21 @@
                                 </span>
                             </a>
 
-                            <!-- FORM BARU: BERITA ACARA BABAK SEMIFINAL -->
+                            <!-- FORM BERITA ACARA BABAK SEMIFINAL -->
                             <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong>
                                 </div>
                                 <span id="tagBtnSemifinal" class="item-btn-tag">
+                                </span>
+                            </a>
+
+                            <!-- FORM BARU: LAYOUT PESERTA BABAK SEMIFINAL -->
+                            <a href="form-layoutsemifinalamso2026.html" id="linkCardLayoutSemifinal" class="dropdown-item-card" onclick="handleLayoutSemifinalClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnLayoutSemifinal" class="item-btn-tag">
                                 </span>
                             </a>
 
@@ -1206,6 +1215,7 @@
         const isSeleksiOpen = true; 
         const isPenyisihanOpen = true; 
         const isSemifinalOpen = true; 
+        const isLayoutSemifinalOpen = true; 
         const isSoalSeleksiOpen = true; 
 
         // Kontrol Tombol Form Seleksi
@@ -1240,12 +1250,28 @@
             }
         }
 
-        // Kontrol Tombol Form Semifinal
+        // Kontrol Tombol Form Berita Acara Semifinal
         function updateSemifinalButtonState() {
             const linkCard = document.getElementById("linkCardSemifinal");
             const tagBtn = document.getElementById("tagBtnSemifinal");
 
             if (isSemifinalOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
+        // Kontrol Tombol Form Layout Semifinal
+        function updateLayoutSemifinalButtonState() {
+            const linkCard = document.getElementById("linkCardLayoutSemifinal");
+            const tagBtn = document.getElementById("tagBtnLayoutSemifinal");
+
+            if (isLayoutSemifinalOpen) {
                 linkCard.classList.remove("locked");
                 tagBtn.className = "item-btn-tag tag-active";
                 tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
@@ -1276,6 +1302,7 @@
         updateSeleksiButtonState();
         updatePenyisihanButtonState();
         updateSemifinalButtonState();
+        updateLayoutSemifinalButtonState();
         updateSoalSeleksiState();
 
         function handleSeleksiClick(event) {
@@ -1304,6 +1331,16 @@
                 openModal(
                     "Belum Tersedia",
                     "Formulir <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                );
+            }
+        }
+
+        function handleLayoutSemifinalClick(event) {
+            if (!isLayoutSemifinalOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
                 );
             }
         }
