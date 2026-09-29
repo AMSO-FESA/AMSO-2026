@@ -156,7 +156,70 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
+        /* HEADER & LOGO RESMI */
         header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+        .logo-item img[alt="Logo Yasarini"], .logo-item img[src="yasarini.png"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"], .logo-item img[src="fesa.png"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            z-index: 100; padding: 8px; text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
+            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover, .dropdown-content a.active {
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
+        }
+
+        .dropdown:hover .dropdown-content { display: block; }
         
         .main-title {
             font-family: 'Orbitron', sans-serif; 
@@ -336,6 +399,90 @@
             font-size: 1.15rem;
             margin-right: 6px;
             display: inline;
+        }
+
+        /* ─── KOTAK CONTOH GAMBAR DENAH / LAYOUT ─── */
+        .sample-preview-box {
+            width: 100%;
+            background: rgba(15, 21, 42, 0.7);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .sample-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sample-img-wrap {
+            max-width: 440px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .sample-img-wrap:hover {
+            border-color: var(--neon-blue);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .sample-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .sample-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(7, 9, 19, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            gap: 6px;
+        }
+
+        .sample-img-wrap:hover .sample-overlay {
+            opacity: 1;
+        }
+
+        .btn-view-sample {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-view-sample:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--gold);
         }
 
         .file-upload-box {
@@ -552,6 +699,53 @@
             transform: translateY(-2px);
         }
 
+        /* MODAL PREVIEW GAMBAR CONTOH */
+        .sample-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 10, 0.92);
+            backdrop-filter: blur(14px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            padding: 20px;
+        }
+
+        .sample-modal.active { display: flex; }
+
+        .sample-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sample-modal-content img {
+            max-width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 14px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.35);
+        }
+
+        .sample-modal-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .sample-modal-close:hover { color: var(--neon-blue); }
+
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
@@ -689,12 +883,27 @@
                         <div class="helper-card">
                             <ul>
                                 <li>Unggah berkas Denah / Layout Ruang Ujian Peserta Babak Semifinal</li>
-                                <li>Format file wajib berupa <strong>PDF (.pdf)</strong></li>
+                                <li>Jika ada beberapa ruangan, silahkan dijadikan <strong>1 File PDF</strong></li>
+                                <li>Format berkas wajib berupa <strong>PDF (.pdf)</strong></li>
                                 <li>Ukuran file <strong>Maksimal 10 MB</strong></li>
                             </ul>
                         </div>
 
-                        <div class="file-upload-box">
+                        <!-- CONTOH FORMAT GAMBAR LAYOUT -->
+                        <div class="sample-preview-box">
+                            <span class="sample-title"><i class="fa-regular fa-image"></i> Contoh Denah / Layout Ruangan:</span>
+                            <div class="sample-img-wrap" onclick="openSampleModal('Layout Ruangan Babak Semfifinal.png')">
+                                <img src="Layout Ruangan Babak Semfifinal.png" alt="Contoh Layout Ruangan Semifinal" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/Layout%20Ruangan%20Babak%20Semfifinal.png';">
+                                <div class="sample-overlay">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i> Klik untuk Perbesar
+                                </div>
+                            </div>
+                            <a href="Layout Ruangan Babak Semfifinal.png" target="_blank" class="btn-view-sample">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Gambar Resolusi Penuh
+                            </a>
+                        </div>
+
+                        <div class="file-upload-box" style="margin-top: 10px;">
                             <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i>
                             <span>Klik untuk upload File Layout (.pdf, Maks 10 MB)</span>
                             <div id="statusLayout" class="file-status-text">Belum ada file dipilih</div>
@@ -721,6 +930,7 @@
         </div>
     </main>
 
+    <!-- POPUP MODAL SUKSES -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-icon-success">
@@ -736,11 +946,18 @@
         </div>
     </div>
 
+    <!-- MODAL LIGHTBOX UNTUK CONTOH GAMBAR -->
+    <div id="sampleModal" class="sample-modal" onclick="closeSampleModal(event)">
+        <div class="sample-modal-content">
+            <button class="sample-modal-close" onclick="closeSampleModalBtn()">&times;</button>
+            <img id="sampleModalImg" src="" alt="Preview Layout Ruangan">
+        </div>
+    </div>
+
     <!-- FOOTER OTOMATIS -->
     <footer id="footer-placeholder"></footer>
 
     <script>
-        // Masukkan URL Google Apps Script Web App Anda di sini
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
 
         let fileLayoutData = null;
@@ -760,7 +977,6 @@
             const statusDisplay = document.getElementById(statusElementId);
 
             if (file) {
-                // Validasi Format PDF
                 if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
                     alert("Format tidak valid! File layout wajib berformat PDF (.pdf).");
                     input.value = "";
@@ -769,7 +985,6 @@
                     return;
                 }
 
-                // Validasi Ukuran Maksimal 10 MB
                 if (file.size > MAX_BYTES) {
                     const fileMB = (file.size / (1024 * 1024)).toFixed(2);
                     alert(`UKURAN FILE TERLALU BESAR!\n\nUkuran file layout adalah ${fileMB} MB. Batas maksimal yang diizinkan adalah 10 MB.\n\nSilakan kompres terlebih dahulu.`);
@@ -871,6 +1086,25 @@
                 submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM LAYOUT SEMIFINAL`;
             }
         });
+
+        // Kontrol Modal Preview Gambar Contoh
+        const sampleModal = document.getElementById("sampleModal");
+        const sampleModalImg = document.getElementById("sampleModalImg");
+
+        function openSampleModal(url) {
+            sampleModalImg.src = url;
+            sampleModal.classList.add("active");
+        }
+
+        function closeSampleModal(e) {
+            if (e.target === sampleModal) {
+                sampleModal.classList.remove("active");
+            }
+        }
+
+        function closeSampleModalBtn() {
+            sampleModal.classList.remove("active");
+        }
     </script>
 
     <!-- PANGGIL SCRIPT GLOBAL -->
