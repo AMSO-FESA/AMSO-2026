@@ -186,26 +186,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
-        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
-        .dropdown-content {
-            display: none; position: absolute; top: 100%; left: 50%;
-            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
-            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
-            z-index: 100; padding: 8px; text-align: left;
-        }
-
-        .dropdown-content a {
-            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
-            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
-        }
-
-        .dropdown-content a:hover, .dropdown-content a.active {
-            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
-        }
-
-        .dropdown:hover .dropdown-content { display: block; }
-
         .main-title {
             font-family: 'Orbitron', sans-serif; 
             font-size: clamp(1.8rem, 4.5vw, 3.2rem);
@@ -268,7 +248,7 @@
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--gold);
             margin-bottom: 25px;
             display: flex;
@@ -278,13 +258,14 @@
             padding-bottom: 15px;
             text-align: center;
             letter-spacing: 1px;
+            line-height: 1.4;
         }
 
         /* STEP INDICATOR */
         .step-progress-bar {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 28px;
+            justify-content: space-around;
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -292,10 +273,10 @@
             content: '';
             position: absolute;
             top: 50%;
-            left: 0;
+            left: 5%;
             transform: translateY(-50%);
             height: 2px;
-            width: 100%;
+            width: 90%;
             background: rgba(255, 255, 255, 0.1);
             z-index: 1;
         }
@@ -320,7 +301,7 @@
             box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
         }
 
-        /* FORM FIELD & CARD */
+        /* FORM FIELD & PARTS */
         .form-section-part {
             display: none;
             flex-direction: column;
@@ -341,17 +322,21 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 1.05rem;
             color: var(--neon-blue);
-            margin-bottom: -10px;
+            margin-bottom: -6px;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            text-align: center;
             gap: 8px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
+            align-items: center;
+            text-align: center;
             width: 100%;
         }
 
@@ -361,7 +346,10 @@
             color: #f1f5f9;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            text-align: center;
+            flex-wrap: wrap;
         }
 
         .form-control {
@@ -374,6 +362,7 @@
             font-size: 0.95rem;
             font-family: 'Inter', sans-serif;
             outline: none;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
@@ -387,11 +376,15 @@
         }
 
         .select-centered {
-            cursor: pointer;
+            text-align: center;
+            text-align-last: center;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .select-centered option {
+            text-align: center;
+            font-weight: 500;
             background-color: #0b1023;
             color: #fff;
             padding: 8px;
@@ -401,6 +394,7 @@
             color: var(--gold);
             font-weight: 800;
             background: #070a17;
+            text-align: center;
         }
 
         .helper-card {
@@ -408,35 +402,51 @@
             background: rgba(15, 21, 42, 0.9);
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 12px;
-            padding: 14px 18px;
-            font-size: 0.85rem;
+            padding: 14px 20px;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .helper-card ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            color: #cbd5e1;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .helper-card ul li {
+            display: block;
+            text-align: center;
+            line-height: 1.5;
+            width: 100%;
         }
 
         .helper-card ul li::before {
             content: "•";
             color: var(--gold);
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-right: 6px;
+            display: inline;
         }
 
         /* RADIO CARDS */
         .radio-options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 4px;
+            gap: 14px;
+            width: 100%;
+            margin-top: 5px;
         }
 
         @media (max-width: 600px) {
@@ -444,16 +454,18 @@
         }
 
         .radio-card {
-            position: relative;
             background: rgba(15, 21, 42, 0.85);
             border: 1px solid var(--card-border);
             border-radius: 14px;
-            padding: 14px 16px;
+            padding: 16px;
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            text-align: center;
+            gap: 8px;
             transition: all 0.25s ease;
+            position: relative;
         }
 
         .radio-card:hover {
@@ -463,22 +475,21 @@
 
         .radio-card input[type="radio"] {
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border: 2px solid var(--neon-blue);
             border-radius: 50%;
             outline: none;
             cursor: pointer;
-            position: relative;
             display: grid;
             place-content: center;
-            flex-shrink: 0;
+            margin-bottom: 2px;
         }
 
         .radio-card input[type="radio"]::before {
             content: "";
-            width: 9px;
-            height: 9px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             transform: scale(0);
             transition: 120ms transform ease-in-out;
@@ -492,52 +503,54 @@
 
         .radio-card.selected {
             border-color: var(--neon-blue);
-            background: rgba(0, 210, 255, 0.12);
-            box-shadow: 0 0 14px rgba(0, 210, 255, 0.25);
+            background: rgba(0, 210, 255, 0.14);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         .radio-text-wrap strong {
             display: block;
             color: #fff;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             margin-bottom: 2px;
         }
 
         .radio-text-wrap small {
             color: var(--text-muted);
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             line-height: 1.3;
             display: block;
         }
 
         /* PREVIEW CONTOH FOTO */
         .sample-photo-box {
+            width: 100%;
             background: rgba(15, 21, 42, 0.7);
             border: 1px solid rgba(0, 210, 255, 0.3);
             border-radius: 14px;
-            padding: 14px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            text-align: center;
+            gap: 12px;
         }
 
         .sample-photo-wrap {
-            width: 120px;
-            height: 160px;
-            border-radius: 8px;
+            width: 135px;
+            height: 180px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
             position: relative;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
             transition: all 0.3s ease;
         }
 
         .sample-photo-wrap:hover {
             transform: scale(1.05);
             border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            box-shadow: 0 0 22px rgba(0, 210, 255, 0.4);
         }
 
         .sample-photo-wrap img {
@@ -557,8 +570,9 @@
             opacity: 0;
             transition: opacity 0.25s ease;
             color: #fff;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
+            gap: 4px;
         }
 
         .sample-photo-wrap:hover .sample-overlay { opacity: 1; }
@@ -569,7 +583,7 @@
             border: 2px dashed rgba(0, 210, 255, 0.35);
             background: rgba(15, 21, 42, 0.6);
             border-radius: 14px;
-            padding: 22px 16px;
+            padding: 24px 18px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -585,8 +599,8 @@
             background: rgba(157, 78, 221, 0.08);
         }
 
-        .file-upload-box i { font-size: 2.2rem; color: var(--neon-blue); margin-bottom: 6px; }
-        .file-upload-box span { font-size: 0.84rem; color: var(--text-muted); }
+        .file-upload-box i { font-size: 2.3rem; color: var(--neon-blue); margin-bottom: 8px; }
+        .file-upload-box span { font-size: 0.85rem; color: var(--text-muted); text-align: center; }
 
         .file-upload-box input[type="file"] {
             position: absolute;
@@ -595,11 +609,12 @@
         }
 
         .file-status-text {
-            font-size: 0.84rem;
+            font-size: 0.85rem;
             color: var(--gold);
             margin-top: 8px;
             font-weight: 600;
             word-break: break-all;
+            text-align: center;
         }
 
         /* NAVIGATION BUTTONS */
@@ -607,16 +622,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             margin-top: 10px;
+            width: 100%;
         }
 
         .btn-form-nav {
-            padding: 12px 26px;
+            padding: 13px 28px;
             border-radius: 30px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             letter-spacing: 0.5px;
             cursor: pointer;
             display: inline-flex;
@@ -697,6 +713,7 @@
             font-size: 0.95rem;
             color: var(--neon-blue);
             font-weight: 800;
+            text-align: center;
         }
 
         .progress-track {
@@ -931,7 +948,7 @@
     </div>
 
     <div class="container">
-        <!-- HEADER OTOMATIS (Akan diisi template JS jika ada, atau fallback logo di bawah) -->
+        <!-- HEADER OTOMATIS & FALLBACK LOGO -->
         <header id="header-placeholder">
             <div class="logo-group">
                 <div class="logo-item"><img src="yasarini.png" alt="Logo Yasarini" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png';"></div>
@@ -959,19 +976,19 @@
             </a>
 
             <div class="section-box">
-                <div class="section-title">Form Foto & Nomor Rekening Peserta Final AMSO 2026</div>
+                <div class="section-title">Form Pengumpulan Foto dan Nomor Rekening Peserta Final AMSO 2026</div>
 
                 <!-- PROGRESS INDIKATOR LANGKAH -->
                 <div class="step-progress-bar">
                     <span id="pill1" class="step-pill active">1. Data Peserta</span>
                     <span id="pill2" class="step-pill">2. Foto</span>
                     <span id="pill3" class="step-pill">3. Rekening</span>
-                    <span id="pill5" class="step-pill" style="display: none;">4. Keluarga</span>
+                    <span id="pill4" class="step-pill" style="display: none;">4. Keluarga</span>
                 </div>
 
                 <form id="finalForm">
                     
-                    <!-- ================= BAGIAN 1: DATA PESERTA ================= -->
+                    <!-- ================= BAGIAN 1: IDENTITAS PESERTA ================= -->
                     <div id="part1" class="form-section-part active">
                         <div class="part-header"><i class="fa-solid fa-id-card"></i> BAGIAN 1: IDENTITAS PESERTA</div>
                         
@@ -1076,10 +1093,10 @@
 
                     <!-- ================= BAGIAN 2: FOTO PESERTA ================= -->
                     <div id="part2" class="form-section-part">
-                        <div class="part-header"><i class="fa-solid fa-camera"></i> BAGIAN 2: FOTO PESERTA FINAL</div>
+                        <div class="part-header"><i class="fa-solid fa-camera"></i> BAGIAN 2: FOTO PESERTA</div>
 
                         <div class="form-group">
-                            <label><i class="fa-solid fa-image"></i> UNGGAH FOTO PESERTA <span style="color: #ff4d4f;">*</span></label>
+                            <label><i class="fa-solid fa-image"></i> FOTO PESERTA <span style="color: #ff4d4f;">*</span></label>
                             
                             <div class="helper-card">
                                 <ul>
@@ -1087,16 +1104,16 @@
                                     <li>Menggunakan Batik Sekolah</li>
                                     <li>Menggunakan Kerudung Putih (Jika Berkerudung)</li>
                                     <li>Latar Belakang Merah</li>
-                                    <li>Format Berkas: <strong>JPG / JPEG</strong></li>
-                                    <li>Ukuran Maksimal: <strong>5 MB</strong></li>
+                                    <li>File Jpeg/Jpg</li>
+                                    <li>Maksimal 5 MB</li>
                                 </ul>
                             </div>
 
                             <!-- PREVIEW CONTOH FOTO -->
                             <div class="sample-photo-box">
-                                <span style="font-size: 0.82rem; color: var(--neon-blue); font-weight: 700;"><i class="fa-solid fa-circle-info"></i> Contoh Format Foto:</span>
-                                <div class="sample-photo-wrap" onclick="openSampleModal('contoh%20foto.png')">
-                                    <img src="contoh foto.png" alt="Contoh Foto Peserta" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/contoh%20foto.png';">
+                                <span style="font-size: 0.85rem; color: var(--neon-blue); font-weight: 700;"><i class="fa-solid fa-circle-info"></i> Contoh Format Foto:</span>
+                                <div class="sample-photo-wrap" onclick="openSampleModal('Contoh%20Foto.png')">
+                                    <img src="Contoh Foto.png" alt="Contoh Foto Peserta" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/Contoh%20Foto.png';">
                                     <div class="sample-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar</div>
                                 </div>
                             </div>
@@ -1121,10 +1138,10 @@
 
                         <!-- Pertanyaan 1: Nomor Rekening (Hanya Angka) -->
                         <div class="form-group">
-                            <label for="accountNumber"><i class="fa-solid fa-hashtag"></i> NOMOR REKENING <span style="color: #ff4d4f;">*</span></label>
+                            <label for="accountNumber"><i class="fa-solid fa-money-check-dollar"></i> NOMOR REKENING <span style="color: #ff4d4f;">*</span></label>
                             <div class="helper-card">
                                 <ul>
-                                    <li>Gunakan aturan hanya angka saja (tanpa spasi atau tanda hubung)</li>
+                                    <li>Gunakan hanya angka tanpa tanda lain</li>
                                 </ul>
                             </div>
                             <input type="text" id="accountNumber" class="form-control" placeholder="Contoh: 1234567890" inputmode="numeric" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
@@ -1138,8 +1155,8 @@
 
                         <!-- Pertanyaan 3: Nama di Rekening -->
                         <div class="form-group">
-                            <label for="accountHolder"><i class="fa-solid fa-user-check"></i> NAMA DI REKENING (PEMILIK) <span style="color: #ff4d4f;">*</span></label>
-                            <input type="text" id="accountHolder" class="form-control" placeholder="Nama lengkap sesuai yang tertera di buku tabungan" required>
+                            <label for="accountHolder"><i class="fa-solid fa-user-check"></i> NAMA DI REKENING <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="accountHolder" class="form-control" placeholder="Nama lengkap sesuai yang tertera di rekening" required>
                         </div>
 
                         <!-- Pertanyaan 4: Kepemilikan Rekening (Pilihan) -->
@@ -1147,8 +1164,8 @@
                             <label><i class="fa-solid fa-users"></i> KEPEMILIKAN REKENING <span style="color: #ff4d4f;">*</span></label>
                             <div class="helper-card">
                                 <ul>
-                                    <li><strong>Pribadi:</strong> Milik Sendiri (Peserta Langsung)</li>
-                                    <li><strong>Keluarga:</strong> Jika Peserta Belum Memiliki Rekening Pribadi</li>
+                                    <li><strong>Pribadi :</strong> Milik Sendiri</li>
+                                    <li><strong>Keluarga :</strong> Jika Belum Memiliki Rekening</li>
                                 </ul>
                             </div>
 
@@ -1174,16 +1191,15 @@
                         <div class="btn-nav-group">
                             <button type="button" class="btn-form-nav btn-prev" onclick="goToStep(2)"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
                             
-                            <!-- Tombol ini teks & tindakannya berganti dinamis: Lanjut Bagian 5 atau Kirim Berkas -->
                             <button type="button" id="btnNextFromPart3" class="btn-form-nav btn-next" onclick="handleStep3Next()">
                                 Selanjutnya <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- ================= BAGIAN 5: HUBUNGAN KELUARGA & KK ================= -->
-                    <div id="part5" class="form-section-part">
-                        <div class="part-header"><i class="fa-solid fa-people-roof"></i> BAGIAN 5: DATA KELUARGA PEMILIK REKENING</div>
+                    <!-- ================= BAGIAN 4: DATA KELUARGA (JIKA PILIH KELUARGA) ================= -->
+                    <div id="part4" class="form-section-part">
+                        <div class="part-header"><i class="fa-solid fa-people-roof"></i> BAGIAN 4: DATA KELUARGA</div>
 
                         <!-- Pertanyaan 1: Hubungan Dengan Peserta -->
                         <div class="form-group">
@@ -1193,17 +1209,17 @@
 
                         <!-- Pertanyaan 2: Kartu Keluarga PDF -->
                         <div class="form-group">
-                            <label><i class="fa-solid fa-file-pdf"></i> KARTU KELUARGA (PDF) <span style="color: #ff4d4f;">*</span></label>
+                            <label><i class="fa-solid fa-file-pdf"></i> KARTU KELUARGA <span style="color: #ff4d4f;">*</span></label>
                             <div class="helper-card">
                                 <ul>
                                     <li>Berbentuk file <strong>.pdf</strong></li>
-                                    <li>Ukuran berkas <strong>Maksimal 10 MB</strong></li>
+                                    <li>Maksimal 5 MB</li>
                                 </ul>
                             </div>
 
                             <div class="file-upload-box">
                                 <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i>
-                                <span>Klik untuk upload File Kartu Keluarga (.pdf, Maks 10 MB)</span>
+                                <span>Klik untuk upload File Kartu Keluarga (.pdf, Maks 5 MB)</span>
                                 <div id="statusKK" class="file-status-text">Belum ada file dipilih</div>
                                 <input type="file" id="inputKK" accept=".pdf" onchange="processPdfFile(this, 'statusKK')">
                             </div>
@@ -1282,7 +1298,7 @@
         let fileKKData = null;
 
         const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5 MB
-        const MAX_PDF_BYTES = 10 * 1024 * 1024;   // 10 MB
+        const MAX_PDF_BYTES = 5 * 1024 * 1024;   // 5 MB
 
         function readFileAsBase64(file) {
             return new Promise((resolve, reject) => {
@@ -1354,7 +1370,7 @@
 
                 if (file.size > MAX_PDF_BYTES) {
                     const fileMB = (file.size / (1024 * 1024)).toFixed(2);
-                    alert(`UKURAN BERKAS TERLALU BESAR!\n\nUkuran file Kartu Keluarga adalah ${fileMB} MB. Batas maksimal yang diizinkan adalah 10 MB.`);
+                    alert(`UKURAN BERKAS TERLALU BESAR!\n\nUkuran file Kartu Keluarga adalah ${fileMB} MB. Batas maksimal yang diizinkan adalah 5 MB.`);
                     input.value = "";
                     statusDisplay.innerText = "Belum ada file dipilih";
                     fileKKData = null;
@@ -1387,14 +1403,14 @@
             const cardPribadi = document.getElementById("cardPribadi");
             const cardKeluarga = document.getElementById("cardKeluarga");
             const btnNext = document.getElementById("btnNextFromPart3");
-            const pill5 = document.getElementById("pill5");
+            const pill4 = document.getElementById("pill4");
 
             if (val === "Pribadi") {
                 cardPribadi.classList.add("selected");
                 cardKeluarga.classList.remove("selected");
                 cardPribadi.querySelector("input").checked = true;
                 
-                pill5.style.display = "none";
+                pill4.style.display = "none";
                 btnNext.className = "btn-submit";
                 btnNext.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS`;
             } else {
@@ -1402,9 +1418,9 @@
                 cardPribadi.classList.remove("selected");
                 cardKeluarga.querySelector("input").checked = true;
                 
-                pill5.style.display = "inline-block";
+                pill4.style.display = "inline-block";
                 btnNext.className = "btn-form-nav btn-next";
-                btnNext.innerHTML = `Lanjut ke Bagian 5 <i class="fa-solid fa-arrow-right"></i>`;
+                btnNext.innerHTML = `Lanjut ke Bagian 4 <i class="fa-solid fa-arrow-right"></i>`;
             }
         }
 
@@ -1444,9 +1460,9 @@
             } else if (step === 3) {
                 document.getElementById("part3").classList.add("active");
                 document.getElementById("pill3").classList.add("active");
-            } else if (step === 5) {
-                document.getElementById("part5").classList.add("active");
-                document.getElementById("pill5").classList.add("active");
+            } else if (step === 4) {
+                document.getElementById("part4").classList.add("active");
+                document.getElementById("pill4").classList.add("active");
             }
 
             window.scrollTo({ top: 120, behavior: "smooth" });
@@ -1466,7 +1482,7 @@
                 return;
             }
             if (!aHolder) {
-                alert("Harap isi Nama Pemilik di Rekening!");
+                alert("Harap isi Nama di Rekening!");
                 return;
             }
             if (!selectedOwnershipVal) {
@@ -1479,7 +1495,7 @@
             } else {
                 document.getElementById("familyRelation").required = true;
                 document.getElementById("inputKK").required = true;
-                goToStep(5);
+                goToStep(4);
             }
         }
 
