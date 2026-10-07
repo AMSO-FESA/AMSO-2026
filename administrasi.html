@@ -831,7 +831,6 @@
 
                     <div class="accordion-content">
                         <div class="dropdown-items-list">
-                            <!-- SURAT BARU: KEPUTUSAN PESERTA BABAK SEMIFINAL (PALING ATAS) -->
                             <a href="https://drive.google.com/file/d/11fEFJc6N3Yjay4-upVBqkgiV7gYg75ho/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Surat Keputusan Peserta Babak Semifinal</strong>
@@ -841,7 +840,6 @@
                                 </span>
                             </a>
 
-                            <!-- SURAT 1: SELEKSI & BUKU PANDUAN -->
                             <a href="https://drive.google.com/file/d/1cHPmGzxoP_odZXuYtTVmFd9KBYY5aF-q/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Pelaksanaan Babak Seleksi dan Link Buku Panduan</strong>
@@ -851,7 +849,6 @@
                                 </span>
                             </a>
 
-                            <!-- SURAT 2: TRYOUT -->
                             <a href="https://drive.google.com/file/d/1ezADrPdOI9LZpC3yMRYKXPEPF0VDEp0l/view?usp=drive_link" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Surat Edaran Pelaksanaan Tryout AMSO 2026</strong>
@@ -881,65 +878,68 @@
                     <div class="accordion-content">
                         <div class="dropdown-items-list">
                             
-                            <a href="form-tryout.html" class="dropdown-item-card">
+                            <!-- 1. Form Hasil Tryout (DIKUNCI) -->
+                            <a href="form-tryout.html" id="linkCardTryout" class="dropdown-item-card" onclick="handleTryoutClick(event)">
                                 <div class="item-text">
                                     <strong>Form Hasil Tryout AMSO 2026</strong>
                                 </div>
-                                <span class="item-btn-tag tag-active">
-                                    <i class="fa-solid fa-file-circle-plus"></i> Buka Form
-                                </span>
+                                <span id="tagBtnTryout" class="item-btn-tag"></span>
                             </a>
 
+                            <!-- 2. Form Hasil Babak Seleksi (DIKUNCI) -->
                             <a href="form-hasilbabakseleksiamso2026.html" id="linkCardSeleksi" class="dropdown-item-card" onclick="handleSeleksiClick(event)">
                                 <div class="item-text">
                                     <strong>Form Hasil Babak Seleksi AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnSeleksi" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnSeleksi" class="item-btn-tag"></span>
                             </a>
 
+                            <!-- 3. Form Berita Acara Babak Penyisihan (DIKUNCI) -->
                             <a href="form-beritaacarababakpenyisihanamso2026.html" id="linkCardPenyisihan" class="dropdown-item-card" onclick="handlePenyisihanClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnPenyisihan" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnPenyisihan" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- FORM: LAYOUT PESERTA BABAK SEMIFINAL -->
+                            <!-- 4. Form Layout Peserta Babak Semifinal (DIKUNCI) -->
                             <a href="form-layoutsemifinalamso2026.html" id="linkCardLayoutSemifinal" class="dropdown-item-card" onclick="handleLayoutSemifinalClick(event)">
                                 <div class="item-text">
                                     <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnLayoutSemifinal" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnLayoutSemifinal" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- FORM: BERITA ACARA BABAK SEMIFINAL -->
+                            <!-- 5. Form Berita Acara Babak Semifinal (TERBUKA) -->
                             <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnSemifinal" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnSemifinal" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- FORM: FOTO & NOMOR REKENING PESERTA BABAK FINAL AMSO 2026 -->
+                            <!-- 6. Form Foto & Nomor Rekening Peserta Babak Final (TERBUKA) -->
                             <a href="form-fotodanrekeningfinalamso2026.html" id="linkCardFinal" class="dropdown-item-card" onclick="handleFinalClick(event)">
                                 <div class="item-text">
                                     <strong>Form Foto & Nomor Rekening Peserta Babak Final AMSO 2026</strong>
                                 </div>
-                                <span id="tagBtnFinal" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnFinal" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- FORM: LAYOUT PESERTA BABAK FINAL AMSO 2026 SESI 1 (PALING BAWAH) -->
+                            <!-- 7. Form Layout Peserta Babak Final Sesi 1 (TERBUKA) -->
                             <a href="form-layoutfinalsesi1amso2026.html" id="linkCardLayoutFinalSesi1" class="dropdown-item-card" onclick="handleLayoutFinalSesi1Click(event)">
                                 <div class="item-text">
                                     <strong>Form Layout Peserta Babak Final AMSO 2026 Sesi 1</strong>
                                 </div>
-                                <span id="tagBtnLayoutFinalSesi1" class="item-btn-tag">
-                                </span>
+                                <span id="tagBtnLayoutFinalSesi1" class="item-btn-tag"></span>
+                            </a>
+
+                            <!-- 8. Form Berita Acara Babak Final (BARU DI PALING BAWAH - TERBUKA) -->
+                            <a href="form-beritaacarababakfinalamso2026.html" id="linkCardFinalBA" class="dropdown-item-card" onclick="handleFinalBAClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Berita Acara Babak Final AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnFinalBA" class="item-btn-tag"></span>
                             </a>
 
                         </div>
@@ -947,7 +947,7 @@
                 </div>
             </div>
 
-            <!-- KOTAK 2: LAINNYA (DITENGAHKAN PADA LAYAR DESKTOP DENGAN UKURAN KOTAK SAMA PERSIS) -->
+            <!-- KOTAK 2: LAINNYA -->
             <div class="section-box box-lainnya-center">
                 <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
                 
@@ -962,8 +962,6 @@
 
                     <div class="accordion-content">
                         <div class="dropdown-items-list">
-
-                            <!-- BERKAS BARU 1: TUTORIAL INSTALLISASI EXTENSION SABIL GUARD V2 (PALING ATAS) -->
                             <a href="https://drive.google.com/file/d/1dc5HdAysCl8qp2fX5JRENwDioLrTsiTY/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Tutorial Installisasi Extension Sabil Guard V2</strong>
@@ -973,7 +971,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS BARU 2: SPESIFIKASI PERANGKAT DAN BANDWIDTH SEMIFINAL AMSO 2026 (DI BAWAH TUTORIAL) -->
                             <a href="https://drive.google.com/file/d/1MJtln4u3DOrIfLZMyDy1ap8oMDibN_P7/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Spesifikasi Perangkat dan Bandwidth Semifinal AMSO 2026</strong>
@@ -983,7 +980,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS: JADWAL BABAK PENYISIHAN -->
                             <a href="jadwal-penyisihan.html" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Jadwal Babak Penyisihan AMSO 2026</strong>
@@ -993,7 +989,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS 0: Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026 -->
                             <a href="https://drive.google.com/file/d/1fD2tkwvSi3n7Daw4C4yArFJ1m7zfU1Xr/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Video Tutorial Pengerjaan Soal Babak Penyisihan-Semifinal AMSO 2026</strong>
@@ -1003,7 +998,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS 1: Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026 -->
                             <a href="https://drive.google.com/file/d/1qrzsT_8pF8wq2z3HPW3xdwB28tV4Wogj/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Paparan Bimtek Babak Penyisihan-Semifinal AMSO 2026</strong>
@@ -1013,7 +1007,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS 2: Lembar Jawaban Uraian AMSO 2026 -->
                             <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Lembar Jawaban Uraian AMSO 2026</strong>
@@ -1023,7 +1016,6 @@
                                 </span>
                             </a>
 
-                            <!-- BERKAS 3: Paparan Bimtek Babak Seleksi AMSO 2026 -->
                             <a href="https://drive.google.com/file/d/1vuCWhvWCCbzqBYhlITCmPM4qBgVXrv-j/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Paparan Bimtek Babak Seleksi AMSO 2026</strong>
@@ -1033,22 +1025,19 @@
                                 </span>
                             </a>
 
-                            <!-- ITEM 1: SOAL BABAK SELEKSI -->
+                            <!-- SOAL BABAK SELEKSI ACCORDION -->
                             <div class="nested-accordion" id="soalSeleksiAccordion">
                                 <div class="nested-header" onclick="handleSoalSeleksiClick(event)">
                                     <div class="item-text">
                                         <strong>Soal Babak Seleksi AMSO 2026</strong>
                                     </div>
-                                    <span id="tagBtnSoalSeleksi" class="item-btn-tag">
-                                    </span>
+                                    <span id="tagBtnSoalSeleksi" class="item-btn-tag"></span>
                                 </div>
 
                                 <div class="nested-content">
-                                    <!-- JENJANG SD / MI -->
                                     <div class="jenjang-group">
                                         <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SD / MI</div>
                                         <div class="mapel-grid">
-                                            <!-- MTK -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/18P1huKfc-B4Xdls17lAmpvDjv7IqkQJt/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
                                                     <span>MTK</span> <i class="fa-solid fa-download"></i>
@@ -1057,7 +1046,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- IPA -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/18V5krtwp6KGxpmWiqefztsbvzJprbo44/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
                                                     <span>IPA</span> <i class="fa-solid fa-download"></i>
@@ -1066,7 +1054,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- IPS -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1ZdH5c9CF3EXiy5Y1xgo74nYwOInCwO3K/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
                                                     <span>IPS</span> <i class="fa-solid fa-download"></i>
@@ -1078,11 +1065,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- JENJANG SMP / MTs -->
                                     <div class="jenjang-group">
                                         <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMP / MTs</div>
                                         <div class="mapel-grid">
-                                            <!-- MTK -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1lLcH8MEG-e5J2yKbjj4tdX9l-rlqOwVm/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
                                                     <span>MTK</span> <i class="fa-solid fa-download"></i>
@@ -1091,7 +1076,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- IPA -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1smgAQ2_Jgri9c_9v79r0I6xJj-IXx4WF/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPA">
                                                     <span>IPA</span> <i class="fa-solid fa-download"></i>
@@ -1100,7 +1084,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- IPS -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1WB4oMwm-2VuHCccu2iMrNYZRbXfke_Za/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal IPS">
                                                     <span>IPS</span> <i class="fa-solid fa-download"></i>
@@ -1112,11 +1095,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- JENJANG SMA -->
                                     <div class="jenjang-group">
                                         <div class="jenjang-title"><i class="fa-solid fa-graduation-cap"></i> JENJANG SMA</div>
                                         <div class="mapel-grid">
-                                            <!-- MTK -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1Cp2nrhUpU8OAcnV4cIKpUdSd2ZAwb0f2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal MTK">
                                                     <span>MTK</span> <i class="fa-solid fa-download"></i>
@@ -1125,7 +1106,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- FIS -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1We89h01E4hAV_-dKFqgHL0HxxrQRJin2/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal FIS">
                                                     <span>FIS</span> <i class="fa-solid fa-download"></i>
@@ -1134,7 +1114,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- EKO -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/14cp86WXYmwFu82MW-GWSLRzicMBrRI11/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal EKO">
                                                     <span>EKO</span> <i class="fa-solid fa-download"></i>
@@ -1143,7 +1122,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- GEO -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1Bnp7rQGOreVb6axqPgYnh3n6s_kHZg0l/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal GEO">
                                                     <span>GEO</span> <i class="fa-solid fa-download"></i>
@@ -1152,7 +1130,6 @@
                                                     <i class="fa-solid fa-key"></i>
                                                 </a>
                                             </div>
-                                            <!-- TIK -->
                                             <div class="mapel-btn-wrap">
                                                 <a href="https://docs.google.com/document/d/1ROSPTy4pXs2rX8m14TmlzA6btGe7IyPI/edit?usp=sharing&ouid=100867128714924034158&rtpof=true&sd=true" target="_blank" class="mapel-link" title="Unduh Soal TIK">
                                                     <span>TIK</span> <i class="fa-solid fa-download"></i>
@@ -1166,7 +1143,6 @@
                                 </div>
                             </div>
 
-                            <!-- ITEM 2: BANNER AMSO 2026 -->
                             <a href="https://drive.google.com/file/d/16i1-mAGyfhdyZ23oaCNq6ulLEVfIBq9g/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Banner AMSO 2026</strong>
@@ -1176,50 +1152,9 @@
                                 </span>
                             </a>
 
-                            <!-- ITEM 3: NAMETAG PESERTA -->
                             <a href="https://drive.google.com/file/d/1rT4b-zf82lzdBrcW6tRSjK0G3qXXGGu7/view?usp=sharing" target="_blank" class="dropdown-item-card">
                                 <div class="item-text">
                                     <strong>Nametag Peserta AMSO 2026</strong>
-                                </div>
-                                <span class="item-btn-tag tag-drive">
-                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                </span>
-                            </a>
-
-                            <!-- VIRTUAL BACKGROUND BABAK FINAL -->
-                            <a href="https://drive.google.com/file/d/1tbSBIlewFYIsf6wGILBNTwVVuYuCR-8r/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                <div class="item-text">
-                                    <strong>Virtual Background Babak Final</strong>
-                                </div>
-                                <span class="item-btn-tag tag-drive">
-                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                </span>
-                            </a>
-
-                            <!-- VIRTUAL BACKGROUND BABAK SEMIFINAL -->
-                            <a href="https://drive.google.com/file/d/1kUCI7qvIRRR7WK9vUF0F7FSkbmWObWoS/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                <div class="item-text">
-                                    <strong>Virtual Background Babak Semifinal</strong>
-                                </div>
-                                <span class="item-btn-tag tag-drive">
-                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                </span>
-                            </a>
-
-                            <!-- VIRTUAL BACKGROUND BABAK PENYISIHAN -->
-                            <a href="https://drive.google.com/file/d/1bhTOqOR95_Llif0evwpnkc4IVAB3dQta/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                <div class="item-text">
-                                    <strong>Virtual Background Babak Penyisihan</strong>
-                                </div>
-                                <span class="item-btn-tag tag-drive">
-                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
-                                </span>
-                            </a>
-
-                            <!-- ITEM 4: VIRTUAL BACKGROUND BIMTEK -->
-                            <a href="https://drive.google.com/file/d/1VS_wVVGrsPV4MCy7Q6DAhu7enD1brLOy/view?usp=sharing" target="_blank" class="dropdown-item-card">
-                                <div class="item-text">
-                                    <strong>Virtual Background Bimtek AMSO 2026</strong>
                                 </div>
                                 <span class="item-btn-tag tag-drive">
                                     <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
@@ -1250,13 +1185,31 @@
         // STATUS PENGUNCIAN FORM & SOAL SELEKSI
         // Ganti 'true' untuk BUKA, 'false' untuk KUNCI
         // ==========================================
-        const isSeleksiOpen = true; 
-        const isPenyisihanOpen = true; 
-        const isSemifinalOpen = true; 
-        const isLayoutSemifinalOpen = true; 
-        const isFinalOpen = true; 
-        const isLayoutFinalSesi1Open = true; 
-        const isSoalSeleksiOpen = true; 
+        const isTryoutOpen = false;       // Dikunci
+        const isSeleksiOpen = false;      // Dikunci
+        const isPenyisihanOpen = false;   // Dikunci
+        const isLayoutSemifinalOpen = false; // Dikunci
+        const isSemifinalOpen = true;     // Terbuka
+        const isFinalOpen = true;         // Terbuka
+        const isLayoutFinalSesi1Open = true; // Terbuka
+        const isFinalBAOpen = true;       // Terbuka (Baru di paling bawah)
+        const isSoalSeleksiOpen = true;   
+
+        // Kontrol Tombol Form Tryout
+        function updateTryoutButtonState() {
+            const linkCard = document.getElementById("linkCardTryout");
+            const tagBtn = document.getElementById("tagBtnTryout");
+
+            if (isTryoutOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
 
         // Kontrol Tombol Form Seleksi
         function updateSeleksiButtonState() {
@@ -1354,6 +1307,22 @@
             }
         }
 
+        // Kontrol Tombol Form Berita Acara Final (Baru di paling bawah)
+        function updateFinalBAButtonState() {
+            const linkCard = document.getElementById("linkCardFinalBA");
+            const tagBtn = document.getElementById("tagBtnFinalBA");
+
+            if (isFinalBAOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
         // Kontrol Tombol/Accordion Soal Babak Seleksi
         function updateSoalSeleksiState() {
             const soalCard = document.getElementById("soalSeleksiAccordion");
@@ -1372,20 +1341,32 @@
         }
 
         // EKSEKUSI SEMUA KONTROL STATUS SAAT HALAMAN DIMUAT
+        updateTryoutButtonState();
         updateSeleksiButtonState();
         updatePenyisihanButtonState();
         updateSemifinalButtonState();
         updateLayoutSemifinalButtonState();
         updateFinalButtonState();
         updateLayoutFinalSesi1ButtonState();
+        updateFinalBAButtonState();
         updateSoalSeleksiState();
+
+        function handleTryoutClick(event) {
+            if (!isTryoutOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Hasil Tryout AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
+                );
+            }
+        }
 
         function handleSeleksiClick(event) {
             if (!isSeleksiOpen) {
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Hasil Babak Seleksi AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1395,7 +1376,7 @@
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Berita Acara Babak Penyisihan AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1405,7 +1386,7 @@
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1415,7 +1396,7 @@
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1425,7 +1406,7 @@
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Form Foto & Nomor Rekening Peserta Babak Final AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Foto & Nomor Rekening Peserta Babak Final AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1435,7 +1416,17 @@
                 event.preventDefault();
                 openModal(
                     "Belum Tersedia",
-                    "Formulir <strong>Form Layout Peserta Babak Final AMSO 2026 Sesi 1</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                    "Formulir <strong>Form Layout Peserta Babak Final AMSO 2026 Sesi 1</strong> saat ini belum dibuka atau telah ditutup."
+                );
+            }
+        }
+
+        function handleFinalBAClick(event) {
+            if (!isFinalBAOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Berita Acara Babak Final AMSO 2026</strong> saat ini belum dibuka atau telah ditutup."
                 );
             }
         }
@@ -1446,7 +1437,7 @@
             if (!isSoalSeleksiOpen) {
                 openModal(
                     "Belum Tersedia",
-                    "Naskah berkas <strong>Soal Babak Seleksi AMSO 2026</strong> saat ini belum dapat diunduh"
+                    "Naskah berkas <strong>Soal Babak Seleksi AMSO 2026</strong> saat ini belum dapat diunduh."
                 );
             } else {
                 const nested = document.getElementById("soalSeleksiAccordion");
