@@ -802,7 +802,7 @@
         }
     </style>
 
-    <div class="section-title"><i class="fa-solid fa-trophy"></i> DAFTAR PESERTA BABAK FINAL</div>
+    <div class="section-title"><i class="fa-solid fa-users-viewfinder"></i> DAFTAR PESERTA BABAK FINAL</div>
     
     <!-- TOMBOL JENJANG -->
     <div class="final-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
@@ -1039,7 +1039,7 @@
     </div>
 </div>
 
-<!-- SCRIPT PENGATUR TAB FINAL -->
+<!-- SCRIPT PENGATUR TAB FINAL (TANPA AUTO-DEFAULT) -->
 <script>
     function switchFinalJenjang(jenjang, btnEl) {
         document.querySelectorAll('.final-jenjang-container').forEach(el => el.style.display = 'none');
@@ -1057,14 +1057,6 @@
         document.getElementById('final-' + jenjang + '-' + mapel).style.display = 'block';
         btnEl.classList.add('active');
     }
-
-    // Default aktifkan jenjang SD saat halaman dimuat (jika diperlukan)
-    document.addEventListener("DOMContentLoaded", () => {
-        const firstJenjangBtn = document.querySelector('.final-jenjang-tabs .cat-btn');
-        if (firstJenjangBtn) {
-            switchFinalJenjang('sd', firstJenjangBtn);
-        }
-    });
 </script>
             
 <!-- DAFTAR PESERTA BABAK SEMIFINAL (ACCORDION BUKA-TUTUP) -->
