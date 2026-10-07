@@ -1228,7 +1228,7 @@
                                     <option value="SD MUH SOKONANDI YOGYAKARTA">SD MUH SOKONANDI YOGYAKARTA</option>
                                     <option value="SDK 2 BINA BAKTI BANDUNG">SDK 2 BINA BAKTI BANDUNG</option>
                                     <option value="SD GIS 3 YOGYAKARTA">SD GIS 3 YOGYAKARTA</option>
-                                    <option value="SDIT BIRRUL WAALIDAIN BOGOR">SDIT BIRRUL WAALIDAIN BOGORA</option>
+                                    <option value="SDIT BIRRUL WAALIDAIN BOGOR">SDIT BIRRUL WAALIDAIN BOGOR</option>
                                     <option value="SDN 240 BADDO BADDO">SDN 240 BADDO BADDO</option>
                                     <option value="SMPIT UMMUL QURO BOGOR">SMPIT UMMUL QURO BOGOR</option>
                                     <option value="SMPIT BIRRUL WAALIDAIN BOGOR">SMPIT BIRRUL WAALIDAIN BOGOR</option>
@@ -1438,7 +1438,7 @@
             </div>
             <h2 class="modal-title">LOGIN SEKOLAH</h2>
             <p class="modal-desc" style="margin-bottom: 15px;">
-                Masukkan kredensial sekolah Anda untuk membuka formulir pengumpulan final.
+                Masukkan Username dan Password Sekolah Anda untuk membuka formulir pengumpulan
             </p>
 
             <form id="loginForm" onsubmit="handleSchoolLogin(event)">
@@ -1540,11 +1540,11 @@
             }
         }
 
-        /* ─── PROSES LOGIN SEKOLAH KE APPS SCRIPT ─── */
+        /* ─── PROSES LOGIN SEKOLAH VIA GET (ANTI-CORS & INSTAN) ─── */
         async function handleSchoolLogin(e) {
             e.preventDefault();
             const btn = document.getElementById("btnLoginSubmit");
-            const user = document.getElementById("loginUser").value.trim();
+            const user = document.getElementById("loginUser").value.trim().toLowerCase();
             const pass = document.getElementById("loginPass").value.trim();
 
             if (!user || !pass) {
@@ -1556,16 +1556,9 @@
             btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...`;
 
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams({
-                        action: "LOGIN_CHECK",
-                        username: user,
-                        password: pass
-                    }).toString()
-                });
-
+                const queryUrl = `${SCRIPT_URL}?action=LOGIN_CHECK&username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`;
+                
+                const response = await fetch(queryUrl);
                 const result = await response.json();
 
                 if (result.status === "SUCCESS") {
@@ -1588,7 +1581,7 @@
                     btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
                 }
             } catch (err) {
-                showNotification("Kendala Jaringan", "Gagal memverifikasi akun. Pastikan koneksi internet aktif lalu coba kembali.");
+                showNotification("Kendala Jaringan", "Gagal memverifikasi akun. Silakan pastikan koneksi stabil lalu coba kembali.");
                 btn.disabled = false;
                 btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
             }
