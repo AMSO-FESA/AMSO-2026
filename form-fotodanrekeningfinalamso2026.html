@@ -971,6 +971,28 @@
             cursor: not-allowed;
         }
 
+        /* TOMBOL KEMBALI DI POPUP LOGIN */
+        .btn-login-cancel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-login-cancel:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(-3px);
+        }
+
         /* MODAL PREVIEW GAMBAR CONTOH */
         .sample-modal {
             position: fixed;
@@ -1457,6 +1479,10 @@
                     <i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR
                 </button>
             </form>
+
+            <a href="administrasi.html" class="btn-login-cancel">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Administrasi
+            </a>
         </div>
     </div>
 
@@ -1576,7 +1602,7 @@
                     // Tutup modal login
                     document.getElementById("loginModal").classList.remove("active");
                 } else {
-                    showNotification("Login Gagal", "Username atau Password salah, atau status akun sekolah belum aktif.");
+                    showNotification("Login Gagal", "Username atau Password Salah, Atau Status Akun Sekolah Belum Aktif.");
                     btn.disabled = false;
                     btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
                 }
