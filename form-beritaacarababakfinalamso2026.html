@@ -933,7 +933,7 @@
 
                     <!-- 4. LEMBAR JAWABAN SOAL URAIAN (7 MAPEL) -->
                     <div class="form-group">
-                        <label><i class="fa-solid fa-file-pen"></i> LEMBAR JAWABAN SOAL URAIAN <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Opsional Untuk Soal yang Memiliki Uraian)</span></label>
+                        <label><i class="fa-solid fa-file-pen"></i> LEMBAR JAWABAN SOAL URAIAN <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Opsional Untuk Mata Pelajaran yang Memiliki Soal Uraian)</span></label>
                         
                         <div class="helper-card">
                             <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank">
@@ -952,7 +952,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-calculator" style="color: #38bdf8;"></i> MTK</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusMtk" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusMtk', 'uraianMtk')">
+                                <input type="file" id="inputUraianMtk" accept=".pdf" onchange="processFile(this, 'statusMtk', 'uraianMtk')">
                             </div>
 
                             <!-- 2. IPA -->
@@ -960,7 +960,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-flask" style="color: #4ade80;"></i> IPA</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusIpa" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusIpa', 'uraianIpa')">
+                                <input type="file" id="inputUraianIpa" accept=".pdf" onchange="processFile(this, 'statusIpa', 'uraianIpa')">
                             </div>
 
                             <!-- 3. IPS -->
@@ -968,7 +968,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-earth-americas" style="color: #facc15;"></i> IPS</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusIps" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusIps', 'uraianIps')">
+                                <input type="file" id="inputUraianIps" accept=".pdf" onchange="processFile(this, 'statusIps', 'uraianIps')">
                             </div>
 
                             <!-- 4. Fisika -->
@@ -976,7 +976,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-atom" style="color: #818cf8;"></i> Fisika</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusFis" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusFis', 'uraianFis')">
+                                <input type="file" id="inputUraianFis" accept=".pdf" onchange="processFile(this, 'statusFis', 'uraianFis')">
                             </div>
 
                             <!-- 5. Ekonomi -->
@@ -984,7 +984,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-chart-line" style="color: #fb923c;"></i> Ekonomi</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusEko" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusEko', 'uraianEko')">
+                                <input type="file" id="inputUraianEko" accept=".pdf" onchange="processFile(this, 'statusEko', 'uraianEko')">
                             </div>
 
                             <!-- 6. Geografi -->
@@ -992,7 +992,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-mountain-sun" style="color: #34d399;"></i> Geografi</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusGeo" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusGeo', 'uraianGeo')">
+                                <input type="file" id="inputUraianGeo" accept=".pdf" onchange="processFile(this, 'statusGeo', 'uraianGeo')">
                             </div>
 
                             <!-- 7. TIK (Center span di baris bawah) -->
@@ -1000,7 +1000,7 @@
                                 <div class="uraian-header"><i class="fa-solid fa-laptop-code" style="color: #ec4899;"></i> TIK</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
                                 <div id="statusTik" class="uraian-status">Belum ada file</div>
-                                <input type="file" accept=".pdf" onchange="processFile(this, 'statusTik', 'uraianTik')">
+                                <input type="file" id="inputUraianTik" accept=".pdf" onchange="processFile(this, 'statusTik', 'uraianTik')">
                             </div>
                         </div>
                     </div>
@@ -1192,7 +1192,7 @@
             formData.append("formType", "FINAL_BA");
             formData.append("schoolName", document.getElementById("schoolName").value);
             
-            // Berita Acara & Foto
+            // Berita Acara & Foto (Wajib)
             formData.append("filePdfName", filesData.pdf.name);
             formData.append("filePdfMime", filesData.pdf.mime);
             formData.append("filePdfData", filesData.pdf.data);
@@ -1213,10 +1213,14 @@
             ];
 
             mapelKeys.forEach(m => {
-                if (filesData[m.key]) {
+                if (filesData[m.key] && filesData[m.key].data) {
                     formData.append(m.nameParam, filesData[m.key].name);
                     formData.append(m.mimeParam, filesData[m.key].mime);
                     formData.append(m.dataParam, filesData[m.key].data);
+                } else {
+                    formData.append(m.nameParam, "-");
+                    formData.append(m.mimeParam, "-");
+                    formData.append(m.dataParam, "-");
                 }
             });
 
@@ -1236,6 +1240,7 @@
                     progressBox.style.display = "none";
                     document.getElementById("successModal").classList.add("active");
 
+                    // Reset elemen formulir dan status teks
                     document.getElementById("finalForm").reset();
                     document.getElementById("statusPdf").innerText = "Belum ada file dipilih";
                     document.getElementById("statusDok").innerText = "Belum ada foto dipilih";
