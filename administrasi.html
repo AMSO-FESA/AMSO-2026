@@ -924,6 +924,15 @@
                                 </span>
                             </a>
 
+                            <!-- FORM BARU: FOTO & NOMOR REKENING PESERTA BABAK FINAL AMSO 2026 (PALING BAWAH) -->
+                            <a href="form-fotodanrekeningfinalamso2026.html" id="linkCardFinal" class="dropdown-item-card" onclick="handleFinalClick(event)">
+                                <div class="item-text">
+                                    <strong>Form Foto & Nomor Rekening Peserta Babak Final AMSO 2026</strong>
+                                </div>
+                                <span id="tagBtnFinal" class="item-btn-tag">
+                                </span>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -1236,6 +1245,7 @@
         const isPenyisihanOpen = true; 
         const isSemifinalOpen = true; 
         const isLayoutSemifinalOpen = true; 
+        const isFinalOpen = true; 
         const isSoalSeleksiOpen = true; 
 
         // Kontrol Tombol Form Seleksi
@@ -1302,6 +1312,22 @@
             }
         }
 
+        // Kontrol Tombol Form Foto & Rekening Final
+        function updateFinalButtonState() {
+            const linkCard = document.getElementById("linkCardFinal");
+            const tagBtn = document.getElementById("tagBtnFinal");
+
+            if (isFinalOpen) {
+                linkCard.classList.remove("locked");
+                tagBtn.className = "item-btn-tag tag-active";
+                tagBtn.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Buka Form`;
+            } else {
+                linkCard.classList.add("locked");
+                tagBtn.className = "item-btn-tag tag-locked";
+                tagBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Terkunci`;
+            }
+        }
+
         // Kontrol Tombol/Accordion Soal Babak Seleksi
         function updateSoalSeleksiState() {
             const soalCard = document.getElementById("soalSeleksiAccordion");
@@ -1323,6 +1349,7 @@
         updatePenyisihanButtonState();
         updateSemifinalButtonState();
         updateLayoutSemifinalButtonState();
+        updateFinalButtonState();
         updateSoalSeleksiState();
 
         function handleSeleksiClick(event) {
@@ -1361,6 +1388,16 @@
                 openModal(
                     "Belum Tersedia",
                     "Formulir <strong>Form Layout Peserta Babak Semifinal AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
+                );
+            }
+        }
+
+        function handleFinalClick(event) {
+            if (!isFinalOpen) {
+                event.preventDefault();
+                openModal(
+                    "Belum Tersedia",
+                    "Formulir <strong>Form Foto & Nomor Rekening Peserta Babak Final AMSO 2026</strong> saat ini belum dibuka. Silakan cek kembali sesuai jadwal yang telah ditentukan."
                 );
             }
         }
