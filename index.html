@@ -981,6 +981,9 @@
             <button class="doc-tab-btn" onclick="switchDocTab('semifinal', event)">
                 <i class="fa-solid fa-image"></i> Dokumentasi Babak Semifinal
             </button>
+            <button class="doc-tab-btn" onclick="switchDocTab('final', event)">
+                <i class="fa-solid fa-image"></i> Dokumentasi Babak Final
+            </button>
         </div>
 
         <!-- KONTEN TAB 1: TRYOUT -->
@@ -1038,6 +1041,20 @@
                 <button class="slider-btn next" onclick="slideGallery('gallerySliderSemifinal', 1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
+
+        <!-- KONTEN TAB 5: BABAK FINAL -->
+        <div id="tabFinal" class="doc-tab-content">
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideGallery('gallerySliderFinal', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-slider" id="gallerySliderFinal">
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                    <div class="gallery-skeleton"></div>
+                </div>
+                <button class="slider-btn next" onclick="slideGallery('gallerySliderFinal', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -1060,6 +1077,7 @@
     const SCRIPT_GALLERY_SELEKSI = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=seleksi"; 
     const SCRIPT_GALLERY_PENYISIHAN = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=penyisihan"; 
     const SCRIPT_GALLERY_SEMIFINAL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=semifinal"; 
+    const SCRIPT_GALLERY_FINAL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec?type=final"; 
 
     let isUserHovered = false;
 
@@ -1150,6 +1168,8 @@
             document.getElementById("tabPenyisihan").classList.add("active");
         } else if (tabName === 'semifinal') {
             document.getElementById("tabSemifinal").classList.add("active");
+        } else if (tabName === 'final') {
+            document.getElementById("tabFinal").classList.add("active");
         }
     }
 
@@ -1179,11 +1199,13 @@
         loadDriveGallery(SCRIPT_GALLERY_SELEKSI, "gallerySliderSeleksi");
         loadDriveGallery(SCRIPT_GALLERY_PENYISIHAN, "gallerySliderPenyisihan");
         loadDriveGallery(SCRIPT_GALLERY_SEMIFINAL, "gallerySliderSemifinal");
+        loadDriveGallery(SCRIPT_GALLERY_FINAL, "gallerySliderFinal");
         
         setupAutoSlide("gallerySliderTryout");
         setupAutoSlide("gallerySliderSeleksi");
         setupAutoSlide("gallerySliderPenyisihan");
         setupAutoSlide("gallerySliderSemifinal");
+        setupAutoSlide("gallerySliderFinal");
     });
 </script>
 </body>
