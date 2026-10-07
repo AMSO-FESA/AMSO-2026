@@ -521,7 +521,7 @@
             display: block;
         }
 
-        /* PREVIEW CONTOH FOTO */
+        /* PREVIEW CONTOH FOTO PROPORSIONAL */
         .sample-photo-box {
             width: 100%;
             background: rgba(15, 21, 42, 0.7);
@@ -536,8 +536,9 @@
         }
 
         .sample-photo-wrap {
-            width: 135px;
-            height: 180px;
+            max-width: 320px;
+            width: 100%;
+            height: auto;
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -548,31 +549,31 @@
         }
 
         .sample-photo-wrap:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             border-color: var(--neon-blue);
             box-shadow: 0 0 22px rgba(0, 210, 255, 0.4);
         }
 
         .sample-photo-wrap img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             display: block;
         }
 
         .sample-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(7, 9, 19, 0.5);
+            background: rgba(7, 9, 19, 0.45);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.25s ease;
             color: #fff;
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            gap: 4px;
+            gap: 6px;
         }
 
         .sample-photo-wrap:hover .sample-overlay { opacity: 1; }
@@ -1080,7 +1081,7 @@
                             <label for="studentEmail"><i class="fa-solid fa-envelope"></i> EMAIL AKTIF <span style="color: #ff4d4f;">*</span></label>
                             <div class="helper-card">
                                 <ul>
-                                    <li>Pastikan Email Aktif dan bisa menerima file (untuk sertifikat elektronik)</li>
+                                    <li>Pastikan Email Aktif dan Bisa Menerima File (Sertifikat Elektronik)</li>
                                 </ul>
                             </div>
                             <input type="email" id="studentEmail" class="form-control" placeholder="contoh: nama.peserta@gmail.com" required>
@@ -1104,17 +1105,17 @@
                                     <li>Menggunakan Batik Sekolah</li>
                                     <li>Menggunakan Kerudung Putih (Jika Berkerudung)</li>
                                     <li>Latar Belakang Merah</li>
-                                    <li>File Jpeg/Jpg</li>
+                                    <li>File .Jpeg/.Jpg</li>
                                     <li>Maksimal 5 MB</li>
                                 </ul>
                             </div>
 
-                            <!-- PREVIEW CONTOH FOTO -->
+                            <!-- PREVIEW CONTOH FOTO PROPORSIONAL -->
                             <div class="sample-photo-box">
                                 <span style="font-size: 0.85rem; color: var(--neon-blue); font-weight: 700;"><i class="fa-solid fa-circle-info"></i> Contoh Format Foto:</span>
                                 <div class="sample-photo-wrap" onclick="openSampleModal('Contoh%20Foto.png')">
                                     <img src="Contoh Foto.png" alt="Contoh Foto Peserta" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/Contoh%20Foto.png';">
-                                    <div class="sample-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar</div>
+                                    <div class="sample-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Klik untuk Perbesar</div>
                                 </div>
                             </div>
 
@@ -1141,7 +1142,7 @@
                             <label for="accountNumber"><i class="fa-solid fa-money-check-dollar"></i> NOMOR REKENING <span style="color: #ff4d4f;">*</span></label>
                             <div class="helper-card">
                                 <ul>
-                                    <li>Gunakan hanya angka tanpa tanda lain</li>
+                                    <li>Gunakan Hanya Angka Tanpa Tanda Lain</li>
                                 </ul>
                             </div>
                             <input type="text" id="accountNumber" class="form-control" placeholder="Contoh: 1234567890" inputmode="numeric" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
