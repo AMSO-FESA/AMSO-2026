@@ -156,7 +156,70 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
+        /* HEADER & NAVIGATION */
         header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+        .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            z-index: 100; padding: 8px; text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
+            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover, .dropdown-content a.active {
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
+        }
+
+        .dropdown:hover .dropdown-content { display: block; }
 
         .main-title {
             font-family: 'Orbitron', sans-serif; 
@@ -170,7 +233,11 @@
             word-break: break-word;
         }
 
-        main { flex: 1 0 auto; padding: 10px 0 40px; width: 100%; }
+        main { 
+            flex: 1 0 auto; 
+            padding: 10px 0 40px; 
+            width: 100%;
+        }
         
         .form-wrapper {
             max-width: 820px;
@@ -191,7 +258,10 @@
             transition: all 0.2s ease;
         }
 
-        .btn-back:hover { color: #fff; transform: translateX(-4px); }
+        .btn-back:hover {
+            color: #fff;
+            transform: translateX(-4px);
+        }
 
         .section-box {
             background: var(--card-bg);
@@ -225,24 +295,29 @@
             letter-spacing: 1px;
         }
 
-        /* ─── KOTAK LOGIN VERIFIKASI SEKOLAH ─── */
-        .login-card {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            max-width: 460px;
-            margin: 10px auto;
-            text-align: center;
+        /* LENCANA STATUS LOGIN SEKOLAH */
+        .school-badge-wrap {
+            display: none;
+            justify-content: center;
+            margin-bottom: 22px;
         }
 
-        .login-card .login-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 6px;
+        .school-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid var(--neon-blue);
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 0.88rem;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
         }
 
-        /* FORM UMUM */
+        .school-badge strong { color: var(--gold); }
+
+        /* UPLOAD FORM */
         .upload-form { display: flex; flex-direction: column; gap: 24px; }
         
         .form-group {
@@ -306,6 +381,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
         }
 
+        /* HELPER CARD */
         .helper-card {
             width: 100%;
             background: rgba(15, 21, 42, 0.9);
@@ -363,6 +439,7 @@
             line-height: 1;
         }
 
+        /* FILE UPLOAD BOX STANDAR */
         .file-upload-box {
             width: 100%;
             border: 2px dashed rgba(0, 210, 255, 0.35);
@@ -402,7 +479,7 @@
             text-align: center;
         }
 
-        /* ─── GRID URAIAN 7 MAPEL ─── */
+        /* ─── GRID KOTAK UPLOAD LEMBAR JAWABAN URAIAN (7 MAPEL) ─── */
         .uraian-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -449,7 +526,10 @@
             margin-bottom: 4px;
         }
 
-        .uraian-subtext { font-size: 0.75rem; color: var(--text-muted); }
+        .uraian-subtext {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
 
         .uraian-box-mini input[type="file"] {
             position: absolute;
@@ -466,8 +546,12 @@
         }
 
         @media (max-width: 640px) {
-            .uraian-grid { grid-template-columns: 1fr; }
-            .uraian-box-mini.span-full { max-width: 100%; }
+            .uraian-grid {
+                grid-template-columns: 1fr;
+            }
+            .uraian-box-mini.span-full {
+                max-width: 100%;
+            }
         }
 
         /* PROGRESS BAR */
@@ -539,27 +623,112 @@
 
         .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .status-alert {
-            display: none;
+        /* ─── MODAL LOGIN SEKOLAH (PERSIS SEPERTI FORM FOTO & REKENING) ─── */
+        .login-card {
+            background: rgba(15, 21, 42, 0.98);
+            border: 1px solid var(--neon-blue);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 440px;
             width: 100%;
-            padding: 14px 18px;
+            text-align: center;
+            box-shadow: 0 0 45px rgba(0, 210, 255, 0.35);
+            position: relative;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px var(--neon-blue));
+        }
+
+        .login-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 24px 0 20px 0;
+            text-align: left;
+        }
+
+        .login-input-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .login-field {
+            width: 100%;
+            background: rgba(11, 16, 35, 0.9);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .login-field:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            padding: 13px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .status-error {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            color: #f87171;
+        .btn-login-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
         }
 
-        /* POPUP MODAL SUKSES */
+        .btn-login-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-login-cancel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-login-cancel:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(-3px);
+        }
+
+        /* ─── CUSTOM GLOW MODAL NOTIFIKASI & POPUP ─── */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -575,7 +744,10 @@
             padding: 20px;
         }
 
-        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .modal-card {
             background: rgba(15, 21, 42, 0.98);
@@ -590,7 +762,27 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .modal-overlay.active .modal-card { transform: scale(1); }
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-card.warning-modal {
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.25);
+        }
+
+        .modal-icon-alert {
+            font-size: 3.4rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+            animation: pulseAlert 2s infinite alternate;
+        }
+
+        @keyframes pulseAlert {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
 
         .modal-icon-success {
             font-size: 3.6rem;
@@ -600,7 +792,10 @@
             animation: pulseSuccess 2s infinite alternate;
         }
 
-        @keyframes pulseSuccess { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+        @keyframes pulseSuccess {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
 
         .modal-title {
             font-family: 'Orbitron', sans-serif;
@@ -616,6 +811,25 @@
             color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 26px;
+        }
+
+        .btn-modal-close {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 18px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-modal-close:hover {
+            box-shadow: 0 0 28px rgba(0, 210, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         .btn-modal-back {
@@ -642,6 +856,7 @@
             transform: translateY(-2px);
         }
 
+        /* FOOTER */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
@@ -650,10 +865,73 @@
             width: 100%;
             margin-top: auto;
         }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
 
+    <!-- ELEMEN AUDIO -->
     <audio id="bgAudio" loop>
         <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
     </audio>
@@ -679,11 +957,41 @@
         <div class="floating-icon el-math-root" title="Akar Kuadrat">&radic;</div>
     </div>
 
+    <!-- TOMBOL AUDIO POJOK KANAN ATAS -->
+    <div id="audioBtn" class="audio-float-btn" title="Nyalakan/Matikan Musik">
+        <i class="fa-solid fa-music"></i>
+    </div>
+
     <div class="container">
-        <header id="header-placeholder"></header>
-        <div style="text-align: center;">
-            <h1 class="main-title">FORM PENGUMPULAN DATA</h1>
-        </div>
+        <!-- HEADER UTAMA SESUAI STANDAR WEB AMSO 2026 -->
+        <header>
+            <div class="logo-group">
+                <a href="index.html" class="logo-item"><img src="yasarini.png" alt="Logo Yasarini"></a>
+                <a href="index.html" class="logo-item"><img src="fesa.png" alt="Logo FESA"></a>
+                <a href="index.html" class="logo-item"><img src="amso.png" alt="Logo AMSO"></a>
+            </div>
+
+            <nav>
+                <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="juknis.html"><i class="fa-solid fa-book-open"></i> Juknis</a>
+                <a href="administrasi.html" class="active"><i class="fa-solid fa-folder-open"></i> Administrasi</a>
+                <div class="dropdown">
+                    <a href="javascript:void(0)"><i class="fa-solid fa-images"></i> Dokumentasi <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="dokumentasi-tryout.html"><i class="fa-solid fa-circle-dot"></i> Tryout</a>
+                        <a href="dokumentasi-seleksi.html"><i class="fa-solid fa-circle-dot"></i> Babak Seleksi</a>
+                        <a href="dokumentasi-penyisihan.html"><i class="fa-solid fa-circle-dot"></i> Babak Penyisihan</a>
+                        <a href="dokumentasi-semifinal.html"><i class="fa-solid fa-circle-dot"></i> Babak Semifinal</a>
+                        <a href="dokumentasi-final.html"><i class="fa-solid fa-circle-dot"></i> Babak Final</a>
+                    </div>
+                </div>
+                <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
+            </nav>
+
+            <div style="text-align: center;">
+                <h1 class="main-title">FORM PENGUMPULAN DATA</h1>
+            </div>
+        </header>
     </div>
 
     <main class="container">
@@ -693,43 +1001,23 @@
                 <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Administrasi
             </a>
 
-            <!-- SECTION BOX 1: VERIFIKASI AKUN SEKOLAH -->
-            <div id="boxLogin" class="section-box">
-                <div class="section-title"><i class="fa-solid fa-lock" style="margin-right: 8px;"></i> Verifikasi Akun Sekolah</div>
-                
-                <form id="loginForm" class="login-card" onsubmit="handleLogin(event)">
-                    <p class="login-desc">
-                        Silakan masukkan <strong>Username</strong> dan <strong>Password</strong> akun sekolah Anda untuk mengakses Formulir Berita Acara Babak Final AMSO 2026.
-                    </p>
-
-                    <div class="form-group" style="align-items: stretch; text-align: left;">
-                        <label for="loginUser"><i class="fa-solid fa-user"></i> Username Sekolah <span style="color: #ff4d4f;">*</span></label>
-                        <input type="text" id="loginUser" class="form-control" placeholder="Masukkan username sekolah" required autocomplete="username">
-                    </div>
-
-                    <div class="form-group" style="align-items: stretch; text-align: left;">
-                        <label for="loginPass"><i class="fa-solid fa-key"></i> Password <span style="color: #ff4d4f;">*</span></label>
-                        <input type="password" id="loginPass" class="form-control" placeholder="Masukkan password" required autocomplete="current-password">
-                    </div>
-
-                    <div id="loginAlert" class="status-alert status-error"></div>
-
-                    <button type="submit" id="btnLogin" class="btn-submit" style="margin-top: 5px;">
-                        <i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR
-                    </button>
-                </form>
-            </div>
-
-            <!-- SECTION BOX 2: FORM PENGUMPULAN BERITA ACARA BABAK FINAL -->
-            <div id="boxForm" class="section-box" style="display: none;">
+            <div class="section-box">
                 <div class="section-title">Form Berita Acara Babak Final AMSO 2026</div>
+
+                <!-- LENCANA STATUS LOGIN SEKOLAH (MUNCUL SETELAH LOGIN SUKSES) -->
+                <div id="schoolBadgeWrap" class="school-badge-wrap">
+                    <div class="school-badge">
+                        <i class="fa-solid fa-school-circle-check" style="color: var(--neon-blue);"></i>
+                        <span>Terautentikasi: <strong id="badgeSchoolName">-</strong></span>
+                    </div>
+                </div>
                 
                 <form id="finalForm" class="upload-form">
                     
-                    <!-- 1. NAMA SEKOLAH (OTOMATIS TERPILIH DAN TERKUNCI) -->
+                    <!-- 1. NAMA SEKOLAH (OTOMATIS TERKUNCI SETELAH LOGIN) -->
                     <div class="form-group">
                         <label for="schoolName"><i class="fa-solid fa-school"></i> NAMA SEKOLAH <span style="color: #ff4d4f;">*</span></label>
-                        <select id="schoolName" class="form-control select-centered" required style="pointer-events: none; opacity: 0.95; background: rgba(15, 23, 42, 0.95);">
+                        <select id="schoolName" class="form-control select-centered" required disabled style="opacity: 0.95; background: rgba(11, 16, 35, 0.95);">
                             <option value="" disabled selected>-- Pilih Nama Sekolah --</option>
                             
                             <optgroup label="─── TINGKAT SD / MI ───">
@@ -824,7 +1112,7 @@
 
                     <!-- 4. LEMBAR JAWABAN SOAL URAIAN (7 MAPEL) -->
                     <div class="form-group">
-                        <label><i class="fa-solid fa-file-pen"></i> LEMBAR JAWABAN SOAL URAIAN <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Opsional Untuk Mata Pelajaran yang Memiliki Soal Uraian)</span></label>
+                        <label><i class="fa-solid fa-file-pen"></i> LEMBAR JAWABAN SOAL URAIAN <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(Opsional Untuk Soal yang Memiliki Uraian)</span></label>
                         
                         <div class="helper-card">
                             <a href="https://drive.google.com/file/d/1GUwnXpB7sGpnvogHJD8c5MD9YeeupUOu/view?usp=sharing" target="_blank">
@@ -836,6 +1124,7 @@
                             </ul>
                         </div>
 
+                        <!-- GRID 2 KOLOM RAPI & COMPACT UNTUK 7 MAPEL -->
                         <div class="uraian-grid">
                             <!-- 1. Matematika -->
                             <div class="uraian-box-mini">
@@ -885,7 +1174,7 @@
                                 <input type="file" id="inputUraianGeo" accept=".pdf" onchange="processFile(this, 'statusGeo', 'uraianGeo')">
                             </div>
 
-                            <!-- 7. TIK -->
+                            <!-- 7. TIK (Center span di baris bawah) -->
                             <div class="uraian-box-mini span-full">
                                 <div class="uraian-header"><i class="fa-solid fa-laptop-code" style="color: #ec4899;"></i> TIK</div>
                                 <div class="uraian-subtext">Klik upload PDF (Maks 5 MB)</div>
@@ -907,13 +1196,56 @@
                     <button type="submit" id="submitBtn" class="btn-submit">
                         <i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS BABAK FINAL
                     </button>
-
-                    <div id="statusAlert" class="status-alert"></div>
                 </form>
             </div>
         </div>
     </main>
 
+    <!-- ─── MODAL LOGIN SEKOLAH (PERSIS SEPERTI FORM FOTO & REKENING) ─── -->
+    <div id="loginModal" class="modal-overlay active">
+        <div class="login-card">
+            <div class="login-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h2 class="modal-title">LOGIN SEKOLAH</h2>
+            <p class="modal-desc" style="margin-bottom: 15px;">
+                Masukkan Username dan Password Sekolah untuk Membuka Formulir Pengumpulan
+            </p>
+
+            <form id="loginForm" onsubmit="handleSchoolLogin(event)">
+                <div class="login-input-group">
+                    <div>
+                        <label for="loginUser"><i class="fa-solid fa-user"></i> USERNAME</label>
+                        <input type="text" id="loginUser" class="login-field" placeholder="contoh: sdats" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="loginPass"><i class="fa-solid fa-key"></i> PASSWORD</label>
+                        <input type="password" id="loginPass" class="login-field" placeholder="Masukkan password unik" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="btnLoginSubmit" class="btn-login-submit">
+                    <i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR
+                </button>
+            </form>
+
+            <a href="administrasi.html" class="btn-login-cancel">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Administrasi
+            </a>
+        </div>
+    </div>
+
+    <!-- CUSTOM GLOW MODAL NOTIFIKASI VALIDASI (TEMA AMSO) -->
+    <div id="alertModal" class="modal-overlay" onclick="closeAlertModalOnOverlay(event)">
+        <div class="modal-card warning-modal">
+            <div class="modal-icon-alert"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h2 class="modal-title" id="alertModalTitle">Perhatian</h2>
+            <p class="modal-desc" id="alertModalDesc">Harap lengkapi isian formulir terlebih dahulu.</p>
+            <button class="btn-modal-close" onclick="closeAlertModal()">Mengerti</button>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL SUKSES -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-icon-success">
@@ -929,36 +1261,76 @@
         </div>
     </div>
 
-    <footer id="footer-placeholder"></footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>AMSO 2026</h3>
+                <p>Angkasa Mathematic and Science Olympiad</p>
+            </div>
+            <div class="footer-contacts">
+                <a href="https://wa.me/" target="_blank" class="contact-btn wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/" target="_blank" class="contact-btn ig" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AMSO - Yasarini Pengurus Pusat. All Rights Reserved.
+        </div>
+    </footer>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx8MlorFyNGBxhbItHkMcZ0-aFmb9XknbHFM5DOUB2eEVeA16IdxjDYFQD7CHKpVbIc/exec";
 
-        // ================= ALUR VERIFIKASI AKUN SEKOLAH =================
-        async function handleLogin(e) {
-            e.preventDefault();
-            const usernameInput = document.getElementById("loginUser").value.trim();
-            const passwordInput = document.getElementById("loginPass").value.trim();
-            const btnLogin = document.getElementById("btnLogin");
-            const loginAlert = document.getElementById("loginAlert");
+        let verifiedSchoolName = "";
 
-            btnLogin.disabled = true;
-            btnLogin.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...`;
-            loginAlert.style.display = "none";
+        /* FUNGSI POPUP NOTIFIKASI BERTEMA AMSO */
+        function showNotification(title, message) {
+            document.getElementById("alertModalTitle").innerHTML = title || "Perhatian";
+            document.getElementById("alertModalDesc").innerHTML = message || "";
+            document.getElementById("alertModal").classList.add("active");
+        }
+
+        function closeAlertModal() {
+            document.getElementById("alertModal").classList.remove("active");
+        }
+
+        function closeAlertModalOnOverlay(event) {
+            if (event.target === document.getElementById("alertModal")) {
+                closeAlertModal();
+            }
+        }
+
+        /* ─── PROSES LOGIN SEKOLAH VIA GET (ANTI-CORS & INSTAN) ─── */
+        async function handleSchoolLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById("btnLoginSubmit");
+            const user = document.getElementById("loginUser").value.trim().toLowerCase();
+            const pass = document.getElementById("loginPass").value.trim();
+
+            if (!user || !pass) {
+                showNotification("Data Tidak Lengkap", "Harap isi Username dan Password sekolah.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...`;
 
             try {
-                const checkUrl = `${SCRIPT_URL}?action=LOGIN_CHECK&username=${encodeURIComponent(usernameInput)}&password=${encodeURIComponent(passwordInput)}`;
-                const response = await fetch(checkUrl);
+                const queryUrl = `${SCRIPT_URL}?action=LOGIN_CHECK&username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`;
+                
+                const response = await fetch(queryUrl);
                 const result = await response.json();
 
                 if (result.status === "SUCCESS") {
-                    const verifiedSchool = result.schoolName;
-                    const schoolSelect = document.getElementById("schoolName");
+                    verifiedSchoolName = result.schoolName;
+                    
+                    // Set dan kunci pilihan nama sekolah
+                    const selectSchool = document.getElementById("schoolName");
                     
                     let foundOption = false;
-                    for (let i = 0; i < schoolSelect.options.length; i++) {
-                        if (schoolSelect.options[i].value.trim().toLowerCase() === verifiedSchool.trim().toLowerCase()) {
-                            schoolSelect.selectedIndex = i;
+                    for (let i = 0; i < selectSchool.options.length; i++) {
+                        if (selectSchool.options[i].value.trim().toLowerCase() === verifiedSchoolName.trim().toLowerCase()) {
+                            selectSchool.selectedIndex = i;
                             foundOption = true;
                             break;
                         }
@@ -966,25 +1338,29 @@
 
                     if (!foundOption) {
                         const opt = document.createElement("option");
-                        opt.value = verifiedSchool;
-                        opt.text = verifiedSchool;
+                        opt.value = verifiedSchoolName;
+                        opt.text = verifiedSchoolName;
                         opt.selected = true;
-                        schoolSelect.appendChild(opt);
+                        selectSchool.appendChild(opt);
                     }
 
-                    document.getElementById("boxLogin").style.display = "none";
-                    document.getElementById("boxForm").style.display = "block";
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    selectSchool.disabled = true;
+
+                    // Tampilkan lencana nama sekolah yang login
+                    document.getElementById("badgeSchoolName").innerText = verifiedSchoolName;
+                    document.getElementById("schoolBadgeWrap").style.display = "flex";
+
+                    // Tutup modal login
+                    document.getElementById("loginModal").classList.remove("active");
                 } else {
-                    loginAlert.innerText = result.message || "Username atau Password salah.";
-                    loginAlert.style.display = "flex";
+                    showNotification("Login Gagal", "Username atau Password Salah, Atau Status Akun Sekolah Belum Aktif");
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
                 }
             } catch (err) {
-                loginAlert.innerText = "Gagal menghubungi server verifikasi. Periksa koneksi internet Anda.";
-                loginAlert.style.display = "flex";
-            } finally {
-                btnLogin.disabled = false;
-                btnLogin.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
+                showNotification("Kendala Jaringan", "Gagal memverifikasi akun. Silakan pastikan koneksi stabil lalu coba kembali.");
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
             }
         }
 
@@ -1002,8 +1378,8 @@
         };
 
         const FILE_LIMITS = {
-            pdf: 25 * 1024 * 1024,
-            dok: 5 * 1024 * 1024,
+            pdf: 25 * 1024 * 1024,       // Berita Acara: Maks 25 MB
+            dok: 5 * 1024 * 1024,        // Dokumentasi: Maks 5 MB
             uraianMtk: 5 * 1024 * 1024,
             uraianIpa: 5 * 1024 * 1024,
             uraianIps: 5 * 1024 * 1024,
@@ -1013,7 +1389,7 @@
             uraianTik: 5 * 1024 * 1024
         };
 
-        const MAX_TOTAL_BYTES = 45 * 1024 * 1024;
+        const MAX_TOTAL_BYTES = 45 * 1024 * 1024; // Plafon aman: 45 MB
 
         function readFileAsBase64(file) {
             return new Promise((resolve, reject) => {
@@ -1030,21 +1406,23 @@
             const isUraian = key.startsWith('uraian');
 
             if (file) {
+                // Validasi Format PDF
                 if ((key === 'pdf' || isUraian) && file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-                    alert("Format tidak valid! Dokumen wajib berformat PDF (.pdf).");
+                    showNotification("Format Tidak Sesuai", "Format tidak valid! Dokumen wajib berformat PDF (.pdf).");
                     input.value = "";
                     statusDisplay.innerText = isUraian ? "Belum ada file" : "Belum ada file dipilih";
                     filesData[key] = null;
                     return;
                 }
 
+                // Validasi Format Gambar
                 if (key === 'dok') {
                     const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
                     const fileNameLower = file.name.toLowerCase();
                     const isImgExt = fileNameLower.endsWith('.jpg') || fileNameLower.endsWith('.jpeg') || fileNameLower.endsWith('.png');
 
                     if (!validImageTypes.includes(file.type) && !isImgExt) {
-                        alert("Format tidak valid! Dokumentasi wajib berupa foto/gambar (.jpg, .jpeg, .png).");
+                        showNotification("Format Tidak Sesuai", "Format tidak valid! Dokumentasi wajib berupa foto/gambar (.jpg, .jpeg, .png).");
                         input.value = "";
                         statusDisplay.innerText = "Belum ada foto dipilih";
                         filesData[key] = null;
@@ -1052,12 +1430,13 @@
                     }
                 }
 
+                // Validasi Ukuran
                 const maxAllowed = FILE_LIMITS[key] || (5 * 1024 * 1024);
                 if (file.size > maxAllowed) {
                     const fileMB = (file.size / (1024 * 1024)).toFixed(2);
                     const limitMB = Math.round(maxAllowed / (1024 * 1024));
                     
-                    alert(`UKURAN FILE TERLALU BESAR!\n\nFile ${file.name} berukuran ${fileMB} MB. Batas maksimal untuk berkas ini adalah ${limitMB} MB.\n\nHarap kompres file Anda terlebih dahulu.`);
+                    showNotification("Ukuran File Terlalu Besar", `File ${file.name} berukuran ${fileMB} MB. Batas maksimal untuk berkas ini adalah ${limitMB} MB.<br>Harap kompres file Anda terlebih dahulu.`);
                     input.value = "";
                     statusDisplay.innerText = isUraian ? "Belum ada file" : "Belum ada file dipilih";
                     filesData[key] = null;
@@ -1088,8 +1467,14 @@
         document.getElementById("finalForm").addEventListener("submit", async function(e) {
             e.preventDefault();
 
+            if (!verifiedSchoolName) {
+                showNotification("Akses Terkunci", "Harap login akun sekolah terlebih dahulu.");
+                document.getElementById("loginModal").classList.add("active");
+                return;
+            }
+
             if (!filesData.pdf || !filesData.dok) {
-                alert("Harap lengkapi file utama (Berita Acara Babak Final PDF & Foto Dokumentasi) sebelum mengirim!");
+                showNotification("Berkas Belum Lengkap", "Harap lengkapi file utama (Berita Acara Babak Final PDF & Foto Dokumentasi) sebelum mengirim!");
                 return;
             }
 
@@ -1100,19 +1485,17 @@
 
             if (totalBytes > MAX_TOTAL_BYTES) {
                 const totalMB = (totalBytes / (1024 * 1024)).toFixed(2);
-                alert(`Gagal mengirim: Total akumulasi berkas Anda adalah ${totalMB} MB (melebihi batas aman 45 MB per pengiriman).\n\nSilakan kompres beberapa berkas Anda sebelum mengunggah.`);
+                showNotification("Ukuran Akumulasi Terlalu Besar", `Total akumulasi berkas Anda adalah ${totalMB} MB (melebihi batas aman 45 MB per pengiriman).<br>Silakan kompres beberapa berkas Anda sebelum mengunggah.`);
                 return;
             }
 
             const submitBtn = document.getElementById("submitBtn");
-            const statusAlert = document.getElementById("statusAlert");
             const progressBox = document.getElementById("progressBox");
             const progressFill = document.getElementById("progressFill");
             const progressPercent = document.getElementById("progressPercent");
 
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengunggah...`;
-            statusAlert.style.display = "none";
             progressBox.style.display = "flex";
 
             let currentProgress = 0;
@@ -1130,7 +1513,7 @@
 
             const formData = new URLSearchParams();
             formData.append("formType", "FINAL_BA");
-            formData.append("schoolName", document.getElementById("schoolName").value);
+            formData.append("schoolName", verifiedSchoolName);
             
             // Berita Acara & Foto (Wajib)
             formData.append("filePdfName", filesData.pdf.name);
@@ -1196,14 +1579,35 @@
             } catch (err) {
                 clearInterval(progressInterval);
                 progressBox.style.display = "none";
-                statusAlert.className = "status-alert status-error";
-                statusAlert.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> <strong>Gagal:</strong> Terjadi kendala koneksi saat mengirim.`;
-                statusAlert.style.display = "flex";
+                showNotification("Pengiriman Gagal", "Terjadi kendala koneksi saat mengirim berkas. Silakan periksa jaringan dan coba lagi.");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> KIRIM BERKAS BABAK FINAL`;
             }
         });
+    </script>
+
+    <!-- AUDIO CONTROLLER -->
+    <script>
+        const audioBtn = document.getElementById('audioBtn');
+        const bgAudio = document.getElementById('bgAudio');
+        let isAudioPlaying = false;
+
+        if (audioBtn && bgAudio) {
+            audioBtn.addEventListener('click', () => {
+                if (isAudioPlaying) {
+                    bgAudio.pause();
+                    audioBtn.classList.remove('playing');
+                    audioBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+                } else {
+                    bgAudio.play().then(() => {
+                        audioBtn.classList.add('playing');
+                        audioBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                    }).catch(e => console.log('Audio autoplay prevented'));
+                }
+                isAudioPlaying = !isAudioPlaying;
+            });
+        }
     </script>
 
     <script src="global-audio.js"></script>
