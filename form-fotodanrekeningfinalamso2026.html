@@ -1460,7 +1460,7 @@
             </div>
             <h2 class="modal-title">LOGIN SEKOLAH</h2>
             <p class="modal-desc" style="margin-bottom: 15px;">
-                Masukkan Username dan Password Sekolah Anda untuk membuka formulir pengumpulan
+                Masukkan Username dan Password Sekolah untuk Membuka Formulir Pengumpulan
             </p>
 
             <form id="loginForm" onsubmit="handleSchoolLogin(event)">
@@ -1602,7 +1602,7 @@
                     // Tutup modal login
                     document.getElementById("loginModal").classList.remove("active");
                 } else {
-                    showNotification("Login Gagal", "Username atau Password Salah, Atau Status Akun Sekolah Belum Aktif.");
+                    showNotification("Login Gagal", "Username atau Password Salah, Atau Status Akun Sekolah Belum Aktif");
                     btn.disabled = false;
                     btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
                 }
