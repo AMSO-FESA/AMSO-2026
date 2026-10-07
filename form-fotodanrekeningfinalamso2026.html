@@ -281,6 +281,28 @@
             line-height: 1.4;
         }
 
+        /* LENCANA SEKOLAH LOGIN */
+        .school-badge-wrap {
+            display: none;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .school-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid var(--neon-blue);
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 0.88rem;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+        }
+
+        .school-badge strong { color: var(--gold); }
+
         /* STEP INDICATOR */
         .step-progress-bar {
             display: flex;
@@ -865,6 +887,90 @@
             box-shadow: 0 0 18px rgba(0, 210, 255, 0.4);
         }
 
+        /* ─── MODAL LOGIN SEKOLAH ─── */
+        .login-card {
+            background: rgba(15, 21, 42, 0.98);
+            border: 1px solid var(--neon-blue);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 45px rgba(0, 210, 255, 0.35);
+            position: relative;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px var(--neon-blue));
+        }
+
+        .login-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 24px 0 20px 0;
+            text-align: left;
+        }
+
+        .login-input-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .login-field {
+            width: 100%;
+            background: rgba(11, 16, 35, 0.9);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .login-field:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            border: none;
+            padding: 13px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-login-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+        }
+
+        .btn-login-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         /* MODAL PREVIEW GAMBAR CONTOH */
         .sample-modal {
             position: fixed;
@@ -1046,6 +1152,14 @@
             <div class="section-box">
                 <div class="section-title">Form Pengumpulan Foto dan Nomor Rekening Peserta Final AMSO 2026</div>
 
+                <!-- LENCANA STATUS LOGIN SEKOLAH -->
+                <div id="schoolBadgeWrap" class="school-badge-wrap">
+                    <div class="school-badge">
+                        <i class="fa-solid fa-school-circle-check" style="color: var(--neon-blue);"></i>
+                        <span>Terautentikasi: <strong id="badgeSchoolName">-</strong></span>
+                    </div>
+                </div>
+
                 <!-- PROGRESS INDIKATOR LANGKAH -->
                 <div class="step-progress-bar">
                     <span id="pill1" class="step-pill active">1. Data Peserta</span>
@@ -1060,10 +1174,10 @@
                     <div id="part1" class="form-section-part active">
                         <div class="part-header"><i class="fa-solid fa-id-card"></i> BAGIAN 1: IDENTITAS PESERTA</div>
                         
-                        <!-- Pertanyaan 1: Nama Sekolah -->
+                        <!-- Pertanyaan 1: Nama Sekolah (Terkunci Otomatis Setelah Login) -->
                         <div class="form-group">
                             <label for="schoolName"><i class="fa-solid fa-school"></i> NAMA SEKOLAH <span style="color: #ff4d4f;">*</span></label>
-                            <select id="schoolName" class="form-control select-centered" required>
+                            <select id="schoolName" class="form-control select-centered" required disabled>
                                 <option value="" disabled selected>-- Pilih Nama Sekolah --</option>
                                 
                                 <optgroup label="─── TINGKAT SD / MI ───">
@@ -1316,6 +1430,36 @@
         </div>
     </main>
 
+    <!-- ─── MODAL LOGIN SEKOLAH (MUNCUL OTOMATIS) ─── -->
+    <div id="loginModal" class="modal-overlay active">
+        <div class="login-card">
+            <div class="login-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h2 class="modal-title">LOGIN SEKOLAH</h2>
+            <p class="modal-desc" style="margin-bottom: 15px;">
+                Masukkan kredensial sekolah Anda untuk membuka formulir pengumpulan final.
+            </p>
+
+            <form id="loginForm" onsubmit="handleSchoolLogin(event)">
+                <div class="login-input-group">
+                    <div>
+                        <label for="loginUser"><i class="fa-solid fa-user"></i> USERNAME</label>
+                        <input type="text" id="loginUser" class="login-field" placeholder="contoh: sdats" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="loginPass"><i class="fa-solid fa-key"></i> PASSWORD</label>
+                        <input type="password" id="loginPass" class="login-field" placeholder="Masukkan password unik" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="btnLoginSubmit" class="btn-login-submit">
+                    <i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- CUSTOM GLOW MODAL NOTIFIKASI VALIDASI (TEMA AMSO) -->
     <div id="alertModal" class="modal-overlay" onclick="closeAlertModalOnOverlay(event)">
         <div class="modal-card warning-modal">
@@ -1374,6 +1518,7 @@
         let selectedOwnershipVal = "";
         let filePhotoData = null;
         let fileKKData = null;
+        let verifiedSchoolName = "";
 
         const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5 MB
         const MAX_PDF_BYTES = 5 * 1024 * 1024;   // 5 MB
@@ -1392,6 +1537,60 @@
         function closeAlertModalOnOverlay(event) {
             if (event.target === document.getElementById("alertModal")) {
                 closeAlertModal();
+            }
+        }
+
+        /* ─── PROSES LOGIN SEKOLAH KE APPS SCRIPT ─── */
+        async function handleSchoolLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById("btnLoginSubmit");
+            const user = document.getElementById("loginUser").value.trim();
+            const pass = document.getElementById("loginPass").value.trim();
+
+            if (!user || !pass) {
+                showNotification("Data Tidak Lengkap", "Harap isi Username dan Password sekolah.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...`;
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({
+                        action: "LOGIN_CHECK",
+                        username: user,
+                        password: pass
+                    }).toString()
+                });
+
+                const result = await response.json();
+
+                if (result.status === "SUCCESS") {
+                    verifiedSchoolName = result.schoolName;
+                    
+                    // Set dan kunci pilihan nama sekolah
+                    const selectSchool = document.getElementById("schoolName");
+                    selectSchool.value = verifiedSchoolName;
+                    selectSchool.disabled = true;
+
+                    // Tampilkan lencana nama sekolah yang login
+                    document.getElementById("badgeSchoolName").innerText = verifiedSchoolName;
+                    document.getElementById("schoolBadgeWrap").style.display = "flex";
+
+                    // Tutup modal login
+                    document.getElementById("loginModal").classList.remove("active");
+                } else {
+                    showNotification("Login Gagal", "Username atau Password salah, atau status akun sekolah belum aktif.");
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
+                }
+            } catch (err) {
+                showNotification("Kendala Jaringan", "Gagal memverifikasi akun. Pastikan koneksi internet aktif lalu coba kembali.");
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i> MASUK KE FORMULIR`;
             }
         }
 
@@ -1521,8 +1720,8 @@
 
         function goToStep(step) {
             if (step === 2) {
-                if (!document.getElementById("schoolName").value) {
-                    showNotification("Data Belum Lengkap", "Harap pilih <strong>Nama Sekolah</strong> terlebih dahulu.");
+                if (!verifiedSchoolName) {
+                    showNotification("Akses Terkunci", "Harap login akun sekolah terlebih dahulu.");
                     return;
                 }
                 if (!document.getElementById("studentName").value.trim()) {
@@ -1631,7 +1830,7 @@
 
             const formData = new URLSearchParams();
             formData.append("formType", "FINAL_DATA");
-            formData.append("schoolName", document.getElementById("schoolName").value);
+            formData.append("schoolName", verifiedSchoolName);
             formData.append("studentName", document.getElementById("studentName").value.trim().toUpperCase());
             formData.append("studentEmail", document.getElementById("studentEmail").value.trim());
             
