@@ -156,7 +156,7 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER */
         header { padding: 30px 0 25px; text-align: center; position: relative; }
         .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
         .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
@@ -233,6 +233,7 @@
             word-break: break-word;
         }
 
+        /* PENGATURAN UTAMA AGAR FOOTER TIDAK PERNAH MENEMPEL */
         main { 
             flex: 1 0 auto; 
             padding: 10px 0 40px; 
@@ -396,24 +397,25 @@
             color: #cbd5e1;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            text-align: center;
+            gap: 8px;
+            width: 100%;
+            align-items: center;
         }
 
         .helper-card ul li {
-            display: block;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 8px;
             text-align: center;
-            line-height: 1.6;
-            width: 100%;
         }
 
         .helper-card ul li::before {
             content: "•";
             color: var(--gold);
             font-weight: bold;
-            font-size: 1.15rem;
-            margin-right: 6px;
-            display: inline;
+            font-size: 1.1rem;
+            line-height: 1;
         }
 
         /* FILE UPLOAD BOX STANDAR */
@@ -711,7 +713,7 @@
             transform: translateY(-2px);
         }
 
-        /* FOOTER */
+        /* KUNCI POSISI FOOTER AGAR TIDAK MENEMPEL */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
@@ -812,41 +814,13 @@
         <div class="floating-icon el-math-root" title="Akar Kuadrat">&radic;</div>
     </div>
 
-    <!-- TOMBOL AUDIO POJOK KANAN ATAS -->
-    <div id="audioBtn" class="audio-float-btn" title="Nyalakan/Matikan Musik">
-        <i class="fa-solid fa-music"></i>
-    </div>
-
     <div class="container">
-        <!-- HEADER UTAMA SESUAI STANDAR WEB AMSO 2026 -->
-        <header>
-            <div class="logo-group">
-                <a href="index.html" class="logo-item"><img src="yasarini.png" alt="Logo Yasarini"></a>
-                <a href="index.html" class="logo-item"><img src="fesa.png" alt="Logo FESA"></a>
-                <a href="index.html" class="logo-item"><img src="amso.png" alt="Logo AMSO"></a>
-            </div>
+        <!-- HEADER OTOMATIS (DI-INJECT OLEH global-audio.js) -->
+        <header id="header-placeholder"></header>
 
-            <nav>
-                <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
-                <a href="juknis.html"><i class="fa-solid fa-book-open"></i> Juknis</a>
-                <a href="administrasi.html" class="active"><i class="fa-solid fa-folder-open"></i> Administrasi</a>
-                <div class="dropdown">
-                    <a href="javascript:void(0)"><i class="fa-solid fa-images"></i> Dokumentasi <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="dokumentasi-tryout.html"><i class="fa-solid fa-circle-dot"></i> Tryout</a>
-                        <a href="dokumentasi-seleksi.html"><i class="fa-solid fa-circle-dot"></i> Babak Seleksi</a>
-                        <a href="dokumentasi-penyisihan.html"><i class="fa-solid fa-circle-dot"></i> Babak Penyisihan</a>
-                        <a href="dokumentasi-semifinal.html"><i class="fa-solid fa-circle-dot"></i> Babak Semifinal</a>
-                        <a href="dokumentasi-final.html"><i class="fa-solid fa-circle-dot"></i> Babak Final</a>
-                    </div>
-                </div>
-                <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
-            </nav>
-
-            <div style="text-align: center;">
-                <h1 class="main-title">FORM PENGUMPULAN DATA</h1>
-            </div>
-        </header>
+        <div style="text-align: center;">
+            <h1 class="main-title">FORM PENGUMPULAN DATA</h1>
+        </div>
     </div>
 
     <main class="container">
@@ -928,7 +902,7 @@
                                 <i class="fa-solid fa-download"></i> Link Download Berita Acara dan Daftar Hadir Babak Final AMSO 2026 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
                             </a>
                             <ul>
-                                <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak penyisihan)</li>
+                                <li>Berita Acara, Daftar Hadir dan Pakta Integritas Pengawas (digunakan jika pengawas berbeda dengan babak sebelumnya)</li>
                                 <li>Discan/Foto kemudian dijadikan <strong>1 File PDF (Maksimal 25 MB)</strong></li>
                             </ul>
                         </div>
@@ -1065,7 +1039,7 @@
         </div>
     </div>
 
-    <!-- FOOTER OTOMATIS -->
+    <!-- FOOTER OTOMATIS (DI-INJECT OLEH global-audio.js) -->
     <footer id="footer-placeholder"></footer>
 
     <script>
@@ -1288,30 +1262,7 @@
         });
     </script>
 
-    <!-- AUDIO PLAYER CONTROLLER & FOOTER PLACEHOLDER SCRIPT -->
-    <script>
-        const audioBtn = document.getElementById('audioBtn');
-        const bgAudio = document.getElementById('bgAudio');
-        let isAudioPlaying = false;
-
-        if (audioBtn && bgAudio) {
-            audioBtn.addEventListener('click', () => {
-                if (isAudioPlaying) {
-                    bgAudio.pause();
-                    audioBtn.classList.remove('playing');
-                    audioBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
-                } else {
-                    bgAudio.play().then(() => {
-                        audioBtn.classList.add('playing');
-                        audioBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-                    }).catch(e => console.log('Audio autoplay prevented'));
-                }
-                isAudioPlaying = !isAudioPlaying;
-            });
-        }
-    </script>
-
-    <!-- PANGGIL SCRIPT GLOBAL (JIKA SUDAH ADA GLOBAL AUDIO/FOOTER) -->
+    <!-- PANGGIL SCRIPT GLOBAL (YANG MENG-HANDLE AUDIO, HEADER & FOOTER OTOMATIS) -->
     <script src="global-audio.js"></script>
 
 </body>
