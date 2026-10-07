@@ -770,6 +770,303 @@
                     <div class="summary-card"><h4>Total Babak Final</h4><div class="number-lg">110</div><div class="sub-breakdown"><span>SD: <strong>30</strong></span><span>SMP: <strong>30</strong></span><span>SMA: <strong>50</strong></span></div></div>
                 </div>
             </div>
+
+<!-- DAFTAR PESERTA BABAK FINAL -->
+<div class="section-box" style="margin-top: 30px;">
+    <!-- STYLE INTERNAL KHUSUS FINAL MAPEL GOLD THEME -->
+    <style>
+        .final-mapel-tabs .cat-btn-mapel {
+            background: rgba(11, 16, 35, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #94a3b8;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .final-mapel-tabs .cat-btn-mapel:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            color: #ffd700;
+        }
+
+        .final-mapel-tabs .cat-btn-mapel.active {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1.5px solid #ffd700 !important;
+            color: #ffd700 !important;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.35) !important;
+        }
+    </style>
+
+    <div class="section-title"><i class="fa-solid fa-trophy"></i> DAFTAR PESERTA BABAK FINAL</div>
+    
+    <!-- TOMBOL JENJANG -->
+    <div class="final-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;">
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchFinalJenjang('sd', this)">SD / MI</button>
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchFinalJenjang('smp', this)">SMP / MTs</button>
+        <button type="button" class="cat-btn" style="font-weight: 800; letter-spacing: 1px;" onclick="switchFinalJenjang('sma', this)">SMA</button>
+    </div>
+
+    <!-- FINAL SD -->
+    <div id="final-jenjang-sd" class="final-jenjang-container" style="display: none;">
+        <div class="final-mapel-tabs" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 18px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn-mapel active" onclick="switchFinalMapel('sd', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sd', 'ipa', this)">IPA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sd', 'ips', this)">IPS</button>
+        </div>
+        
+        <div id="final-sd-mtk" class="final-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sd-ipa" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sd-ips" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL SMP -->
+    <div id="final-jenjang-smp" class="final-jenjang-container" style="display: none;">
+        <div class="final-mapel-tabs" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 18px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn-mapel active" onclick="switchFinalMapel('smp', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('smp', 'ipa', this)">IPA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('smp', 'ips', this)">IPS</button>
+        </div>
+
+        <div id="final-smp-mtk" class="final-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-smp-ipa" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-smp-ips" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL SMA -->
+    <div id="final-jenjang-sma" class="final-jenjang-container" style="display: none;">
+        <div class="final-mapel-tabs" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 18px; margin-top: 6px; flex-wrap: wrap;">
+            <button type="button" class="cat-btn-mapel active" onclick="switchFinalMapel('sma', 'mtk', this)">MATEMATIKA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sma', 'fis', this)">FISIKA</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sma', 'eko', this)">EKONOMI</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sma', 'geo', this)">GEOGRAFI</button>
+            <button type="button" class="cat-btn-mapel" onclick="switchFinalMapel('sma', 'tik', this)">TIK</button>
+        </div>
+
+        <div id="final-sma-mtk" class="final-mapel-section" style="display: block;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sma-fis" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sma-eko" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sma-geo" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="final-sma-tik" class="final-mapel-section" style="display: none;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">NO PESERTA</th>
+                            <th style="width: 35%;">NAMA PESERTA</th>
+                            <th style="width: 25%;">SEKOLAH</th>
+                            <th style="width: 20%;">MATA PELAJARAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data peserta (Segera Hadir)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT PENGATUR TAB FINAL -->
+<script>
+    function switchFinalJenjang(jenjang, btnEl) {
+        document.querySelectorAll('.final-jenjang-container').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.final-jenjang-tabs .cat-btn').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById('final-jenjang-' + jenjang).style.display = 'block';
+        btnEl.classList.add('active');
+    }
+
+    function switchFinalMapel(jenjang, mapel, btnEl) {
+        const parentContainer = document.getElementById('final-jenjang-' + jenjang);
+        parentContainer.querySelectorAll('.final-mapel-section').forEach(el => el.style.display = 'none');
+        parentContainer.querySelectorAll('.cat-btn-mapel').forEach(el => el.classList.remove('active'));
+
+        document.getElementById('final-' + jenjang + '-' + mapel).style.display = 'block';
+        btnEl.classList.add('active');
+    }
+
+    // Default aktifkan jenjang SD saat halaman dimuat (jika diperlukan)
+    document.addEventListener("DOMContentLoaded", () => {
+        const firstJenjangBtn = document.querySelector('.final-jenjang-tabs .cat-btn');
+        if (firstJenjangBtn) {
+            switchFinalJenjang('sd', firstJenjangBtn);
+        }
+    });
+</script>
+            
 <!-- DAFTAR PESERTA BABAK SEMIFINAL (ACCORDION BUKA-TUTUP) -->
 <div class="section-box" id="daftar-peserta-semifinal">
     <!-- STYLE INTERNAL KHUSUS SEMIFINAL MAPEL GOLD THEME -->
