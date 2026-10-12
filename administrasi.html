@@ -338,7 +338,7 @@
         }
 
         .admin-accordion.open .accordion-content {
-            max-height: 650px;
+            max-height: 75vh;
             overflow-y: auto;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
@@ -910,7 +910,7 @@
                                 <span id="tagBtnLayoutSemifinal" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- 5. Form Berita Acara Babak Semifinal (TERBUKA) -->
+                            <!-- 5. Form Berita Acara Babak Semifinal (DIKUNCI) -->
                             <a href="form-beritaacarababaksemifinalamso2026.html" id="linkCardSemifinal" class="dropdown-item-card" onclick="handleSemifinalClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Semifinal AMSO 2026</strong>
@@ -934,7 +934,7 @@
                                 <span id="tagBtnLayoutFinalSesi1" class="item-btn-tag"></span>
                             </a>
 
-                            <!-- 8. Form Berita Acara Babak Final (BARU DI PALING BAWAH - TERBUKA) -->
+                            <!-- 8. Form Berita Acara Babak Final (TERBUKA) -->
                             <a href="form-beritaacarababakfinalamso2026.html" id="linkCardFinalBA" class="dropdown-item-card" onclick="handleFinalBAClick(event)">
                                 <div class="item-text">
                                     <strong>Form Berita Acara Babak Final AMSO 2026</strong>
@@ -947,7 +947,7 @@
                 </div>
             </div>
 
-            <!-- KOTAK 2: LAINNYA -->
+            <!-- KOTAK 2: LAINNYA (DITENGAHKAN DENGAN VIRTUAL BACKGROUND LENGKAP) -->
             <div class="section-box box-lainnya-center">
                 <div class="section-title"><i class="fa-solid fa-box-archive"></i> LAINNYA</div>
                 
@@ -1160,6 +1160,46 @@
                                     <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
                                 </span>
                             </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK FINAL -->
+                            <a href="https://drive.google.com/file/d/1tbSBIlewFYIsf6wGILBNTwVVuYuCR-8r/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Final</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK SEMIFINAL -->
+                            <a href="https://drive.google.com/file/d/1kUCI7qvIRRR7WK9vUF0F7FSkbmWObWoS/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Semifinal</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BABAK PENYISIHAN -->
+                            <a href="https://drive.google.com/file/d/1bhTOqOR95_Llif0evwpnkc4IVAB3dQta/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Babak Penyisihan</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
+
+                            <!-- VIRTUAL BACKGROUND BIMTEK -->
+                            <a href="https://drive.google.com/file/d/1VS_wVVGrsPV4MCy7Q6DAhu7enD1brLOy/view?usp=sharing" target="_blank" class="dropdown-item-card">
+                                <div class="item-text">
+                                    <strong>Virtual Background Bimtek AMSO 2026</strong>
+                                </div>
+                                <span class="item-btn-tag tag-drive">
+                                    <i class="fa-solid fa-expand"></i> Buka & Unduh <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; margin-left: 2px;"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1189,10 +1229,10 @@
         const isSeleksiOpen = false;      // Dikunci
         const isPenyisihanOpen = false;   // Dikunci
         const isLayoutSemifinalOpen = false; // Dikunci
-        const isSemifinalOpen = false;     // Dikunci
+        const isSemifinalOpen = false;    // Dikunci
         const isFinalOpen = true;         // Terbuka
         const isLayoutFinalSesi1Open = true; // Terbuka
-        const isFinalBAOpen = true;       // Terbuka (Baru di paling bawah)
+        const isFinalBAOpen = true;       // Terbuka
         const isSoalSeleksiOpen = true;   
 
         // Kontrol Tombol Form Tryout
@@ -1307,7 +1347,7 @@
             }
         }
 
-        // Kontrol Tombol Form Berita Acara Final (Baru di paling bawah)
+        // Kontrol Tombol Form Berita Acara Final
         function updateFinalBAButtonState() {
             const linkCard = document.getElementById("linkCardFinalBA");
             const tagBtn = document.getElementById("tagBtnFinalBA");
