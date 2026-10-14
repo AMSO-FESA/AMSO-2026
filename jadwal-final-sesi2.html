@@ -54,6 +54,50 @@
             background-attachment: fixed;
         }
 
+        .audio-float-btn {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(20, 26, 50, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .audio-float-btn:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--neon-blue);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .audio-float-btn.playing {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .audio-float-btn {
+                top: 15px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
+            }
+        }
+
         .space-bg {
             position: fixed;
             top: 0;
@@ -97,7 +141,7 @@
 
         .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
         .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
-        .blob-3 { width: 350px; height: 350px; background: var(--neon-blue); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
 
         @keyframes floatBlob {
             0% { transform: translate(0, 0) scale(1); }
@@ -160,54 +204,144 @@
             width: 100%;
         }
 
-        /* HEADER DARI FILE EKSTERNAL */
-        header { padding: 30px 0 25px; text-align: center; position: relative; }
-        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
-        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
-        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
-        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+        header {
+            padding: 30px 0 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: transparent;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6));
+        }
+
+        .logo-item img {
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
         .logo-item img[alt="Logo Yasarini"] { height: 65px !important; }
         .logo-item img[alt="Logo FESA"] { height: 100px !important; }
         .logo-item img[alt="Logo AMSO"] { height: 100px !important; }
 
-        nav { background: rgba(15, 21, 42, 0.8); border: 1px solid var(--card-border); border-radius: 50px; padding: 8px; backdrop-filter: blur(12px); display: inline-flex; gap: 5px; flex-wrap: wrap; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 30px; max-width: 100%; }
-        nav a { color: var(--text-muted); text-decoration: none; padding: 10px 22px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
-        nav a:hover, nav a.active { color: #fff; background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3)); border: 1px solid rgba(0, 210, 255, 0.5); box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); }
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
 
-        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: rgba(15, 21, 42, 0.95); border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px); z-index: 100; padding: 8px; text-align: left; }
-        .dropdown-content a { color: var(--text-muted); padding: 10px 15px; text-decoration: none; display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease; }
-        .dropdown-content a:hover { background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none; }
-        .dropdown:hover .dropdown-content { display: block; }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        footer { background: rgba(5, 7, 15, 0.95); border-top: 1px solid var(--border); padding: 35px 0 20px; margin-top: auto; }
-        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); max-width: 1150px; margin: 0 auto; }
-        .footer-brand h3 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
-        .footer-brand p { color: var(--muted); font-size: 0.85rem; }
-        .footer-contacts { display: flex; gap: 15px; align-items: center; }
-        .contact-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-main); text-decoration: none; font-size: 1.25rem; transition: all 0.3s ease; }
-        .contact-btn.wa:hover { border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12); box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px); }
-        .contact-btn.ig:hover { border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12); box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px); }
-        .footer-bottom { text-align: center; padding-top: 20px; color: var(--muted); font-size: 0.8rem; }
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
 
-        /* JUDUL UTAMA (2 BARIS, UPPERCASE) */
+        .dropdown {
+            position: relative;
+            display: inline-flex;
+            padding-bottom: 15px; 
+            margin-bottom: -15px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted);
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
             margin-bottom: 25px;
-            text-align: center;
             line-height: 1.3;
-            text-transform: uppercase;
         }
 
         main {
-            padding: 10px 0 60px;
+            padding: 20px 0 60px;
         }
 
         .section-box {
@@ -220,37 +354,23 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
-        /* JUDUL KOTAK TANPA ICON */
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--gold);
-            margin-bottom: 18px;
-            text-align: center;
-        }
-
         .table-container {
             width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(11, 16, 35, 0.6);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             min-width: 750px;
         }
 
         th, td {
             padding: 12px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         
-        /* SEMUA JUDUL KOLOM RATA TENGAH (CENTER) */
         th {
             text-align: center !important;
             background: rgba(0, 210, 255, 0.15);
@@ -266,7 +386,6 @@
             white-space: nowrap;
         }
 
-        /* ISIAN NAMA PESERTA RATA KIRI (LEFT) - LAINNYA CENTER */
         td {
             border: 1px solid rgba(255, 255, 255, 0.08);
             white-space: nowrap;
@@ -287,7 +406,6 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
-        /* TAB STYLE DARI PESERTA.HTML */
         .cat-btn {
             background: rgba(15, 21, 42, 0.8);
             border: 1px solid var(--card-border);
@@ -313,7 +431,6 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
         }
 
-        /* MAPEL TAB STYLES BIRU NEON */
         .final-mapel-tabs .cat-btn-mapel {
             background: rgba(11, 16, 35, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -338,6 +455,75 @@
             border: 1.5px solid var(--neon-blue) !important;
             color: var(--neon-blue) !important;
             box-shadow: 0 0 12px rgba(0, 210, 255, 0.35) !important;
+        }
+
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 35px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -367,10 +553,8 @@
         <div class="floating-icon el-math3">&radic;</div>
     </div>
 
-    <!-- WRAPPER CONTAINER UTAMA -->
     <div class="container">
-        
-        <!-- HEADER MENGGUNAKAN SKRIP EKSTERNAL AGAR SAMA PERSIS DENGAN HALAMAN LAIN -->
+        <!-- PANGGIL HEADER EKSTERNAL -->
         <header id="header-placeholder"></header>
 
         <div style="text-align: center; margin-bottom: 25px;">
@@ -379,9 +563,7 @@
 
         <main>
             <div class="section-box">
-                <!-- JUDUL KOTAK DIHILANGKAN SESUAI PERMINTAAN -->
-                
-                <!-- TOMBOL JENJANG -->
+                <!-- TOMBOL JENJANG (JUDUL KOTAK SUDAH DIHAPUS) -->
                 <div class="final-jenjang-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
                     <button type="button" class="cat-btn active" onclick="switchJenjang('sd', this)">SD / MI</button>
                     <button type="button" class="cat-btn" onclick="switchJenjang('smp', this)">SMP / MTs</button>
@@ -747,11 +929,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </main>
     </div>
 
-    <!-- FOOTER MENGGUNAKAN SKRIP EKSTERNAL AGAR SAMA PERSIS DENGAN HALAMAN LAIN -->
+    <!-- PANGGIL FOOTER EKSTERNAL -->
     <footer id="footer-placeholder"></footer>
 
     <!-- SCRIPT PENGATUR TAB JENJANG DAN MAPEL -->
