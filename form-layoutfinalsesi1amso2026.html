@@ -760,9 +760,7 @@
 </head>
 <body>
 
-    <audio id="bgAudio" loop>
-        <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
-    </audio>
+    <!-- KODE TOMBOL LAGU MANUAL DIHAPUS KARENA SUDAH ADA DI HEADER.JS/GLOBAL-AUDIO.JS -->
 
     <div class="space-bg">
         <div class="stars"></div>
@@ -782,6 +780,7 @@
     </div>
 
     <div class="container">
+        <!-- HEADER MENGGUNAKAN SKRIP EKSTERNAL AGAR SAMA PERSIS DENGAN HALAMAN LAIN -->
         <header id="header-placeholder">
             <div class="logo-group">
                 <div class="logo-item"><img src="yasarini.png" alt="Logo Yasarini" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/yasarini.png';"></div>
@@ -1084,7 +1083,8 @@
             }, 350);
 
             const formData = new URLSearchParams();
-            formData.append("formType", "LAYOUT_FINAL_SESI1");
+            // INI YANG DIUBAH AGAR SESUAI DENGAN GS YANG BARU
+            formData.append("formType", "LAYOUT_FINAL_SESI1"); 
             formData.append("schoolName", school);
             formData.append("fileLayoutName", fileLayoutData.name);
             formData.append("fileLayoutMime", fileLayoutData.mime);
@@ -1135,5 +1135,6 @@
     </script>
 
     <script src="global-audio.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>
