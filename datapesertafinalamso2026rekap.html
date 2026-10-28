@@ -14,19 +14,25 @@
 
     <style>
         :root {
-            --bg-dark: #070913; --text: #f8fafc; --muted: #94a3b8; 
-            --gold: #ffd700; --neon-blue: #00d2ff; --neon-purple: #9d4edd;
-            --card-bg: rgba(20, 26, 50, 0.65); --card-border: rgba(0, 210, 255, 0.2);
+            --bg-dark: #070913;
+            --card-bg: rgba(20, 26, 50, 0.65);
+            --card-border: rgba(0, 210, 255, 0.2);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --gold: #ffd700;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.1);
+            --muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; height: 100%; }
+        html { scroll-behavior: smooth; overflow-y: scroll; height: 100%; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text);
+            color: var(--text-main);
             overflow-x: hidden;
             position: relative;
             min-height: 100%;
@@ -38,17 +44,17 @@
             background-attachment: fixed;
         }
 
-        /* 1. TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS */
+        /* ─── TOMBOL AUDIO KECIL & TRANSPARAN DI POJOK KANAN ATAS (Bawaan CSS Global) ─── */
         .audio-float-btn {
-            position: fixed;
+            position: absolute;
             top: 25px;
             right: 20px;
-            z-index: 9999;
+            z-index: 50;
             background: rgba(20, 26, 50, 0.35);
             border: 1px solid rgba(0, 210, 255, 0.3);
             color: var(--muted);
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -56,7 +62,7 @@
             cursor: pointer;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .audio-float-btn:hover {
@@ -77,42 +83,144 @@
             .audio-float-btn {
                 top: 15px;
                 right: 12px;
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
+                width: 30px;
+                height: 30px;
+                font-size: 0.72rem;
             }
         }
 
-        /* SPACE BACKGROUND & BLOBS */
-        .space-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%); }
-        .stars { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)), radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)), radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0)); background-repeat: repeat; background-size: 250px 250px; opacity: 0.45; animation: twinkle 4s infinite alternate; }
+        /* SPACE & FLOATING ICONS */
+        .space-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%);
+        }
+
+        .stars {
+            position: absolute; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0));
+            background-repeat: repeat; background-size: 250px 250px;
+            opacity: 0.45; animation: twinkle 4s infinite alternate;
+        }
+
         @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
-        
+
         .galaxy-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: floatBlob 15s infinite alternate ease-in-out; }
         .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
         .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
         .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
-        @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.15); } }
 
-        /* FLOATING ICONS */
-        .floating-icon { position: absolute; opacity: 0.55; user-select: none; filter: drop-shadow(0 0 12px currentColor); z-index: 0; }
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.15); }
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.55;
+            user-select: none;
+            filter: drop-shadow(0 0 12px currentColor);
+            z-index: 0;
+        }
+
         .el-astronaut { top: 18%; left: 5%; font-size: 2.8rem; color: var(--gold); animation: floatItem1 9s infinite alternate ease-in-out; }
         .el-atom { top: 38%; left: 6%; font-size: 2.4rem; color: var(--neon-blue); animation: rotateAtom 14s infinite linear; }
         .el-dna { top: 58%; left: 4%; font-size: 2.2rem; color: #00f0ff; animation: floatItem2 11s infinite alternate ease-in-out; }
         .el-math-pi { top: 78%; left: 7%; font-size: 2.3rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem1 8s infinite alternate ease-in-out; font-weight: 900; }
+
         .el-rocket { top: 15%; right: 6%; font-size: 3rem; color: var(--neon-blue); animation: flyRocket 13s infinite ease-in-out; }
         .el-microscope { top: 36%; right: 5%; font-size: 2.3rem; color: var(--neon-purple); animation: floatItem2 10s infinite alternate ease-in-out; }
         .el-planet { top: 56%; right: 7%; font-size: 2.6rem; color: var(--gold); animation: rotatePlanet 18s infinite linear; }
         .el-math-sigma { top: 76%; right: 6%; font-size: 2.4rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 900; }
-        @keyframes flyRocket { 0% { transform: translate(0, 0) rotate(45deg); } 50% { transform: translate(-30px, 45px) rotate(40deg); } 100% { transform: translate(0, 0) rotate(45deg); } }
+
+        .el-satellite { top: 6%; left: 35%; font-size: 2rem; color: var(--text-muted); animation: flySatellite 20s infinite linear; }
+        .el-flask { bottom: 8%; left: 18%; font-size: 2.1rem; color: #ff007f; animation: floatItem2 9s infinite alternate ease-in-out; }
+        .el-math-root { bottom: 10%; right: 20%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem1 7s infinite alternate ease-in-out; font-weight: 900; }
+
+        @keyframes flyRocket {
+            0% { transform: translate(0, 0) rotate(45deg); }
+            50% { transform: translate(-30px, 45px) rotate(40deg); }
+            100% { transform: translate(0, 0) rotate(45deg); }
+        }
         @keyframes floatItem1 { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-40px) rotate(15deg); } }
         @keyframes floatItem2 { 0% { transform: translateY(0) rotate(10deg); } 100% { transform: translateY(35px) rotate(-15deg); } }
         @keyframes rotateAtom { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
         @keyframes rotatePlanet { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes flySatellite { 0% { transform: translateX(-40vw) translateY(0) rotate(0deg); } 100% { transform: translateX(100vw) translateY(-25px) rotate(360deg); } }
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* 5. JUDUL BESAR */
+        /* HEADER & LOGO RESMI (Persis Sesuai CSS Halaman Referensi) */
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+        .logo-item img[alt="Logo Yasarini"], .logo-item img[src="yasarini.png"] { height: 65px !important; }
+        .logo-item img[alt="Logo FESA"], .logo-item img[src="fesa.png"] { height: 100px !important; }
+        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
+
+        nav {
+            background: rgba(15, 21, 42, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 8px;
+            backdrop-filter: blur(12px);
+            display: inline-flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 78, 221, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .dropdown { position: relative; display: inline-flex; padding-bottom: 15px; margin-bottom: -15px; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); background: rgba(15, 21, 42, 0.95);
+            border: 1px solid var(--card-border); border-radius: 15px; min-width: 190px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            z-index: 100; padding: 8px; text-align: left;
+        }
+
+        .dropdown-content a {
+            color: var(--text-muted); padding: 10px 15px; text-decoration: none;
+            display: block; border-radius: 10px; font-size: 0.85rem; white-space: nowrap; transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover, .dropdown-content a.active {
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border: none; box-shadow: none; transform: none;
+        }
+
+        .dropdown:hover .dropdown-content { display: block; }
+        
         .main-title {
             font-family: 'Orbitron', sans-serif; 
             font-size: clamp(1.8rem, 4.5vw, 3.5rem);
@@ -121,13 +229,17 @@
             background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-shadow: 0 0 35px rgba(0, 210, 255, 0.3); 
-            margin: 10px 0 35px;
-            text-align: center;
+            margin-bottom: 30px;
+            word-break: break-word;
         }
 
-        main { flex: 1 0 auto; padding: 10px 0 60px; width: 100%; }
+        main { 
+            flex: 1 0 auto; 
+            padding: 10px 0 40px; 
+            width: 100%;
+        }
 
-        /* TAB JENJANG */
+        /* ─── TAB JENJANG & TABEL KHUSUS DAFTAR PESERTA ─── */
         .tabs-wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 30px; width: 100%; }
         .jenjang-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; }
         
@@ -142,41 +254,35 @@
             border-color: transparent; box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
-        /* 3. JARAK TABEL DENGAN MEMAKAI WRAPPER KHUSUS */
         .table-wrapper {
             max-width: 850px;
-            margin: 0 auto 60px auto; /* Margin bawah 60px supaya tidak menempel dengan Footer / elemen lain */
+            margin: 0 auto 60px auto; 
         }
 
-        /* 4. TABEL MOBILE ACCESSIBILITY (TIDAK TERPOTONG) */
         .table-container {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            overflow-x: auto; /* Memunculkan scroll horizontal otomatis di HP */
-            -webkit-overflow-scrolling: touch; /* Membuat scroll mulus di layar sentuh */
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch; 
             backdrop-filter: blur(12px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             width: 100%;
         }
 
-        /* Desain Scrollbar Elegan */
         .table-container::-webkit-scrollbar { height: 8px; }
         .table-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
         .table-container::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
 
         table {
             width: 100%;
-            min-width: 650px; /* Batas minimal lebar agar teks di dalam tidak tergencet/terpotong */
+            min-width: 650px; 
             border-collapse: collapse;
             font-size: 0.95rem;
         }
 
-        thead {
-            background: rgba(0, 210, 255, 0.12);
-            border-bottom: 1px solid var(--card-border);
-        }
-
+        thead { background: rgba(0, 210, 255, 0.12); border-bottom: 1px solid var(--card-border); }
+        
         th {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue) !important;
@@ -188,18 +294,13 @@
             white-space: nowrap;
         }
 
-        td {
-            padding: 14px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #f8fafc;
-            font-weight: 700;
-        }
-
+        td { padding: 14px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #f8fafc; font-weight: 700; }
         tbody tr { transition: background 0.2s ease; }
         tbody tr:hover { background: rgba(0, 210, 255, 0.08); }
         tbody tr:last-child td { border-bottom: none; }
 
-        .col-no { width: 70px; text-align: center; font-weight: 800; color: var(--gold); }
+        /* KEMBALI KE WARNA MUTED SEPERTI AWAL UNTUK NOMOR (TIDAK KUNING) */
+        .col-no { width: 70px; text-align: center; font-weight: 800; color: #cbd5e1; }
         .col-nama { text-align: center; font-weight: 700; color: #fff; white-space: nowrap; }
         .col-sekolah { width: 280px; text-align: center; font-weight: 700; color: #cbd5e1; white-space: nowrap; }
 
@@ -207,17 +308,85 @@
         .jenjang-section.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* FOOTER MODULAR MASTER (Persis Sesuai CSS Halaman Referensi) */
+        footer {
+            background: rgba(5, 7, 15, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 35px 0 20px;
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.wa:hover {
+            border-color: #25D366; color: #25D366; background: rgba(37, 211, 102, 0.12);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transform: translateY(-3px);
+        }
+
+        .contact-btn.ig:hover {
+            border-color: #E1306C; color: #E1306C; background: rgba(225, 48, 108, 0.12);
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 1. ELEMEN AUDIO & TOMBOL -->
+    <!-- ELEMEN AUDIO HANYA MENYEDIAKAN TAG INI SESUAI FILE REFERENSI -->
     <audio id="bgAudio" loop>
         <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
     </audio>
-    <button id="audioControl" class="audio-float-btn" title="Nyalakan Musik">
-        <i class="fa-solid fa-music"></i>
-    </button>
 
     <!-- SPACE ANIMATION BG -->
     <div class="space-bg">
@@ -235,17 +404,22 @@
         <div class="floating-icon el-microscope" title="Sains & Eksperimen"><i class="fa-solid fa-microscope"></i></div>
         <div class="floating-icon el-planet" title="Planet Orbit"><i class="fa-solid fa-earth-americas"></i></div>
         <div class="floating-icon el-math-sigma" title="Sigma">&sum;</div>
+
+        <div class="floating-icon el-satellite" title="Satelit Orbit"><i class="fa-solid fa-satellite"></i></div>
+        <div class="floating-icon el-flask" title="Laboratorium Kimia"><i class="fa-solid fa-flask-vial"></i></div>
+        <div class="floating-icon el-math-root" title="Akar Kuadrat">&radic;</div>
     </div>
 
     <div class="container">
-        <!-- 2. HEADER OTOMATIS GLOBAL -->
+        <!-- HEADER OTOMATIS -->
         <header id="header-placeholder"></header>
+        
+        <div style="text-align: center;">
+            <h1 class="main-title">DAFTAR PESERTA BABAK FINAL AMSO 2026</h1>
+        </div>
     </div>
 
     <main class="container">
-        <!-- 5. JUDUL BESAR -->
-        <h1 class="main-title">DAFTAR PESERTA BABAK FINAL AMSO 2026</h1>
-
         <!-- TAB NAVIGASI JENJANG -->
         <div class="tabs-wrapper">
             <div class="jenjang-tabs">
@@ -255,12 +429,11 @@
             </div>
         </div>
 
-        <!-- 3. PEMBUNGKUS TABEL UNTUK MEMBERIKAN JARAK ATAS & BAWAH -->
+        <!-- PEMBUNGKUS TABEL UNTUK MEMBERIKAN JARAK -->
         <div class="table-wrapper">
 
-            <!-- TABEL SD / MI -->
+            <!-- 1. TABEL SD / MI -->
             <div id="section-sd" class="jenjang-section active">
-                <!-- 4. CONTAINER OVERFLOW UNTUK SCROLL HP -->
                 <div class="table-container">
                     <table>
                         <thead>
@@ -307,7 +480,7 @@
                 </div>
             </div>
 
-            <!-- TABEL SMP / MTs -->
+            <!-- 2. TABEL SMP / MTs -->
             <div id="section-smp" class="jenjang-section">
                 <div class="table-container">
                     <table>
@@ -352,7 +525,7 @@
                 </div>
             </div>
 
-            <!-- TABEL SMA (Data Terbaru) -->
+            <!-- 3. TABEL SMA -->
             <div id="section-sma" class="jenjang-section">
                 <div class="table-container">
                     <table>
@@ -421,8 +594,8 @@
         </div>
     </main>
 
-    <!-- 2. FOOTER OTOMATIS GLOBAL -->
-    <div id="footer-placeholder"></div>
+    <!-- FOOTER OTOMATIS -->
+    <footer id="footer-placeholder"></footer>
 
     <!-- SCRIPT JS UNTUK SWITCH TAB -->
     <script>
@@ -441,7 +614,7 @@
         }
     </script>
 
-    <!-- PANGGIL SCRIPT GLOBAL (FOOTER/HEADER & AUDIO) -->
+    <!-- PANGGIL SCRIPT GLOBAL (AUDIO DAN HEADER OTOMATIS) -->
     <script src="header.js"></script>
     <script src="global-audio.js"></script>
 
