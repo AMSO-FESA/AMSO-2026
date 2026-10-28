@@ -125,19 +125,21 @@
         .title-bronze { color: var(--bronze); background: rgba(205, 127, 50, 0.1); border: 1px solid rgba(205, 127, 50, 0.3); }
         .title-finalist { color: var(--neon-blue); background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.3); }
 
-        /* ─── GRID CARD JUARA AGAR SAMA RATA TINGGINYA ─── */
+        /* ─── GRID CARD JUARA AGAR SAMA RATA TINGGINYA & HIERARKI UKURAN ─── */
         .cards-grid { 
             display: grid; 
-            gap: 20px; 
+            gap: 25px; 
             justify-content: center; 
-            align-items: stretch; /* Memaksa kotak sejajar memiliki tinggi sama */
+            /* align-items stretch menjamin semua tinggi kartu dalam baris yang sama otomatis sama persis */
+            align-items: stretch; 
             padding: 50px 10px 30px; 
             margin: -30px auto 0; 
         }
-        /* Penyesuaian Lebar per Kategori */
-        .grid-gold { grid-template-columns: repeat(1, minmax(280px, 350px)); }
-        .grid-silver { grid-template-columns: repeat(auto-fit, minmax(250px, 320px)); max-width: 750px; }
-        .grid-bronze { grid-template-columns: repeat(auto-fit, minmax(220px, 280px)); max-width: 650px; }
+        
+        /* Lebar Grid Berdasarkan Kategori (Gold > Silver > Bronze) */
+        .grid-gold { grid-template-columns: minmax(320px, 360px); }
+        .grid-silver { grid-template-columns: repeat(2, minmax(260px, 300px)); max-width: 750px; }
+        .grid-bronze { grid-template-columns: repeat(2, minmax(220px, 250px)); max-width: 650px; }
         
         /* ─── FINALIS: 1 BARIS (ANTI-TURUN) DENGAN SCROLL ─── */
         .finalist-row {
@@ -150,10 +152,14 @@
             overflow-y: hidden;
             /* Padding atas sangat besar untuk mencegah avatar membesar terpotong oleh overflow area scroll */
             padding: 90px 15px 40px; 
-            margin-top: -70px; 
+            margin-top: -70px; /* Kompensasi visual jarak karena padding besar */
             margin-bottom: -15px;
         }
-        .finalist-row::before, .finalist-row::after { content: ''; margin: 0 auto; }
+        /* Menengahkan card secara aman pada display flex nowrap */
+        .finalist-row::before, .finalist-row::after { 
+            content: ''; 
+            margin: 0 auto; 
+        }
         
         /* Scrollbar kustom Finalis */
         .finalist-row::-webkit-scrollbar { height: 8px; }
@@ -162,24 +168,24 @@
 
         .finalist-row .participant-card {
             flex: 0 0 190px; /* Lebar lebih kompak untuk finalis */
-            padding: 20px 10px 15px;
+            align-self: stretch; /* FIX BUG WEB-KIT: Memaksa tinggi kotak mengikuti tetangganya */
         }
 
-        /* ─── DESAIN KOTAK / CARD PENGUMUMAN (HIERARKI UKURAN) ─── */
+        /* ─── DESAIN KOTAK / CARD PENGUMUMAN ─── */
         .participant-card { 
             background: var(--card-bg); 
             border: 1px solid var(--card-border); 
             border-radius: 16px; 
             display: flex; 
-            flex-direction: column; 
+            flex-direction: column; /* Menyusun ke bawah */
             align-items: center; 
             text-align: center; 
             position: relative; 
             box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
             backdrop-filter: blur(10px); 
             z-index: 1; 
-            transition: border-color 0.3s ease, box-shadow 0.3s ease; 
-            height: 100%; /* INI KUNCI SAMA TINGGI KOTAK! */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            height: auto; /* FIX BUG: Harus auto agar align-items: stretch bekerja dengan benar! */
         }
         
         .participant-card:hover { 
@@ -188,12 +194,13 @@
             z-index: 50; 
         }
         
-        /* TINGKATAN PADDING KOTAK */
+        /* Hierarki Padding Kotak */
         .card-gold { padding: 35px 25px 25px; border-color: rgba(255, 215, 0, 0.5); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
         .card-silver { padding: 25px 15px 20px; border-color: rgba(192, 192, 192, 0.4); }
         .card-bronze { padding: 20px 12px 15px; border-color: rgba(205, 127, 50, 0.4); }
+        .finalist-row .participant-card { padding: 20px 10px 15px; }
 
-        /* ─── EFEK ZOOM FOTO UTUH & HIERARKI UKURAN AVATAR ─── */
+        /* ─── EFEK ZOOM FOTO UTUH (UKURAN ASLI TANPA CROP) ─── */
         .avatar-box { 
             border-radius: 50%; 
             border: 2px solid var(--card-border); 
@@ -205,54 +212,56 @@
             cursor: pointer;
         }
 
-        /* TINGKATAN UKURAN LINGKARAN FOTO AWAL */
+        /* Hierarki Ukuran Lingkaran Avatar */
         .card-gold .avatar-box { width: 110px; height: 110px; border-color: var(--gold); box-shadow: 0 0 12px rgba(255, 215, 0, 0.4); }
         .card-silver .avatar-box { width: 90px; height: 90px; border-color: var(--silver); }
         .card-bronze .avatar-box { width: 75px; height: 75px; border-color: var(--bronze); }
         .finalist-row .avatar-box { width: 65px; height: 65px; border-color: var(--neon-blue); margin-bottom: 12px; }
 
+        /* Foto Normal (Bentuk Lingkaran) */
         .avatar-box img { 
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 100%; height: 100%; 
-            object-fit: cover; 
+            object-fit: cover; /* default dipotong bulat */
             border-radius: 50%; 
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 2;
         }
         .avatar-box i { font-size: 1.8rem; color: var(--muted); position: relative; z-index: 2; }
 
-        /* EFEK ZOOM HOVER TANPA POTONG KEPALA/BAWAH FOTO! */
+        /* Saat kursor disorot - Lepaskan batas, tampilkan utuh! */
         .avatar-box:hover {
             z-index: 999;
             border-color: transparent;
             background: transparent;
         }
         .avatar-box:hover img {
-            width: 180px; 
-            height: auto; /* Biarkan tinggi mengikuti proporsi asli foto */
+            width: 180px; /* Lebar dibesarkan jadi besar */
+            height: auto; /* KUNCI: Biarkan tinggi foto mengikuti proporsi asli, anti terpotong! */
             max-height: 250px; 
-            object-fit: contain; 
-            border-radius: 12px; 
+            object-fit: contain; /* Tampilkan 100% dimensi asli foto */
+            border-radius: 12px; /* Kembalikan pinggiran agak membulat tapi kotak */
             border: 3px solid var(--neon-blue);
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            background: var(--bg-dark); 
+            background: var(--bg-dark); /* background frame jika transparan */
         }
         
         .card-gold .avatar-box:hover img { border-color: var(--gold); width: 220px; }
         .card-silver .avatar-box:hover img { border-color: var(--silver); width: 200px; }
         .card-bronze .avatar-box:hover img { border-color: var(--bronze); width: 180px; }
+        .finalist-row .avatar-box:hover img { width: 160px; }
 
         /* ─── TINGKATAN UKURAN TEKS NAMA ─── */
         .participant-name { 
             font-family: 'Orbitron', sans-serif; font-weight: 700; color: #fff; line-height: 1.35; 
-            flex-grow: 1; /* Mengisi ruang sisa agar nama sekolah otomatis berada di bawah */
+            flex-grow: 1; /* Mengisi ruang sisa agar nama sekolah otomatis rata di bawah */
             display: flex; align-items: center; justify-content: center; 
         }
-        .card-gold .participant-name { font-size: 1.1rem; margin-bottom: 20px; }
-        .card-silver .participant-name { font-size: 0.95rem; margin-bottom: 15px; }
-        .card-bronze .participant-name { font-size: 0.85rem; margin-bottom: 12px; }
+        .card-gold .participant-name { font-size: 1.15rem; margin-bottom: 20px; }
+        .card-silver .participant-name { font-size: 1rem; margin-bottom: 15px; }
+        .card-bronze .participant-name { font-size: 0.9rem; margin-bottom: 12px; }
         .finalist-row .participant-name { font-size: 0.8rem; margin-bottom: 10px; }
 
         /* ─── TINGKATAN UKURAN TEKS SEKOLAH ─── */
@@ -264,6 +273,10 @@
         .card-silver .participant-school { font-size: 0.75rem; padding: 4px 10px; }
         .card-bronze .participant-school { font-size: 0.7rem; padding: 3px 8px; }
         .finalist-row .participant-school { font-size: 0.65rem; padding: 3px 8px; }
+
+        @media (max-width: 650px) { 
+            .grid-silver, .grid-bronze { grid-template-columns: minmax(220px, 1fr); } 
+        }
 
         .mapel-section-content { display: none; }
         .mapel-section-content.active { display: block; animation: fadeIn 0.4s ease; }
@@ -284,7 +297,7 @@
 
 <body>
 
-<!-- HANYA TAG AUDIO (Tombol otomatis dari global-audio.js) -->
+<!-- HANYA TAG AUDIO (Tombol akan otomatis digenerate dari global-audio.js) -->
 <audio id="bgAudio" loop>
     <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
 </audio>
@@ -405,7 +418,7 @@
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/jihan_qurrata_ain_putri_setiawan-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JIHAN QURRATA AIN PUTRI SETIAWAN</h3><p class="participant-school">SD HLM 9</p></div>
                 </div></div>
                 <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row">
-                    <div class="participant-card"><div class="avatar-box"><img src="foto/i_komang_raka_perwira_putra_adnyana-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">I KOMANG RAKA PERWIRA P A</h3><p class="participant-school">SD HLM 9</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/i_komang_raka_perwira_putra_adnyana-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">I KOMANG RAKA PERWIRA PUTRA A</h3><p class="participant-school">SD HLM 9</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/almeera_zahrah_khaerunnisa-sd_hnd_1.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALMEERA ZAHRAH KHAERUNNISA</h3><p class="participant-school">SD HND 1</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/adheesa_khalfani_zafran-sd_hsn_1.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ADHEESA KHALFANI ZAFRAN</h3><p class="participant-school">SD HSN 1</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/ken_arsyada_wardoyo-sd_muh_sokonandi_yogyakarta.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KEN ARSYADA WARDOYO</h3><p class="participant-school">SD MUH SOKONANDI YOGYAKARTA</p></div>
@@ -474,7 +487,7 @@
                 </div></div>
             </div>
 
-            <!-- ================= SMP - IPS ================= -->
+            <!-- ================= SMP - IPS (HANYA 2 FINALIS) ================= -->
             <div id="smp-ips" class="mapel-section-content">
                 <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-gold"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sandina_bakara-smp_swo.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SANDINA BAKARA</h3><p class="participant-school">SMP SWO</p></div></div></div>
                 <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-silver">
@@ -485,7 +498,7 @@
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/yezha_janeeta_revas-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YEZHA JANEETA REVAS</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/umar_aydan_abhista-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">UMAR AYDAN ABHISTA</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                 </div></div>
-                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row">
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row" style="max-width: 500px; margin: 0 auto;">
                     <div class="participant-card"><div class="avatar-box"><img src="foto/muhammad_hamzah_abdussalam-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD HAMZAH ABDUSSALAM</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/wafiq_qays_mazaya-smpn_9_bandung.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WAFIQ QAYS MAZAYA</h3><p class="participant-school">SMPN 9 BANDUNG</p></div>
                 </div></div>
