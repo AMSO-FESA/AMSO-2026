@@ -62,6 +62,30 @@
         .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
         @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.15); } }
 
+        /* ================= MEDALI RAKSASA BACKGROUND ================= */
+        .bg-medal-wrapper {
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            opacity: 0.1; /* Transparan watermark agar tidak nabrak teks */
+            pointer-events: none; /* Agar tidak menghalangi klik pada card */
+        }
+        .big-medal {
+            font-size: clamp(15rem, 45vw, 40rem);
+            color: var(--gold);
+            filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.4));
+            animation: medalFloatBg 4s infinite alternate ease-in-out;
+        }
+        @keyframes medalFloatBg {
+            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2)); }
+            100% { transform: translateY(-30px) scale(1.05); filter: drop-shadow(0 0 70px rgba(255, 215, 0, 0.6)); }
+        }
+
         /* FLOATING ICONS */
         .floating-icon { position: absolute; opacity: 0.55; user-select: none; filter: drop-shadow(0 0 12px currentColor); z-index: 0; }
         .el-astronaut1 { top: 18%; left: 5%; font-size: 2.8rem; color: var(--gold); animation: floatItem1 9s infinite alternate ease-in-out; }
@@ -130,7 +154,8 @@
             display: grid; 
             gap: 25px; 
             justify-content: center; 
-            align-items: stretch; /* Memaksa kotak sejajar memiliki tinggi sama */
+            /* align-items stretch menjamin semua tinggi kartu dalam baris yang sama otomatis sama persis */
+            align-items: stretch; 
             padding: 50px 10px 30px; 
             margin: -30px auto 0; 
         }
@@ -302,7 +327,13 @@
     <div class="galaxy-blob blob-1"></div>
     <div class="galaxy-blob blob-2"></div>
     <div class="galaxy-blob blob-3"></div>
+    
+    <!-- MEDALI BACKGROUND -->
+    <div class="bg-medal-wrapper">
+        <i class="fa-solid fa-medal big-medal"></i>
+    </div>
 
+    <!-- FLOATING ICONS -->
     <div class="floating-icon el-astronaut1" title="Astronot"><i class="fa-solid fa-user-astronaut"></i></div>
     <div class="floating-icon el-atom" title="Atom"><i class="fa-solid fa-atom"></i></div>
     <div class="floating-icon el-math-pi" title="Pi">&pi;</div>
@@ -413,7 +444,7 @@
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/jihan_qurrata_ain_putri_setiawan-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JIHAN QURRATA AIN PUTRI SETIAWAN</h3><p class="participant-school">SD HLM 9</p></div>
                 </div></div>
                 <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row">
-                    <div class="participant-card"><div class="avatar-box"><img src="foto/i_komang_raka_perwira_putra_adnyana-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">I KOMANG RAKA PERWIRA PUTRA A</h3><p class="participant-school">SD HLM 9</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/i_komang_raka_perwira_putra_adnyana-sd_hlm_9.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">I KOMANG RAKA PERWIRA P A</h3><p class="participant-school">SD HLM 9</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/almeera_zahrah_khaerunnisa-sd_hnd_1.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALMEERA ZAHRAH KHAERUNNISA</h3><p class="participant-school">SD HND 1</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/adheesa_khalfani_zafran-sd_hsn_1.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ADHEESA KHALFANI ZAFRAN</h3><p class="participant-school">SD HSN 1</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/ken_arsyada_wardoyo-sd_muh_sokonandi_yogyakarta.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KEN ARSYADA WARDOYO</h3><p class="participant-school">SD MUH SOKONANDI YOGYAKARTA</p></div>
@@ -493,7 +524,7 @@
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/yezha_janeeta_revas-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YEZHA JANEETA REVAS</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/umar_aydan_abhista-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">UMAR AYDAN ABHISTA</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                 </div></div>
-                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row">
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row" style="max-width: 500px; margin: 0 auto;">
                     <div class="participant-card"><div class="avatar-box"><img src="foto/muhammad_hamzah_abdussalam-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD HAMZAH ABDUSSALAM</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/wafiq_qays_mazaya-smpn_9_bandung.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WAFIQ QAYS MAZAYA</h3><p class="participant-school">SMPN 9 BANDUNG</p></div>
                 </div></div>
