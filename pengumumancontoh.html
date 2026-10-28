@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman - AMSO 2026</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --blue: #8b5cf6; --blue2: #3b82f6; --navy: #0f172a; 
+            --gold: #ffd700; --silver: #c0c0c0; --bronze: #cd7f32;
+            --bg-dark: #070913; --text: #f8fafc; --muted: #94a3b8; 
+            --neon-blue: #00d2ff; --neon-purple: #9d4edd;
+            --card-bg: rgba(20, 26, 50, 0.85); --card-border: rgba(0, 210, 255, 0.25);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        html { scroll-behavior: smooth; overflow-y: scroll; }
+        body {
+            font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text);
+            overflow-x: hidden; position: relative; min-height: 100vh; display: flex; flex-direction: column;
+            background-image: radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .space-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%); }
+        .stars { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)), radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)), radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0)); background-repeat: repeat; background-size: 250px 250px; opacity: 0.45; animation: twinkle 4s infinite alternate; }
+        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+        .galaxy-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: floatBlob 15s infinite alternate ease-in-out; }
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
+        @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.15); } }
+
+        .floating-icon { position: absolute; color: var(--neon-blue); opacity: 0.55; user-select: none; filter: drop-shadow(0 0 12px currentColor); }
+        .el-rocket { top: 25%; left: 6%; font-size: 2.5rem; color: var(--neon-blue); animation: flyRocket 15s infinite ease-in-out; }
+        .el-astronaut1 { top: 65%; right: 5%; font-size: 2.3rem; color: var(--gold); animation: floatItem1 12s infinite alternate ease-in-out; }
+        .el-astronaut2 { bottom: 10%; left: 10%; font-size: 2rem; color: var(--neon-purple); animation: floatItem2 10s infinite alternate ease-in-out; opacity: 0.4; }
+        .el-atom { top: 40%; right: 12%; font-size: 2.2rem; color: var(--gold); animation: rotateAtom 12s infinite linear; }
+        .el-flask { top: 15%; left: 12%; font-size: 2.3rem; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; }
+        .el-magnet { bottom: 20%; left: 8%; font-size: 2.2rem; color: #ff4757; animation: floatItem2 11s infinite alternate ease-in-out; }
+        .el-math1 { top: 30%; left: 20%; font-size: 2rem; font-family: 'Orbitron', sans-serif; color: var(--gold); animation: floatItem2 7s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math2 { bottom: 30%; right: 25%; font-size: 2.2rem; font-family: 'Orbitron', sans-serif; color: var(--neon-blue); animation: floatItem1 9s infinite alternate ease-in-out; font-weight: 800; }
+        .el-math3 { top: 55%; left: 5%; font-size: 1.8rem; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); animation: floatItem2 8s infinite alternate ease-in-out; font-weight: 800; }
+        @keyframes flyRocket { 0% { transform: translate(0, 0) rotate(25deg); } 50% { transform: translate(40px, -50px) rotate(30deg); } 100% { transform: translate(0, 0) rotate(25deg); } }
+        @keyframes floatItem1 { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-40px) rotate(15deg); } }
+        @keyframes floatItem2 { 0% { transform: translateY(0) rotate(10deg); } 100% { transform: translateY(35px) rotate(-15deg); } }
+        @keyframes rotateAtom { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
+
+        .container { max-width: 1250px; margin: auto; padding: 0 20px 80px; position: relative; z-index: 1; width: 100%; }
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+        
+        .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
+        .logo-item { display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+        .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
+        .logo-item img { width: auto; object-fit: contain; }
+        .logo-item img[alt*="Yasarini"], .logo-item img[src*="yasarini"] { height: 65px !important; }
+        .logo-item img[alt*="FESA"], .logo-item img[src*="fesa"] { height: 100px !important; }
+        .logo-item img[alt*="AMSO"], .logo-item img[src*="amso"] { height: 100px !important; }
+
+        .main-title { font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: 2px; background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 35px rgba(0, 210, 255, 0.3); margin-bottom: 15px; text-align: center; }
+
+        /* ================= TABS ================= */
+        .tabs-wrapper { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 35px; width: 100%; }
+        .jenjang-tabs, .mapel-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; }
+        
+        .cat-btn { background: rgba(15, 21, 42, 0.85); border: 1px solid var(--card-border); color: var(--text-muted); padding: 9px 20px; border-radius: 30px; font-family: 'Orbitron', sans-serif; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px; }
+        .cat-btn:hover { color: #fff; border-color: var(--neon-blue); }
+        .cat-btn.active { background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); color: #fff; border-color: transparent; box-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
+
+        .cat-btn-mapel { background: rgba(11, 16, 35, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; border-radius: 10px; padding: 7px 16px; font-size: 0.78rem; font-weight: 700; font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px; cursor: pointer; transition: all 0.25s ease; white-space: nowrap; }
+        .cat-btn-mapel:hover { border-color: rgba(0, 210, 255, 0.6); color: var(--neon-blue); }
+        .cat-btn-mapel.active { background: rgba(15, 23, 42, 0.95) !important; border: 1.5px solid var(--neon-blue) !important; color: var(--neon-blue) !important; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4) !important; }
+
+        /* ================= KONTEN JUARA ================= */
+        .podium-section { margin-bottom: 40px; text-align: center; }
+        .podium-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; border-radius: 30px; letter-spacing: 1px; }
+        .title-gold { color: var(--gold); background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); }
+        .title-silver { color: var(--silver); background: rgba(192, 192, 192, 0.1); border: 1px solid rgba(192, 192, 192, 0.3); }
+        .title-bronze { color: var(--bronze); background: rgba(205, 127, 50, 0.1); border: 1px solid rgba(205, 127, 50, 0.3); }
+        .title-finalist { color: var(--neon-blue); background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.3); }
+
+        .cards-grid { display: grid; gap: 20px; justify-content: center; }
+        .grid-1 { grid-template-columns: repeat(1, minmax(240px, 320px)); }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); }
+        
+        .grid-2-inline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; width: 100%; max-width: 600px; margin: 0 auto; }
+        .grid-5-inline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 15px; width: 100%; }
+        .grid-6-inline { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; width: 100%; }
+
+        @media (max-width: 992px) { 
+            .grid-5-inline, .grid-6-inline { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
+        }
+        @media (max-width: 650px) { 
+            .grid-5-inline, .grid-6-inline, .grid-2-inline { grid-template-columns: repeat(1, minmax(0, 1fr)); } 
+        }
+
+        .participant-card { background: rgba(15, 21, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 20px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: all 0.3s ease; position: relative; box-shadow: 0 8px 25px rgba(0,0,0,0.4); height: 100%; backdrop-filter: blur(10px); }
+        .participant-card:hover { transform: translateY(-5px); border-color: var(--neon-blue); box-shadow: 0 0 25px rgba(0, 210, 255, 0.3); }
+        .card-gold { border-color: rgba(255, 215, 0, 0.5); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        .card-silver { border-color: rgba(192, 192, 192, 0.4); }
+        .card-bronze { border-color: rgba(205, 127, 50, 0.4); }
+
+        .avatar-box { width: 75px; height: 75px; border-radius: 50%; overflow: hidden; border: 2px solid var(--card-border); margin-bottom: 12px; background: #1e293b; display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
+        .card-gold .avatar-box { width: 90px; height: 90px; border-color: var(--gold); box-shadow: 0 0 12px rgba(255, 215, 0, 0.4); }
+        .card-silver .avatar-box { border-color: var(--silver); }
+        .card-bronze .avatar-box { border-color: var(--bronze); }
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar-box i { font-size: 1.8rem; color: var(--muted); }
+
+        .participant-name { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+        .participant-school { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+
+        .mapel-section-content { display: none; }
+        .mapel-section-content.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { background: rgba(5, 7, 15, 0.95); border-top: 1px solid var(--border); padding: 35px 0 20px; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); max-width: 1150px; margin: 0 auto; }
+        .footer-brand h3 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+        .footer-brand p { color: var(--muted); font-size: 0.85rem; }
+    </style>
+</head>
+
+<body>
+
+<!-- DIKENDALIKAN OLEH global-audio.js -->
+<audio id="bgAudio" loop>
+    <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
+</audio>
+
+<div class="space-bg">
+    <div class="stars"></div>
+    <div class="galaxy-blob blob-1"></div>
+    <div class="galaxy-blob blob-2"></div>
+    <div class="galaxy-blob blob-3"></div>
+
+    <div class="floating-icon el-rocket"><i class="fa-solid fa-rocket"></i></div>
+    <div class="floating-icon el-astronaut1"><i class="fa-solid fa-user-astronaut"></i></div>
+    <div class="floating-icon el-astronaut2"><i class="fa-solid fa-space-shuttle"></i></div>
+    <div class="floating-icon el-satellite"><i class="fa-solid fa-satellite"></i></div>
+
+    <div class="floating-icon el-atom"><i class="fa-solid fa-atom"></i></div>
+    <div class="floating-icon el-flask"><i class="fa-solid fa-flask-vial"></i></div>
+    <div class="floating-icon el-magnet"><i class="fa-solid fa-magnet"></i></div>
+
+    <div class="floating-icon el-math1">&pi;</div>
+    <div class="floating-icon el-math2">&sum;</div>
+    <div class="floating-icon el-math3">&radic;</div>
+</div>
+
+<div class="container">
+    <!-- INJEKSI SCRIPT GLOBAL UNTUK HEADER -->
+    <header id="header-placeholder"></header>
+
+    <main>
+        <div style="width: 100%;">
+            <h1 class="main-title">PENGUMUMAN PEMENANG AMSO 2026</h1>
+
+            <div class="tabs-wrapper">
+                <div class="jenjang-tabs">
+                    <button type="button" class="cat-btn active" onclick="switchJenjang('sd', this)">SD / MI</button>
+                    <button type="button" class="cat-btn" onclick="switchJenjang('smp', this)">SMP / MTs</button>
+                    <button type="button" class="cat-btn" onclick="switchJenjang('sma', this)">SMA</button>
+                </div>
+
+                <div class="mapel-tabs-container">
+                    <div id="mapel-tabs-sd" class="mapel-tabs" style="display: flex;">
+                        <button type="button" class="cat-btn-mapel active" onclick="switchMapel('sd-mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sd-ipa', this)">IPA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sd-ips', this)">IPS</button>
+                    </div>
+
+                    <div id="mapel-tabs-smp" class="mapel-tabs" style="display: none;">
+                        <button type="button" class="cat-btn-mapel active" onclick="switchMapel('smp-mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('smp-ipa', this)">IPA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('smp-ips', this)">IPS</button>
+                    </div>
+
+                    <div id="mapel-tabs-sma" class="mapel-tabs" style="display: none;">
+                        <button type="button" class="cat-btn-mapel active" onclick="switchMapel('sma-mtk', this)">MATEMATIKA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sma-fis', this)">FISIKA</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sma-eko', this)">EKONOMI</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sma-geo', this)">GEOGRAFI</button>
+                        <button type="button" class="cat-btn-mapel" onclick="switchMapel('sma-tik', this)">TIK</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= KONTEN FRAME JUARA PER MAPEL ================= -->
+            
+            <!-- 1. SD - MATEMATIKA (10 PESERTA) -->
+            <div id="sd-mtk" class="mapel-section-content active">
+                <div class="podium-section">
+                    <div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div>
+                    <div class="cards-grid grid-1">
+                        <div class="participant-card card-gold">
+                            <div class="avatar-box"><img src="foto/sd_ats-fathiya_azzahra.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div>
+                            <h3 class="participant-name">FATHIYA AZZAHRA</h3><p class="participant-school">SD ATS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="podium-section">
+                    <div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div>
+                    <div class="cards-grid grid-2">
+                        <div class="participant-card card-silver">
+                            <div class="avatar-box"><img src="foto/sd_ats-devon_raysheev_lokatantra_resmanto.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div>
+                            <h3 class="participant-name">DEVON RAYSHEEV LOKATANTRA RESMANTO</h3><p class="participant-school">SD ATS</p>
+                        </div>
+                        <div class="participant-card card-silver">
+                            <div class="avatar-box"><img src="foto/sd_ats-davina_aisha_keisyara.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div>
+                            <h3 class="participant-name">DAVINA AISHA KEISYARA</h3><p class="participant-school">SD ATS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="podium-section">
+                    <div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div>
+                    <div class="cards-grid grid-2">
+                        <div class="participant-card card-bronze">
+                            <div class="avatar-box"><img src="foto/sd_gis_3_yogyakarta-yusuf_khairan_attaullah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div>
+                            <h3 class="participant-name">YUSUF KHAIRAN ATTAULLAH</h3><p class="participant-school">SD GIS 3 YOGYAKARTA</p>
+                        </div>
+                        <div class="participant-card card-bronze">
+                            <div class="avatar-box"><img src="foto/sd_gis_3_yogyakarta-emir_tristan_al_jaras.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div>
+                            <h3 class="participant-name">EMIR TRISTAN AL JARAS</h3><p class="participant-school">SD GIS 3 YOGYAKARTA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="podium-section" style="margin-bottom:0;">
+                    <div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div>
+                    <div class="grid-5-inline">
+                        <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_1-russell_firstio_kinantaka.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RUSSELL FIRSTIO KINANTAKA</h3><p class="participant-school">SD HLM 1</p></div>
+                        <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_1-idzhar_syahban_nurdani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">IDZHAR SYAHBAN NURDANI</h3><p class="participant-school">SD HLM 1</p></div>
+                        <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_1-kenzie_ghossan_saverio.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KENZIE GHOSSAN SAVERIO</h3><p class="participant-school">SD HLM 1</p></div>
+                        <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_12-rachel_dzakira_aftani_yogaswara.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RACHEL DZAKIRA AFTANI YOGASWARA</h3><p class="participant-school">SD HLM 12</p></div>
+                        <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_3-rafka_athaya_putra.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAFKA ATHAYA PUTRA</h3><p class="participant-school">SD HLM 3</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. SD - IPA (11 PESERTA) -->
+            <div id="sd-ipa" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sd_hlm_4-rizki_aulia_ramadhani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RIZKI AULIA RAMADHANI</h3><p class="participant-school">SD HLM 4</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sd_hlm_5-wafeeqa_azqiara_sofyan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WAFEEQA AZQIARA SOFYAN</h3><p class="participant-school">SD HLM 5</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sd_hlm_5-maheswari_aryandini_atmaja.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MAHESWARI ARYANDINI ATMAJA</h3><p class="participant-school">SD HLM 5</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sd_hlm_9-adya_zefani_maharani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ADYA ZEFANI MAHARANI</h3><p class="participant-school">SD HLM 9</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sd_hlm_9-jihan_qurrata_ain_putri_setiawan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JIHAN QURRATA AIN PUTRI SETIAWAN</h3><p class="participant-school">SD HLM 9</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-6-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hlm_9-komang_raka_perwira_putra_adnyana.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KOMANG RAKA PERWIRA PUTRA ADNYANA</h3><p class="participant-school">SD HLM 9</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hnd_1-almeera_zahrah_khaerunnisa.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALMEERA ZAHRAH KHAERUNNISA</h3><p class="participant-school">SD HND 1</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_hsn_1-adheesa_khalfani_zafran.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ADHEESA KHALFANI ZAFRAN</h3><p class="participant-school">SD HSN 1</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_muh_sokonandi_yogyakarta-ken_arsyada_wardoyo.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KEN ARSYADA WARDOYO</h3><p class="participant-school">SD MUH SOKONANDI YOGYAKARTA</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_muh_sokonandi_yogyakarta-hafidz_ahnaf_al-musyaffa.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">HAFIDZ AHNAF AL-MUSYAFFA</h3><p class="participant-school">SD MUH SOKONANDI YOGYAKARTA</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_muh_sokonandi_yogyakarta-muhammad_nayaka_abqary.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD NAYAKA ABQARY</h3><p class="participant-school">SD MUH SOKONANDI YOGYAKARTA</p></div>
+                </div></div>
+            </div>
+
+            <!-- 3. SD - IPS (10 PESERTA) -->
+            <div id="sd-ips" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sd_rsn-melody_christabelsa_pandiangan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MELODY CHRISTABELSA PANDIANGAN</h3><p class="participant-school">SD RSN</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sd_rsn-abigaile_jill_shane_maureen.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ABIGAILE JILL SHANE MAUREEN</h3><p class="participant-school">SD RSN</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sd_semplak_2_bogor-sabran_nur_awal.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SABRAN NUR AWAL</h3><p class="participant-school">SD SEMPLAK 2 BOGOR</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sd_smo-muhammad_abrian_ghulam_fahrisal.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD ABRIAN GHULAM FAHRISAL</h3><p class="participant-school">SD SMO</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sd_smo-hobas_adriel.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">HOBAS ADRIEL</h3><p class="participant-school">SD SMO</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_spr-dean_gavriel_simaela.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DEAN GAVRIEL SIMAELA</h3><p class="participant-school">SD SPR</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_spr-alojzia_gwyneth_afsheen.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALOJZIA GWYNETH AFSHEEN</h3><p class="participant-school">SD SPR</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sd_swo-gatot_baskara.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">GATOT BASKARA</h3><p class="participant-school">SD SWO</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sdk_2_bina_bakti_bandung-john_aldrick_setiadjaja.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JOHN ALDRICK SETIADJAJA</h3><p class="participant-school">SDK 2 BINA BAKTI BANDUNG</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sdk_2_bina_bakti_bandung-eliora_benetta_hu.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ELIORA BENETTA HU</h3><p class="participant-school">SDK 2 BINA BAKTI BANDUNG</p></div>
+                </div></div>
+            </div>
+
+            <!-- 4. SMP - MATEMATIKA (10 PESERTA) -->
+            <div id="smp-mtk" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/smp_adi-muhammad_razka_dzaki_wardana.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD RAZKA DZAKI WARDANA</h3><p class="participant-school">SMP ADI</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smp_adi-suryo_sumirat.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SURYO SUMIRAT</h3><p class="participant-school">SMP ADI</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smp_adi-paula_lana_ngestibhumi_aristi.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">PAULA LANA NGESTIBHUMI ARISTI</h3><p class="participant-school">SMP ADI</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smp_ats-kiyati_wulandhary.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KIYATI WULANDHARY</h3><p class="participant-school">SMP ATS</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smp_ats-yessa_valentera_queen.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YESSA VALENTERA QUEEN</h3><p class="participant-school">SMP ATS</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_bny-abizar_elvan_ramadan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ABIZAR ELVAN RAMADAN</h3><p class="participant-school">SMP BNY</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_hlm-neysa_azaria_putri_risyanto.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">NEYSA AZARIA PUTRI RISYANTO</h3><p class="participant-school">SMP HLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_hlm-sakha_arghani_wibowo.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SAKHA ARGHANI WIBOWO</h3><p class="participant-school">SMP HLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_hnd-danny_aditya.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DANNY ADITYA</h3><p class="participant-school">SMP HND</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_hnd-david_edward.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DAVID EDWARD</h3><p class="participant-school">SMP HND</p></div>
+                </div></div>
+            </div>
+
+            <!-- 5. SMP - IPA (10 PESERTA) - DIKOREKSI -->
+            <div id="smp-ipa" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/smp_hnd-muhammad_gibran_anugrah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD GIBRAN ANUGRAH</h3><p class="participant-school">SMP HND</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smp_hnd-aprillia_violetta_gaffar.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">APRILLIA VIOLETTA GAFFAR</h3><p class="participant-school">SMP HND</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smp_hnd-meyshen_filia_moniaga.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MEYSHEN FILIA MONIAGA</h3><p class="participant-school">SMP HND</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smp_hsn-algio_athalla_arasky_pratama.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALGIO ATHALLA ARASKY PRATAMA</h3><p class="participant-school">SMP HSN</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smp_hsn-muhammad_ramadani_alfikri.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD RAMADANI ALFIKRI</h3><p class="participant-school">SMP HSN</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_mna-q'yren_ningrum_solvaresi.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">Q'YREN NINGRUM SOLVARESI</h3><p class="participant-school">SMP MNA</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_mna-lionel_rudolfo_siahainenia.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">LIONEL RUDOLFO SIAHAINENIA</h3><p class="participant-school">SMP MNA</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_slm-muhammad_jami_amarullah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD JAMI AMARULLAH</h3><p class="participant-school">SMP SLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_smo-vincensius_gallant_arseta.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">VINCENSIUS GALLANT ARSETA</h3><p class="participant-school">SMP SMO</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smp_smo-weka_rafif_arnawama.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WEKA RAFIF ARNAWAMA</h3><p class="participant-school">SMP SMO</p></div>
+                </div></div>
+            </div>
+
+            <!-- 6. SMP - IPS (7 PESERTA) -->
+            <div id="smp-ips" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/smpit_ummul_quro_bogor-maysa_azzahra.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MAYSA AZZAHRA</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smpit_ummul_quro_bogor-m._shaki_athallah_riantoko.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">M. SHAKI ATHALLAH RIANTOKO</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/smpit_ummul_quro_bogor-yezha_janeeta_revas.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YEZHA JANEETA REVAS</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smpit_ummul_quro_bogor-umar_aydan_abhista.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">UMAR AYDAN ABHISTA</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/smpit_ummul_quro_bogor-muhammad_hamzah_abdussalam.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD HAMZAH ABDUSSALAM</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-2-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smpn_1_bandung-salsabeela_audrea_darmawan_sugandi.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SALSABEELA AUDREA DARMAWAN SUGANDI</h3><p class="participant-school">SMPN 1 BANDUNG</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/smpn_9_bandung-wafiq_qays_mazaya.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WAFIQ QAYS MAZAYA</h3><p class="participant-school">SMPN 9 BANDUNG</p></div>
+                </div></div>
+            </div>
+
+            <!-- 7. SMA - MATEMATIKA (10 PESERTA) -->
+            <div id="sma-mtk" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sma_adi-anisa_nur_saidah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ANISA NUR SAIDAH</h3><p class="participant-school">SMA ADI</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_adi-kevin_nada_saputra.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KEVIN NADA SAPUTRA</h3><p class="participant-school">SMA ADI</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hlm_1-aprilia_nur_rahma.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">APRILIA NUR RAHMA</h3><p class="participant-school">SMA HLM 1</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hlm_1-agifan_ezra_alfarizi.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">AGIFAN EZRA ALFARIZI</h3><p class="participant-school">SMA HLM 1</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hlm_1-agra_firaz_hukama.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">AGRA FIRAZ HUKAMA</h3><p class="participant-school">SMA HLM 1</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hlm_1-syeh_qithfi_nurkhaira.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SYEH QITHFI NURKHAIRA</h3><p class="participant-school">SMA HLM 1</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hlm_1-rakha_dwi_pratama.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAKHA DWI PRATAMA</h3><p class="participant-school">SMA HLM 1</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hlm_1-gilang_eka_nugroho.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">GILANG EKA NUGROHO</h3><p class="participant-school">SMA HLM 1</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hlm_2-muhammad_fadli_al_hafizh.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD FADLI AL HAFIZH</h3><p class="participant-school">SMA HLM 2</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hlm_2-yafi_athif_ramadhiya.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YAFI ATHIF RAMADHIYA</h3><p class="participant-school">SMA HLM 2</p></div>
+                </div></div>
+            </div>
+
+            <!-- 8. SMA - FISIKA (10 PESERTA) -->
+            <div id="sma-fis" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sma_hlm_2-arkandhiya_putra_hadian.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ARKANDHIYA PUTRA HADIAN</h3><p class="participant-school">SMA HLM 2</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hlm_2-khansa_dhiya_syifa.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KHANSA DHIYA SYIFA</h3><p class="participant-school">SMA HLM 2</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hlm_2-muhammad_abiseka_adhetama.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD ABISEKA ADHETAMA</h3><p class="participant-school">SMA HLM 2</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hlm_2-michelle_sarma_hosiana_situmorang.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MICHELLE SARMA HOSIANA SITUMORANG</h3><p class="participant-school">SMA HLM 2</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hnd-afifah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">AFIFAH</h3><p class="participant-school">SMA HND</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hnd-vaqillah_illahiya_togubu.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">VAQILLAH ILLAHIYA TOGUBU</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hnd-dzakirah_talita_zahra.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DZAKIRAH TALITA ZAHRA</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hnd-caleb_manaman_barondeng.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">CALEB MANAMAN BARONDENG</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hnd-jonathan_william_suar.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JONATHAN WILLIAM SUAR</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hnd-muh._dava_ramadan_karsono.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUH. DAVA RAMADAN KARSONO</h3><p class="participant-school">SMA HND</p></div>
+                </div></div>
+            </div>
+
+            <!-- 9. SMA - EKONOMI (10 PESERTA) -->
+            <div id="sma-eko" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sma_hnd-chalissa_meira_triandini.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">CHALISSA MEIRA TRIANDINI</h3><p class="participant-school">SMA HND</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hnd-aurelia_putri_ramadhani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">AURELIA PUTRI RAMADHANI</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hnd-damia_daniswara.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DAMIA DANISWARA</h3><p class="participant-school">SMA HND</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hnd-nagita_zuhrah_cinta_danuinata.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">NAGITA ZUHRAH CINTA DANUINATA</h3><p class="participant-school">SMA HND</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_hsn-rahma_raia_endryani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAHMA RAIA ENDRYANI</h3><p class="participant-school">SMA HSN</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hsn-ray_idrees_ahmad.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAY IDREES AHMAD</h3><p class="participant-school">SMA HSN</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hsn-danar_almer_djamail_setiawan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">DANAR ALMER DJAMAIL SETIAWAN</h3><p class="participant-school">SMA HSN</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hsn-rahel_noviola_gunawan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAHEL NOVIOLA GUNAWAN</h3><p class="participant-school">SMA HSN</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hsn-eveline_latishya_iskandar.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">EVELINE LATISHYA ISKANDAR</h3><p class="participant-school">SMA HSN</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_hsn-kania_tri_arianti.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">KANIA TRI ARIANTI</h3><p class="participant-school">SMA HSN</p></div>
+                </div></div>
+            </div>
+
+            <!-- 10. SMA - GEOGRAFI (10 PESERTA) -->
+            <div id="sma-geo" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sma_hsn-zulfya_muhammad.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ZULFYA MUHAMMAD</h3><p class="participant-school">SMA HSN</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hsn-rifki_muhammad_aufa.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RIFKI MUHAMMAD AUFA</h3><p class="participant-school">SMA HSN</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sma_hsn-widia_cika_ningrum.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WIDIA CIKA NINGRUM</h3><p class="participant-school">SMA HSN</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_slm-lutfi_luqmanul_hakim.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">LUTFI LUQMANUL HAKIM</h3><p class="participant-school">SMA SLM</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sma_slm-naomi_mikayla_khairana.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">NAOMI MIKAYLA KHAIRANA</h3><p class="participant-school">SMA SLM</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_slm-m._faiz_hulisoeno_jaiz.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">M. FAIZ HULISOENO JAIZ</h3><p class="participant-school">SMA SLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_slm-rayhand_rachmat.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">RAYHAND RACHMAT</h3><p class="participant-school">SMA SLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_slm-mochamad_ridho_hasan.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MOCHAMAD RIDHO HASAN</h3><p class="participant-school">SMA SLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_slm-fanny_nurul_dzihni_hanida.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">FANNY NURUL DZIHNI HANIDA</h3><p class="participant-school">SMA SLM</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sma_yadika_7_bogor-pangeran_tri_juliansyah.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">PANGERAN TRI JULIANSYAH</h3><p class="participant-school">SMA YADIKA 7 BOGOR</p></div>
+                </div></div>
+            </div>
+
+            <!-- 11. SMA - TIK (10 PESERTA) -->
+            <div id="sma-tik" class="mapel-section-content">
+                <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-1"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sman_1_rancabungur_bogor-ahmad_ibrahim.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">AHMAD IBRAHIM</h3><p class="participant-school">SMAN 1 RANCABUNGUR BOGOR</p></div></div></div>
+                <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sman_10_bogor-leonard_filbert_benedict_kohen.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">LEONARD FILBERT BENEDICT KOHEN</h3><p class="participant-school">SMAN 10 BOGOR</p></div>
+                    <div class="participant-card card-silver"><div class="avatar-box"><img src="foto/sman_10_bogor-mohammad_hafidz_rafie_rabbani.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MOHAMMAD HAFIDZ RAFIE RABBANI</h3><p class="participant-school">SMAN 10 BOGOR</p></div>
+                </div></div>
+                <div class="podium-section"><div class="podium-title title-bronze"><i class="fa-solid fa-award"></i> BRONZE MEDAL</div><div class="cards-grid grid-2">
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sman_10_bogor-ghania_indra_saiba.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">GHANIA INDRA SAIBA</h3><p class="participant-school">SMAN 10 BOGOR</p></div>
+                    <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/sman_6_bandung-manuella_petra_airin_larasati.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MANUELLA PETRA AIRIN LARASATI</h3><p class="participant-school">SMAN 6 BANDUNG</p></div>
+                </div></div>
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="grid-5-inline">
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sman_6_bandung-zahra_syifa_aeni.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ZAHRA SYIFA AENI</h3><p class="participant-school">SMAN 6 BANDUNG</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sman_6_bandung-jeremy_aldrich_sembiring.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">JEREMY ALDRICH SEMBIRING</h3><p class="participant-school">SMAN 6 BANDUNG</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sman_6_bandung-horatio_de_pato_jeconia.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">HORATIO DE PATO JECONIA</h3><p class="participant-school">SMAN 6 BANDUNG</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sman_8_maros-shafa_permata_andresta.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SHAFA PERMATA ANDRESTA</h3><p class="participant-school">SMAN 8 MAROS</p></div>
+                    <div class="participant-card"><div class="avatar-box"><img src="foto/sman_9_maros-alekania_lux_sinta.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">ALEKANIA LUX SINTA</h3><p class="participant-school">SMAN 9 MAROS</p></div>
+                </div></div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- FOOTER OTOMATIS OLEH HEADER.JS -->
+<footer id="footer-placeholder"></footer>
+
+<script>
+    function switchJenjang(jenjang, btnEl) {
+        document.querySelectorAll('.jenjang-tabs .cat-btn').forEach(btn => btn.classList.remove('active'));
+        btnEl.classList.add('active');
+
+        document.querySelectorAll('.mapel-tabs').forEach(tabs => tabs.style.display = 'none');
+        document.getElementById('mapel-tabs-' + jenjang).style.display = 'flex';
+
+        const firstMapelBtn = document.getElementById('mapel-tabs-' + jenjang).querySelector('.cat-btn-mapel');
+        if (firstMapelBtn) firstMapelBtn.click();
+    }
+
+    function switchMapel(mapelId, btnEl) {
+        const parentMapelTabs = btnEl.closest('.mapel-tabs');
+        parentMapelTabs.querySelectorAll('.cat-btn-mapel').forEach(btn => btn.classList.remove('active'));
+        btnEl.classList.add('active');
+
+        document.querySelectorAll('.mapel-section-content').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        const targetSection = document.getElementById(mapelId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+    }
+</script>
+
+<script src="global-audio.js"></script>
+<script src="header.js"></script>
+
+</body>
+</html>
