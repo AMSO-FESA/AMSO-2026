@@ -130,8 +130,7 @@
             display: grid; 
             gap: 25px; 
             justify-content: center; 
-            /* align-items stretch menjamin semua tinggi kartu dalam baris yang sama otomatis sama persis */
-            align-items: stretch; 
+            align-items: stretch; /* Memaksa kotak sejajar memiliki tinggi sama */
             padding: 50px 10px 30px; 
             margin: -30px auto 0; 
         }
@@ -155,11 +154,7 @@
             margin-top: -70px; /* Kompensasi visual jarak karena padding besar */
             margin-bottom: -15px;
         }
-        /* Menengahkan card secara aman pada display flex nowrap */
-        .finalist-row::before, .finalist-row::after { 
-            content: ''; 
-            margin: 0 auto; 
-        }
+        .finalist-row::before, .finalist-row::after { content: ''; margin: 0 auto; }
         
         /* Scrollbar kustom Finalis */
         .finalist-row::-webkit-scrollbar { height: 8px; }
@@ -297,7 +292,7 @@
 
 <body>
 
-<!-- HANYA TAG AUDIO (Tombol akan otomatis digenerate dari global-audio.js) -->
+<!-- HANYA TAG AUDIO (Tombol otomatis dari global-audio.js) -->
 <audio id="bgAudio" loop>
     <source src="Official%20Video%20Lirik%20Jingle%20FESA.mp4" type="video/mp4">
 </audio>
@@ -487,7 +482,7 @@
                 </div></div>
             </div>
 
-            <!-- ================= SMP - IPS (HANYA 2 FINALIS) ================= -->
+            <!-- ================= SMP - IPS ================= -->
             <div id="smp-ips" class="mapel-section-content">
                 <div class="podium-section"><div class="podium-title title-gold"><i class="fa-solid fa-trophy"></i> GOLD MEDAL</div><div class="cards-grid grid-gold"><div class="participant-card card-gold"><div class="avatar-box"><img src="foto/sandina_bakara-smp_swo.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">SANDINA BAKARA</h3><p class="participant-school">SMP SWO</p></div></div></div>
                 <div class="podium-section"><div class="podium-title title-silver"><i class="fa-solid fa-medal"></i> SILVER MEDAL</div><div class="cards-grid grid-silver">
@@ -498,7 +493,7 @@
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/yezha_janeeta_revas-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">YEZHA JANEETA REVAS</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card card-bronze"><div class="avatar-box"><img src="foto/umar_aydan_abhista-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">UMAR AYDAN ABHISTA</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                 </div></div>
-                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row" style="max-width: 500px; margin: 0 auto;">
+                <div class="podium-section" style="margin-bottom:0;"><div class="podium-title title-finalist"><i class="fa-solid fa-star"></i> FINALIS</div><div class="finalist-row">
                     <div class="participant-card"><div class="avatar-box"><img src="foto/muhammad_hamzah_abdussalam-smpit_ummul_quro_bogor.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">MUHAMMAD HAMZAH ABDUSSALAM</h3><p class="participant-school">SMPIT UMMUL QURO BOGOR</p></div>
                     <div class="participant-card"><div class="avatar-box"><img src="foto/wafiq_qays_mazaya-smpn_9_bandung.jpg" alt="Foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-user" style="display:none;"></i></div><h3 class="participant-name">WAFIQ QAYS MAZAYA</h3><p class="participant-school">SMPN 9 BANDUNG</p></div>
                 </div></div>
