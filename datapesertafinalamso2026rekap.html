@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Peserta Final - AMSO 2026</title>
+    <title>Daftar Peserta Babak Final - AMSO 2026</title>
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
@@ -92,7 +92,6 @@
             border-bottom: 1px solid var(--card-border);
         }
 
-        /* HEADER KOLOM: BIRU NEOF & RATA TENGAH */
         th {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue) !important;
@@ -107,7 +106,7 @@
             padding: 12px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: #f8fafc;
-            font-weight: 700; /* BOLD SEMUA ISI TABEL */
+            font-weight: 700;
         }
 
         tbody tr {
@@ -122,7 +121,7 @@
             border-bottom: none;
         }
 
-        /* PENGATURAN ISI KOLOM (SEMUA CENTER & BOLD) */
+        /* PENGATURAN ISI KOLOM (CENTER & BOLD) */
         .col-no { width: 60px; text-align: center; font-weight: 700; color: #cbd5e1; }
         .col-nama { text-align: center; font-weight: 700; color: #fff; }
         .col-sekolah { width: 260px; text-align: center; font-weight: 700; color: #cbd5e1; }
@@ -130,13 +129,6 @@
         .jenjang-section { display: none; }
         .jenjang-section.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* FOOTER */
-        footer { background: rgba(5, 7, 15, 0.95); border-top: 1px solid var(--border); padding: 35px 0 20px; margin-top: auto; }
-        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); max-width: 950px; margin: 0 auto; }
-        .footer-brand h3 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
-        .footer-brand p { color: var(--muted); font-size: 0.85rem; }
-        .footer-bottom { text-align: center; padding-top: 20px; color: var(--muted); font-size: 0.8rem; }
     </style>
 </head>
 
@@ -149,12 +141,12 @@
     <div class="galaxy-blob blob-2"></div>
 </div>
 
-<div class="container">
-    <!-- HEADER GLOBAL -->
-    <header id="header-placeholder"></header>
+<!-- HEADER GLOBAL -->
+<div id="header-placeholder"></div>
 
+<div class="container" style="margin-top: 40px;">
     <main>
-        <h1 class="main-title">DAFTAR NAMA PESERTA FINAL AMSO 2026</h1>
+        <h1 class="main-title">DAFTAR PESERTA BABAK FINAL AMSO 2026</h1>
 
         <!-- TAB NAVIGASI JENJANG -->
         <div class="tabs-wrapper">
@@ -329,7 +321,7 @@
 </div>
 
 <!-- FOOTER GLOBAL -->
-<footer id="footer-placeholder"></footer>
+<div id="footer-placeholder"></div>
 
 <!-- SCRIPT JS UNTUK SWITCH TAB -->
 <script>
