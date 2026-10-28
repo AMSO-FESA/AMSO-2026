@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peserta Final - AMSO 2026</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/AMSO-FESA/AMSO-2026/main/amso.png">
+
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #070913; --text: #f8fafc; --muted: #94a3b8; 
+            --gold: #ffd700; --neon-blue: #00d2ff; --neon-purple: #9d4edd;
+            --card-bg: rgba(15, 23, 42, 0.85); --card-border: rgba(0, 210, 255, 0.25);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        html { scroll-behavior: smooth; overflow-y: scroll; }
+        body {
+            font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text);
+            overflow-x: hidden; position: relative; min-height: 100vh; display: flex; flex-direction: column;
+            background-image: radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 85% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* LATAR BELAKANG ANIMASI SPACE */
+        .space-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; background: radial-gradient(circle at 50% 50%, #0b0f25 0%, #03050a 100%); }
+        .stars { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 120px, var(--neon-blue), rgba(0,0,0,0)), radial-gradient(1px 1px at 100px 60px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 180px 160px, var(--gold), rgba(0,0,0,0)), radial-gradient(1.5px 1.5px at 250px 90px, var(--neon-purple), rgba(0,0,0,0)); background-repeat: repeat; background-size: 250px 250px; opacity: 0.45; animation: twinkle 4s infinite alternate; }
+        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
+        .galaxy-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: floatBlob 15s infinite alternate ease-in-out; }
+        .blob-1 { width: 450px; height: 450px; background: var(--neon-blue); top: -5%; left: -10%; }
+        .blob-2 { width: 550px; height: 550px; background: var(--neon-purple); bottom: -10%; right: -10%; animation-delay: -5s; }
+        @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.15); } }
+
+        .container { max-width: 900px; margin: auto; padding: 0 20px 80px; position: relative; z-index: 1; width: 100%; }
+        header { padding: 30px 0 25px; text-align: center; position: relative; }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 60%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* TAB JENJANG */
+        .tabs-wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 30px; width: 100%; }
+        .jenjang-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; width: 100%; }
+        
+        .cat-btn {
+            background: rgba(15, 21, 42, 0.85); border: 1px solid var(--card-border); color: var(--muted);
+            padding: 10px 24px; border-radius: 30px; font-family: 'Orbitron', sans-serif; font-size: 0.85rem;
+            font-weight: 700; cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px;
+        }
+        .cat-btn:hover { color: #fff; border-color: var(--neon-blue); }
+        .cat-btn.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); color: #fff;
+            border-color: transparent; box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        }
+
+        /* TABEL DAFTAR NAMA */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        thead {
+            background: rgba(0, 210, 255, 0.12);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        /* HEADER KOLOM: BIRU NEOF & RATA TENGAH */
+        th {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue) !important;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 14px 20px;
+            font-weight: 800;
+            text-align: center !important;
+        }
+
+        td {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #f8fafc;
+            font-weight: 700; /* BOLD SEMUA ISI TABEL */
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 210, 255, 0.06);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* PENGATURAN ISI KOLOM (SEMUA CENTER & BOLD) */
+        .col-no { width: 60px; text-align: center; font-weight: 700; color: #cbd5e1; }
+        .col-nama { text-align: center; font-weight: 700; color: #fff; }
+        .col-sekolah { width: 260px; text-align: center; font-weight: 700; color: #cbd5e1; }
+
+        .jenjang-section { display: none; }
+        .jenjang-section.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* FOOTER */
+        footer { background: rgba(5, 7, 15, 0.95); border-top: 1px solid var(--border); padding: 35px 0 20px; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 25px; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); max-width: 950px; margin: 0 auto; }
+        .footer-brand h3 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+        .footer-brand p { color: var(--muted); font-size: 0.85rem; }
+        .footer-bottom { text-align: center; padding-top: 20px; color: var(--muted); font-size: 0.8rem; }
+    </style>
+</head>
+
+<body>
+
+<!-- LATAR BELAKANG BINTANG -->
+<div class="space-bg">
+    <div class="stars"></div>
+    <div class="galaxy-blob blob-1"></div>
+    <div class="galaxy-blob blob-2"></div>
+</div>
+
+<div class="container">
+    <!-- HEADER GLOBAL -->
+    <header id="header-placeholder"></header>
+
+    <main>
+        <h1 class="main-title">DAFTAR NAMA PESERTA FINAL AMSO 2026</h1>
+
+        <!-- TAB NAVIGASI JENJANG -->
+        <div class="tabs-wrapper">
+            <div class="jenjang-tabs">
+                <button type="button" class="cat-btn active" onclick="switchJenjang('sd', this)">SD / MI</button>
+                <button type="button" class="cat-btn" onclick="switchJenjang('smp', this)">SMP / MTs</button>
+                <button type="button" class="cat-btn" onclick="switchJenjang('sma', this)">SMA</button>
+            </div>
+        </div>
+
+        <!-- 1. TABEL SD / MI -->
+        <div id="section-sd" class="jenjang-section active">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA PESERTA</th>
+                            <th>ASAL SEKOLAH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="col-no">1</td><td class="col-nama">FATHIYA AZZAHRA</td><td class="col-sekolah">SD ATS</td></tr>
+                        <tr><td class="col-no">2</td><td class="col-nama">DEVON RAYSHEEV LOKATANTRA RESMANTO</td><td class="col-sekolah">SD ATS</td></tr>
+                        <tr><td class="col-no">3</td><td class="col-nama">DAVINA AISHA KEISYARA</td><td class="col-sekolah">SD ATS</td></tr>
+                        <tr><td class="col-no">4</td><td class="col-nama">YUSUF KHAIRAN ATTAULLAH</td><td class="col-sekolah">SD GIS 3 YOGYAKARTA</td></tr>
+                        <tr><td class="col-no">5</td><td class="col-nama">EMIR TRISTAN AL JARAS</td><td class="col-sekolah">SD GIS 3 YOGYAKARTA</td></tr>
+                        <tr><td class="col-no">6</td><td class="col-nama">RUSSELL FIRSTIO KINANTAKA</td><td class="col-sekolah">SD HLM 1</td></tr>
+                        <tr><td class="col-no">7</td><td class="col-nama">IDZHAR SYAHBAN NURDANI</td><td class="col-sekolah">SD HLM 1</td></tr>
+                        <tr><td class="col-no">8</td><td class="col-nama">KENZIE GHOSSAN SAVERIO</td><td class="col-sekolah">SD HLM 1</td></tr>
+                        <tr><td class="col-no">9</td><td class="col-nama">RACHEL DZAKIRA AFTANI YOGASWARA</td><td class="col-sekolah">SD HLM 12</td></tr>
+                        <tr><td class="col-no">10</td><td class="col-nama">RAFKA ATHAYA PUTRA</td><td class="col-sekolah">SD HLM 3</td></tr>
+                        <tr><td class="col-no">11</td><td class="col-nama">RIZKI AULIA RAMADHANI</td><td class="col-sekolah">SD HLM 4</td></tr>
+                        <tr><td class="col-no">12</td><td class="col-nama">WAFEEQA AZQIARA SOFYAN</td><td class="col-sekolah">SD HLM 5</td></tr>
+                        <tr><td class="col-no">13</td><td class="col-nama">MAHESWARI ARYANDINI ATMAJA</td><td class="col-sekolah">SD HLM 5</td></tr>
+                        <tr><td class="col-no">14</td><td class="col-nama">ADYA ZEFANI MAHARANI</td><td class="col-sekolah">SD HLM 9</td></tr>
+                        <tr><td class="col-no">15</td><td class="col-nama">JIHAN QURRATA AIN PUTRI SETIAWAN</td><td class="col-sekolah">SD HLM 9</td></tr>
+                        <tr><td class="col-no">16</td><td class="col-nama">KOMANG RAKA PERWIRA PUTRA ADNYANA</td><td class="col-sekolah">SD HLM 9</td></tr>
+                        <tr><td class="col-no">17</td><td class="col-nama">ALMEERA ZAHRAH KHAERUNNISA</td><td class="col-sekolah">SD HND 1</td></tr>
+                        <tr><td class="col-no">18</td><td class="col-nama">ADHEESA KHALFANI ZAFRAN</td><td class="col-sekolah">SD HSN 1</td></tr>
+                        <tr><td class="col-no">19</td><td class="col-nama">KEN ARSYADA WARDOYO</td><td class="col-sekolah">SD MUH SOKONANDI YOGYAKARTA</td></tr>
+                        <tr><td class="col-no">20</td><td class="col-nama">HAFIDZ AHNAF AL-MUSYAFFA</td><td class="col-sekolah">SD MUH SUKONANDI YOGYAKARTA</td></tr>
+                        <tr><td class="col-no">21</td><td class="col-nama">MUHAMMAD NAYAKA ABQARY</td><td class="col-sekolah">SD MUH SUKONANDI YOGYAKARTA</td></tr>
+                        <tr><td class="col-no">22</td><td class="col-nama">MELODY CHRISTABELSA PANDIANGAN</td><td class="col-sekolah">SD RSN</td></tr>
+                        <tr><td class="col-no">23</td><td class="col-nama">ABIGAILE JILL SHANE MAUREEN</td><td class="col-sekolah">SD RSN</td></tr>
+                        <tr><td class="col-no">24</td><td class="col-nama">SABRAN NUR AWAL</td><td class="col-sekolah">SD SEMPLAK 2 BOGOR</td></tr>
+                        <tr><td class="col-no">25</td><td class="col-nama">MUHAMMAD ABRIAN GHULAM FAHRISAL</td><td class="col-sekolah">SD SMO</td></tr>
+                        <tr><td class="col-no">26</td><td class="col-nama">HOBAS ADRIEL</td><td class="col-sekolah">SD SMO</td></tr>
+                        <tr><td class="col-no">27</td><td class="col-nama">DEAN GAVRIEL SIMAELA</td><td class="col-sekolah">SD SPR</td></tr>
+                        <tr><td class="col-no">28</td><td class="col-nama">ALOJZIA GWYNETH AFSHEEN</td><td class="col-sekolah">SD SPR</td></tr>
+                        <tr><td class="col-no">29</td><td class="col-nama">GATOT BASKARA</td><td class="col-sekolah">SD SWO</td></tr>
+                        <tr><td class="col-no">30</td><td class="col-nama">JOHN ALDRICK SETIADJAJA</td><td class="col-sekolah">SDK 2 BINA BAKTI BANDUNG</td></tr>
+                        <tr><td class="col-no">31</td><td class="col-nama">ELIORA BENETTA HU</td><td class="col-sekolah">SDK 2 BINA BAKTI BANDUNG</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. TABEL SMP / MTs -->
+        <div id="section-smp" class="jenjang-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA PESERTA</th>
+                            <th>ASAL SEKOLAH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="col-no">1</td><td class="col-nama">MUHAMMAD RAZKA DZAKI WARDANA</td><td class="col-sekolah">SMP ADI</td></tr>
+                        <tr><td class="col-no">2</td><td class="col-nama">SURYO SUMIRAT</td><td class="col-sekolah">SMP ADI</td></tr>
+                        <tr><td class="col-no">3</td><td class="col-nama">PAULA LANA NGESTIBHUMI ARISTI</td><td class="col-sekolah">SMP ADI</td></tr>
+                        <tr><td class="col-no">4</td><td class="col-nama">KIYATI WULANDHARY</td><td class="col-sekolah">SMP ATS</td></tr>
+                        <tr><td class="col-no">5</td><td class="col-nama">YESSA VALENTERA QUEEN</td><td class="col-sekolah">SMP ATS</td></tr>
+                        <tr><td class="col-no">6</td><td class="col-nama">ABIZAR ELVAN R</td><td class="col-sekolah">SMP BNY</td></tr>
+                        <tr><td class="col-no">7</td><td class="col-nama">NEYSA AZARIA PUTRI RISYANTO</td><td class="col-sekolah">SMP HLM</td></tr>
+                        <tr><td class="col-no">8</td><td class="col-nama">SAKHA ARGHANI WIBOWO</td><td class="col-sekolah">SMP HLM</td></tr>
+                        <tr><td class="col-no">9</td><td class="col-nama">DANNY ADITYA</td><td class="col-sekolah">SMP HND</td></tr>
+                        <tr><td class="col-no">10</td><td class="col-nama">DAVID EDWARD</td><td class="col-sekolah">SMP HND</td></tr>
+                        <tr><td class="col-no">11</td><td class="col-nama">MUHAMMAD GIBRAN ANUGRAH</td><td class="col-sekolah">SMP HND</td></tr>
+                        <tr><td class="col-no">12</td><td class="col-nama">APRILLIA VIOLETTA GAFFAR</td><td class="col-sekolah">SMP HND</td></tr>
+                        <tr><td class="col-no">13</td><td class="col-nama">MEYSHEN FILIA MONIAGA</td><td class="col-sekolah">SMP HND</td></tr>
+                        <tr><td class="col-no">14</td><td class="col-nama">ALGIO ATHALLA ARASKY PRATAMA</td><td class="col-sekolah">SMP HSN</td></tr>
+                        <tr><td class="col-no">15</td><td class="col-nama">MUHAMMAD RAMADANI ALFIKRI</td><td class="col-sekolah">SMP HSN</td></tr>
+                        <tr><td class="col-no">16</td><td class="col-nama">Q'YREN NINGRUM SOLVARESI</td><td class="col-sekolah">SMP MNA</td></tr>
+                        <tr><td class="col-no">17</td><td class="col-nama">LIONEL RUDOLFO SIAHAINENIA</td><td class="col-sekolah">SMP MNA</td></tr>
+                        <tr><td class="col-no">18</td><td class="col-nama">MUHAMMAD JAMI AMARULLAH</td><td class="col-sekolah">SMP SLM</td></tr>
+                        <tr><td class="col-no">19</td><td class="col-nama">VINCENSIUS GALLANT ARSETA</td><td class="col-sekolah">SMP SMO</td></tr>
+                        <tr><td class="col-no">20</td><td class="col-nama">WEKA RAFIF ARNAWAMA</td><td class="col-sekolah">SMP SMO</td></tr>
+                        <tr><td class="col-no">21</td><td class="col-nama">SANDINA BAKARA</td><td class="col-sekolah">SMP SWO</td></tr>
+                        <tr><td class="col-no">22</td><td class="col-nama">MAYSA AZZAHRA</td><td class="col-sekolah">SMPIT UMMUL QURO BOGOR</td></tr>
+                        <tr><td class="col-no">23</td><td class="col-nama">M. SHAKI ATHALLAH RIANTOKO</td><td class="col-sekolah">SMPIT UMMUL QURO BOGOR</td></tr>
+                        <tr><td class="col-no">24</td><td class="col-nama">YEZHA JANEETA REVAS</td><td class="col-sekolah">SMPIT UMMUL QURO BOGOR</td></tr>
+                        <tr><td class="col-no">25</td><td class="col-nama">UMAR AYDAN ABHISTA</td><td class="col-sekolah">SMPIT UMMUL QURO BOGOR</td></tr>
+                        <tr><td class="col-no">26</td><td class="col-nama">MUHAMMAD HAMZAH ABDUSSALAM</td><td class="col-sekolah">SMPIT UMMUL QURO BOGOR</td></tr>
+                        <tr><td class="col-no">27</td><td class="col-nama">SALSABEELA AUDREA DARMAWAN SUGANDI</td><td class="col-sekolah">SMPN 1 BANDUNG</td></tr>
+                        <tr><td class="col-no">28</td><td class="col-nama">WAFIQ QAYS MAZAYA</td><td class="col-sekolah">SMPN 9 BANDUNG</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. TABEL SMA -->
+        <div id="section-sma" class="jenjang-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA PESERTA</th>
+                            <th>ASAL SEKOLAH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="col-no">1</td><td class="col-nama">SHAFA PERMATA ANDRESTA</td><td class="col-sekolah">SMAN 8 MAROS</td></tr>
+                        <tr><td class="col-no">2</td><td class="col-nama">ANISA NUR SAIDAH</td><td class="col-sekolah">SMA ADI</td></tr>
+                        <tr><td class="col-no">3</td><td class="col-nama">KEVIN NADA SAPUTRA</td><td class="col-sekolah">SMA ADI</td></tr>
+                        <tr><td class="col-no">4</td><td class="col-nama">AFIFAH</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
+                        <tr><td class="col-no">5</td><td class="col-nama">VAQILLAH ILLAHIYA TOGUBU</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
+                        <tr><td class="col-no">6</td><td class="col-nama">DZAKIRAH TALITA ZAHRA</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
+                        <tr><td class="col-no">7</td><td class="col-nama">CALEB MANAMAN BARONDENG</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
+                        <tr><td class="col-no">8</td><td class="col-nama">JONATHAN WILLIAM SUAR</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
+                        <tr><td class="col-no">9</td><td class="col-nama">RAHMA RAIA ENDRYANI</td><td class="col-sekolah">SMA ANGKASA HSN</td></tr>
+                        <tr><td class="col-no">10</td><td class="col-nama">APRILIA NUR RAHMA</td><td class="col-sekolah">SMA HALIM 1</td></tr>
+                        <tr><td class="col-no">11</td><td class="col-nama">AGIFAN EZRA ALFARIZI</td><td class="col-sekolah">SMA HALIM 1</td></tr>
+                        <tr><td class="col-no">12</td><td class="col-nama">AGRA FIRAZ HUKAMA</td><td class="col-sekolah">SMA HALIM 1</td></tr>
+                        <tr><td class="col-no">13</td><td class="col-nama">SYEH QITHFI NURKHAIRA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                        <tr><td class="col-no">14</td><td class="col-nama">RAKHA DWI PRATAMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                        <tr><td class="col-no">15</td><td class="col-nama">GILANG EKA NUGROHO</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                        <tr><td class="col-no">16</td><td class="col-nama">MUHAMMAD FADLI AL HAFIZH</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">17</td><td class="col-nama">YAFI ATHIF RAMADHIYA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">18</td><td class="col-nama">ARKANDHIYA PUTRA HADIAN</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">19</td><td class="col-nama">KHANSA DHIYA SYIFA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">20</td><td class="col-nama">MUHAMMAD ABISEKA ADHETAMA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">21</td><td class="col-nama">MICHELLE SARMA HOSIANA SITUMORANG</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                        <tr><td class="col-no">22</td><td class="col-nama">MUH. DAVA RAMADAN KARSONO</td><td class="col-sekolah">SMA HND</td></tr>
+                        <tr><td class="col-no">23</td><td class="col-nama">CHALISSA MEIRA TRIANDINI</td><td class="col-sekolah">SMA HND</td></tr>
+                        <tr><td class="col-no">24</td><td class="col-nama">AURELIA PUTRI RAMADHANI</td><td class="col-sekolah">SMA HND</td></tr>
+                        <tr><td class="col-no">25</td><td class="col-nama">DAMIA DANISWARA</td><td class="col-sekolah">SMA HND</td></tr>
+                        <tr><td class="col-no">26</td><td class="col-nama">NAGITA ZUHRAH CINTA DANUINATA</td><td class="col-sekolah">SMA HND</td></tr>
+                        <tr><td class="col-no">27</td><td class="col-nama">RAY IDREES AHMAD</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">28</td><td class="col-nama">DANAR ALMER DJAMAIL SETIAWAN</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">29</td><td class="col-nama">RAHEL NOVIOLA GUNAWAN</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">30</td><td class="col-nama">EVELINE LATISHYA ISKANDAR</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">31</td><td class="col-nama">KANIA TRI ARIANTI</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">32</td><td class="col-nama">ZULFYA MUHAMMAD</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">33</td><td class="col-nama">RIFKI MUHAMMAD AUFA</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">34</td><td class="col-nama">WIDIA CIKA NINGRUM</td><td class="col-sekolah">SMA HSN</td></tr>
+                        <tr><td class="col-no">35</td><td class="col-nama">LUTFI LUQMANUL HAKIM</td><td class="col-sekolah">SMA LSM</td></tr>
+                        <tr><td class="col-no">36</td><td class="col-nama">MANUELLA PETRA AIRIN LARASATI</td><td class="col-sekolah">SMAN 6 BANDUNG</td></tr>
+                        <tr><td class="col-no">37</td><td class="col-nama">ZAHRA SYIFA AENI</td><td class="col-sekolah">SMAN 6 BANDUNG</td></tr>
+                        <tr><td class="col-no">38</td><td class="col-nama">NAOMI MIKAYLA KHAIRANA</td><td class="col-sekolah">SMA SLM</td></tr>
+                        <tr><td class="col-no">39</td><td class="col-nama">M. FAIZ H.S</td><td class="col-sekolah">SMA SLM</td></tr>
+                        <tr><td class="col-no">40</td><td class="col-nama">RAYHAND RACHMAT</td><td class="col-sekolah">SMA SLM</td></tr>
+                        <tr><td class="col-no">41</td><td class="col-nama">MOCHAMAD RIDHO HASAN</td><td class="col-sekolah">SMA SLM</td></tr>
+                        <tr><td class="col-no">42</td><td class="col-nama">FANNY NURUL D</td><td class="col-sekolah">SMA SLM</td></tr>
+                        <tr><td class="col-no">43</td><td class="col-nama">PANGERAN TRI JULIANSYAH</td><td class="col-sekolah">SMA YADIKA 7 BOGOR</td></tr>
+                        <tr><td class="col-no">44</td><td class="col-nama">AHMAD IBRAHIM</td><td class="col-sekolah">SMAN 1 RANCABUNGUR BOGOR</td></tr>
+                        <tr><td class="col-no">45</td><td class="col-nama">LEONARD FILBERT BENEDICT KOHEN</td><td class="col-sekolah">SMAN 10 BOGOR</td></tr>
+                        <tr><td class="col-no">46</td><td class="col-nama">MOHAMMAD HAFIDZ RAFIE RABBANI</td><td class="col-sekolah">SMAN 10 BOGOR</td></tr>
+                        <tr><td class="col-no">47</td><td class="col-nama">GHANIA INDRA SAIBA</td><td class="col-sekolah">SMAN 10 BOGOR</td></tr>
+                        <tr><td class="col-no">48</td><td class="col-nama">JEREMY ALDRICH SEMBIRING</td><td class="col-sekolah">SMAN 6 BANDUNG</td></tr>
+                        <tr><td class="col-no">49</td><td class="col-nama">HORATIO DE PATO JECONIA</td><td class="col-sekolah">SMAN 6 BANDUNG</td></tr>
+                        <tr><td class="col-no">50</td><td class="col-nama">ALEKANIA LUX SINTA</td><td class="col-sekolah">SMAN 9 MAROS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- FOOTER GLOBAL -->
+<footer id="footer-placeholder"></footer>
+
+<!-- SCRIPT JS UNTUK SWITCH TAB -->
+<script>
+    function switchJenjang(jenjang, btnEl) {
+        document.querySelectorAll('.jenjang-tabs .cat-btn').forEach(btn => btn.classList.remove('active'));
+        btnEl.classList.add('active');
+
+        document.querySelectorAll('.jenjang-section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        const targetSection = document.getElementById('section-' + jenjang);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+    }
+</script>
+
+<!-- PANGGIL HEADER & FOOTER EKSTERNAL -->
+<script src="header.js"></script>
+
+</body>
+</html>
