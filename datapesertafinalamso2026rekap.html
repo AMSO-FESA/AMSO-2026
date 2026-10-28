@@ -156,15 +156,16 @@
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; width: 100%; }
 
-        /* HEADER & LOGO RESMI (Persis Sesuai CSS Halaman Referensi) */
+        /* HEADER & LOGO RESMI */
         header { padding: 30px 0 25px; text-align: center; position: relative; }
         .logo-group { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap; }
         .logo-item { background: transparent; padding: 0; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; transition: transform 0.3s ease, filter 0.3s ease; }
         .logo-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.6)); }
-        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
-        .logo-item img[alt="Logo Yasarini"], .logo-item img[src="yasarini.png"] { height: 65px !important; }
-        .logo-item img[alt="Logo FESA"], .logo-item img[src="fesa.png"] { height: 100px !important; }
-        .logo-item img[alt="Logo AMSO"], .logo-item img[src="amso.png"] { height: 100px !important; }
+        
+        .logo-item img { width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); max-height: 100px; }
+        .logo-item img[alt*="Yasarini"], .logo-item img[src*="yasarini"] { height: 65px !important; }
+        .logo-item img[alt*="FESA"], .logo-item img[src*="fesa"] { height: 100px !important; }
+        .logo-item img[alt*="AMSO"], .logo-item img[src*="amso"] { height: 100px !important; }
 
         nav {
             background: rgba(15, 21, 42, 0.8);
@@ -299,7 +300,6 @@
         tbody tr:hover { background: rgba(0, 210, 255, 0.08); }
         tbody tr:last-child td { border-bottom: none; }
 
-        /* KEMBALI KE WARNA MUTED SEPERTI AWAL UNTUK NOMOR (TIDAK KUNING) */
         .col-no { width: 70px; text-align: center; font-weight: 800; color: #cbd5e1; }
         .col-nama { text-align: center; font-weight: 700; color: #fff; white-space: nowrap; }
         .col-sekolah { width: 280px; text-align: center; font-weight: 700; color: #cbd5e1; white-space: nowrap; }
@@ -308,7 +308,7 @@
         .jenjang-section.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* FOOTER MODULAR MASTER (Persis Sesuai CSS Halaman Referensi) */
+        /* FOOTER MODULAR MASTER */
         footer {
             background: rgba(5, 7, 15, 0.95);
             border-top: 1px solid var(--border);
@@ -432,7 +432,7 @@
         <!-- PEMBUNGKUS TABEL UNTUK MEMBERIKAN JARAK -->
         <div class="table-wrapper">
 
-            <!-- 1. TABEL SD / MI -->
+            <!-- 1. TABEL SD / MI (Diperbarui dengan koreksi typo) -->
             <div id="section-sd" class="jenjang-section active">
                 <div class="table-container">
                     <table>
@@ -463,8 +463,8 @@
                             <tr><td class="col-no">17</td><td class="col-nama">ALMEERA ZAHRAH KHAERUNNISA</td><td class="col-sekolah">SD HND 1</td></tr>
                             <tr><td class="col-no">18</td><td class="col-nama">ADHEESA KHALFANI ZAFRAN</td><td class="col-sekolah">SD HSN 1</td></tr>
                             <tr><td class="col-no">19</td><td class="col-nama">KEN ARSYADA WARDOYO</td><td class="col-sekolah">SD MUH SOKONANDI YOGYAKARTA</td></tr>
-                            <tr><td class="col-no">20</td><td class="col-nama">HAFIDZ AHNAF AL-MUSYAFFA</td><td class="col-sekolah">SD MUH SUKONANDI YOGYAKARTA</td></tr>
-                            <tr><td class="col-no">21</td><td class="col-nama">MUHAMMAD NAYAKA ABQARY</td><td class="col-sekolah">SD MUH SUKONANDI YOGYAKARTA</td></tr>
+                            <tr><td class="col-no">20</td><td class="col-nama">HAFIDZ AHNAF AL-MUSYAFFA</td><td class="col-sekolah">SD MUH SOKONANDI YOGYAKARTA</td></tr>
+                            <tr><td class="col-no">21</td><td class="col-nama">MUHAMMAD NAYAKA ABQARY</td><td class="col-sekolah">SD MUH SOKONANDI YOGYAKARTA</td></tr>
                             <tr><td class="col-no">22</td><td class="col-nama">MELODY CHRISTABELSA PANDIANGAN</td><td class="col-sekolah">SD RSN</td></tr>
                             <tr><td class="col-no">23</td><td class="col-nama">ABIGAILE JILL SHANE MAUREEN</td><td class="col-sekolah">SD RSN</td></tr>
                             <tr><td class="col-no">24</td><td class="col-nama">SABRAN NUR AWAL</td><td class="col-sekolah">SD SEMPLAK 2 BOGOR</td></tr>
@@ -525,7 +525,7 @@
                 </div>
             </div>
 
-            <!-- 3. TABEL SMA -->
+            <!-- 3. TABEL SMA (Urutan nama terbaru menyesuaikan abjad asal sekolah & revisi nama) -->
             <div id="section-sma" class="jenjang-section">
                 <div class="table-container">
                     <table>
@@ -539,38 +539,38 @@
                         <tbody>
                             <tr><td class="col-no">1</td><td class="col-nama">ANISA NUR SAIDAH</td><td class="col-sekolah">SMA ADI</td></tr>
                             <tr><td class="col-no">2</td><td class="col-nama">KEVIN NADA SAPUTRA</td><td class="col-sekolah">SMA ADI</td></tr>
-                            <tr><td class="col-no">3</td><td class="col-nama">AFIFAH</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
-                            <tr><td class="col-no">4</td><td class="col-nama">VAQILLAH ILLAHIYA TOGUBU</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
-                            <tr><td class="col-no">5</td><td class="col-nama">DZAKIRAH TALITA ZAHRA</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
-                            <tr><td class="col-no">6</td><td class="col-nama">CALEB MANAMAN BARONDENG</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
-                            <tr><td class="col-no">7</td><td class="col-nama">JONATHAN WILLIAM SUAR</td><td class="col-sekolah">SMA ANGKASA HND</td></tr>
-                            <tr><td class="col-no">8</td><td class="col-nama">RAHMA RAIA ENDRYANI</td><td class="col-sekolah">SMA ANGKASA HSN</td></tr>
-                            <tr><td class="col-no">9</td><td class="col-nama">APRILIA NUR RAHMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">10</td><td class="col-nama">AGIFAN EZRA ALFARIZI</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">11</td><td class="col-nama">AGRA FIRAZ HUKAMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">12</td><td class="col-nama">SYEH QITHFI NURKHAIRA</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">13</td><td class="col-nama">RAKHA DWI PRATAMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">14</td><td class="col-nama">GILANG EKA NUGROHO</td><td class="col-sekolah">SMA HLM 1</td></tr>
-                            <tr><td class="col-no">15</td><td class="col-nama">MUHAMMAD FADLI AL HAFIZH</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">16</td><td class="col-nama">YAFI ATHIF RAMADHIYA</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">17</td><td class="col-nama">ARKANDHIYA PUTRA HADIAN</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">18</td><td class="col-nama">KHANSA DHIYA SYIFA</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">19</td><td class="col-nama">MUHAMMAD ABISEKA ADHETAMA</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">20</td><td class="col-nama">MICHELLE SARMA HOSIANA SITUMORANG</td><td class="col-sekolah">SMA HLM 2</td></tr>
-                            <tr><td class="col-no">21</td><td class="col-nama">MUH. DAVA RAMADAN KARSONO</td><td class="col-sekolah">SMA HND</td></tr>
-                            <tr><td class="col-no">22</td><td class="col-nama">CHALISSA MEIRA TRIANDINI</td><td class="col-sekolah">SMA HND</td></tr>
-                            <tr><td class="col-no">23</td><td class="col-nama">AURELIA PUTRI RAMADHANI</td><td class="col-sekolah">SMA HND</td></tr>
-                            <tr><td class="col-no">24</td><td class="col-nama">DAMIA DANISWARA</td><td class="col-sekolah">SMA HND</td></tr>
-                            <tr><td class="col-no">25</td><td class="col-nama">NAGITA ZUHRAH CINTA DANUINATA</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">3</td><td class="col-nama">APRILIA NUR RAHMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">4</td><td class="col-nama">AGIFAN EZRA ALFARIZI</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">5</td><td class="col-nama">AGRA FIRAZ HUKAMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">6</td><td class="col-nama">SYEH QITHFI NURKHAIRA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">7</td><td class="col-nama">RAKHA DWI PRATAMA</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">8</td><td class="col-nama">GILANG EKA NUGROHO</td><td class="col-sekolah">SMA HLM 1</td></tr>
+                            <tr><td class="col-no">9</td><td class="col-nama">MUHAMMAD FADLI AL HAFIZH</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">10</td><td class="col-nama">YAFI ATHIF RAMADHIYA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">11</td><td class="col-nama">ARKANDHIYA PUTRA HADIAN</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">12</td><td class="col-nama">KHANSA DHIYA SYIFA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">13</td><td class="col-nama">MUHAMMAD ABISEKA ADHETAMA</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">14</td><td class="col-nama">MICHELLE SARMA HOSIANA SITUMORANG</td><td class="col-sekolah">SMA HLM 2</td></tr>
+                            <tr><td class="col-no">15</td><td class="col-nama">AFIFAH</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">16</td><td class="col-nama">VAQILLAH ILLAHIYA TOGUBU</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">17</td><td class="col-nama">DZAKIRAH TALITA ZAHRA</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">18</td><td class="col-nama">CALEB MANAMAN BARONDENG</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">19</td><td class="col-nama">JONATHAN WILLIAM SUAR</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">20</td><td class="col-nama">MUH. DAVA RAMADAN KARSONO</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">21</td><td class="col-nama">CHALISSA MEIRA TRIANDINI</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">22</td><td class="col-nama">AURELIA PUTRI RAMADHANI</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">23</td><td class="col-nama">DAMIA DANISWARA</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">24</td><td class="col-nama">NAGITA ZUHRAH CINTA DANUINATA</td><td class="col-sekolah">SMA HND</td></tr>
+                            <tr><td class="col-no">25</td><td class="col-nama">RAHMA RAIA ENDRYANI</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">26</td><td class="col-nama">RAY IDREES AHMAD</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">27</td><td class="col-nama">DANAR ALMER DJAMAIL SETIAWAN</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">28</td><td class="col-nama">RAHEL NOVIOLA GUNAWAN</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">29</td><td class="col-nama">EVELINE LATISHYA ISKANDAR</td><td class="col-sekolah">SMA HSN</td></tr>
-                            <tr><td class="col-no">30</td><td class="col-nama">KANIA TRI ARIANTI</td><td class="col-sekolah">SMA HSN</td></tr>
+                            <tr><td class="col-no">30</td><td class="col-nama">ΚΑΝΙΑ TRI ARIANTI</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">31</td><td class="col-nama">ZULFYA MUHAMMAD</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">32</td><td class="col-nama">RIFKI MUHAMMAD AUFA</td><td class="col-sekolah">SMA HSN</td></tr>
                             <tr><td class="col-no">33</td><td class="col-nama">WIDIA CIKA NINGRUM</td><td class="col-sekolah">SMA HSN</td></tr>
-                            <tr><td class="col-no">34</td><td class="col-nama">LUTFI LUQMANUL HAKIM</td><td class="col-sekolah">SMA LSM</td></tr>
+                            <tr><td class="col-no">34</td><td class="col-nama">LUTFI LUQMANUL HAKIM</td><td class="col-sekolah">SMA SLM</td></tr>
                             <tr><td class="col-no">35</td><td class="col-nama">NAOMI MIKAYLA KHAIRANA</td><td class="col-sekolah">SMA SLM</td></tr>
                             <tr><td class="col-no">36</td><td class="col-nama">M. FAIZ H.S</td><td class="col-sekolah">SMA SLM</td></tr>
                             <tr><td class="col-no">37</td><td class="col-nama">RAYHAND RACHMAT</td><td class="col-sekolah">SMA SLM</td></tr>
