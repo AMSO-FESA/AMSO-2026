@@ -62,6 +62,30 @@
         .blob-3 { width: 350px; height: 350px; background: var(--gold); top: 40%; right: 20%; animation-delay: -8s; opacity: 0.1; }
         @keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, 60px) scale(1.15); } }
 
+        /* ================= MEDALI RAKSASA BACKGROUND ================= */
+        .bg-medal-wrapper {
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            opacity: 0.1; /* Transparan watermark agar tidak nabrak teks */
+            pointer-events: none; /* Agar tidak menghalangi klik pada card */
+        }
+        .big-medal {
+            font-size: clamp(15rem, 45vw, 40rem);
+            color: var(--gold);
+            filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.4));
+            animation: medalFloatBg 4s infinite alternate ease-in-out;
+        }
+        @keyframes medalFloatBg {
+            0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2)); }
+            100% { transform: translateY(-30px) scale(1.05); filter: drop-shadow(0 0 70px rgba(255, 215, 0, 0.6)); }
+        }
+
         /* FLOATING ICONS */
         .floating-icon { position: absolute; opacity: 0.55; user-select: none; filter: drop-shadow(0 0 12px currentColor); z-index: 0; }
         .el-astronaut1 { top: 18%; left: 5%; font-size: 2.8rem; color: var(--gold); animation: floatItem1 9s infinite alternate ease-in-out; }
@@ -130,7 +154,8 @@
             display: grid; 
             gap: 25px; 
             justify-content: center; 
-            align-items: stretch; /* Memaksa kotak sejajar memiliki tinggi sama */
+            /* align-items stretch menjamin semua tinggi kartu dalam baris yang sama otomatis sama persis */
+            align-items: stretch; 
             padding: 50px 10px 30px; 
             margin: -30px auto 0; 
         }
@@ -302,7 +327,13 @@
     <div class="galaxy-blob blob-1"></div>
     <div class="galaxy-blob blob-2"></div>
     <div class="galaxy-blob blob-3"></div>
+    
+    <!-- MEDALI BACKGROUND -->
+    <div class="bg-medal-wrapper">
+        <i class="fa-solid fa-medal big-medal"></i>
+    </div>
 
+    <!-- FLOATING ICONS -->
     <div class="floating-icon el-astronaut1" title="Astronot"><i class="fa-solid fa-user-astronaut"></i></div>
     <div class="floating-icon el-atom" title="Atom"><i class="fa-solid fa-atom"></i></div>
     <div class="floating-icon el-math-pi" title="Pi">&pi;</div>
